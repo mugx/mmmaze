@@ -15,7 +15,6 @@ enum ScreenType {
     case STResumeGame
     case STSettings
     case STHighScores
-    case STAchievements
     case STCredits
 }
 
@@ -24,7 +23,7 @@ enum SoundType: UInt {
     case STHitCoin = 1
     case STHitWhirlwind = 2
     case STHitBomb = 3
-    case STHitMinion = 4
+    case STHitHearth = 4
     case STHitTimeBonus = 5
     case STStartgame = 6
     case STGame = 7

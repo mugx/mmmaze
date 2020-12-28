@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   TTWhirlwind,
   TTBomb,
   TTTime,
-  TTMinion,
+  TTHearth,
   TTKey,
   TTMazeEnd_close,
   TTMazeEnd_open
@@ -46,5 +46,4 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) BOOL isAngry;
 @property(nonatomic,weak) TNTile *collidedWall;
 @property(nonatomic,weak) TNGameSession *gameSession;
-@property(nonatomic,strong)  SKSpriteNode* node;
 @end

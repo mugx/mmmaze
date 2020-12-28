@@ -181,12 +181,7 @@ extension GameViewController: TNGameSessionDelegate {
 		view.bringSubviewToFront(gameOverView)
 		gameOverView.alpha = 0
 		gameOverPanel.isHidden = false
-
-		if MXGameCenterManager.sharedInstance()!.gameCenterEnabled {
-			highScoreValueLabel_inGameOver.text = "\(MXGameCenterManager.sharedInstance()!.highestScore)"
-		} else {
-			highScoreValueLabel_inGameOver.text = scoreValueLabel_inGameOver.text
-		}
+		highScoreValueLabel_inGameOver.text = scoreValueLabel_inGameOver.text
 
 		UIView.animate(withDuration: 0.5, animations: {
 			self.gameOverView.alpha = 1.0

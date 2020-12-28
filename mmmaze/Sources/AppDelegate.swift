@@ -54,11 +54,11 @@ import Foundation
 		case .STResumeGame:
 			transitionToViewController(gameVc!)
 		case .STHighScores:
-			transitionToViewController(TNHighScoresViewController.create())
+			transitionToViewController(BestScoresViewController())
 		case .STSettings:
-			transitionToViewController(TNSettingsViewController.create())
+			transitionToViewController(SettingsViewController())
 		case .STCredits:
-			transitionToViewController(TNCreditsViewController.create())
+			transitionToViewController(CreditsViewController())
 		default:
 			break
 		}

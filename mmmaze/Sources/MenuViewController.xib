@@ -10,9 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController" customModule="mmmaze" customModuleProvider="target">
             <connections>
                 <outlet property="aboutButton" destination="XDA-iL-b1u" id="5Pn-8l-2AO"/>
-                <outlet property="achievementsButton" destination="kvT-hj-GWS" id="Qql-Gu-uU1"/>
-                <outlet property="achievementsButtonBottomMargin" destination="p1u-bH-AfN" id="Scz-RP-NsW"/>
-                <outlet property="achievementsButtonHeight" destination="RYa-jM-iXY" id="mzk-68-ms5"/>
                 <outlet property="gameButton" destination="LGw-gn-cV5" id="5WV-Nw-hZe"/>
                 <outlet property="highScoresButton" destination="8hr-SH-E5C" id="8R5-l9-uFb"/>
                 <outlet property="settingsButton" destination="CWw-su-e6u" id="UNu-YA-Cj3"/>
@@ -63,27 +60,8 @@
                                 <action selector="highScoresTouched" destination="-1" eventType="touchUpInside" id="c57-gz-5yL"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvT-hj-GWS" customClass="MXButton">
-                            <rect key="frame" x="0.0" y="120" width="300" height="50"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="RYa-jM-iXY"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <size key="titleShadowOffset" width="1" height="1"/>
-                            <state key="normal" title="Achievements">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="mmmaze.menu.achievements"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="achievementsTouched" destination="-1" eventType="touchUpInside" id="9WO-Kf-aRp"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWw-su-e6u" customClass="MXButton">
-                            <rect key="frame" x="0.0" y="180" width="300" height="50"/>
+                            <rect key="frame" x="0.0" y="120" width="300" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="YOU-pP-urd"/>
@@ -102,7 +80,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDA-iL-b1u" userLabel="Credits" customClass="MXButton">
-                            <rect key="frame" x="0.0" y="240" width="300" height="50"/>
+                            <rect key="frame" x="0.0" y="180" width="300" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Qe5-H8-7sJ"/>
@@ -148,14 +126,11 @@
                         <constraint firstItem="CWw-su-e6u" firstAttribute="leading" secondItem="r9N-Cl-cDF" secondAttribute="leading" id="FsZ-Q7-cRe"/>
                         <constraint firstAttribute="trailing" secondItem="LGw-gn-cV5" secondAttribute="trailing" id="PS8-CM-3eD"/>
                         <constraint firstItem="8hr-SH-E5C" firstAttribute="top" secondItem="LGw-gn-cV5" secondAttribute="bottom" constant="10" id="QqQ-xr-8ob"/>
-                        <constraint firstItem="kvT-hj-GWS" firstAttribute="leading" secondItem="r9N-Cl-cDF" secondAttribute="leading" id="SLB-Dl-8lG"/>
-                        <constraint firstAttribute="trailing" secondItem="kvT-hj-GWS" secondAttribute="trailing" id="Vfc-Lg-mkh"/>
                         <constraint firstAttribute="trailing" secondItem="8hr-SH-E5C" secondAttribute="trailing" id="fcu-YM-xh3"/>
                         <constraint firstItem="XDA-iL-b1u" firstAttribute="leading" secondItem="r9N-Cl-cDF" secondAttribute="leading" id="fpz-Xb-Dvw"/>
+                        <constraint firstItem="CWw-su-e6u" firstAttribute="top" secondItem="8hr-SH-E5C" secondAttribute="bottom" constant="10" id="hU9-pU-f6s"/>
                         <constraint firstAttribute="height" constant="290" id="l9N-yf-Nv0"/>
-                        <constraint firstItem="CWw-su-e6u" firstAttribute="top" secondItem="kvT-hj-GWS" secondAttribute="bottom" constant="10" id="p1u-bH-AfN"/>
                         <constraint firstItem="8hr-SH-E5C" firstAttribute="leading" secondItem="r9N-Cl-cDF" secondAttribute="leading" id="qMh-g6-Umh"/>
-                        <constraint firstItem="kvT-hj-GWS" firstAttribute="top" secondItem="8hr-SH-E5C" secondAttribute="bottom" constant="10" id="qvV-J4-zxt"/>
                         <constraint firstItem="XDA-iL-b1u" firstAttribute="top" secondItem="CWw-su-e6u" secondAttribute="bottom" constant="10" id="tdR-cx-0T2"/>
                         <constraint firstAttribute="trailing" secondItem="CWw-su-e6u" secondAttribute="trailing" id="uOv-GO-JRR"/>
                         <constraint firstAttribute="width" constant="300" id="x3M-4D-hiW"/>
