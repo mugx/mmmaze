@@ -19,7 +19,7 @@ class BestScoresViewController: UIViewController {
 	//MARK: - Actions
 
 	@IBAction func backTouched() {
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 		AppDelegate.sharedInstance.selectScreen(.STMenu)
 	}
 }

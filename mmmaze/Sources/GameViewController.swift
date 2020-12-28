@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
 	var swipeUp: UISwipeGestureRecognizer!
 	var swipeDown: UISwipeGestureRecognizer!
 	@IBOutlet var gameView: UIView!
+	@IBOutlet var headerView: UIView!
 	@IBOutlet var timeLabel: UILabel!
 	@IBOutlet var scoreLabel: UILabel!
 	@IBOutlet var currentLivesLabel: UILabel!
@@ -28,14 +29,10 @@ class GameViewController: UIViewController {
 	@IBOutlet var currentLevelLabel: UILabel!
 	@IBOutlet var hurryUpLabel: UILabel!
 
-	static func create() -> GameViewController {
-		let gameViewController = GameViewController(nibName: nil, bundle: nil)
-		return gameViewController
-	}
-
 	override open func viewDidLoad() {
 		super.viewDidLoad()
 		gameOverView.isHidden = true
+		headerView.isHidden = true
 	}
 
 	override open func viewDidAppear(_ animated: Bool) {
@@ -44,8 +41,6 @@ class GameViewController: UIViewController {
 		if gameSession == nil {
 			//--- setup current level stuff ---//
 			currentLevelPanel.isHidden = true
-			currentLevelPanel.layer.borderColor = Constants.magentaColor.cgColor
-			currentLevelPanel.layer.borderWidth = 2.0
 
 			//--- setup swipes ---//
 			swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
@@ -66,8 +61,6 @@ class GameViewController: UIViewController {
 
 			//--- game over view ---//
 			gameOverView.isHidden = true
-			gameOverPanel.layer.borderColor = Constants.magentaColor.cgColor
-			gameOverPanel.layer.borderWidth = 2.0
 
 			//--- setup game session ---//
 			gameSession = TNGameSession(view: gameView)
@@ -82,6 +75,7 @@ class GameViewController: UIViewController {
 			displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
 			gameSession.items.forEach { ($0 as! TNTile).restoreAnimations() }
 		}
+		headerView.isHidden = false
 	}
 
 	//MARK: - Actions
@@ -145,7 +139,7 @@ extension GameViewController: TNGameSessionDelegate {
 		UIView.animate(withDuration: 0.2, animations: {
 			self.currentLevelPanel.alpha = 1
 		}) { (success) in
-			UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
+			UIView.animate(withDuration: 0.2, delay: 1.5, options: [], animations: {
 				self.currentLevelPanel.alpha = 0
 			}) { (success) in
 				self.currentLevelPanel.isHidden = true
@@ -161,7 +155,7 @@ extension GameViewController: TNGameSessionDelegate {
 			UIView.animate(withDuration: 0.1, animations: {
 				self.hurryUpLabel.alpha = 1
 			}) { (success) in
-				MXAudioManager.sharedInstance()?.play(SoundType.STTimeOver.rawValue)
+				AudioManager.shared.play(SoundType.STTimeOver)
 
 				// Add the animation
 				let animation = CABasicAnimation(keyPath: "opacity")
@@ -181,7 +175,7 @@ extension GameViewController: TNGameSessionDelegate {
 		view.bringSubviewToFront(gameOverView)
 		gameOverView.alpha = 0
 		gameOverPanel.isHidden = false
-		highScoreValueLabel_inGameOver.text = scoreValueLabel_inGameOver.text
+		highScoreValueLabel_inGameOver.text = String(describing: ScoreManager.highScore())
 
 		UIView.animate(withDuration: 0.5, animations: {
 			self.gameOverView.alpha = 1.0

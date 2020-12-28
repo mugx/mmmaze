@@ -28,7 +28,7 @@
 
 - (void)setIsAngry:(BOOL)isAngry
 {
-  _isAngry = true;
+  _isAngry = isAngry;
   
   self.animationImages = [[UIImage imageNamed:isAngry ? @"player_angry" : @"player"] spritesWith:CGSizeMake(TILE_SIZE, TILE_SIZE)];
   [self startAnimating];
@@ -42,9 +42,8 @@
 - (void)update:(CGFloat)deltaTime
 {
   [super update:deltaTime];
-  /*
-  if (self.collidedWall)
-  {
+
+  if (self.collidedWall) {
     CGRect intersection = CGRectIntersection(self.collidedWall.frame, self.frame);
     if (intersection.size.width < 3 && intersection.size.height)
     {
@@ -53,7 +52,6 @@
     }
     self.collidedWall = nil;
   }
-   */
 }
 
 @end

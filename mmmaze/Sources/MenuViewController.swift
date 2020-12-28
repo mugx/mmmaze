@@ -28,7 +28,7 @@ class MenuViewController: UIViewController {
 	//MARK: - Actions
 
 	@IBAction func newGameTouched() {
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 		if AppDelegate.sharedInstance.gameVc == nil {
 			AppDelegate.sharedInstance.selectScreen(ScreenType.STTutorial)
 		} else {
@@ -37,17 +37,17 @@ class MenuViewController: UIViewController {
 	}
 
 	@IBAction func highScoresTouched() {
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 		AppDelegate.sharedInstance.selectScreen(ScreenType.STHighScores)
 	}
 
 	@IBAction func settingsTouched() {
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 		AppDelegate.sharedInstance.selectScreen(ScreenType.STSettings)
 	}
 
 	@IBAction func aboutTouched() {
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 		AppDelegate.sharedInstance.selectScreen(ScreenType.STCredits)
 	}
 }

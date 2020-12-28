@@ -34,14 +34,14 @@ class SettingsViewController: UIViewController {
 
 	func refresh() {
 		soundEnabledTitleLabel.text = "mmmaze.settings.sound".localized
-		soundEnabledValueLabel.text = MXAudioManager.sharedInstance()!.soundEnabled ? "mmmaze.settings.enabled".localized : "mmmaze.settings.disabled".localized
+		soundEnabledValueLabel.text = AudioManager.shared.soundEnabled ? "mmmaze.settings.enabled".localized : "mmmaze.settings.disabled".localized
 		soundVolumeTitleLabel.text = "mmmaze.settings.volume".localized
 		backButton.setTitle("mmmaze.menu.back".localized, for: .normal)
 		refreshSoundVolume()
 	}
 
 	func refreshSoundVolume() {
-		switch VolumeType(rawValue: Int(MXAudioManager.sharedInstance()!.volume * 10))! {
+		switch VolumeType(rawValue: Int(AudioManager.shared.volume * 10))! {
 		case .mute:
 			soundVolumeValueLabel.text = "mmmaze.settings.volume_mute".localized
 		case .low:
@@ -56,7 +56,7 @@ class SettingsViewController: UIViewController {
 	//MARK: - IBActions
 
 	@IBAction func languageDecrTouched() {
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 
 		//--- decr logic ---//
 		let langs = MXLocalizationManager.sharedInstance()!.availableLanguages()!
@@ -73,7 +73,7 @@ class SettingsViewController: UIViewController {
 	}
 
 	@IBAction func languageIncrTouched() {
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 
 		//--- incr logic ---//
 		let langs = MXLocalizationManager.sharedInstance()!.availableLanguages()!
@@ -90,28 +90,28 @@ class SettingsViewController: UIViewController {
 	}
 
 	@IBAction func soundVolumeTouched() {
-		switch VolumeType(rawValue: Int(MXAudioManager.sharedInstance()!.volume * 10))! {
+		switch VolumeType(rawValue: Int(AudioManager.shared.volume * 10))! {
 		case .mute:
-			MXAudioManager.sharedInstance()!.volume = Float(VolumeType.low.rawValue) / 10.0
+			AudioManager.shared.volume = Float(VolumeType.low.rawValue) / 10.0
 		case .low:
-			MXAudioManager.sharedInstance()!.volume = Float(VolumeType.mid.rawValue) / 10.0
+			AudioManager.shared.volume = Float(VolumeType.mid.rawValue) / 10.0
 		case .mid:
-			MXAudioManager.sharedInstance()!.volume = Float(VolumeType.high.rawValue) / 10.0
+			AudioManager.shared.volume = Float(VolumeType.high.rawValue) / 10.0
 		case .high:
-			MXAudioManager.sharedInstance()!.volume = Float(VolumeType.mute.rawValue) / 10.0
+			AudioManager.shared.volume = Float(VolumeType.mute.rawValue) / 10.0
 		}
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 		refresh()
 	}
 
 	@IBAction func soundEnabledTouched() {
-		MXAudioManager.sharedInstance()?.soundEnabled = !MXAudioManager.sharedInstance()!.soundEnabled
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.soundEnabled = !AudioManager.shared.soundEnabled
+		AudioManager.shared.play(SoundType.STSelectItem)
 		refresh()
 	}
 
 	@IBAction func backTouched() {
-		MXAudioManager.sharedInstance()?.play(SoundType.STSelectItem.rawValue)
+		AudioManager.shared.play(SoundType.STSelectItem)
 		AppDelegate.sharedInstance.selectScreen(ScreenType.STMenu)
 	}
 }

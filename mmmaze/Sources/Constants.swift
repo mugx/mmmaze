@@ -25,7 +25,7 @@ enum SoundType: UInt {
     case STHitBomb = 3
     case STHitHearth = 4
     case STHitTimeBonus = 5
-    case STStartgame = 6
+    case STStartGame = 6
     case STGame = 7
     case STSelectItem = 8
     case STTimeOver = 9

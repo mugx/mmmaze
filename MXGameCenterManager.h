@@ -14,12 +14,6 @@
 
 @interface MXGameCenterManager : NSObject <GKGameCenterControllerDelegate>
 + (instancetype)sharedInstance;
-- (void)authenticateLocalPlayer:(void (^)(BOOL isEnabled))completion;
 - (void)saveScore:(int64_t)score;
-- (void)showLeaderboard;
-- (void)saveAchievement:(NSString *)achievementID;
-- (void)resetAchievements;
-- (void)showAchievements;
-@property(nonatomic,assign) BOOL gameCenterEnabled;
-@property(nonatomic,assign) int64_t highestScore;
+- (int64_t)highScore;
 @end

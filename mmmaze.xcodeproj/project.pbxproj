@@ -10,10 +10,8 @@
 		1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D07BEE81CCD36E80062EFE6 /* GameKit.framework */; };
 		1D0BCB3A259A1ECA0035BAA8 /* TNTile+AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB13259A1EC90035BAA8 /* TNTile+AI.m */; };
 		1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */; };
-		1D0BCB3E259A1ECA0035BAA8 /* MXOpenALSupport.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB18259A1ECA0035BAA8 /* MXOpenALSupport.c */; };
 		1D0BCB3F259A1ECA0035BAA8 /* TNCollisionCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB19259A1ECA0035BAA8 /* TNCollisionCollaborator.m */; };
 		1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */; };
-		1D0BCB41259A1ECA0035BAA8 /* MXAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1C259A1ECA0035BAA8 /* MXAudioManager.m */; };
 		1D0BCB42259A1ECA0035BAA8 /* TNEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1D259A1ECA0035BAA8 /* TNEnemy.m */; };
 		1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */; };
 		1D0BCB44259A1ECA0035BAA8 /* TNPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB21259A1ECA0035BAA8 /* TNPlayer.m */; };
@@ -81,7 +79,8 @@
 		1D1BDDF9259A4F97000145A4 /* soundHitPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDEC259A4F97000145A4 /* soundHitPlayer.caf */; };
 		1D1BDDFA259A4F97000145A4 /* soundTimeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDED259A4F97000145A4 /* soundTimeOver.caf */; };
 		1D1BDDFD259A515C000145A4 /* MXGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */; };
-		1DD29CE11EE9F86600C8C79F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD29CE01EE9F86600C8C79F /* StoreKit.framework */; };
+		1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFE259A5791000145A4 /* AudioManager.swift */; };
+		1D1BDE01259A75E6000145A4 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDE00259A75E6000145A4 /* GameCenter.swift */; };
 		1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB93422337F35C00CF02AF /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,11 +102,9 @@
 		1D0BCB13259A1EC90035BAA8 /* TNTile+AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TNTile+AI.m"; path = "mmmaze/Sources/TNTile+AI.m"; sourceTree = "<group>"; };
 		1D0BCB14259A1EC90035BAA8 /* mmmaze-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "mmmaze-Bridging-Header.h"; path = "mmmaze/Sources/mmmaze-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BestScoresViewController.xib; path = mmmaze/Sources/BestScoresViewController.xib; sourceTree = "<group>"; };
-		1D0BCB18259A1ECA0035BAA8 /* MXOpenALSupport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MXOpenALSupport.c; path = mmmaze/Sources/MXOpenALSupport.c; sourceTree = "<group>"; };
 		1D0BCB19259A1ECA0035BAA8 /* TNCollisionCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNCollisionCollaborator.m; path = mmmaze/Sources/TNCollisionCollaborator.m; sourceTree = "<group>"; };
 		1D0BCB1A259A1ECA0035BAA8 /* TNTile+AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TNTile+AI.h"; path = "mmmaze/Sources/TNTile+AI.h"; sourceTree = "<group>"; };
 		1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = mmmaze/Sources/GameViewController.swift; sourceTree = "<group>"; };
-		1D0BCB1C259A1ECA0035BAA8 /* MXAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXAudioManager.m; path = mmmaze/Sources/MXAudioManager.m; sourceTree = "<group>"; };
 		1D0BCB1D259A1ECA0035BAA8 /* TNEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNEnemy.m; path = mmmaze/Sources/TNEnemy.m; sourceTree = "<group>"; };
 		1D0BCB1E259A1ECA0035BAA8 /* TNMazeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TNMazeGenerator.hpp; path = mmmaze/Sources/TNMazeGenerator.hpp; sourceTree = "<group>"; };
 		1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = mmmaze/Sources/Constants.swift; sourceTree = "<group>"; };
@@ -123,7 +120,6 @@
 		1D0BCB29259A1ECA0035BAA8 /* TNEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNEnemy.h; path = mmmaze/Sources/TNEnemy.h; sourceTree = "<group>"; };
 		1D0BCB2A259A1ECA0035BAA8 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TutorialViewController.xib; path = mmmaze/Sources/TutorialViewController.xib; sourceTree = "<group>"; };
 		1D0BCB2B259A1ECA0035BAA8 /* TNGameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNGameSession.h; path = mmmaze/Sources/TNGameSession.h; sourceTree = "<group>"; };
-		1D0BCB2C259A1ECA0035BAA8 /* MXOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXOpenALSupport.h; path = mmmaze/Sources/MXOpenALSupport.h; sourceTree = "<group>"; };
 		1D0BCB2D259A1ECA0035BAA8 /* BestScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BestScoresViewController.swift; path = mmmaze/Sources/BestScoresViewController.swift; sourceTree = "<group>"; };
 		1D0BCB2E259A1ECA0035BAA8 /* TNTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTile.m; path = mmmaze/Sources/TNTile.m; sourceTree = "<group>"; };
 		1D0BCB30259A1ECA0035BAA8 /* CreditsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreditsViewController.xib; path = mmmaze/Sources/CreditsViewController.xib; sourceTree = "<group>"; };
@@ -133,7 +129,6 @@
 		1D0BCB34259A1ECA0035BAA8 /* TNEnemyCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNEnemyCollaborator.m; path = mmmaze/Sources/TNEnemyCollaborator.m; sourceTree = "<group>"; };
 		1D0BCB35259A1ECA0035BAA8 /* TNCollisionCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNCollisionCollaborator.h; path = mmmaze/Sources/TNCollisionCollaborator.h; sourceTree = "<group>"; };
 		1D0BCB37259A1ECA0035BAA8 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = mmmaze/Sources/TutorialViewController.swift; sourceTree = "<group>"; };
-		1D0BCB38259A1ECA0035BAA8 /* MXAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXAudioManager.h; path = mmmaze/Sources/MXAudioManager.h; sourceTree = "<group>"; };
 		1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = mmmaze/Sources/MenuViewController.swift; sourceTree = "<group>"; };
 		1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = mmmaze/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		1D0BCB56259A1ED30035BAA8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mmmaze/Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -196,8 +191,9 @@
 		1D1BDDED259A4F97000145A4 /* soundTimeOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundTimeOver.caf; sourceTree = "<group>"; };
 		1D1BDDFB259A5151000145A4 /* MXGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXGameCenterManager.h; sourceTree = "<group>"; };
 		1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXGameCenterManager.m; sourceTree = "<group>"; };
+		1D1BDDFE259A5791000145A4 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		1D1BDE00259A75E6000145A4 /* GameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DD29CE01EE9F86600C8C79F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -207,7 +203,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */,
-				1DD29CE11EE9F86600C8C79F /* StoreKit.framework in Frameworks */,
 				1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,7 +218,6 @@
 				1D0BCB91259A21050035BAA8 /* Screens */,
 				1D0BCBCB259A25330035BAA8 /* Utils */,
 				1D0BCB6B259A1FBC0035BAA8 /* MXToolBox */,
-				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
 				1D0BCB35259A1ECA0035BAA8 /* TNCollisionCollaborator.h */,
 				1D0BCB19259A1ECA0035BAA8 /* TNCollisionCollaborator.m */,
 				1D0BCB29259A1ECA0035BAA8 /* TNEnemy.h */,
@@ -247,7 +241,6 @@
 		1D0BCB12259A1DEE0035BAA8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1D1BDDE0259A4F8D000145A4 /* Sounds */,
 				1D0BCB93259A21EF0035BAA8 /* Joystix.ttf */,
 				1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */,
 				1D0BCB95259A23690035BAA8 /* Localizable.strings */,
@@ -257,6 +250,7 @@
 				1D0BCB5B259A1ED30035BAA8 /* Info.plist */,
 				1D0BCB56259A1ED30035BAA8 /* LaunchScreen.storyboard */,
 				1D0BCB97259A23A40035BAA8 /* Images */,
+				1D1BDDE0259A4F8D000145A4 /* Sounds */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -327,14 +321,13 @@
 		1D0BCBCB259A25330035BAA8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
+				1D1BDDFE259A5791000145A4 /* AudioManager.swift */,
 				1D1BDDFB259A5151000145A4 /* MXGameCenterManager.h */,
 				1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */,
 				1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */,
 				1D0BCBD4259A2EAA0035BAA8 /* UIView+Utils.swift */,
-				1D0BCB38259A1ECA0035BAA8 /* MXAudioManager.h */,
-				1D0BCB1C259A1ECA0035BAA8 /* MXAudioManager.m */,
-				1D0BCB18259A1ECA0035BAA8 /* MXOpenALSupport.c */,
-				1D0BCB2C259A1ECA0035BAA8 /* MXOpenALSupport.h */,
+				1D1BDE00259A75E6000145A4 /* GameCenter.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -435,7 +428,6 @@
 			isa = PBXGroup;
 			children = (
 				1DDB93422337F35C00CF02AF /* MessageUI.framework */,
-				1DD29CE01EE9F86600C8C79F /* StoreKit.framework */,
 				1D07BEE81CCD36E80062EFE6 /* GameKit.framework */,
 			);
 			name = Frameworks;
@@ -569,10 +561,10 @@
 				1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */,
 				1D0BCB88259A1FC70035BAA8 /* MXButton.m in Sources */,
 				1D0BCB8A259A1FC70035BAA8 /* MXImageView.m in Sources */,
+				1D1BDE01259A75E6000145A4 /* GameCenter.swift in Sources */,
 				1D0BCB4D259A1ECA0035BAA8 /* TNTile.m in Sources */,
 				1D0BCB86259A1FC70035BAA8 /* UIColor+MX.m in Sources */,
 				1D0BCB4F259A1ECA0035BAA8 /* TNGameSession.mm in Sources */,
-				1D0BCB3E259A1ECA0035BAA8 /* MXOpenALSupport.c in Sources */,
 				1D0BCB8C259A1FC70035BAA8 /* UIImage+MX.m in Sources */,
 				1D0BCB89259A1FC70035BAA8 /* UIImageView+MX.m in Sources */,
 				1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */,
@@ -585,11 +577,11 @@
 				1D0BCBD5259A2EAA0035BAA8 /* UIView+Utils.swift in Sources */,
 				1D0BCB8E259A1FC70035BAA8 /* MXLabel.m in Sources */,
 				1D0BCB51259A1ECA0035BAA8 /* TNEnemyCollaborator.m in Sources */,
-				1D0BCB41259A1ECA0035BAA8 /* MXAudioManager.m in Sources */,
 				1D0BCB42259A1ECA0035BAA8 /* TNEnemy.m in Sources */,
 				1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */,
 				1D0BCB8B259A1FC70035BAA8 /* UIView+MX.swift in Sources */,
 				1D0BCB90259A1FC70035BAA8 /* UIImage+utils.swift in Sources */,
+				1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */,
 				1D0BCB8F259A1FC70035BAA8 /* MXLocalizationManager.m in Sources */,
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,
@@ -695,6 +687,7 @@
 		1D7670481C7B5B050065F110 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -714,6 +707,7 @@
 		1D7670491C7B5B050065F110 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

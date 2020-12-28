@@ -7,7 +7,6 @@
 //
 
 #import <MessageUI/MessageUI.h>
-#import "MXAudioManager.h"
 
 #import "mmmaze-Swift.h"
 #import "TNGameSession.h"
@@ -55,7 +54,8 @@
 
 	if (levelNumber == 1) {
 		//--- play start game sound ---//
-		[[MXAudioManager sharedInstance] play:SoundTypeSTStartgame];
+		[[AudioManager shared] play: SoundTypeSTStartGame];
+		
 		self.currentScore = 0;
 		self.currentLives = MAX_LIVES;
 		self.numCol = BASE_MAZE_DIMENSION;
@@ -63,7 +63,8 @@
 		self.bkgColorIndex = 0;
 	} else {
 		//--- play start level sound ---//
-		[[MXAudioManager sharedInstance] play:SoundTypeSTLevelChange];
+		[[AudioManager shared] play: SoundTypeSTLevelChange];
+
 		self.bkgColorIndex = (self.bkgColorIndex + 1) % (BKG_COLORS.count);
 	}
 
@@ -293,7 +294,7 @@
 		{
 			if (item.tag == TTCoin)
 			{
-				[[MXAudioManager sharedInstance] play:SoundTypeSTHitCoin];
+				[[AudioManager shared] play: SoundTypeSTHitCoin];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
 				self.currentScore += 15;
@@ -301,7 +302,7 @@
 			}
 			else if (item.tag == TTWhirlwind)
 			{
-				[[MXAudioManager sharedInstance] play:SoundTypeSTHitWhirlwind];
+				[[AudioManager shared] play: SoundTypeSTHitWhirlwind];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
 				[UIView animateWithDuration:0.2 animations:^{
@@ -312,14 +313,14 @@
 			}
 			else if (item.tag == TTTime)
 			{
-				[[MXAudioManager sharedInstance] play:SoundTypeSTHitTimeBonus];
+				[[AudioManager shared] play: SoundTypeSTHitTimeBonus];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
 				self.currentTime += 5;
 			}
 			else if (item.tag == TTKey)
 			{
-				[[MXAudioManager sharedInstance] play:SoundTypeSTHitHearth];
+				[[AudioManager shared] play: SoundTypeSTHitHearth];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
 				self.mazeGoalTile.tag = TTMazeEnd_open;
@@ -328,7 +329,7 @@
 			}
 			else if (item.tag == TTHearth)
 			{
-				[[MXAudioManager sharedInstance] play:SoundTypeSTHitHearth];
+				[[AudioManager shared] play: SoundTypeSTHitHearth];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
 				++self.currentLives;
@@ -336,7 +337,7 @@
 			}
 			else if (item.tag == TTBomb)
 			{
-				[[MXAudioManager sharedInstance] play:SoundTypeSTHitBomb];
+				[[AudioManager shared] play: SoundTypeSTHitBomb];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
 				int player_x = (int)self.player.frame.origin.x;
@@ -381,7 +382,7 @@
 						item.hidden = true;
 						[itemsToRemove addObject:item];
 						enemy.wantSpawn = YES;
-						[[MXAudioManager sharedInstance] play:SoundTypeSTEnemySpawn];
+						[[AudioManager shared] play: SoundTypeSTEnemySpawn];
 						break;
 					}
 				}
@@ -401,7 +402,7 @@
 		{
 			if (!self.player.isAngry)
 			{
-				[[MXAudioManager sharedInstance] play:SoundTypeSTHitPlayer];
+				[[AudioManager shared] play: SoundTypeSTHitPlayer];
 				enemy.wantSpawn = YES;
 				self.currentLives = self.currentLives - 1;
 				[self.delegate didUpdateLives:self.currentLives];
@@ -433,7 +434,7 @@
 	if (!self.isGameOver && (self.currentLives == 0 || self.currentTime <= 0))
 	{
 		self.isGameOver = YES;
-		[[MXAudioManager sharedInstance] play:SoundTypeSTGameOver];
+		[[AudioManager shared] play: SoundTypeSTGameOver];
 		[self.player explode:^{
 			[self.delegate performSelector:@selector(didGameOver:) withObject:self];
 		}];

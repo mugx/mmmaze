@@ -17,27 +17,17 @@ import Foundation
 	func applicationDidFinishLaunching(_ application: UIApplication) {
 		let window = UIWindow(frame: UIScreen.main.bounds)
 		self.window = window
+		window.makeKeyAndVisible()
 		window.rootViewController = MenuViewController()
 
-		//-- prepare sounds ---//
 		prepareSounds()
-
-		//  //-- Show the splash screen ---//
-		let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
-		let launchScreenVC = storyboard.instantiateViewController(withIdentifier: "LaunchScreen")
-		window.rootViewController?.present(launchScreenVC, animated: false, completion: {
-			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-				launchScreenVC.dismiss(animated: true, completion: nil)
-			}
-		})
-		window.makeKeyAndVisible()
 	}
 
 	func prepareSounds() {
-		MXAudioManager.sharedInstance()?.soundEnabled = Bool(truncating: Constants.SOUND_ENABLED as NSNumber)
-		MXAudioManager.sharedInstance()?.volume = Constants.SOUND_DEFAULT_VOLUME
-		let json = MXUtils.json(fromFile: "gameConfiguration.json") as?  [AnyHashable: Any]
-		MXAudioManager.sharedInstance()?.load(json)
+		AudioManager.shared.soundEnabled = Bool(truncating: Constants.SOUND_ENABLED as NSNumber)
+		AudioManager.shared.volume = Constants.SOUND_DEFAULT_VOLUME
+		let json = MXUtils.json(fromFile: "gameConfiguration.json") as!  [AnyHashable: Any]
+		//AudioManager.shared.load(json)
 	}
 
 	//MARK: - Select Screen
@@ -49,7 +39,7 @@ import Foundation
 		case .STTutorial:
 			transitionToViewController(TutorialViewController())
 		case .STNewGame:
-			gameVc = GameViewController.create()
+			gameVc = GameViewController()
 			transitionToViewController(gameVc!)
 		case .STResumeGame:
 			transitionToViewController(gameVc!)
@@ -59,8 +49,6 @@ import Foundation
 			transitionToViewController(SettingsViewController())
 		case .STCredits:
 			transitionToViewController(CreditsViewController())
-		default:
-			break
 		}
 	}
 
