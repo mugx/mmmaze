@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TNCreditsViewController">
+            <connections>
+                <outlet property="backButton" destination="Kn6-Nk-4xk" id="Tub-AR-Ukg"/>
+                <outlet property="logoIconImage" destination="Hnp-XF-r4a" id="4rk-7q-QgE"/>
+                <outlet property="sendFeedbackButton" destination="dga-mk-g0J" id="UGq-gI-tiH"/>
+                <outlet property="versionLabel" destination="8Us-lo-wG3" id="FG6-wX-U3R"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mmmaze" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cF-lO-mHz" userLabel="mmmaze" customClass="MXLabel">
+                    <rect key="frame" x="106.5" y="125" width="162" height="53"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <size key="shadowOffset" width="5" height="5"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vx.y.z" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Us-lo-wG3" customClass="MXLabel">
+                    <rect key="frame" x="171.5" y="198" width="32.5" height="15.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.12926812469959259" green="1" blue="0.99905514717102051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.12926812469959259" green="1" blue="0.99905514717102051" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kn6-Nk-4xk" customClass="MXButton">
+                    <rect key="frame" x="127.5" y="617" width="120" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="osg-fM-pJm"/>
+                    </constraints>
+                    <size key="titleShadowOffset" width="1" height="1"/>
+                    <state key="normal" title="Back">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="mmmaze.menu.back"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="backTouched" destination="-1" eventType="touchUpInside" id="SFU-ts-3JH"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wh8-ax-Sbe">
+                    <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMugSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hnp-XF-r4a">
+                            <rect key="frame" x="118" y="0.0" width="64" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="e1D-cI-N9b"/>
+                                <constraint firstAttribute="width" constant="64" id="rKd-tT-h2o"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-2017 (c) mugx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHo-ui-XpV" customClass="MXLabel">
+                            <rect key="frame" x="92" y="84" width="116" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dga-mk-g0J" customClass="MXButton">
+                            <rect key="frame" x="80.5" y="155.5" width="139" height="40"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="jDw-1D-QqF"/>
+                                <constraint firstAttribute="height" constant="40" id="vxX-qD-Tbq"/>
+                            </constraints>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                            <size key="titleShadowOffset" width="1" height="1"/>
+                            <state key="normal" title="Send a Feedback">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="mmmaze.menu.send_a_feedback"/>
+                            </userDefinedRuntimeAttributes>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="jDw-1D-QqF"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="sendFeedbackTouched" destination="-1" eventType="touchUpInside" id="oVc-Gg-ZwH"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Programming by mugx" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eot-zn-rf5" customClass="MXLabel">
+                            <rect key="frame" x="10" y="120" width="280" height="15.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            <size key="shadowOffset" width="1" height="1"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="Aad-Sz-xUQ"/>
+                        <constraint firstItem="Hnp-XF-r4a" firstAttribute="top" secondItem="Wh8-ax-Sbe" secondAttribute="top" id="I8L-jl-pod"/>
+                        <constraint firstItem="mHo-ui-XpV" firstAttribute="centerX" secondItem="Wh8-ax-Sbe" secondAttribute="centerX" id="Jab-dS-51r"/>
+                        <constraint firstAttribute="width" constant="300" id="R0X-Nr-N2N"/>
+                        <constraint firstItem="Hnp-XF-r4a" firstAttribute="centerX" secondItem="Wh8-ax-Sbe" secondAttribute="centerX" id="R5I-v3-DLy"/>
+                        <constraint firstItem="eot-zn-rf5" firstAttribute="centerX" secondItem="Wh8-ax-Sbe" secondAttribute="centerX" id="S11-LZ-arS"/>
+                        <constraint firstItem="eot-zn-rf5" firstAttribute="top" secondItem="mHo-ui-XpV" secondAttribute="bottom" constant="20" id="WSr-RI-ZXf"/>
+                        <constraint firstAttribute="trailing" secondItem="eot-zn-rf5" secondAttribute="trailing" constant="10" id="YES-8E-beB"/>
+                        <constraint firstItem="eot-zn-rf5" firstAttribute="leading" secondItem="Wh8-ax-Sbe" secondAttribute="leading" constant="10" id="myE-pT-gFH"/>
+                        <constraint firstItem="dga-mk-g0J" firstAttribute="centerX" secondItem="Wh8-ax-Sbe" secondAttribute="centerX" id="nJY-go-pYM"/>
+                        <constraint firstItem="mHo-ui-XpV" firstAttribute="top" secondItem="Hnp-XF-r4a" secondAttribute="bottom" constant="20" id="p1M-ur-5rj"/>
+                        <constraint firstItem="mHo-ui-XpV" firstAttribute="centerY" secondItem="Wh8-ax-Sbe" secondAttribute="centerY" id="rzk-CJ-cH5"/>
+                        <constraint firstItem="mHo-ui-XpV" firstAttribute="top" secondItem="Hnp-XF-r4a" secondAttribute="bottom" constant="20" id="slu-sd-8OJ"/>
+                        <constraint firstItem="Hnp-XF-r4a" firstAttribute="top" secondItem="Wh8-ax-Sbe" secondAttribute="top" id="tD5-Ao-hF8"/>
+                        <constraint firstItem="dga-mk-g0J" firstAttribute="top" secondItem="eot-zn-rf5" secondAttribute="bottom" constant="20" id="vGO-Jk-fmM"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="tD5-Ao-hF8"/>
+                            <exclude reference="p1M-ur-5rj"/>
+                            <exclude reference="rzk-CJ-cH5"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Wh8-ax-Sbe" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="3U4-Y7-KZe"/>
+                <constraint firstItem="Wh8-ax-Sbe" firstAttribute="top" secondItem="8Us-lo-wG3" secondAttribute="bottom" constant="20" id="45q-rD-DGA"/>
+                <constraint firstItem="Kn6-Nk-4xk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9Ja-hz-2U6"/>
+                <constraint firstItem="8Us-lo-wG3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Jfw-b6-7Zp"/>
+                <constraint firstItem="8Us-lo-wG3" firstAttribute="top" secondItem="5cF-lO-mHz" secondAttribute="bottom" constant="20" id="Z8T-kc-jzA"/>
+                <constraint firstItem="Wh8-ax-Sbe" firstAttribute="top" secondItem="8Us-lo-wG3" secondAttribute="bottom" constant="30" id="h6d-CD-ijI"/>
+                <constraint firstItem="Wh8-ax-Sbe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pQl-gM-tck"/>
+                <constraint firstAttribute="bottom" secondItem="Kn6-Nk-4xk" secondAttribute="bottom" constant="20" id="tXL-9f-n8K"/>
+                <constraint firstItem="5cF-lO-mHz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xAg-aF-lof"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="h6d-CD-ijI"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="461" y="386"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconMugSmall.png" width="64" height="64"/>
+    </resources>
+</document>

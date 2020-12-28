@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialViewController">
+            <connections>
+                <outlet property="enemyImage" destination="TOg-L6-Qkn" id="iSy-RR-gtE"/>
+                <outlet property="firstArrow" destination="KoU-fV-R6s" id="suj-l3-TtS"/>
+                <outlet property="goalImage" destination="AVy-z7-Vx6" id="fUA-9d-tYv"/>
+                <outlet property="hurryupLabel" destination="MVt-XV-jvV" id="BJF-Zm-XPJ"/>
+                <outlet property="playerImage" destination="Qe5-Ke-pSO" id="MY9-CH-qCp"/>
+                <outlet property="secondArrow" destination="DlT-ev-XqM" id="UKW-FS-wns"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TOg-L6-Qkn">
+                    <rect key="frame" x="71.5" y="317.5" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="HVe-Bn-Bqa"/>
+                        <constraint firstAttribute="height" constant="32" id="Nnn-J8-Wcu"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-Ke-pSO" userLabel="Player Image">
+                    <rect key="frame" x="171.5" y="317.5" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="BTQ-pe-sx5"/>
+                        <constraint firstAttribute="height" constant="32" id="Vw8-nk-FSO"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AVy-z7-Vx6" userLabel="Player Image">
+                    <rect key="frame" x="271.5" y="317.5" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="I7Q-OJ-chK"/>
+                        <constraint firstAttribute="width" constant="32" id="Ifu-cT-0MJ"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="DlT-ev-XqM" userLabel="Swipe Image" customClass="MXImageView">
+                    <rect key="frame" x="221.5" y="317.5" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="VGA-17-xWF"/>
+                        <constraint firstAttribute="height" constant="32" id="qjU-bB-NMl"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="mxImageColor">
+                            <color key="value" red="0.12926812469959259" green="1" blue="0.99905514717102051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="KoU-fV-R6s" userLabel="Swipe Image" customClass="MXImageView">
+                    <rect key="frame" x="121.5" y="317.5" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="4Sb-wu-TrJ"/>
+                        <constraint firstAttribute="height" constant="32" id="ljP-0e-uiS"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="mxImageColor">
+                            <color key="value" red="0.12926812469959259" green="1" blue="0.99905514717102051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVt-XV-jvV" customClass="MXLabel">
+                    <rect key="frame" x="151" y="236.5" width="73" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="1" green="1" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                    <size key="shadowOffset" width="1" height="1"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DlT-ev-XqM" firstAttribute="leading" secondItem="Qe5-Ke-pSO" secondAttribute="trailing" constant="18" id="68Y-p4-b9v"/>
+                <constraint firstItem="DlT-ev-XqM" firstAttribute="centerY" secondItem="Qe5-Ke-pSO" secondAttribute="centerY" id="GoD-yr-A39"/>
+                <constraint firstItem="Qe5-Ke-pSO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LtJ-AD-bJv"/>
+                <constraint firstItem="AVy-z7-Vx6" firstAttribute="leading" secondItem="DlT-ev-XqM" secondAttribute="trailing" constant="18" id="ZPi-Wv-U28"/>
+                <constraint firstItem="KoU-fV-R6s" firstAttribute="centerY" secondItem="Qe5-Ke-pSO" secondAttribute="centerY" id="aaz-Sb-7Oc"/>
+                <constraint firstItem="AVy-z7-Vx6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="100" id="iyc-ec-JdN"/>
+                <constraint firstItem="AVy-z7-Vx6" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="jj5-K7-t0z"/>
+                <constraint firstItem="Qe5-Ke-pSO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="jpq-Ym-dxI"/>
+                <constraint firstItem="KoU-fV-R6s" firstAttribute="top" secondItem="MVt-XV-jvV" secondAttribute="bottom" constant="60" id="kwT-1o-kIX"/>
+                <constraint firstItem="TOg-L6-Qkn" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="mDV-Gh-7nD"/>
+                <constraint firstItem="Qe5-Ke-pSO" firstAttribute="leading" secondItem="KoU-fV-R6s" secondAttribute="trailing" constant="18" id="pxj-xp-vaW"/>
+                <constraint firstItem="TOg-L6-Qkn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-100" id="qW0-6H-e4g"/>
+                <constraint firstItem="MVt-XV-jvV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wNO-zd-mNy"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="fIe-ck-eHa" appends="YES" id="a2l-6y-CJP"/>
+                <outletCollection property="gestureRecognizers" destination="NXl-jG-JYK" appends="YES" id="Lbp-X8-Nn7"/>
+                <outletCollection property="gestureRecognizers" destination="T2S-xJ-QNc" appends="YES" id="DZG-1W-nl9"/>
+                <outletCollection property="gestureRecognizers" destination="0Uw-Ec-BxR" appends="YES" id="AKl-Uz-WYh"/>
+                <outletCollection property="gestureRecognizers" destination="h4K-oQ-XCV" appends="YES" id="Nwq-gq-ggr"/>
+            </connections>
+            <point key="canvasLocation" x="138" y="154"/>
+        </view>
+        <swipeGestureRecognizer direction="right" id="NXl-jG-JYK">
+            <connections>
+                <action selector="newGame:" destination="-1" id="76m-XK-fcw"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="left" id="T2S-xJ-QNc">
+            <connections>
+                <action selector="newGame:" destination="-1" id="ZPk-gC-UMY"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="up" id="h4K-oQ-XCV">
+            <connections>
+                <action selector="newGame:" destination="-1" id="lJA-Pg-5H6"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="down" id="0Uw-Ec-BxR">
+            <connections>
+                <action selector="newGame:" destination="-1" id="nIi-tZ-j3y"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <tapGestureRecognizer id="fIe-ck-eHa">
+            <connections>
+                <action selector="newGame" destination="-1" id="mCp-db-n85"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="rightArrow.png" width="32" height="32"/>
+    </resources>
+</document>

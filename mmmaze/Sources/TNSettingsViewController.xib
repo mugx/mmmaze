@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TNSettingsViewController" customModule="TakoNaut" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="4ih-mO-2VD" id="ySA-el-vJD"/>
+                <outlet property="languageTitleLabel" destination="Ub2-3q-oYd" id="Fg8-pP-ixQ"/>
+                <outlet property="languageValueLabel" destination="ff4-oo-fVr" id="gbF-Hz-S88"/>
+                <outlet property="languageView" destination="tel-ml-cko" id="vXu-TQ-sCx"/>
+                <outlet property="settingsTitleLabel" destination="mDK-bj-Mvg" id="Xaw-AM-W7P"/>
+                <outlet property="soundEnabledButton" destination="39N-sn-ikx" id="gSO-e6-CiA"/>
+                <outlet property="soundEnabledTitleLabel" destination="hJU-g3-k5w" id="Xw7-L6-GZA"/>
+                <outlet property="soundEnabledValueLabel" destination="wwu-sf-YRK" id="c7n-5g-6vF"/>
+                <outlet property="soundEnabledView" destination="WZn-6e-KAg" id="ZeC-UT-pji"/>
+                <outlet property="soundVolumeTitleLabel" destination="uOO-Wa-LzI" id="s3R-C6-MG1"/>
+                <outlet property="soundVolumeValueLabel" destination="jwZ-rf-Hkk" id="vIF-pf-1so"/>
+                <outlet property="soundVolumeView" destination="a7Y-WK-j5b" id="ikY-ah-YCK"/>
+                <outlet property="view" destination="QE5-o0-JBF" id="VFa-B6-Ezh"/>
+                <outlet property="volumeButton" destination="BAO-9D-HXU" id="xcL-bH-5eM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="QE5-o0-JBF">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCL-LP-Urn" userLabel="settings view">
+                    <rect key="frame" x="57" y="363" width="300" height="170"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tel-ml-cko" userLabel="language view">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ub2-3q-oYd" customClass="MXLabel">
+                                    <rect key="frame" x="115.5" y="3.5" width="69" height="19"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <size key="shadowOffset" width="1" height="1"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO7-fF-ICg" userLabel="left arrow">
+                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="QHe-YF-PLf"/>
+                                        <constraint firstAttribute="height" constant="30" id="pcL-fm-lKr"/>
+                                    </constraints>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" image="leftArrow.png"/>
+                                    <connections>
+                                        <action selector="languageDecrTouched" destination="-1" eventType="touchUpInside" id="NpF-oO-Wna"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ff4-oo-fVr" customClass="MXLabel">
+                                    <rect key="frame" x="125" y="27.5" width="50.5" height="19"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <size key="shadowOffset" width="1" height="1"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNK-Ql-s1c" userLabel="right arrow">
+                                    <rect key="frame" x="260" y="10" width="30" height="30"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="Bab-xC-0Eg"/>
+                                        <constraint firstAttribute="width" constant="30" id="zSI-8X-oy6"/>
+                                    </constraints>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" image="rightArrow.png"/>
+                                    <connections>
+                                        <action selector="languageIncrTouched" destination="-1" eventType="touchUpInside" id="ldy-XW-qXS"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="fO7-fF-ICg" firstAttribute="centerY" secondItem="tel-ml-cko" secondAttribute="centerY" id="3ZO-lA-Bej"/>
+                                <constraint firstItem="ff4-oo-fVr" firstAttribute="centerX" secondItem="tel-ml-cko" secondAttribute="centerX" id="BMb-P1-rGi"/>
+                                <constraint firstAttribute="trailing" secondItem="nNK-Ql-s1c" secondAttribute="trailing" constant="10" id="LzR-Mg-JMs"/>
+                                <constraint firstItem="ff4-oo-fVr" firstAttribute="centerY" secondItem="tel-ml-cko" secondAttribute="centerY" constant="12" id="RZg-KJ-8vP"/>
+                                <constraint firstItem="fO7-fF-ICg" firstAttribute="leading" secondItem="tel-ml-cko" secondAttribute="leading" constant="10" id="UEj-je-qlH"/>
+                                <constraint firstItem="nNK-Ql-s1c" firstAttribute="centerY" secondItem="tel-ml-cko" secondAttribute="centerY" id="VdK-8P-Bg4"/>
+                                <constraint firstItem="Ub2-3q-oYd" firstAttribute="centerY" secondItem="tel-ml-cko" secondAttribute="centerY" constant="-12" id="ZPh-pb-xdv"/>
+                                <constraint firstItem="Ub2-3q-oYd" firstAttribute="centerX" secondItem="tel-ml-cko" secondAttribute="centerX" id="ySd-8V-xJH"/>
+                                <constraint firstAttribute="height" constant="50" id="zYO-Sr-hWg"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                    <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZn-6e-KAg" userLabel="sound enabled view">
+                            <rect key="frame" x="0.0" y="60" width="300" height="50"/>
+                            <subviews>
+                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39N-sn-ikx">
+                                    <rect key="frame" x="245" y="2.5" width="45" height="45"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="45" id="Hd4-w6-pkB"/>
+                                        <constraint firstAttribute="height" constant="45" id="cKl-jo-ATi"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="iconSwitchOff.png"/>
+                                    <state key="selected" image="iconSwitchOn.png"/>
+                                    <connections>
+                                        <action selector="soundEnabledTouched" destination="-1" eventType="touchUpInside" id="vKu-jg-yLe"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hJU-g3-k5w" customClass="MXLabel">
+                                    <rect key="frame" x="127.5" y="3.5" width="45" height="19"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <size key="shadowOffset" width="1" height="1"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wwu-sf-YRK" customClass="MXLabel">
+                                    <rect key="frame" x="122" y="27.5" width="56" height="19"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <size key="shadowOffset" width="1" height="1"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="wwu-sf-YRK" firstAttribute="centerY" secondItem="WZn-6e-KAg" secondAttribute="centerY" constant="12" id="9wr-f2-YUM"/>
+                                <constraint firstItem="hJU-g3-k5w" firstAttribute="centerX" secondItem="WZn-6e-KAg" secondAttribute="centerX" id="UR6-t8-Vhg"/>
+                                <constraint firstItem="wwu-sf-YRK" firstAttribute="centerX" secondItem="WZn-6e-KAg" secondAttribute="centerX" id="Vvw-d1-ELm"/>
+                                <constraint firstItem="hJU-g3-k5w" firstAttribute="centerY" secondItem="WZn-6e-KAg" secondAttribute="centerY" constant="-12" id="bFJ-jH-AmA"/>
+                                <constraint firstAttribute="trailing" secondItem="39N-sn-ikx" secondAttribute="trailing" constant="10" id="oW7-74-Jay"/>
+                                <constraint firstAttribute="height" constant="50" id="qtc-7B-qQi"/>
+                                <constraint firstItem="39N-sn-ikx" firstAttribute="centerY" secondItem="WZn-6e-KAg" secondAttribute="centerY" id="v7d-cq-Vjv"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7Y-WK-j5b" userLabel="sound volume view">
+                            <rect key="frame" x="0.0" y="120" width="300" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uOO-Wa-LzI" customClass="MXLabel">
+                                    <rect key="frame" x="124" y="3.5" width="52" height="19"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <size key="shadowOffset" width="1" height="1"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAO-9D-HXU" userLabel="sound button" customClass="MXButton">
+                                    <rect key="frame" x="260" y="10" width="30" height="30"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="1dG-Hm-HlQ"/>
+                                        <constraint firstAttribute="height" constant="30" id="K2z-LS-uMV"/>
+                                    </constraints>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" image="iconVolumeMid.png"/>
+                                    <connections>
+                                        <action selector="soundVolumeTouched" destination="-1" eventType="touchUpInside" id="kSO-aa-1ef"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jwZ-rf-Hkk" customClass="MXLabel">
+                                    <rect key="frame" x="122" y="27.5" width="56" height="19"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <size key="shadowOffset" width="1" height="1"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="BAO-9D-HXU" firstAttribute="centerY" secondItem="a7Y-WK-j5b" secondAttribute="centerY" id="0z4-eF-Fvt"/>
+                                <constraint firstAttribute="height" constant="50" id="6PN-ya-K8f"/>
+                                <constraint firstAttribute="trailing" secondItem="BAO-9D-HXU" secondAttribute="trailing" constant="10" id="L4i-qF-USH"/>
+                                <constraint firstItem="jwZ-rf-Hkk" firstAttribute="centerX" secondItem="a7Y-WK-j5b" secondAttribute="centerX" id="kBA-Qq-zou"/>
+                                <constraint firstItem="uOO-Wa-LzI" firstAttribute="centerX" secondItem="a7Y-WK-j5b" secondAttribute="centerX" id="qOZ-Sx-zje"/>
+                                <constraint firstItem="uOO-Wa-LzI" firstAttribute="centerY" secondItem="a7Y-WK-j5b" secondAttribute="centerY" constant="-12" id="sON-Qz-hD6"/>
+                                <constraint firstItem="jwZ-rf-Hkk" firstAttribute="centerY" secondItem="a7Y-WK-j5b" secondAttribute="centerY" constant="12" id="weh-Is-JGA"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="tel-ml-cko" firstAttribute="leading" secondItem="LCL-LP-Urn" secondAttribute="leading" id="2hY-nC-7CO"/>
+                        <constraint firstAttribute="trailing" secondItem="tel-ml-cko" secondAttribute="trailing" id="GG9-24-gXm"/>
+                        <constraint firstAttribute="height" constant="170" id="QFn-J4-18i"/>
+                        <constraint firstItem="a7Y-WK-j5b" firstAttribute="top" secondItem="WZn-6e-KAg" secondAttribute="bottom" constant="10" id="i4I-zO-Aeo"/>
+                        <constraint firstAttribute="width" constant="300" id="itk-hH-HVN"/>
+                        <constraint firstItem="tel-ml-cko" firstAttribute="top" secondItem="LCL-LP-Urn" secondAttribute="top" id="lMC-BT-bfi"/>
+                        <constraint firstItem="WZn-6e-KAg" firstAttribute="top" secondItem="tel-ml-cko" secondAttribute="bottom" constant="10" id="mx4-Gl-Mah"/>
+                        <constraint firstAttribute="trailing" secondItem="a7Y-WK-j5b" secondAttribute="trailing" id="myB-CX-Sfg"/>
+                        <constraint firstItem="WZn-6e-KAg" firstAttribute="leading" secondItem="LCL-LP-Urn" secondAttribute="leading" id="sp7-Ft-TnG"/>
+                        <constraint firstItem="a7Y-WK-j5b" firstAttribute="leading" secondItem="LCL-LP-Urn" secondAttribute="leading" id="v7m-DJ-J6J"/>
+                        <constraint firstAttribute="trailing" secondItem="WZn-6e-KAg" secondAttribute="trailing" id="x1Q-oD-gbd"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ih-mO-2VD" customClass="MXButton">
+                    <rect key="frame" x="147" y="846" width="120" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="KNG-jx-Qgn"/>
+                    </constraints>
+                    <size key="titleShadowOffset" width="1" height="1"/>
+                    <state key="normal" title="Back">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="backTouched" destination="-1" eventType="touchUpInside" id="oFM-Kw-zQx"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDK-bj-Mvg" customClass="MXLabel">
+                    <rect key="frame" x="170" y="287" width="74" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.12926812469959259" green="1" blue="0.99905514717102051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.12926812469959259" green="1" blue="0.99905514717102051" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                    <size key="shadowOffset" width="2" height="2"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="mxLocalization" value="mmmaze.menu.settings"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="LCL-LP-Urn" firstAttribute="top" secondItem="mDK-bj-Mvg" secondAttribute="bottom" constant="50" id="0Ks-jX-cZT"/>
+                <constraint firstItem="LCL-LP-Urn" firstAttribute="centerY" secondItem="QE5-o0-JBF" secondAttribute="centerY" id="12t-7F-krK"/>
+                <constraint firstItem="4ih-mO-2VD" firstAttribute="centerX" secondItem="QE5-o0-JBF" secondAttribute="centerX" id="AFh-MP-zNP"/>
+                <constraint firstItem="mDK-bj-Mvg" firstAttribute="centerX" secondItem="QE5-o0-JBF" secondAttribute="centerX" id="BXU-wR-xSW"/>
+                <constraint firstItem="LCL-LP-Urn" firstAttribute="centerX" secondItem="QE5-o0-JBF" secondAttribute="centerX" id="NxV-by-IDE"/>
+                <constraint firstAttribute="bottom" secondItem="4ih-mO-2VD" secondAttribute="bottom" constant="20" id="haI-l7-TaA"/>
+            </constraints>
+            <point key="canvasLocation" x="34" y="54"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconSwitchOff.png" width="64" height="64"/>
+        <image name="iconSwitchOn.png" width="64" height="64"/>
+        <image name="iconVolumeMid.png" width="46.5" height="53.5"/>
+        <image name="leftArrow.png" width="32" height="32"/>
+        <image name="rightArrow.png" width="32" height="32"/>
+    </resources>
+</document>
