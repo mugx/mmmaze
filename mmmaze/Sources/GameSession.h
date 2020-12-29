@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "EnemyCollaborator.h"
 
-@class Player;
 @class Tile;
 
 #define TILE_SIZE 32.0
@@ -25,6 +24,7 @@
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 - (void)update:(CGFloat)deltaTime;
 - (void)makePlayer;
+- (CGRect)playerFrame;
 @property(nonatomic,assign) id <GameSessionDelegate> delegate;
 
 @property(readonly) NSUInteger currentLevel;
@@ -39,7 +39,6 @@
 @property(readonly) NSMutableDictionary<NSValue *, Tile *> *wallsDictionary;
 @property(readonly) UIView *mazeView;
 @property(nonatomic,strong) EnemyCollaborator *enemyCollaborator;
-@property(nonatomic,strong) Player *player;
 @end
 
 @protocol GameSessionDelegate <NSObject>

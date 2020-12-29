@@ -12,7 +12,6 @@
 		1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */; };
 		1D0BCB42259A1ECA0035BAA8 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1D259A1ECA0035BAA8 /* Enemy.m */; };
 		1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */; };
-		1D0BCB44259A1ECA0035BAA8 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB21259A1ECA0035BAA8 /* Player.m */; };
 		1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB22259A1ECA0035BAA8 /* SettingsViewController.swift */; };
 		1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB23259A1ECA0035BAA8 /* SettingsViewController.xib */; };
 		1D0BCB47259A1ECA0035BAA8 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB25259A1ECA0035BAA8 /* GameViewController.xib */; };
@@ -33,6 +32,7 @@
 		1D0BCB62259A1ED30035BAA8 /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB57259A1ED30035BAA8 /* gameConfiguration.json */; };
 		1D0BCB63259A1ED30035BAA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */; };
 		1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB5E259A1ED30035BAA8 /* Contents.json */; };
+		1D8292F6259BC775000C6208 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8292F5259BC775000C6208 /* Player.swift */; };
 		1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* whirlwind.png */; };
 		1DA4C713259BA0B300E4DE1E /* gate_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* gate_open.png */; };
 		1DA4C714259BA0B300E4DE1E /* gate_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* gate_close.png */; };
@@ -101,8 +101,6 @@
 		1D0BCB1D259A1ECA0035BAA8 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enemy.m; path = mmmaze/Sources/Enemy.m; sourceTree = "<group>"; };
 		1D0BCB1E259A1ECA0035BAA8 /* MazeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MazeGenerator.hpp; path = mmmaze/Sources/MazeGenerator.hpp; sourceTree = "<group>"; };
 		1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = mmmaze/Sources/Constants.swift; sourceTree = "<group>"; };
-		1D0BCB20259A1ECA0035BAA8 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = mmmaze/Sources/Player.h; sourceTree = "<group>"; };
-		1D0BCB21259A1ECA0035BAA8 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = mmmaze/Sources/Player.m; sourceTree = "<group>"; };
 		1D0BCB22259A1ECA0035BAA8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = mmmaze/Sources/SettingsViewController.swift; sourceTree = "<group>"; };
 		1D0BCB23259A1ECA0035BAA8 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = mmmaze/Sources/SettingsViewController.xib; sourceTree = "<group>"; };
 		1D0BCB24259A1ECA0035BAA8 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tile.h; path = mmmaze/Sources/Tile.h; sourceTree = "<group>"; };
@@ -129,6 +127,7 @@
 		1D0BCB5B259A1ED30035BAA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mmmaze/Resources/Info.plist; sourceTree = "<group>"; };
 		1D0BCB5E259A1ED30035BAA8 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = mmmaze/Resources/Contents.json; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D8292F5259BC775000C6208 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1DA4C703259BA0B300E4DE1E /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = mmmaze/Resources/whirlwind.png; sourceTree = "<group>"; };
 		1DA4C704259BA0B300E4DE1E /* gate_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_open.png; path = mmmaze/Resources/gate_open.png; sourceTree = "<group>"; };
 		1DA4C705259BA0B300E4DE1E /* gate_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_close.png; path = mmmaze/Resources/gate_close.png; sourceTree = "<group>"; };
@@ -406,8 +405,7 @@
 				1D0BCB1D259A1ECA0035BAA8 /* Enemy.m */,
 				1D0BCB33259A1ECA0035BAA8 /* EnemyCollaborator.h */,
 				1D0BCB34259A1ECA0035BAA8 /* EnemyCollaborator.m */,
-				1D0BCB20259A1ECA0035BAA8 /* Player.h */,
-				1D0BCB21259A1ECA0035BAA8 /* Player.m */,
+				1D8292F5259BC775000C6208 /* Player.swift */,
 				1D0BCB24259A1ECA0035BAA8 /* Tile.h */,
 				1D0BCB2E259A1ECA0035BAA8 /* Tile.m */,
 				1D0BCB1A259A1ECA0035BAA8 /* Tile+AI.h */,
@@ -541,7 +539,6 @@
 			files = (
 				1D0BCB3A259A1ECA0035BAA8 /* Tile+AI.m in Sources */,
 				1D0BCB48259A1ECA0035BAA8 /* MazeGenerator.cpp in Sources */,
-				1D0BCB44259A1ECA0035BAA8 /* Player.m in Sources */,
 				1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */,
 				1D0BCB4D259A1ECA0035BAA8 /* Tile.m in Sources */,
 				1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */,
@@ -564,6 +561,7 @@
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,
 				1DA4C754259BA1B200E4DE1E /* UIImage+Utils.swift in Sources */,
 				1DA4C742259BA11700E4DE1E /* AudioManager.swift in Sources */,
+				1D8292F6259BC775000C6208 /* Player.swift in Sources */,
 				1D0BCB4A259A1ECA0035BAA8 /* CreditsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,4 +8,4 @@
 
 #import "UIImage+MX.h"
 #import "MXGameCenterManager.h"
-#import "Player.h"
+#import "Tile.h"

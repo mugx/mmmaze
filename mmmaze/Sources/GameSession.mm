@@ -11,7 +11,6 @@
 #import "mmmaze-Swift.h"
 #import "GameSession.h"
 #import "EnemyCollaborator.h"
-#import "Player.h"
 #import "Enemy.h"
 #import "MXToolBox.h"
 #import "MazeGenerator.hpp"
@@ -33,6 +32,7 @@
 @property(nonatomic,weak) Tile *mazeGoalTile;
 @property(nonatomic,assign) float mazeRotation;
 @property(nonatomic,assign) BOOL isGameStarted;
+@property(nonatomic,strong) Player *player;
 @end
 
 @implementation GameSession
@@ -234,7 +234,8 @@
 		[self.player removeFromSuperview];
 	}
 
-	self.player = [[Player alloc] initWithFrame:CGRectMake(STARTING_CELL.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED) withGameSession:self];
+	CGRect frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + Player.SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + Player.SPEED / 2.0, TILE_SIZE - Player.SPEED, TILE_SIZE - Player.SPEED);
+	self.player = [[Player alloc] initWithFrame: frame gameSession: self];
 	self.player.animationImages = [[UIImage imageNamed:@"player"] spritesWith:CGSizeMake(TILE_SIZE, TILE_SIZE)];
 	self.player.animationDuration = 0.4f;
 	self.player.animationRepeatCount = 0;
@@ -242,6 +243,9 @@
 	[self.mazeView addSubview:self.player];
 }
 
+- (CGRect)playerFrame {
+	return self.player.frame;
+}
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction {
 	self.isGameStarted = YES;
@@ -252,7 +256,7 @@
 	self.player.isBlinking = YES;
 	[UIView animateWithDuration:0.4 animations:^{
 		self.player.velocity = CGPointZero;
-		self.player.frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED);
+		self.player.frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + Player.SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + Player.SPEED / 2.0, TILE_SIZE - Player.SPEED, TILE_SIZE - Player.SPEED);
 		self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
 	} completion:^(BOOL finished) {
 		[self.player blink:blinkingTime completion:^{

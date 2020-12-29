@@ -7,7 +7,6 @@
 //
 
 #import "Enemy.h"
-#import "Player.h"
 #import "Tile+AI.h"
 
 #define ANIM_TIME 0.5
@@ -37,12 +36,11 @@
   self.upatePathAccumulator += deltaTime;
 
   CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-  Player *player = self.gameSession.player;
 
   if (self.timeAccumulator > 1 || self.path.count == 0)
   {
     self.timeAccumulator = 0;
-    NSArray *newPath = [self search:player.frame];
+		NSArray *newPath = [self search: [self.gameSession playerFrame]];
     CGRect firstPathFrame = [self.path.firstObject CGRectValue];
     CGRect firstNewPathFrame = [newPath.firstObject CGRectValue];
     NSUInteger currentSteps = self.path.count;

@@ -10,7 +10,6 @@
 #import "EnemyCollaborator.h"
 #import "Enemy.h"
 #import "MXToolBox.h"
-#import "Player.h"
 
 #define MAX_ENEMIES 5
 
@@ -40,9 +39,9 @@
   self.enemies = [NSMutableArray array];
   self.spawnableEnemies = [NSMutableArray array];
   self.speed = ENEMY_SPEED + 0.1 * (self.gameSession.currentLevel - 1);
-  if (self.speed > PLAYER_SPEED)
+  if (self.speed > Player.SPEED)
   {
-    self.speed = PLAYER_SPEED;
+    self.speed = Player.SPEED;
   }
   for (int i = 0;i < MAX_ENEMIES;++i)
   {
