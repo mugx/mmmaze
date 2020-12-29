@@ -74,6 +74,7 @@
 		1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */; };
 		1DA4C757259BA1B200E4DE1E /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C750259BA1B200E4DE1E /* UIImage+MX.m */; };
 		1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */; };
+		1DA4C75A259BA29800E4DE1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C759259BA29800E4DE1E /* README.md */; };
 		1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB93422337F35C00CF02AF /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -173,6 +174,7 @@
 		1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "mmmaze/Sources/UIView+Utils.swift"; sourceTree = "<group>"; };
 		1DA4C752259BA1B200E4DE1E /* UIImage+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MX.h"; path = "mmmaze/Sources/UIImage+MX.h"; sourceTree = "<group>"; };
 		1DA4C753259BA1B200E4DE1E /* MXToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXToolBox.h; path = mmmaze/Sources/MXToolBox.h; sourceTree = "<group>"; };
+		1DA4C759259BA29800E4DE1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -351,6 +353,7 @@
 		1D7670251C7B5B050065F110 = {
 			isa = PBXGroup;
 			children = (
+				1DA4C759259BA29800E4DE1E /* README.md */,
 				1D0BCB11259A1DE80035BAA8 /* Sources */,
 				1D0BCB12259A1DEE0035BAA8 /* Resources */,
 				1D98C7CE1C9AD67A00161EB2 /* Frameworks */,
@@ -508,6 +511,7 @@
 				1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */,
 				1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */,
 				1D0BCB4E259A1ECA0035BAA8 /* CreditsViewController.xib in Resources */,
+				1DA4C75A259BA29800E4DE1E /* README.md in Resources */,
 				1D0BCB62259A1ED30035BAA8 /* gameConfiguration.json in Resources */,
 				1DA4C716259BA0B300E4DE1E /* key.png in Resources */,
 				1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */,
