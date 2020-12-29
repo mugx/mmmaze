@@ -72,6 +72,7 @@
 		1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFE259A5791000145A4 /* AudioManager.swift */; };
 		1D1BDE01259A75E6000145A4 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDE00259A75E6000145A4 /* ScoreManager.swift */; };
 		1D2C00A4259B212900BFE4B6 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */; };
+		1DBD17F9259B4366003EC288 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD17F8259B4366003EC288 /* UIDevice+Utils.swift */; };
 		1DD38E7F259B2855002A936A /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD38E7E259B2855002A936A /* GameSession.swift */; };
 		1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB93422337F35C00CF02AF /* MessageUI.framework */; };
 /* End PBXBuildFile section */
@@ -170,6 +171,7 @@
 		1D1BDE00259A75E6000145A4 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DBD17F8259B4366003EC288 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		1DD38E7E259B2855002A936A /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -266,6 +268,7 @@
 			children = (
 				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
 				1D1BDDFE259A5791000145A4 /* AudioManager.swift */,
+				1DBD17F8259B4366003EC288 /* UIDevice+Utils.swift */,
 				1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */,
 				1D0BCBD4259A2EAA0035BAA8 /* UIView+Utils.swift */,
 				1D0BCB83259A1FC70035BAA8 /* UIImage+Utils.swift */,
@@ -273,6 +276,7 @@
 				1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */,
 				1D1BDE00259A75E6000145A4 /* ScoreManager.swift */,
 				1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */,
+				1D0BCB33259A1ECA0035BAA8 /* TNEnemyCollaborator.h */,
 				1D0BCB6E259A1FC60035BAA8 /* UIImageView+Utils.h */,
 				1D0BCB77259A1FC70035BAA8 /* UIImageView+Utills.m */,
 			);
@@ -406,7 +410,6 @@
 			children = (
 				1D0BCB29259A1ECA0035BAA8 /* TNEnemy.h */,
 				1D0BCB1D259A1ECA0035BAA8 /* TNEnemy.m */,
-				1D0BCB33259A1ECA0035BAA8 /* TNEnemyCollaborator.h */,
 				1D0BCB34259A1ECA0035BAA8 /* TNEnemyCollaborator.m */,
 				1D0BCB20259A1ECA0035BAA8 /* TNPlayer.h */,
 				1D0BCB21259A1ECA0035BAA8 /* TNPlayer.m */,
@@ -561,6 +564,7 @@
 				1D0BCB90259A1FC70035BAA8 /* UIImage+Utils.swift in Sources */,
 				1DD38E7F259B2855002A936A /* GameSession.swift in Sources */,
 				1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */,
+				1DBD17F9259B4366003EC288 /* UIDevice+Utils.swift in Sources */,
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,
 				1D0BCB85259A1FC70035BAA8 /* String+Utils.swift in Sources */,
@@ -669,7 +673,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 8XE9QV2E26;
 				INFOPLIST_FILE = mmmaze/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
@@ -690,7 +694,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 8XE9QV2E26;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=0";
 				INFOPLIST_FILE = mmmaze/Resources/Info.plist;

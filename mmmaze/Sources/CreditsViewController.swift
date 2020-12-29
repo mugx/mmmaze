@@ -16,6 +16,11 @@ class CreditsViewController: UIViewController {
 	@IBOutlet var sendFeedbackButton: UIButton!
 	@IBOutlet var backButton: UIButton!
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		sendFeedbackButton.isHidden = true
+	}
+
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		versionLabel.text = "v\(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!)"

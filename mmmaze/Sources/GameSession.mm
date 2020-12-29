@@ -186,7 +186,7 @@
 	{
 		item.tag = TTCoin;
 		item.image = [[UIImage imageNamed:@"coin"] coloredWith:[UIColor yellowColor]];
-		[item flip];
+		[item spin];
 	}
 	else if ((arc4random() % 100) >= 90)
 	{
@@ -303,10 +303,11 @@
 				[self playWithSound: SoundTypeHitWhirlwind];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
+
 				[UIView animateWithDuration:0.2 animations:^{
 					self.mazeRotation += M_PI_2;
 					self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
-					self.player.transform = CGAffineTransformRotate(self.player.transform, -M_PI_2);;//CGAffineTransformRotate(CGAffineTransformIdentity, M_PI_2 * (self.lastFacing == FTWest ? 1 : -1));
+					self.player.transform = CGAffineTransformMakeRotation(-self.mazeRotation);
 				}];
 			}
 			else if (item.tag == TTTime)

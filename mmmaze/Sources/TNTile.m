@@ -8,6 +8,7 @@
 
 #import "TNTile.h"
 #import "MXToolBox.h"
+#import "mmmaze-Swift.h"
 
 typedef enum : NSUInteger {
   FTNorth,
@@ -18,7 +19,6 @@ typedef enum : NSUInteger {
 
 @interface TNTile()
 @property(nonatomic,assign) int lastSwipe;
-@property(nonatomic,assign) FacingType lastFacing;
 @property(nonatomic,strong) NSMutableDictionary *animations;
 @end
 
@@ -39,15 +39,14 @@ typedef enum : NSUInteger {
 
 - (void)flip
 {
-	[self spin];
-//	CABasicAnimation *anim;
-//	anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-//	anim.fromValue = [NSNumber numberWithFloat:0];
-//	anim.toValue = [NSNumber numberWithFloat:((360 * M_PI) / 180)];
-//	anim.duration = 3.0;
-//	anim.repeatCount = MAXFLOAT;
-//	[self.layer addAnimation:anim forKey:@"flip"];
-//	[self.animations setObject:anim forKey:@"flip"];
+	CABasicAnimation *anim;
+	anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+	anim.fromValue = [NSNumber numberWithFloat:0];
+	anim.toValue = [NSNumber numberWithFloat:((360 * M_PI) / 180)];
+	anim.duration = 3.0;
+	anim.repeatCount = MAXFLOAT;
+	[self.layer addAnimation:anim forKey:@"flip"];
+	[self.animations setObject:anim forKey:@"flip"];
 }
 
 - (void)spin
@@ -207,22 +206,6 @@ typedef enum : NSUInteger {
   {
     self.velocity = CGPointMake(0, 0);
     self.speed = self.speed;
-  }
-  
-  //--- rotate towards ---//
-  if (didHorizontalMove && (self.lastFacing != FTWest || self.lastFacing != FTEast))
-  {
-    self.lastFacing = self.velocity.x > 0 ? FTWest : FTEast;
-//    [UIView animateWithDuration:0.1 animations:^{
-//      self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI_2 * (self.lastFacing == FTWest ? 1 : -1));
-//    }];
-  }
-  else if (didVerticalMove && (self.lastFacing != FTNorth || self.lastFacing != FTSouth))
-  {
-    self.lastFacing = self.velocity.y > 0 ? FTSouth : FTNorth;
-//    [UIView animateWithDuration:0.1 animations:^{
-//      self.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI * (self.lastFacing == FTNorth ? 0 : 1));
-//    }];
   }
 }
 

@@ -7,7 +7,5 @@
 //
 
 #import "UIImage+MX.h"
-#import "UIImageView+Utils.h"
 #import "MXGameCenterManager.h"
-#import "GameSession.h"
-#import "TNTile.h"
+#import "TNPlayer.h"

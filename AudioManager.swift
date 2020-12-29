@@ -36,7 +36,7 @@ func playSound(_ sound: SoundType) {
 	private var sounds = [SoundType: AVAudioPlayer]()
 
 	func play(sound: SoundType) {
-		guard soundEnabled else { return }
+		guard soundEnabled, !UIDevice.current.isSimulator else { return }
 
 		try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
 		try? AVAudioSession.sharedInstance().setActive(true)
