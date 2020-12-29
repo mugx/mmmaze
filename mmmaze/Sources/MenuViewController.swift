@@ -11,9 +11,6 @@ import UIKit
 class MenuViewController: UIViewController {
 	@IBOutlet var versionLabel: UILabel!
 	@IBOutlet var gameButton: UIButton!
-	@IBOutlet var highScoresButton: UIButton!
-	@IBOutlet var settingsButton: UIButton!
-	@IBOutlet var aboutButton: UIButton!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,6 +19,7 @@ class MenuViewController: UIViewController {
 
 		//--- setting buttons ---//
 		let title = AppDelegate.sharedInstance.gameVc == nil ? "mmmaze.menu.new_game".localized : "mmmaze.menu.resume_game".localized
+		gameButton.titleLabel?.text = title
 		gameButton.setTitle(title, for: .normal)
 	}
 

@@ -88,33 +88,9 @@
             <nil key="simulatedBottomBarMetrics"/>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="fIe-ck-eHa" appends="YES" id="a2l-6y-CJP"/>
-                <outletCollection property="gestureRecognizers" destination="NXl-jG-JYK" appends="YES" id="Lbp-X8-Nn7"/>
-                <outletCollection property="gestureRecognizers" destination="T2S-xJ-QNc" appends="YES" id="DZG-1W-nl9"/>
-                <outletCollection property="gestureRecognizers" destination="0Uw-Ec-BxR" appends="YES" id="AKl-Uz-WYh"/>
-                <outletCollection property="gestureRecognizers" destination="h4K-oQ-XCV" appends="YES" id="Nwq-gq-ggr"/>
             </connections>
             <point key="canvasLocation" x="138" y="154"/>
         </view>
-        <swipeGestureRecognizer direction="right" id="NXl-jG-JYK">
-            <connections>
-                <action selector="newGame:" destination="-1" id="76m-XK-fcw"/>
-            </connections>
-        </swipeGestureRecognizer>
-        <swipeGestureRecognizer direction="left" id="T2S-xJ-QNc">
-            <connections>
-                <action selector="newGame:" destination="-1" id="ZPk-gC-UMY"/>
-            </connections>
-        </swipeGestureRecognizer>
-        <swipeGestureRecognizer direction="up" id="h4K-oQ-XCV">
-            <connections>
-                <action selector="newGame:" destination="-1" id="lJA-Pg-5H6"/>
-            </connections>
-        </swipeGestureRecognizer>
-        <swipeGestureRecognizer direction="down" id="0Uw-Ec-BxR">
-            <connections>
-                <action selector="newGame:" destination="-1" id="nIi-tZ-j3y"/>
-            </connections>
-        </swipeGestureRecognizer>
         <tapGestureRecognizer id="fIe-ck-eHa">
             <connections>
                 <action selector="newGame" destination="-1" id="mCp-db-n85"/>
