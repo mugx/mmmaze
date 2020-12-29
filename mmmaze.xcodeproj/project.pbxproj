@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1D0BCB3A259A1ECA0035BAA8 /* TNTile+AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB13259A1EC90035BAA8 /* TNTile+AI.m */; };
 		1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */; };
-		1D0BCB3F259A1ECA0035BAA8 /* TNCollisionCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB19259A1ECA0035BAA8 /* TNCollisionCollaborator.m */; };
 		1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */; };
 		1D0BCB42259A1ECA0035BAA8 /* TNEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1D259A1ECA0035BAA8 /* TNEnemy.m */; };
 		1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */; };
@@ -17,14 +16,14 @@
 		1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB22259A1ECA0035BAA8 /* SettingsViewController.swift */; };
 		1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB23259A1ECA0035BAA8 /* SettingsViewController.xib */; };
 		1D0BCB47259A1ECA0035BAA8 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB25259A1ECA0035BAA8 /* GameViewController.xib */; };
-		1D0BCB48259A1ECA0035BAA8 /* TNMazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB26259A1ECA0035BAA8 /* TNMazeGenerator.cpp */; };
+		1D0BCB48259A1ECA0035BAA8 /* MazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */; };
 		1D0BCB49259A1ECA0035BAA8 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB27259A1ECA0035BAA8 /* MenuViewController.xib */; };
 		1D0BCB4A259A1ECA0035BAA8 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB28259A1ECA0035BAA8 /* CreditsViewController.swift */; };
 		1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB2A259A1ECA0035BAA8 /* TutorialViewController.xib */; };
 		1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB2D259A1ECA0035BAA8 /* BestScoresViewController.swift */; };
 		1D0BCB4D259A1ECA0035BAA8 /* TNTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB2E259A1ECA0035BAA8 /* TNTile.m */; };
 		1D0BCB4E259A1ECA0035BAA8 /* CreditsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB30259A1ECA0035BAA8 /* CreditsViewController.xib */; };
-		1D0BCB4F259A1ECA0035BAA8 /* TNGameSession.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB31259A1ECA0035BAA8 /* TNGameSession.mm */; };
+		1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */; };
 		1D0BCB50259A1ECA0035BAA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */; };
 		1D0BCB51259A1ECA0035BAA8 /* TNEnemyCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB34259A1ECA0035BAA8 /* TNEnemyCollaborator.m */; };
 		1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB37259A1ECA0035BAA8 /* TutorialViewController.swift */; };
@@ -93,11 +92,10 @@
 		1D0BCB13259A1EC90035BAA8 /* TNTile+AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TNTile+AI.m"; path = "mmmaze/Sources/TNTile+AI.m"; sourceTree = "<group>"; };
 		1D0BCB14259A1EC90035BAA8 /* mmmaze-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "mmmaze-Bridging-Header.h"; path = "mmmaze/Sources/mmmaze-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BestScoresViewController.xib; path = mmmaze/Sources/BestScoresViewController.xib; sourceTree = "<group>"; };
-		1D0BCB19259A1ECA0035BAA8 /* TNCollisionCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNCollisionCollaborator.m; path = mmmaze/Sources/TNCollisionCollaborator.m; sourceTree = "<group>"; };
 		1D0BCB1A259A1ECA0035BAA8 /* TNTile+AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TNTile+AI.h"; path = "mmmaze/Sources/TNTile+AI.h"; sourceTree = "<group>"; };
 		1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = mmmaze/Sources/GameViewController.swift; sourceTree = "<group>"; };
 		1D0BCB1D259A1ECA0035BAA8 /* TNEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNEnemy.m; path = mmmaze/Sources/TNEnemy.m; sourceTree = "<group>"; };
-		1D0BCB1E259A1ECA0035BAA8 /* TNMazeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TNMazeGenerator.hpp; path = mmmaze/Sources/TNMazeGenerator.hpp; sourceTree = "<group>"; };
+		1D0BCB1E259A1ECA0035BAA8 /* MazeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MazeGenerator.hpp; path = mmmaze/Sources/MazeGenerator.hpp; sourceTree = "<group>"; };
 		1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = mmmaze/Sources/Constants.swift; sourceTree = "<group>"; };
 		1D0BCB20259A1ECA0035BAA8 /* TNPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNPlayer.h; path = mmmaze/Sources/TNPlayer.h; sourceTree = "<group>"; };
 		1D0BCB21259A1ECA0035BAA8 /* TNPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNPlayer.m; path = mmmaze/Sources/TNPlayer.m; sourceTree = "<group>"; };
@@ -105,20 +103,19 @@
 		1D0BCB23259A1ECA0035BAA8 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = mmmaze/Sources/SettingsViewController.xib; sourceTree = "<group>"; };
 		1D0BCB24259A1ECA0035BAA8 /* TNTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNTile.h; path = mmmaze/Sources/TNTile.h; sourceTree = "<group>"; };
 		1D0BCB25259A1ECA0035BAA8 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController.xib; path = mmmaze/Sources/GameViewController.xib; sourceTree = "<group>"; };
-		1D0BCB26259A1ECA0035BAA8 /* TNMazeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TNMazeGenerator.cpp; path = mmmaze/Sources/TNMazeGenerator.cpp; sourceTree = "<group>"; };
+		1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MazeGenerator.cpp; path = mmmaze/Sources/MazeGenerator.cpp; sourceTree = "<group>"; };
 		1D0BCB27259A1ECA0035BAA8 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = mmmaze/Sources/MenuViewController.xib; sourceTree = "<group>"; };
 		1D0BCB28259A1ECA0035BAA8 /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsViewController.swift; path = mmmaze/Sources/CreditsViewController.swift; sourceTree = "<group>"; };
 		1D0BCB29259A1ECA0035BAA8 /* TNEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNEnemy.h; path = mmmaze/Sources/TNEnemy.h; sourceTree = "<group>"; };
 		1D0BCB2A259A1ECA0035BAA8 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TutorialViewController.xib; path = mmmaze/Sources/TutorialViewController.xib; sourceTree = "<group>"; };
-		1D0BCB2B259A1ECA0035BAA8 /* TNGameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNGameSession.h; path = mmmaze/Sources/TNGameSession.h; sourceTree = "<group>"; };
+		1D0BCB2B259A1ECA0035BAA8 /* GameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSession.h; path = mmmaze/Sources/GameSession.h; sourceTree = "<group>"; };
 		1D0BCB2D259A1ECA0035BAA8 /* BestScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BestScoresViewController.swift; path = mmmaze/Sources/BestScoresViewController.swift; sourceTree = "<group>"; };
 		1D0BCB2E259A1ECA0035BAA8 /* TNTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTile.m; path = mmmaze/Sources/TNTile.m; sourceTree = "<group>"; };
 		1D0BCB30259A1ECA0035BAA8 /* CreditsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreditsViewController.xib; path = mmmaze/Sources/CreditsViewController.xib; sourceTree = "<group>"; };
-		1D0BCB31259A1ECA0035BAA8 /* TNGameSession.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TNGameSession.mm; path = mmmaze/Sources/TNGameSession.mm; sourceTree = "<group>"; };
+		1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameSession.mm; path = mmmaze/Sources/GameSession.mm; sourceTree = "<group>"; };
 		1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = mmmaze/Sources/AppDelegate.swift; sourceTree = "<group>"; };
 		1D0BCB33259A1ECA0035BAA8 /* TNEnemyCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNEnemyCollaborator.h; path = mmmaze/Sources/TNEnemyCollaborator.h; sourceTree = "<group>"; };
 		1D0BCB34259A1ECA0035BAA8 /* TNEnemyCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNEnemyCollaborator.m; path = mmmaze/Sources/TNEnemyCollaborator.m; sourceTree = "<group>"; };
-		1D0BCB35259A1ECA0035BAA8 /* TNCollisionCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNCollisionCollaborator.h; path = mmmaze/Sources/TNCollisionCollaborator.h; sourceTree = "<group>"; };
 		1D0BCB37259A1ECA0035BAA8 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = mmmaze/Sources/TutorialViewController.swift; sourceTree = "<group>"; };
 		1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = mmmaze/Sources/MenuViewController.swift; sourceTree = "<group>"; };
 		1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = mmmaze/Resources/Assets.xcassets; sourceTree = "<group>"; };
@@ -191,24 +188,9 @@
 				1D0BCB14259A1EC90035BAA8 /* mmmaze-Bridging-Header.h */,
 				1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */,
 				1D0BCB91259A21050035BAA8 /* Screens */,
+				1D9ADB46259B1743003CC8C2 /* Maze */,
 				1D0BCBCB259A25330035BAA8 /* Utils */,
 				1D0BCB6B259A1FBC0035BAA8 /* MXToolBox */,
-				1D0BCB35259A1ECA0035BAA8 /* TNCollisionCollaborator.h */,
-				1D0BCB19259A1ECA0035BAA8 /* TNCollisionCollaborator.m */,
-				1D0BCB29259A1ECA0035BAA8 /* TNEnemy.h */,
-				1D0BCB1D259A1ECA0035BAA8 /* TNEnemy.m */,
-				1D0BCB33259A1ECA0035BAA8 /* TNEnemyCollaborator.h */,
-				1D0BCB34259A1ECA0035BAA8 /* TNEnemyCollaborator.m */,
-				1D0BCB2B259A1ECA0035BAA8 /* TNGameSession.h */,
-				1D0BCB31259A1ECA0035BAA8 /* TNGameSession.mm */,
-				1D0BCB26259A1ECA0035BAA8 /* TNMazeGenerator.cpp */,
-				1D0BCB1E259A1ECA0035BAA8 /* TNMazeGenerator.hpp */,
-				1D0BCB20259A1ECA0035BAA8 /* TNPlayer.h */,
-				1D0BCB21259A1ECA0035BAA8 /* TNPlayer.m */,
-				1D0BCB24259A1ECA0035BAA8 /* TNTile.h */,
-				1D0BCB2E259A1ECA0035BAA8 /* TNTile.m */,
-				1D0BCB1A259A1ECA0035BAA8 /* TNTile+AI.h */,
-				1D0BCB13259A1EC90035BAA8 /* TNTile+AI.m */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -393,6 +375,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1D9ADB46259B1743003CC8C2 /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				1D0BCB2B259A1ECA0035BAA8 /* GameSession.h */,
+				1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */,
+				1D9ADB48259B17EC003CC8C2 /* Other */,
+				1D9ADB47259B1760003CC8C2 /* Generator */,
+			);
+			name = Maze;
+			sourceTree = "<group>";
+		};
+		1D9ADB47259B1760003CC8C2 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */,
+				1D0BCB1E259A1ECA0035BAA8 /* MazeGenerator.hpp */,
+			);
+			name = Generator;
+			sourceTree = "<group>";
+		};
+		1D9ADB48259B17EC003CC8C2 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				1D0BCB29259A1ECA0035BAA8 /* TNEnemy.h */,
+				1D0BCB1D259A1ECA0035BAA8 /* TNEnemy.m */,
+				1D0BCB33259A1ECA0035BAA8 /* TNEnemyCollaborator.h */,
+				1D0BCB34259A1ECA0035BAA8 /* TNEnemyCollaborator.m */,
+				1D0BCB20259A1ECA0035BAA8 /* TNPlayer.h */,
+				1D0BCB21259A1ECA0035BAA8 /* TNPlayer.m */,
+				1D0BCB24259A1ECA0035BAA8 /* TNTile.h */,
+				1D0BCB2E259A1ECA0035BAA8 /* TNTile.m */,
+				1D0BCB1A259A1ECA0035BAA8 /* TNTile+AI.h */,
+				1D0BCB13259A1EC90035BAA8 /* TNTile+AI.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -516,16 +535,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D0BCB3A259A1ECA0035BAA8 /* TNTile+AI.m in Sources */,
-				1D0BCB48259A1ECA0035BAA8 /* TNMazeGenerator.cpp in Sources */,
+				1D0BCB48259A1ECA0035BAA8 /* MazeGenerator.cpp in Sources */,
 				1D0BCB44259A1ECA0035BAA8 /* TNPlayer.m in Sources */,
 				1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */,
 				1D1BDE01259A75E6000145A4 /* ScoreManager.swift in Sources */,
 				1D0BCB4D259A1ECA0035BAA8 /* TNTile.m in Sources */,
-				1D0BCB4F259A1ECA0035BAA8 /* TNGameSession.mm in Sources */,
+				1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */,
 				1D0BCB8C259A1FC70035BAA8 /* UIImage+MX.m in Sources */,
 				1D0BCB89259A1FC70035BAA8 /* UIImageView+MX.m in Sources */,
 				1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */,
-				1D0BCB3F259A1ECA0035BAA8 /* TNCollisionCollaborator.m in Sources */,
 				1D0BCB50259A1ECA0035BAA8 /* AppDelegate.swift in Sources */,
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
 				1D1BDDFD259A515C000145A4 /* MXGameCenterManager.m in Sources */,

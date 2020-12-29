@@ -3,13 +3,13 @@
 //  mmmaze
 //
 //  Created by mugx on 12/10/2019.
-//  Copyright © 2019 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import Foundation
 
 class GameViewController: UIViewController {
-	var gameSession: TNGameSession!
+	var gameSession: GameSession!
 	var displayLink: CADisplayLink!
 	var previousTimestamp: CFTimeInterval = 0.0
 	var swipeRight: UISwipeGestureRecognizer!
@@ -63,7 +63,7 @@ class GameViewController: UIViewController {
 			gameOverView.isHidden = true
 
 			//--- setup game session ---//
-			gameSession = TNGameSession(view: gameView)
+			gameSession = GameSession(view: gameView)
 			gameSession.delegate = self
 			gameSession.startLevel(1)
 
@@ -113,9 +113,9 @@ class GameViewController: UIViewController {
 	}
 }
 
-//MARK: - TNGameSessionDelegate
+//MARK: - GameSessionDelegate
 
-extension GameViewController: TNGameSessionDelegate {
+extension GameViewController: GameSessionDelegate {
 
 	public func didUpdateScore(_ score: UInt) {
 		scoreLabel.text = "\("mmmaze.game.score".localized)\n\(score)"
@@ -169,7 +169,7 @@ extension GameViewController: TNGameSessionDelegate {
 		}
 	}
 
-	public func didGameOver(_ session: TNGameSession!) {
+	public func didGameOver(_ session: GameSession!) {
 		displayLink.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
 		gameOverView.isHidden = false
 		view.bringSubviewToFront(gameOverView)

@@ -3,7 +3,7 @@
 //  MXToolBox
 //
 //  Created by mugx on 13/01/16.
-//  Copyright © 2016 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //  
 
 #ifndef MXToolBox_h

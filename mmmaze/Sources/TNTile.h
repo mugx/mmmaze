@@ -3,12 +3,12 @@
 //  mmmaze
 //
 //  Created by mugx on 29/03/16.
-//  Copyright © 2016 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
-#import "TNGameSession.h"
+#import "GameSession.h"
 
 typedef NS_ENUM(NSUInteger, TyleType) {
   TTDoor,
@@ -45,5 +45,5 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) BOOL isBlinking;
 @property(nonatomic,assign) BOOL isAngry;
 @property(nonatomic,weak) TNTile *collidedWall;
-@property(nonatomic,weak) TNGameSession *gameSession;
+@property(nonatomic,weak) GameSession *gameSession;
 @end

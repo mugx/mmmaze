@@ -3,13 +3,13 @@
 //  mmmaze
 //
 //  Created by mugx on 17/03/16.
-//  Copyright © 2016 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 #import "mmmaze-Swift.h"
 #import "TNPlayer.h"
 #import "MXToolBox.h"
-#import "TNGameSession.h"
+#import "GameSession.h"
 
 @interface TNPlayer()
 @end
@@ -17,7 +17,7 @@
 @implementation TNPlayer
 @synthesize isAngry = _isAngry;
 
-- (instancetype)initWithFrame:(CGRect)frame withGameSession:(TNGameSession *)gameSession
+- (instancetype)initWithFrame:(CGRect)frame withGameSession:(GameSession *)gameSession
 {
   self = [super initWithFrame:frame];
   self.gameSession = gameSession;

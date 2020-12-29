@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 23/03/16.
-//  Copyright © 2016 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 #import "mmmaze-Swift.h"
@@ -15,7 +15,7 @@
 #define MAX_ENEMIES 5
 
 @interface TNEnemyCollaborator()
-@property(nonatomic,weak) TNGameSession *gameSession;
+@property(nonatomic,weak) GameSession *gameSession;
 @property(nonatomic,assign) float enemyTimeAccumulator;
 @property(nonatomic,strong,readwrite) NSMutableArray *enemies;
 @property(nonatomic,strong,readwrite) NSMutableArray *spawnableEnemies;
@@ -25,7 +25,7 @@
 
 @implementation TNEnemyCollaborator
 
-- (instancetype)init:(TNGameSession *)gameSession
+- (instancetype)init:(GameSession *)gameSession
 {
   self = [super init];
   _gameSession = gameSession;
@@ -71,7 +71,6 @@
         currentEnemy.hidden = NO;
         currentEnemy.alpha = 1.0;
       } completion:^(BOOL finished) {
-        //currentEnemy.speed = currentEnemy.tag == 1 ? self.speed / 6 : self.speed;
         currentEnemy.speed = self.speed;
       }];
       currentEnemy.frame = enemy.frame;

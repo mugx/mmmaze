@@ -1,27 +1,26 @@
 //
-//  TNGameSession.m
+//  GameSession.m
 //  mmmaze
 //
 //  Created by mugx on 10/03/16.
-//  Copyright © 2016 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 #import <MessageUI/MessageUI.h>
 
 #import "mmmaze-Swift.h"
-#import "TNGameSession.h"
-#import "TNCollisionCollaborator.h"
+#import "GameSession.h"
 #import "TNEnemyCollaborator.h"
 #import "TNPlayer.h"
 #import "TNEnemy.h"
 #import "MXToolBox.h"
-#import "TNMazeGenerator.hpp"
+#import "MazeGenerator.hpp"
 
 #define BASE_MAZE_DIMENSION 7
 #define BKG_COLORS @[[UIColor whiteColor]]
 //#define BKG_COLORS @[Constants.electricColor, Constants.blueColor, Constants.greenColor, Constants.cyanColor, Constants.yellowColor, Constants.redColor]
 
-@interface TNGameSession ()
+@interface GameSession ()
 @property(nonatomic,assign,readwrite) NSUInteger currentLevel;
 @property(nonatomic,assign,readwrite) NSUInteger currentScore;
 @property(nonatomic,strong,readwrite) NSMutableDictionary<NSValue*, TNTile *> *wallsDictionary;
@@ -36,7 +35,7 @@
 @property(nonatomic,assign) BOOL isGameStarted;
 @end
 
-@implementation TNGameSession
+@implementation GameSession
 
 - (instancetype)initWithView:(UIView *)gameView {
 	self = [super init];
@@ -84,7 +83,6 @@
 	[self makePlayer];
 
 	///--- setup collaborator ---//
-	self.collisionCollaborator = [[TNCollisionCollaborator alloc] init:self];
 	self.enemyCollaborator = [[TNEnemyCollaborator alloc] init:self];
 
 	//--- update external delegate ---//
@@ -106,7 +104,7 @@
 	self.isGameOver = NO;
 
 	//--- generating the maze ---//
-	TNMazeGenerator *mazeGenerator = new TNMazeGenerator();
+	MazeGenerator *mazeGenerator = new MazeGenerator();
 	MazeTyleType **maze = mazeGenerator->calculateMaze(static_cast<int>(STARTING_CELL.x), static_cast<int>(STARTING_CELL.y), static_cast<int>(self.numCol), static_cast<int>(self.numRow));
 	self.wallsDictionary = [NSMutableDictionary dictionary];
 

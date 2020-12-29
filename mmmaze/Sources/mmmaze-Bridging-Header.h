@@ -3,11 +3,11 @@
 //  mmmaze
 //
 //  Created by mugx on 05/01/2018.
-//  Copyright © 2018 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 #import "UIImage+MX.h"
 #import "UIImageView+MX.h"
 #import "MXGameCenterManager.h"
-#import "TNGameSession.h"
+#import "GameSession.h"
 #import "TNTile.h"
