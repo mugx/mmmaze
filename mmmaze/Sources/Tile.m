@@ -1,12 +1,12 @@
 //
-//  TNTile.m
+//  Tile.m
 //  mmmaze
 //
 //  Created by mugx on 29/03/16.
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-#import "TNTile.h"
+#import "Tile.h"
 #import "MXToolBox.h"
 #import "mmmaze-Swift.h"
 
@@ -17,12 +17,12 @@ typedef enum : NSUInteger {
   FTWest
 } FacingType;
 
-@interface TNTile()
+@interface Tile()
 @property(nonatomic,assign) int lastSwipe;
 @property(nonatomic,strong) NSMutableDictionary *animations;
 @end
 
-@implementation TNTile
+@implementation Tile
 
 - (instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
@@ -61,10 +61,10 @@ typedef enum : NSUInteger {
 	[self.animations setObject:anim forKey:@"spin"];
 }
 
-- (TNTile *)checkWallCollision:(CGRect)frame
+- (Tile *)checkWallCollision:(CGRect)frame
 {
   NSArray *walls = [self.gameSession.wallsDictionary allValues];
-  for (TNTile *wall in walls)
+  for (Tile *wall in walls)
   {
     if (wall.tag != TTExplodedWall && CGRectIntersectsRect(wall.frame, frame))
     {
@@ -92,7 +92,7 @@ typedef enum : NSUInteger {
   int col = (int)roundf(frame.origin.x / TILE_SIZE);
   int row = (int)roundf((frame.origin.y) / TILE_SIZE);
   if (row - 1 < 0) return YES;
-  TNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row - 1, col)]];
+  Tile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row - 1, col)]];
   return tile != nil && tile.tag != TTExplodedWall;
 }
 
@@ -101,7 +101,7 @@ typedef enum : NSUInteger {
   int col = (int)roundf(frame.origin.x / TILE_SIZE);
   int row = (int)roundf(frame.origin.y / TILE_SIZE);
   if (row + 1 >= self.gameSession.numRow) return YES;
-  TNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row + 1, col)]];
+  Tile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row + 1, col)]];
   return tile != nil && tile.tag != TTExplodedWall;
 }
 
@@ -110,7 +110,7 @@ typedef enum : NSUInteger {
   int col = (int)roundf((frame.origin.x) / TILE_SIZE);
   int row = (int)roundf(frame.origin.y / TILE_SIZE);
   if (col - 1 < 0) return YES;
-  TNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col - 1)]];
+  Tile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col - 1)]];
   return tile != nil && tile.tag != TTExplodedWall;
 }
 
@@ -119,7 +119,7 @@ typedef enum : NSUInteger {
   int col = (int)roundf(frame.origin.x / TILE_SIZE);
   int row = (int)roundf(frame.origin.y / TILE_SIZE);
   if (col + 1 >= self.gameSession.numCol) return YES;
-  TNTile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col + 1)]];
+  Tile *tile = self.gameSession.wallsDictionary[[NSValue valueWithCGPoint:CGPointMake(row, col + 1)]];
   return tile != nil && tile.tag != TTExplodedWall;
 }
 

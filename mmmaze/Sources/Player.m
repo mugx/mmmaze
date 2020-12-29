@@ -1,5 +1,5 @@
 //
-//  TNself.m
+//  Player.m
 //  mmmaze
 //
 //  Created by mugx on 17/03/16.
@@ -7,14 +7,14 @@
 //
 
 #import "mmmaze-Swift.h"
-#import "TNPlayer.h"
+#import "Player.h"
 #import "MXToolBox.h"
 #import "GameSession.h"
 
-@interface TNPlayer()
+@interface Player()
 @end
 
-@implementation TNPlayer
+@implementation Player
 @synthesize isAngry = _isAngry;
 
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(GameSession *)gameSession

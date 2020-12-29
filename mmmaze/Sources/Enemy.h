@@ -1,5 +1,5 @@
 //
-//  TNEnemy.h
+//  Enemy.h
 //  mmmaze
 //
 //  Created by mugx on 23/03/16.
@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GameSession.h"
-#import "TNTile.h"
+#import "Tile.h"
 
 #define ENEMY_SPEED 1.5
 
-@interface TNEnemy : TNTile
+@interface Enemy : Tile
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(GameSession *)gameSession;
 - (void)update:(CGFloat)deltaTime;
 @property(nonatomic,assign) BOOL wantSpawn;

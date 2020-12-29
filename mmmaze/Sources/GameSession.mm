@@ -10,9 +10,9 @@
 
 #import "mmmaze-Swift.h"
 #import "GameSession.h"
-#import "TNEnemyCollaborator.h"
-#import "TNPlayer.h"
-#import "TNEnemy.h"
+#import "EnemyCollaborator.h"
+#import "Player.h"
+#import "Enemy.h"
 #import "MXToolBox.h"
 #import "MazeGenerator.hpp"
 
@@ -23,14 +23,14 @@
 @interface GameSession ()
 @property(nonatomic,assign,readwrite) NSUInteger currentLevel;
 @property(nonatomic,assign,readwrite) NSUInteger currentScore;
-@property(nonatomic,strong,readwrite) NSMutableDictionary<NSValue*, TNTile *> *wallsDictionary;
-@property(nonatomic,strong) NSMutableArray<TNTile *> *items;
+@property(nonatomic,strong,readwrite) NSMutableDictionary<NSValue*, Tile *> *wallsDictionary;
+@property(nonatomic,strong) NSMutableArray<Tile *> *items;
 
 @property(nonatomic,assign) int bkgColorIndex;
 @property(nonatomic,assign) float bkgColorTimeAccumulator;
 @property(nonatomic,strong,readwrite) UIView *mazeView;
 @property(nonatomic,weak) UIView *gameView;
-@property(nonatomic,weak) TNTile *mazeGoalTile;
+@property(nonatomic,weak) Tile *mazeGoalTile;
 @property(nonatomic,assign) float mazeRotation;
 @property(nonatomic,assign) BOOL isGameStarted;
 @end
@@ -83,7 +83,7 @@
 	[self makePlayer];
 
 	///--- setup collaborator ---//
-	self.enemyCollaborator = [[TNEnemyCollaborator alloc] init:self];
+	self.enemyCollaborator = [[EnemyCollaborator alloc] init:self];
 
 	//--- update external delegate ---//
 	[self.delegate didUpdateScore:self.currentScore];
@@ -115,7 +115,7 @@
 		{
 			if (maze[r][c] == MTWall)
 			{
-				TNTile *tile = [[TNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
+				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.tag = TTWall;
 				[tile setImage:[[UIImage imageNamed:@"wall"] coloredWith:BKG_COLORS[self.bkgColorIndex]]];
 				tile.isDestroyable = !(r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1);
@@ -126,7 +126,7 @@
 			}
 			else if (maze[r][c] == MTStart)
 			{
-				TNTile *tile = [[TNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
+				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.x = r;
 				tile.y = c;
 				tile.tag = TTDoor;
@@ -136,7 +136,7 @@
 			}
 			else if (maze[r][c] == MTEnd)
 			{
-				TNTile *tile = [[TNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
+				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.x = r;
 				tile.y = c;
 				tile.tag = TTMazeEnd_close;
@@ -149,7 +149,7 @@
 			}
 			else
 			{
-				TNTile *item = [self makeItem:c row:r];
+				Tile *item = [self makeItem:c row:r];
 				if (!item)
 				{
 					[freeTiles addObject:@{@"c":@(c), @"r":@(r)}];
@@ -162,7 +162,7 @@
 	NSDictionary *keyPosition = freeTiles[arc4random() % freeTiles.count];
 	int c = [keyPosition[@"c"] intValue];
 	int r = [keyPosition[@"r"] intValue];
-	TNTile *keyItem = [[TNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
+	Tile *keyItem = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 	keyItem.x = c;
 	keyItem.y = r;
 	keyItem.tag = TTKey;
@@ -177,9 +177,9 @@
 	free(maze);
 }
 
-- (TNTile *)makeItem:(int)col row:(int)row
+- (Tile *)makeItem:(int)col row:(int)row
 {
-	TNTile *item = [[TNTile alloc] initWithFrame:CGRectMake(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
+	Tile *item = [[Tile alloc] initWithFrame:CGRectMake(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 	item.tag = -1;
 
 	if ((arc4random() % 100) >= 50)
@@ -209,7 +209,7 @@
 	else if ((arc4random() % 100) >= 99)
 	{
 		int hearthSize = TILE_SIZE;
-		item = [[TNTile alloc] initWithFrame:CGRectMake(col * hearthSize, row * hearthSize, hearthSize, hearthSize)];
+		item = [[Tile alloc] initWithFrame:CGRectMake(col * hearthSize, row * hearthSize, hearthSize, hearthSize)];
 		item.tag = TTHearth;
 		item.image = [UIImage imageNamed:@"hearth"];
 	}
@@ -234,7 +234,7 @@
 		[self.player removeFromSuperview];
 	}
 
-	self.player = [[TNPlayer alloc] initWithFrame:CGRectMake(STARTING_CELL.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED) withGameSession:self];
+	self.player = [[Player alloc] initWithFrame:CGRectMake(STARTING_CELL.y * TILE_SIZE + PLAYER_SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + PLAYER_SPEED / 2.0, TILE_SIZE - PLAYER_SPEED, TILE_SIZE - PLAYER_SPEED) withGameSession:self];
 	self.player.animationImages = [[UIImage imageNamed:@"player"] spritesWith:CGSizeMake(TILE_SIZE, TILE_SIZE)];
 	self.player.animationDuration = 0.4f;
 	self.player.animationRepeatCount = 0;
@@ -286,7 +286,7 @@
 
 	//--- checking items collisions ---//
 	NSMutableArray *itemsToRemove = [NSMutableArray array];
-	for (TNTile *item in self.items)
+	for (Tile *item in self.items)
 	{
 		if (CGRectIntersectsRect(item.frame, self.player.frame))
 		{
@@ -343,7 +343,7 @@
 				int player_y = (int)self.player.frame.origin.y;
 				self.player.isAngry = YES;
 
-				for (TNTile *tile in [self.wallsDictionary allValues])
+				for (Tile *tile in [self.wallsDictionary allValues])
 				{
 					if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x + TILE_SIZE, player_y, TILE_SIZE, TILE_SIZE)))
 					{
@@ -374,7 +374,7 @@
 		{
 			if (item.tag == TTBomb)
 			{
-				for (TNEnemy *enemy in self.enemyCollaborator.enemies)
+				for (Enemy *enemy in self.enemyCollaborator.enemies)
 				{
 					if (CGRectIntersectsRect(enemy.frame, item.frame))
 					{
@@ -395,7 +395,7 @@
 	self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
 
 	///--- collision player vs enemies ---//
-	for (TNEnemy *enemy in self.enemyCollaborator.enemies)
+	for (Enemy *enemy in self.enemyCollaborator.enemies)
 	{
 		if (!self.player.isBlinking && self.currentLives > 0 && CGRectIntersectsRect(enemy.frame, self.player.frame))
 		{

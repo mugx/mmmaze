@@ -1,5 +1,5 @@
 //
-//  TNEnemyCollaborator.m
+//  EnemyCollaborator.m
 //  mmmaze
 //
 //  Created by mugx on 23/03/16.
@@ -7,14 +7,14 @@
 //
 
 #import "mmmaze-Swift.h"
-#import "TNEnemyCollaborator.h"
-#import "TNEnemy.h"
+#import "EnemyCollaborator.h"
+#import "Enemy.h"
 #import "MXToolBox.h"
-#import "TNPlayer.h"
+#import "Player.h"
 
 #define MAX_ENEMIES 5
 
-@interface TNEnemyCollaborator()
+@interface EnemyCollaborator()
 @property(nonatomic,weak) GameSession *gameSession;
 @property(nonatomic,assign) float enemyTimeAccumulator;
 @property(nonatomic,strong,readwrite) NSMutableArray *enemies;
@@ -23,7 +23,7 @@
 @property(nonatomic,assign) float speed;
 @end
 
-@implementation TNEnemyCollaborator
+@implementation EnemyCollaborator
 
 - (instancetype)init:(GameSession *)gameSession
 {
@@ -46,7 +46,7 @@
   }
   for (int i = 0;i < MAX_ENEMIES;++i)
   {
-    TNEnemy *enemy = [[TNEnemy alloc] initWithFrame:CGRectMake(STARTING_CELL.y * TILE_SIZE + self.speed / 2.0, STARTING_CELL.x * TILE_SIZE + self.speed / 2.0, TILE_SIZE - self.speed, TILE_SIZE - self.speed) withGameSession:self.gameSession];
+    Enemy *enemy = [[Enemy alloc] initWithFrame:CGRectMake(STARTING_CELL.y * TILE_SIZE + self.speed / 2.0, STARTING_CELL.x * TILE_SIZE + self.speed / 2.0, TILE_SIZE - self.speed, TILE_SIZE - self.speed) withGameSession:self.gameSession];
     enemy.animationDuration = 0.4f;
     enemy.animationRepeatCount = 0;
     enemy.alpha = 0.0;
@@ -57,9 +57,9 @@
   }
 }
 
-- (void)spawnFrom:(TNEnemy *)enemy
+- (void)spawnFrom:(Enemy *)enemy
 {
-  for (TNEnemy *currentEnemy in self.spawnableEnemies)
+  for (Enemy *currentEnemy in self.spawnableEnemies)
   {
     if (currentEnemy.hidden)
     {
@@ -88,7 +88,7 @@
   {
     self.enemyTimeAccumulator = 0;
     NSArray *enemiesArray = self.enemies.count == 0 ? self.spawnableEnemies : self.enemies;
-    for (TNEnemy *enemy in enemiesArray)
+    for (Enemy *enemy in enemiesArray)
     {
       if (enemy.wantSpawn)
       {
@@ -99,7 +99,7 @@
     }
   }
   
-  for (TNEnemy *enemy in self.enemies)
+  for (Enemy *enemy in self.enemies)
   {
     [enemy update:deltaTime];
   }

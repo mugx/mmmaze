@@ -1,5 +1,5 @@
 //
-//  TNTile.h
+//  Tile.h
 //  mmmaze
 //
 //  Created by mugx on 29/03/16.
@@ -24,11 +24,11 @@ typedef NS_ENUM(NSUInteger, TyleType) {
   TTMazeEnd_open
 };
 
-@interface TNTile : UIImageView
+@interface Tile : UIImageView
 - (void)restoreAnimations;
 - (void)spin;
 - (void)flip;
-- (TNTile *)checkWallCollision:(CGRect)frame;
+- (Tile *)checkWallCollision:(CGRect)frame;
 - (bool)collidesNorthOf:(CGRect)frame;
 - (bool)collidesSouthOf:(CGRect)frame;
 - (bool)collidesWestOf:(CGRect)frame;
@@ -44,6 +44,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) BOOL isDestroyable;
 @property(nonatomic,assign) BOOL isBlinking;
 @property(nonatomic,assign) BOOL isAngry;
-@property(nonatomic,weak) TNTile *collidedWall;
+@property(nonatomic,weak) Tile *collidedWall;
 @property(nonatomic,weak) GameSession *gameSession;
 @end

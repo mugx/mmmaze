@@ -1,5 +1,5 @@
 //
-//  TNEnemyCollaborator.h
+//  EnemyCollaborator.h
 //  mmmaze
 //
 //  Created by mugx on 23/03/16.
@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class GameSession;
-@class TNEnemy;
+@class Enemy;
 
-@interface TNEnemyCollaborator : NSObject
+@interface EnemyCollaborator : NSObject
 - (instancetype)init:(GameSession *)gameSession;
 - (void)update:(CGFloat)deltaTime;
 @property(readonly) NSMutableArray *enemies;

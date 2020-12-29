@@ -1,14 +1,14 @@
 //
-//  TNTile+AI.m
+//  Tile+AI.m
 //  mmmaze
 //
 //  Created by mugx on 15/04/16.
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-#import "TNTile+AI.h"
+#import "Tile+AI.h"
 
-@implementation TNTile (AI)
+@implementation Tile (AI)
 
 CGFloat distance(CGRect rect1, CGRect rect2)
 {

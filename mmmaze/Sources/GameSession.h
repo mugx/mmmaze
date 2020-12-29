@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TNEnemyCollaborator.h"
+#import "EnemyCollaborator.h"
 
-@class TNPlayer;
-@class TNTile;
+@class Player;
+@class Tile;
 
 #define TILE_SIZE 32.0
 #define STARTING_CELL CGPointMake(1,1)
@@ -32,14 +32,14 @@
 @property(readwrite) NSUInteger currentLives;
 @property(readwrite) CGFloat currentTime;
 @property(nonatomic,assign) BOOL isGameOver;
-@property(readonly) NSMutableArray<TNTile *> *items;
+@property(readonly) NSMutableArray<Tile *> *items;
 
 @property(nonatomic,assign) NSUInteger numRow;
 @property(nonatomic,assign) NSUInteger numCol;
-@property(readonly) NSMutableDictionary<NSValue *, TNTile *> *wallsDictionary;
+@property(readonly) NSMutableDictionary<NSValue *, Tile *> *wallsDictionary;
 @property(readonly) UIView *mazeView;
-@property(nonatomic,strong) TNEnemyCollaborator *enemyCollaborator;
-@property(nonatomic,strong) TNPlayer *player;
+@property(nonatomic,strong) EnemyCollaborator *enemyCollaborator;
+@property(nonatomic,strong) Player *player;
 @end
 
 @protocol GameSessionDelegate <NSObject>

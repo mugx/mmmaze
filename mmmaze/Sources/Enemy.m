@@ -1,25 +1,25 @@
 //
-//  TNEnemy.m
+//  Enemy.m
 //  mmmaze
 //
 //  Created by mugx on 23/03/16.
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-#import "TNEnemy.h"
-#import "TNPlayer.h"
-#import "TNTile+AI.h"
+#import "Enemy.h"
+#import "Player.h"
+#import "Tile+AI.h"
 
 #define ANIM_TIME 0.5
 
-@interface TNEnemy()
+@interface Enemy()
 @property(nonatomic,assign) BOOL exploding;
 @property(nonatomic,strong) NSMutableArray *path;
 @property(nonatomic,assign) float timeAccumulator;
 @property(nonatomic,assign) float upatePathAccumulator;
 @end
 
-@implementation TNEnemy
+@implementation Enemy
 
 - (instancetype)initWithFrame:(CGRect)frame withGameSession:(GameSession *)gameSession
 {
@@ -37,7 +37,7 @@
   self.upatePathAccumulator += deltaTime;
 
   CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-  TNPlayer *player = self.gameSession.player;
+  Player *player = self.gameSession.player;
 
   if (self.timeAccumulator > 1 || self.path.count == 0)
   {

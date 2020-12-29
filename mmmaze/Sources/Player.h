@@ -1,5 +1,5 @@
 //
-//  TNPlayer.h
+//  Player.h
 //  mmmaze
 //
 //  Created by mugx on 17/03/16.
@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TNTile.h"
+#import "Tile.h"
 #import "GameSession.h"
 
 #define PLAYER_SPEED 3.0
 
-@interface TNPlayer : TNTile
+@interface Player : Tile
 - (instancetype _Nullable )initWithFrame:(CGRect)frame withGameSession:(GameSession *_Nullable)gameSession;
 - (void)encodeWithCoder:(nonnull NSCoder *)coder;
 
