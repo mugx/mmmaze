@@ -33,47 +33,47 @@
 		1D0BCB62259A1ED30035BAA8 /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB57259A1ED30035BAA8 /* gameConfiguration.json */; };
 		1D0BCB63259A1ED30035BAA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */; };
 		1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB5E259A1ED30035BAA8 /* Contents.json */; };
-		1D0BCB85259A1FC70035BAA8 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */; };
-		1D0BCB89259A1FC70035BAA8 /* UIImageView+Utills.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB77259A1FC70035BAA8 /* UIImageView+Utills.m */; };
-		1D0BCB8C259A1FC70035BAA8 /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */; };
-		1D0BCB90259A1FC70035BAA8 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB83259A1FC70035BAA8 /* UIImage+Utils.swift */; };
-		1D0BCB94259A233A0035BAA8 /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB93259A21EF0035BAA8 /* Joystix.ttf */; };
-		1D0BCB96259A23780035BAA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB95259A23690035BAA8 /* Localizable.strings */; };
-		1D0BCBBA259A23B40035BAA8 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCBA8259A23AD0035BAA8 /* enemy.png */; };
-		1D0BCBBB259A23B40035BAA8 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB9D259A23AC0035BAA8 /* rightArrow.png */; };
-		1D0BCBBC259A23B40035BAA8 /* gate_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB9A259A23AC0035BAA8 /* gate_close.png */; };
-		1D0BCBBD259A23B40035BAA8 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCBA1259A23AD0035BAA8 /* player.png */; };
-		1D0BCBBE259A23B40035BAA8 /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCBA4259A23AD0035BAA8 /* key.png */; };
-		1D0BCBBF259A23B40035BAA8 /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB98259A23AC0035BAA8 /* leftArrow.png */; };
-		1D0BCBC0259A23B40035BAA8 /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCBA7259A23AD0035BAA8 /* whirlwind.png */; };
-		1D0BCBC1259A23B40035BAA8 /* gate_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB99259A23AC0035BAA8 /* gate_open.png */; };
-		1D0BCBC2259A23B40035BAA8 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB9E259A23AD0035BAA8 /* coin.png */; };
-		1D0BCBC4259A23B40035BAA8 /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB9C259A23AC0035BAA8 /* wall.png */; };
-		1D0BCBC5259A23B40035BAA8 /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB9F259A23AD0035BAA8 /* bomb.png */; };
-		1D0BCBC7259A23B40035BAA8 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCBA2259A23AD0035BAA8 /* time.png */; };
-		1D0BCBC8259A23B40035BAA8 /* hearth.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCBA6259A23AD0035BAA8 /* hearth.png */; };
-		1D0BCBC9259A23B40035BAA8 /* player_angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCBA5259A23AD0035BAA8 /* player_angry.png */; };
-		1D0BCBCA259A23B40035BAA8 /* minion.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB9B259A23AC0035BAA8 /* minion.png */; };
-		1D0BCBD5259A2EAA0035BAA8 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCBD4259A2EAA0035BAA8 /* UIView+Utils.swift */; };
-		1D1BDDEE259A4F97000145A4 /* soundHitCoin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE1259A4F96000145A4 /* soundHitCoin.caf */; };
-		1D1BDDEF259A4F97000145A4 /* soundStartGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE2259A4F96000145A4 /* soundStartGame.caf */; };
-		1D1BDDF0259A4F97000145A4 /* soundHitBomb.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE3259A4F96000145A4 /* soundHitBomb.caf */; };
-		1D1BDDF1259A4F97000145A4 /* soundHitWhirlwind.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE4259A4F96000145A4 /* soundHitWhirlwind.caf */; };
-		1D1BDDF2259A4F97000145A4 /* soundGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE5259A4F96000145A4 /* soundGame.caf */; };
-		1D1BDDF3259A4F97000145A4 /* soundLevelChange.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE6259A4F97000145A4 /* soundLevelChange.caf */; };
-		1D1BDDF4259A4F97000145A4 /* soundEnemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE7259A4F97000145A4 /* soundEnemySpawn.caf */; };
-		1D1BDDF5259A4F97000145A4 /* soundHitHearth.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE8259A4F97000145A4 /* soundHitHearth.caf */; };
-		1D1BDDF6259A4F97000145A4 /* soundGameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDE9259A4F97000145A4 /* soundGameOver.caf */; };
-		1D1BDDF7259A4F97000145A4 /* soundSelectItem.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDEA259A4F97000145A4 /* soundSelectItem.caf */; };
-		1D1BDDF8259A4F97000145A4 /* soundHitTimeBonus.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDEB259A4F97000145A4 /* soundHitTimeBonus.caf */; };
-		1D1BDDF9259A4F97000145A4 /* soundHitPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDEC259A4F97000145A4 /* soundHitPlayer.caf */; };
-		1D1BDDFA259A4F97000145A4 /* soundTimeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDED259A4F97000145A4 /* soundTimeOver.caf */; };
-		1D1BDDFD259A515C000145A4 /* MXGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */; };
-		1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFE259A5791000145A4 /* AudioManager.swift */; };
-		1D1BDE01259A75E6000145A4 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDE00259A75E6000145A4 /* ScoreManager.swift */; };
-		1D2C00A4259B212900BFE4B6 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */; };
-		1DBD17F9259B4366003EC288 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD17F8259B4366003EC288 /* UIDevice+Utils.swift */; };
-		1DD38E7F259B2855002A936A /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD38E7E259B2855002A936A /* GameSession.swift */; };
+		1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* whirlwind.png */; };
+		1DA4C713259BA0B300E4DE1E /* gate_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* gate_open.png */; };
+		1DA4C714259BA0B300E4DE1E /* gate_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* gate_close.png */; };
+		1DA4C715259BA0B300E4DE1E /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C706259BA0B300E4DE1E /* player.png */; };
+		1DA4C716259BA0B300E4DE1E /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C707259BA0B300E4DE1E /* key.png */; };
+		1DA4C717259BA0B300E4DE1E /* hearth.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C708259BA0B300E4DE1E /* hearth.png */; };
+		1DA4C718259BA0B300E4DE1E /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C709259BA0B300E4DE1E /* coin.png */; };
+		1DA4C719259BA0B300E4DE1E /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70A259BA0B300E4DE1E /* time.png */; };
+		1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70B259BA0B300E4DE1E /* wall.png */; };
+		1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70C259BA0B300E4DE1E /* bomb.png */; };
+		1DA4C71C259BA0B300E4DE1E /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70D259BA0B300E4DE1E /* rightArrow.png */; };
+		1DA4C71D259BA0B300E4DE1E /* player_angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70E259BA0B300E4DE1E /* player_angry.png */; };
+		1DA4C71E259BA0B300E4DE1E /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70F259BA0B300E4DE1E /* leftArrow.png */; };
+		1DA4C71F259BA0B300E4DE1E /* minion.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C710259BA0B300E4DE1E /* minion.png */; };
+		1DA4C720259BA0B300E4DE1E /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C711259BA0B300E4DE1E /* enemy.png */; };
+		1DA4C72E259BA0C200E4DE1E /* soundStartGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C721259BA0C200E4DE1E /* soundStartGame.caf */; };
+		1DA4C72F259BA0C200E4DE1E /* soundLevelChange.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C722259BA0C200E4DE1E /* soundLevelChange.caf */; };
+		1DA4C730259BA0C200E4DE1E /* soundHitWhirlwind.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C723259BA0C200E4DE1E /* soundHitWhirlwind.caf */; };
+		1DA4C731259BA0C200E4DE1E /* soundEnemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C724259BA0C200E4DE1E /* soundEnemySpawn.caf */; };
+		1DA4C732259BA0C200E4DE1E /* soundSelectItem.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C725259BA0C200E4DE1E /* soundSelectItem.caf */; };
+		1DA4C733259BA0C200E4DE1E /* soundGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C726259BA0C200E4DE1E /* soundGame.caf */; };
+		1DA4C734259BA0C200E4DE1E /* soundHitCoin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C727259BA0C200E4DE1E /* soundHitCoin.caf */; };
+		1DA4C735259BA0C200E4DE1E /* soundHitHearth.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C728259BA0C200E4DE1E /* soundHitHearth.caf */; };
+		1DA4C736259BA0C200E4DE1E /* soundHitPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C729259BA0C200E4DE1E /* soundHitPlayer.caf */; };
+		1DA4C737259BA0C200E4DE1E /* soundTimeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72A259BA0C200E4DE1E /* soundTimeOver.caf */; };
+		1DA4C738259BA0C200E4DE1E /* soundGameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72B259BA0C200E4DE1E /* soundGameOver.caf */; };
+		1DA4C739259BA0C200E4DE1E /* soundHitBomb.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72C259BA0C200E4DE1E /* soundHitBomb.caf */; };
+		1DA4C73A259BA0C200E4DE1E /* soundHitTimeBonus.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72D259BA0C200E4DE1E /* soundHitTimeBonus.caf */; };
+		1DA4C73C259BA0EC00E4DE1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C73B259BA0EC00E4DE1E /* Localizable.strings */; };
+		1DA4C73E259BA0F800E4DE1E /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C73D259BA0F400E4DE1E /* Joystix.ttf */; };
+		1DA4C740259BA10900E4DE1E /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C73F259BA10900E4DE1E /* GameSession.swift */; };
+		1DA4C742259BA11700E4DE1E /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C741259BA11700E4DE1E /* AudioManager.swift */; };
+		1DA4C744259BA12200E4DE1E /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */; };
+		1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C745259BA14200E4DE1E /* String+Utils.swift */; };
+		1DA4C749259BA16400E4DE1E /* UIImageView+Utills.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C748259BA16400E4DE1E /* UIImageView+Utills.m */; };
+		1DA4C74B259BA17D00E4DE1E /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */; };
+		1DA4C754259BA1B200E4DE1E /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */; };
+		1DA4C755259BA1B200E4DE1E /* MXGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74E259BA1B200E4DE1E /* MXGameCenterManager.m */; };
+		1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */; };
+		1DA4C757259BA1B200E4DE1E /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C750259BA1B200E4DE1E /* UIImage+MX.m */; };
+		1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */; };
 		1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB93422337F35C00CF02AF /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,52 +127,52 @@
 		1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "mmmaze/Resources/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D0BCB5B259A1ED30035BAA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mmmaze/Resources/Info.plist; sourceTree = "<group>"; };
 		1D0BCB5E259A1ED30035BAA8 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = mmmaze/Resources/Contents.json; sourceTree = "<group>"; };
-		1D0BCB6E259A1FC60035BAA8 /* UIImageView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Utils.h"; sourceTree = "<group>"; };
-		1D0BCB71259A1FC60035BAA8 /* MXToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXToolBox.h; sourceTree = "<group>"; };
-		1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
-		1D0BCB76259A1FC70035BAA8 /* UIImage+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MX.h"; sourceTree = "<group>"; };
-		1D0BCB77259A1FC70035BAA8 /* UIImageView+Utills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Utills.m"; sourceTree = "<group>"; };
-		1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MX.m"; sourceTree = "<group>"; };
-		1D0BCB83259A1FC70035BAA8 /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
-		1D0BCB93259A21EF0035BAA8 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Joystix.ttf; sourceTree = "<group>"; };
-		1D0BCB95259A23690035BAA8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		1D0BCB98259A23AC0035BAA8 /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftArrow.png; sourceTree = "<group>"; };
-		1D0BCB99259A23AC0035BAA8 /* gate_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gate_open.png; sourceTree = "<group>"; };
-		1D0BCB9A259A23AC0035BAA8 /* gate_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gate_close.png; sourceTree = "<group>"; };
-		1D0BCB9B259A23AC0035BAA8 /* minion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minion.png; sourceTree = "<group>"; };
-		1D0BCB9C259A23AC0035BAA8 /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wall.png; sourceTree = "<group>"; };
-		1D0BCB9D259A23AC0035BAA8 /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightArrow.png; sourceTree = "<group>"; };
-		1D0BCB9E259A23AD0035BAA8 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
-		1D0BCB9F259A23AD0035BAA8 /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb.png; sourceTree = "<group>"; };
-		1D0BCBA1259A23AD0035BAA8 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
-		1D0BCBA2259A23AD0035BAA8 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
-		1D0BCBA4259A23AD0035BAA8 /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
-		1D0BCBA5259A23AD0035BAA8 /* player_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_angry.png; sourceTree = "<group>"; };
-		1D0BCBA6259A23AD0035BAA8 /* hearth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hearth.png; sourceTree = "<group>"; };
-		1D0BCBA7259A23AD0035BAA8 /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whirlwind.png; sourceTree = "<group>"; };
-		1D0BCBA8259A23AD0035BAA8 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
-		1D0BCBD4259A2EAA0035BAA8 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
-		1D1BDDE1259A4F96000145A4 /* soundHitCoin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundHitCoin.caf; sourceTree = "<group>"; };
-		1D1BDDE2259A4F96000145A4 /* soundStartGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundStartGame.caf; sourceTree = "<group>"; };
-		1D1BDDE3259A4F96000145A4 /* soundHitBomb.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundHitBomb.caf; sourceTree = "<group>"; };
-		1D1BDDE4259A4F96000145A4 /* soundHitWhirlwind.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundHitWhirlwind.caf; sourceTree = "<group>"; };
-		1D1BDDE5259A4F96000145A4 /* soundGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundGame.caf; sourceTree = "<group>"; };
-		1D1BDDE6259A4F97000145A4 /* soundLevelChange.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundLevelChange.caf; sourceTree = "<group>"; };
-		1D1BDDE7259A4F97000145A4 /* soundEnemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundEnemySpawn.caf; sourceTree = "<group>"; };
-		1D1BDDE8259A4F97000145A4 /* soundHitHearth.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundHitHearth.caf; sourceTree = "<group>"; };
-		1D1BDDE9259A4F97000145A4 /* soundGameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundGameOver.caf; sourceTree = "<group>"; };
-		1D1BDDEA259A4F97000145A4 /* soundSelectItem.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundSelectItem.caf; sourceTree = "<group>"; };
-		1D1BDDEB259A4F97000145A4 /* soundHitTimeBonus.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundHitTimeBonus.caf; sourceTree = "<group>"; };
-		1D1BDDEC259A4F97000145A4 /* soundHitPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundHitPlayer.caf; sourceTree = "<group>"; };
-		1D1BDDED259A4F97000145A4 /* soundTimeOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundTimeOver.caf; sourceTree = "<group>"; };
-		1D1BDDFB259A5151000145A4 /* MXGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXGameCenterManager.h; sourceTree = "<group>"; };
-		1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXGameCenterManager.m; sourceTree = "<group>"; };
-		1D1BDDFE259A5791000145A4 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		1D1BDE00259A75E6000145A4 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
-		1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DBD17F8259B4366003EC288 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
-		1DD38E7E259B2855002A936A /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		1DA4C703259BA0B300E4DE1E /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = mmmaze/Resources/whirlwind.png; sourceTree = "<group>"; };
+		1DA4C704259BA0B300E4DE1E /* gate_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_open.png; path = mmmaze/Resources/gate_open.png; sourceTree = "<group>"; };
+		1DA4C705259BA0B300E4DE1E /* gate_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_close.png; path = mmmaze/Resources/gate_close.png; sourceTree = "<group>"; };
+		1DA4C706259BA0B300E4DE1E /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = mmmaze/Resources/player.png; sourceTree = "<group>"; };
+		1DA4C707259BA0B300E4DE1E /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = key.png; path = mmmaze/Resources/key.png; sourceTree = "<group>"; };
+		1DA4C708259BA0B300E4DE1E /* hearth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hearth.png; path = mmmaze/Resources/hearth.png; sourceTree = "<group>"; };
+		1DA4C709259BA0B300E4DE1E /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coin.png; path = mmmaze/Resources/coin.png; sourceTree = "<group>"; };
+		1DA4C70A259BA0B300E4DE1E /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time.png; path = mmmaze/Resources/time.png; sourceTree = "<group>"; };
+		1DA4C70B259BA0B300E4DE1E /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = mmmaze/Resources/wall.png; sourceTree = "<group>"; };
+		1DA4C70C259BA0B300E4DE1E /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb.png; path = mmmaze/Resources/bomb.png; sourceTree = "<group>"; };
+		1DA4C70D259BA0B300E4DE1E /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightArrow.png; path = mmmaze/Resources/rightArrow.png; sourceTree = "<group>"; };
+		1DA4C70E259BA0B300E4DE1E /* player_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_angry.png; path = mmmaze/Resources/player_angry.png; sourceTree = "<group>"; };
+		1DA4C70F259BA0B300E4DE1E /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftArrow.png; path = mmmaze/Resources/leftArrow.png; sourceTree = "<group>"; };
+		1DA4C710259BA0B300E4DE1E /* minion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minion.png; path = mmmaze/Resources/minion.png; sourceTree = "<group>"; };
+		1DA4C711259BA0B300E4DE1E /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = mmmaze/Resources/enemy.png; sourceTree = "<group>"; };
+		1DA4C721259BA0C200E4DE1E /* soundStartGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundStartGame.caf; path = mmmaze/Resources/soundStartGame.caf; sourceTree = "<group>"; };
+		1DA4C722259BA0C200E4DE1E /* soundLevelChange.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundLevelChange.caf; path = mmmaze/Resources/soundLevelChange.caf; sourceTree = "<group>"; };
+		1DA4C723259BA0C200E4DE1E /* soundHitWhirlwind.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitWhirlwind.caf; path = mmmaze/Resources/soundHitWhirlwind.caf; sourceTree = "<group>"; };
+		1DA4C724259BA0C200E4DE1E /* soundEnemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundEnemySpawn.caf; path = mmmaze/Resources/soundEnemySpawn.caf; sourceTree = "<group>"; };
+		1DA4C725259BA0C200E4DE1E /* soundSelectItem.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundSelectItem.caf; path = mmmaze/Resources/soundSelectItem.caf; sourceTree = "<group>"; };
+		1DA4C726259BA0C200E4DE1E /* soundGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGame.caf; path = mmmaze/Resources/soundGame.caf; sourceTree = "<group>"; };
+		1DA4C727259BA0C200E4DE1E /* soundHitCoin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitCoin.caf; path = mmmaze/Resources/soundHitCoin.caf; sourceTree = "<group>"; };
+		1DA4C728259BA0C200E4DE1E /* soundHitHearth.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitHearth.caf; path = mmmaze/Resources/soundHitHearth.caf; sourceTree = "<group>"; };
+		1DA4C729259BA0C200E4DE1E /* soundHitPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitPlayer.caf; path = mmmaze/Resources/soundHitPlayer.caf; sourceTree = "<group>"; };
+		1DA4C72A259BA0C200E4DE1E /* soundTimeOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundTimeOver.caf; path = mmmaze/Resources/soundTimeOver.caf; sourceTree = "<group>"; };
+		1DA4C72B259BA0C200E4DE1E /* soundGameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGameOver.caf; path = mmmaze/Resources/soundGameOver.caf; sourceTree = "<group>"; };
+		1DA4C72C259BA0C200E4DE1E /* soundHitBomb.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitBomb.caf; path = mmmaze/Resources/soundHitBomb.caf; sourceTree = "<group>"; };
+		1DA4C72D259BA0C200E4DE1E /* soundHitTimeBonus.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitTimeBonus.caf; path = mmmaze/Resources/soundHitTimeBonus.caf; sourceTree = "<group>"; };
+		1DA4C73B259BA0EC00E4DE1E /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = mmmaze/Resources/Localizable.strings; sourceTree = "<group>"; };
+		1DA4C73D259BA0F400E4DE1E /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Joystix.ttf; path = mmmaze/Resources/Joystix.ttf; sourceTree = "<group>"; };
+		1DA4C73F259BA10900E4DE1E /* GameSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSession.swift; path = mmmaze/Sources/GameSession.swift; sourceTree = "<group>"; };
+		1DA4C741259BA11700E4DE1E /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = mmmaze/Sources/AudioManager.swift; sourceTree = "<group>"; };
+		1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIDevice+Utils.swift"; path = "mmmaze/Sources/UIDevice+Utils.swift"; sourceTree = "<group>"; };
+		1DA4C745259BA14200E4DE1E /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "mmmaze/Sources/String+Utils.swift"; sourceTree = "<group>"; };
+		1DA4C747259BA15200E4DE1E /* UIImageView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Utils.h"; path = "mmmaze/Sources/UIImageView+Utils.h"; sourceTree = "<group>"; };
+		1DA4C748259BA16400E4DE1E /* UIImageView+Utills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Utills.m"; path = "mmmaze/Sources/UIImageView+Utills.m"; sourceTree = "<group>"; };
+		1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreManager.swift; path = mmmaze/Sources/ScoreManager.swift; sourceTree = "<group>"; };
+		1DA4C74C259BA1B200E4DE1E /* MXGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXGameCenterManager.h; path = mmmaze/Sources/MXGameCenterManager.h; sourceTree = "<group>"; };
+		1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Utils.swift"; path = "mmmaze/Sources/UIImage+Utils.swift"; sourceTree = "<group>"; };
+		1DA4C74E259BA1B200E4DE1E /* MXGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXGameCenterManager.m; path = mmmaze/Sources/MXGameCenterManager.m; sourceTree = "<group>"; };
+		1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+Utils.swift"; path = "mmmaze/Sources/UIImageView+Utils.swift"; sourceTree = "<group>"; };
+		1DA4C750259BA1B200E4DE1E /* UIImage+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MX.m"; path = "mmmaze/Sources/UIImage+MX.m"; sourceTree = "<group>"; };
+		1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "mmmaze/Sources/UIView+Utils.swift"; sourceTree = "<group>"; };
+		1DA4C752259BA1B200E4DE1E /* UIImage+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MX.h"; path = "mmmaze/Sources/UIImage+MX.h"; sourceTree = "<group>"; };
+		1DA4C753259BA1B200E4DE1E /* MXToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXToolBox.h; path = mmmaze/Sources/MXToolBox.h; sourceTree = "<group>"; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -196,7 +196,6 @@
 				1D0BCB91259A21050035BAA8 /* Screens */,
 				1D9ADB46259B1743003CC8C2 /* Maze */,
 				1D0BCBCB259A25330035BAA8 /* Utils */,
-				1D0BCB6B259A1FBC0035BAA8 /* MXToolBox */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -204,10 +203,10 @@
 		1D0BCB12259A1DEE0035BAA8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1D0BCB93259A21EF0035BAA8 /* Joystix.ttf */,
 				1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */,
-				1D0BCB95259A23690035BAA8 /* Localizable.strings */,
 				1D0BCB5E259A1ED30035BAA8 /* Contents.json */,
+				1DA4C73D259BA0F400E4DE1E /* Joystix.ttf */,
+				1DA4C73B259BA0EC00E4DE1E /* Localizable.strings */,
 				1D0BCB57259A1ED30035BAA8 /* gameConfiguration.json */,
 				1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */,
 				1D0BCB5B259A1ED30035BAA8 /* Info.plist */,
@@ -216,16 +215,6 @@
 				1D1BDDE0259A4F8D000145A4 /* Sounds */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		1D0BCB6B259A1FBC0035BAA8 /* MXToolBox */ = {
-			isa = PBXGroup;
-			children = (
-				1D0BCB71259A1FC60035BAA8 /* MXToolBox.h */,
-				1D0BCB76259A1FC70035BAA8 /* UIImage+MX.h */,
-				1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */,
-			);
-			name = MXToolBox;
 			sourceTree = "<group>";
 		};
 		1D0BCB91259A21050035BAA8 /* Screens */ = {
@@ -244,21 +233,21 @@
 		1D0BCB97259A23A40035BAA8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				1D0BCB9F259A23AD0035BAA8 /* bomb.png */,
-				1D0BCB9E259A23AD0035BAA8 /* coin.png */,
-				1D0BCBA8259A23AD0035BAA8 /* enemy.png */,
-				1D0BCB9A259A23AC0035BAA8 /* gate_close.png */,
-				1D0BCB99259A23AC0035BAA8 /* gate_open.png */,
-				1D0BCBA6259A23AD0035BAA8 /* hearth.png */,
-				1D0BCBA4259A23AD0035BAA8 /* key.png */,
-				1D0BCB98259A23AC0035BAA8 /* leftArrow.png */,
-				1D0BCB9B259A23AC0035BAA8 /* minion.png */,
-				1D0BCBA5259A23AD0035BAA8 /* player_angry.png */,
-				1D0BCBA1259A23AD0035BAA8 /* player.png */,
-				1D0BCB9D259A23AC0035BAA8 /* rightArrow.png */,
-				1D0BCBA2259A23AD0035BAA8 /* time.png */,
-				1D0BCB9C259A23AC0035BAA8 /* wall.png */,
-				1D0BCBA7259A23AD0035BAA8 /* whirlwind.png */,
+				1DA4C70C259BA0B300E4DE1E /* bomb.png */,
+				1DA4C709259BA0B300E4DE1E /* coin.png */,
+				1DA4C711259BA0B300E4DE1E /* enemy.png */,
+				1DA4C705259BA0B300E4DE1E /* gate_close.png */,
+				1DA4C704259BA0B300E4DE1E /* gate_open.png */,
+				1DA4C708259BA0B300E4DE1E /* hearth.png */,
+				1DA4C707259BA0B300E4DE1E /* key.png */,
+				1DA4C70F259BA0B300E4DE1E /* leftArrow.png */,
+				1DA4C710259BA0B300E4DE1E /* minion.png */,
+				1DA4C70E259BA0B300E4DE1E /* player_angry.png */,
+				1DA4C706259BA0B300E4DE1E /* player.png */,
+				1DA4C70D259BA0B300E4DE1E /* rightArrow.png */,
+				1DA4C70A259BA0B300E4DE1E /* time.png */,
+				1DA4C70B259BA0B300E4DE1E /* wall.png */,
+				1DA4C703259BA0B300E4DE1E /* whirlwind.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -266,19 +255,21 @@
 		1D0BCBCB259A25330035BAA8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1DA4C753259BA1B200E4DE1E /* MXToolBox.h */,
+				1DA4C74C259BA1B200E4DE1E /* MXGameCenterManager.h */,
+				1DA4C74E259BA1B200E4DE1E /* MXGameCenterManager.m */,
+				1DA4C752259BA1B200E4DE1E /* UIImage+MX.h */,
+				1DA4C750259BA1B200E4DE1E /* UIImage+MX.m */,
+				1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */,
+				1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */,
 				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
-				1D1BDDFE259A5791000145A4 /* AudioManager.swift */,
-				1DBD17F8259B4366003EC288 /* UIDevice+Utils.swift */,
-				1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */,
-				1D0BCBD4259A2EAA0035BAA8 /* UIView+Utils.swift */,
-				1D0BCB83259A1FC70035BAA8 /* UIImage+Utils.swift */,
-				1D1BDDFB259A5151000145A4 /* MXGameCenterManager.h */,
-				1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */,
-				1D1BDE00259A75E6000145A4 /* ScoreManager.swift */,
-				1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */,
-				1D0BCB33259A1ECA0035BAA8 /* TNEnemyCollaborator.h */,
-				1D0BCB6E259A1FC60035BAA8 /* UIImageView+Utils.h */,
-				1D0BCB77259A1FC70035BAA8 /* UIImageView+Utills.m */,
+				1DA4C741259BA11700E4DE1E /* AudioManager.swift */,
+				1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */,
+				1DA4C745259BA14200E4DE1E /* String+Utils.swift */,
+				1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */,
+				1DA4C747259BA15200E4DE1E /* UIImageView+Utils.h */,
+				1DA4C748259BA16400E4DE1E /* UIImageView+Utills.m */,
+				1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -340,19 +331,19 @@
 		1D1BDDE0259A4F8D000145A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				1D1BDDE7259A4F97000145A4 /* soundEnemySpawn.caf */,
-				1D1BDDE5259A4F96000145A4 /* soundGame.caf */,
-				1D1BDDE9259A4F97000145A4 /* soundGameOver.caf */,
-				1D1BDDE3259A4F96000145A4 /* soundHitBomb.caf */,
-				1D1BDDE1259A4F96000145A4 /* soundHitCoin.caf */,
-				1D1BDDE8259A4F97000145A4 /* soundHitHearth.caf */,
-				1D1BDDEC259A4F97000145A4 /* soundHitPlayer.caf */,
-				1D1BDDEB259A4F97000145A4 /* soundHitTimeBonus.caf */,
-				1D1BDDE4259A4F96000145A4 /* soundHitWhirlwind.caf */,
-				1D1BDDE6259A4F97000145A4 /* soundLevelChange.caf */,
-				1D1BDDEA259A4F97000145A4 /* soundSelectItem.caf */,
-				1D1BDDE2259A4F96000145A4 /* soundStartGame.caf */,
-				1D1BDDED259A4F97000145A4 /* soundTimeOver.caf */,
+				1DA4C724259BA0C200E4DE1E /* soundEnemySpawn.caf */,
+				1DA4C726259BA0C200E4DE1E /* soundGame.caf */,
+				1DA4C72B259BA0C200E4DE1E /* soundGameOver.caf */,
+				1DA4C72C259BA0C200E4DE1E /* soundHitBomb.caf */,
+				1DA4C727259BA0C200E4DE1E /* soundHitCoin.caf */,
+				1DA4C728259BA0C200E4DE1E /* soundHitHearth.caf */,
+				1DA4C729259BA0C200E4DE1E /* soundHitPlayer.caf */,
+				1DA4C72D259BA0C200E4DE1E /* soundHitTimeBonus.caf */,
+				1DA4C723259BA0C200E4DE1E /* soundHitWhirlwind.caf */,
+				1DA4C722259BA0C200E4DE1E /* soundLevelChange.caf */,
+				1DA4C725259BA0C200E4DE1E /* soundSelectItem.caf */,
+				1DA4C721259BA0C200E4DE1E /* soundStartGame.caf */,
+				1DA4C72A259BA0C200E4DE1E /* soundTimeOver.caf */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -389,7 +380,7 @@
 			children = (
 				1D0BCB2B259A1ECA0035BAA8 /* GameSession.h */,
 				1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */,
-				1DD38E7E259B2855002A936A /* GameSession.swift */,
+				1DA4C73F259BA10900E4DE1E /* GameSession.swift */,
 				1D9ADB48259B17EC003CC8C2 /* Other */,
 				1D9ADB47259B1760003CC8C2 /* Generator */,
 			);
@@ -410,6 +401,7 @@
 			children = (
 				1D0BCB29259A1ECA0035BAA8 /* TNEnemy.h */,
 				1D0BCB1D259A1ECA0035BAA8 /* TNEnemy.m */,
+				1D0BCB33259A1ECA0035BAA8 /* TNEnemyCollaborator.h */,
 				1D0BCB34259A1ECA0035BAA8 /* TNEnemyCollaborator.m */,
 				1D0BCB20259A1ECA0035BAA8 /* TNPlayer.h */,
 				1D0BCB21259A1ECA0035BAA8 /* TNPlayer.m */,
@@ -492,47 +484,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0BCBBD259A23B40035BAA8 /* player.png in Resources */,
-				1D0BCBC5259A23B40035BAA8 /* bomb.png in Resources */,
-				1D1BDDF3259A4F97000145A4 /* soundLevelChange.caf in Resources */,
-				1D1BDDF2259A4F97000145A4 /* soundGame.caf in Resources */,
+				1DA4C720259BA0B300E4DE1E /* enemy.png in Resources */,
+				1DA4C73E259BA0F800E4DE1E /* Joystix.ttf in Resources */,
 				1D0BCB61259A1ED30035BAA8 /* LaunchScreen.storyboard in Resources */,
-				1D0BCBBB259A23B40035BAA8 /* rightArrow.png in Resources */,
-				1D0BCB94259A233A0035BAA8 /* Joystix.ttf in Resources */,
-				1D1BDDF4259A4F97000145A4 /* soundEnemySpawn.caf in Resources */,
-				1D0BCBCA259A23B40035BAA8 /* minion.png in Resources */,
-				1D0BCBC4259A23B40035BAA8 /* wall.png in Resources */,
-				1D1BDDF1259A4F97000145A4 /* soundHitWhirlwind.caf in Resources */,
-				1D1BDDFA259A4F97000145A4 /* soundTimeOver.caf in Resources */,
-				1D1BDDF7259A4F97000145A4 /* soundSelectItem.caf in Resources */,
-				1D0BCBBC259A23B40035BAA8 /* gate_close.png in Resources */,
+				1DA4C736259BA0C200E4DE1E /* soundHitPlayer.caf in Resources */,
+				1DA4C73A259BA0C200E4DE1E /* soundHitTimeBonus.caf in Resources */,
+				1DA4C733259BA0C200E4DE1E /* soundGame.caf in Resources */,
+				1DA4C719259BA0B300E4DE1E /* time.png in Resources */,
+				1DA4C739259BA0C200E4DE1E /* soundHitBomb.caf in Resources */,
+				1DA4C71E259BA0B300E4DE1E /* leftArrow.png in Resources */,
+				1DA4C737259BA0C200E4DE1E /* soundTimeOver.caf in Resources */,
+				1DA4C71C259BA0B300E4DE1E /* rightArrow.png in Resources */,
+				1DA4C71D259BA0B300E4DE1E /* player_angry.png in Resources */,
+				1DA4C72F259BA0C200E4DE1E /* soundLevelChange.caf in Resources */,
+				1DA4C732259BA0C200E4DE1E /* soundSelectItem.caf in Resources */,
+				1DA4C738259BA0C200E4DE1E /* soundGameOver.caf in Resources */,
+				1DA4C715259BA0B300E4DE1E /* player.png in Resources */,
 				1D0BCB47259A1ECA0035BAA8 /* GameViewController.xib in Resources */,
-				1D1BDDF9259A4F97000145A4 /* soundHitPlayer.caf in Resources */,
+				1DA4C735259BA0C200E4DE1E /* soundHitHearth.caf in Resources */,
+				1DA4C734259BA0C200E4DE1E /* soundHitCoin.caf in Resources */,
 				1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */,
-				1D0BCBC0259A23B40035BAA8 /* whirlwind.png in Resources */,
-				1D0BCBC8259A23B40035BAA8 /* hearth.png in Resources */,
+				1DA4C718259BA0B300E4DE1E /* coin.png in Resources */,
 				1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */,
+				1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */,
 				1D0BCB4E259A1ECA0035BAA8 /* CreditsViewController.xib in Resources */,
 				1D0BCB62259A1ED30035BAA8 /* gameConfiguration.json in Resources */,
-				1D1BDDF6259A4F97000145A4 /* soundGameOver.caf in Resources */,
-				1D0BCBBF259A23B40035BAA8 /* leftArrow.png in Resources */,
-				1D1BDDEE259A4F97000145A4 /* soundHitCoin.caf in Resources */,
-				1D0BCBC1259A23B40035BAA8 /* gate_open.png in Resources */,
-				1D1BDDF8259A4F97000145A4 /* soundHitTimeBonus.caf in Resources */,
+				1DA4C716259BA0B300E4DE1E /* key.png in Resources */,
+				1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */,
 				1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */,
+				1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */,
+				1DA4C730259BA0C200E4DE1E /* soundHitWhirlwind.caf in Resources */,
+				1DA4C72E259BA0C200E4DE1E /* soundStartGame.caf in Resources */,
+				1DA4C73C259BA0EC00E4DE1E /* Localizable.strings in Resources */,
 				1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */,
 				1D0BCB63259A1ED30035BAA8 /* GoogleService-Info.plist in Resources */,
-				1D1BDDF0259A4F97000145A4 /* soundHitBomb.caf in Resources */,
-				1D0BCBC9259A23B40035BAA8 /* player_angry.png in Resources */,
-				1D0BCBBE259A23B40035BAA8 /* key.png in Resources */,
+				1DA4C713259BA0B300E4DE1E /* gate_open.png in Resources */,
+				1DA4C714259BA0B300E4DE1E /* gate_close.png in Resources */,
 				1D0BCB60259A1ED30035BAA8 /* Assets.xcassets in Resources */,
-				1D0BCBC2259A23B40035BAA8 /* coin.png in Resources */,
-				1D0BCBBA259A23B40035BAA8 /* enemy.png in Resources */,
-				1D0BCB96259A23780035BAA8 /* Localizable.strings in Resources */,
-				1D1BDDF5259A4F97000145A4 /* soundHitHearth.caf in Resources */,
+				1DA4C731259BA0C200E4DE1E /* soundEnemySpawn.caf in Resources */,
+				1DA4C717259BA0B300E4DE1E /* hearth.png in Resources */,
+				1DA4C71F259BA0B300E4DE1E /* minion.png in Resources */,
 				1D0BCB49259A1ECA0035BAA8 /* MenuViewController.xib in Resources */,
-				1D1BDDEF259A4F97000145A4 /* soundStartGame.caf in Resources */,
-				1D0BCBC7259A23B40035BAA8 /* time.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,27 +539,27 @@
 				1D0BCB48259A1ECA0035BAA8 /* MazeGenerator.cpp in Sources */,
 				1D0BCB44259A1ECA0035BAA8 /* TNPlayer.m in Sources */,
 				1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */,
-				1D1BDE01259A75E6000145A4 /* ScoreManager.swift in Sources */,
 				1D0BCB4D259A1ECA0035BAA8 /* TNTile.m in Sources */,
 				1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */,
-				1D0BCB8C259A1FC70035BAA8 /* UIImage+MX.m in Sources */,
-				1D0BCB89259A1FC70035BAA8 /* UIImageView+Utills.m in Sources */,
+				1DA4C740259BA10900E4DE1E /* GameSession.swift in Sources */,
 				1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */,
-				1D2C00A4259B212900BFE4B6 /* UIImageView+Utils.swift in Sources */,
+				1DA4C74B259BA17D00E4DE1E /* ScoreManager.swift in Sources */,
 				1D0BCB50259A1ECA0035BAA8 /* AppDelegate.swift in Sources */,
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
-				1D1BDDFD259A515C000145A4 /* MXGameCenterManager.m in Sources */,
-				1D0BCBD5259A2EAA0035BAA8 /* UIView+Utils.swift in Sources */,
+				1DA4C749259BA16400E4DE1E /* UIImageView+Utills.m in Sources */,
+				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
+				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
 				1D0BCB51259A1ECA0035BAA8 /* TNEnemyCollaborator.m in Sources */,
+				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
 				1D0BCB42259A1ECA0035BAA8 /* TNEnemy.m in Sources */,
 				1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */,
-				1D0BCB90259A1FC70035BAA8 /* UIImage+Utils.swift in Sources */,
-				1DD38E7F259B2855002A936A /* GameSession.swift in Sources */,
-				1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */,
-				1DBD17F9259B4366003EC288 /* UIDevice+Utils.swift in Sources */,
+				1DA4C757259BA1B200E4DE1E /* UIImage+MX.m in Sources */,
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
+				1DA4C744259BA12200E4DE1E /* UIDevice+Utils.swift in Sources */,
+				1DA4C755259BA1B200E4DE1E /* MXGameCenterManager.m in Sources */,
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,
-				1D0BCB85259A1FC70035BAA8 /* String+Utils.swift in Sources */,
+				1DA4C754259BA1B200E4DE1E /* UIImage+Utils.swift in Sources */,
+				1DA4C742259BA11700E4DE1E /* AudioManager.swift in Sources */,
 				1D0BCB4A259A1ECA0035BAA8 /* CreditsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
