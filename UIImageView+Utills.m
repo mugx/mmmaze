@@ -5,8 +5,9 @@
 //  Created by mugx on 07/04/16.
 //  Copyright © 2016-2021 mugx. All rights reserved.
 
-#import "UIImageView+MX.h"
+#import "UIImageView+Utils.h"
 #import "UIImage+MX.h"
+#import "mmmaze-Swift.h"
 
 #define ANIM_DURATION 1.0
 #define SUB_TILE_DIVIDER_SIZE 5.0
@@ -40,7 +41,7 @@
     for (int x = 0; x < rows; ++x)
     {
       CGRect frame = CGRectMake(x * originalW, y * originalH, originalW, originalH);
-      UIImageView *subTile = [[UIImageView alloc] initWithImage:[self.image crop:frame]];
+      UIImageView *subTile = [[UIImageView alloc] initWithImage:[self.image cropWith:frame]];
       subTile.frame = CGRectMake(x * originalW, y * originalH, originalW, originalH);
       [self addSubview:subTile];
     }
@@ -64,20 +65,6 @@
       }
     }];
   }
-}
-
-- (void)blink:(NSUInteger)duration completion:(void (^)())completion
-{
-  [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut animations:^{
-    [UIView setAnimationRepeatCount:duration / 0.3];
-    self.alpha = 0.2;
-  } completion:^(BOOL finished) {
-    self.alpha = 1.0;
-    if (completion)
-    {
-      completion();
-    }
-  }];
 }
 
 @end

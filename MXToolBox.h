@@ -11,6 +11,6 @@
 
 #import "MXGameCenterManager.h"
 #import "UIImage+MX.h"
-#import "UIImageView+MX.h"
+#import "UIImageView+Utils.h"
 
 #endif /* MXToolBox_h */

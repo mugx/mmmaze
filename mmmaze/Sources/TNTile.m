@@ -126,7 +126,7 @@ typedef enum : NSUInteger {
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction
 {
-  self.lastSwipe = direction;
+  self.lastSwipe = (int)direction;
   
   if (self.lastSwipe == UISwipeGestureRecognizerDirectionRight)
   {

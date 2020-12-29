@@ -34,9 +34,9 @@
 		1D0BCB63259A1ED30035BAA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */; };
 		1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB5E259A1ED30035BAA8 /* Contents.json */; };
 		1D0BCB85259A1FC70035BAA8 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */; };
-		1D0BCB89259A1FC70035BAA8 /* UIImageView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB77259A1FC70035BAA8 /* UIImageView+MX.m */; };
+		1D0BCB89259A1FC70035BAA8 /* UIImageView+Utills.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB77259A1FC70035BAA8 /* UIImageView+Utills.m */; };
 		1D0BCB8C259A1FC70035BAA8 /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */; };
-		1D0BCB90259A1FC70035BAA8 /* UIImage+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB83259A1FC70035BAA8 /* UIImage+utils.swift */; };
+		1D0BCB90259A1FC70035BAA8 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB83259A1FC70035BAA8 /* UIImage+Utils.swift */; };
 		1D0BCB94259A233A0035BAA8 /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB93259A21EF0035BAA8 /* Joystix.ttf */; };
 		1D0BCB96259A23780035BAA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB95259A23690035BAA8 /* Localizable.strings */; };
 		1D0BCBBA259A23B40035BAA8 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCBA8259A23AD0035BAA8 /* enemy.png */; };
@@ -71,6 +71,7 @@
 		1D1BDDFD259A515C000145A4 /* MXGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */; };
 		1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFE259A5791000145A4 /* AudioManager.swift */; };
 		1D1BDE01259A75E6000145A4 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDE00259A75E6000145A4 /* ScoreManager.swift */; };
+		1D2C00A4259B212900BFE4B6 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */; };
 		1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB93422337F35C00CF02AF /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,13 +125,13 @@
 		1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "mmmaze/Resources/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D0BCB5B259A1ED30035BAA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mmmaze/Resources/Info.plist; sourceTree = "<group>"; };
 		1D0BCB5E259A1ED30035BAA8 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = mmmaze/Resources/Contents.json; sourceTree = "<group>"; };
-		1D0BCB6E259A1FC60035BAA8 /* UIImageView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MX.h"; sourceTree = "<group>"; };
+		1D0BCB6E259A1FC60035BAA8 /* UIImageView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Utils.h"; sourceTree = "<group>"; };
 		1D0BCB71259A1FC60035BAA8 /* MXToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXToolBox.h; sourceTree = "<group>"; };
 		1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		1D0BCB76259A1FC70035BAA8 /* UIImage+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MX.h"; sourceTree = "<group>"; };
-		1D0BCB77259A1FC70035BAA8 /* UIImageView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MX.m"; sourceTree = "<group>"; };
+		1D0BCB77259A1FC70035BAA8 /* UIImageView+Utills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Utills.m"; sourceTree = "<group>"; };
 		1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MX.m"; sourceTree = "<group>"; };
-		1D0BCB83259A1FC70035BAA8 /* UIImage+utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+utils.swift"; sourceTree = "<group>"; };
+		1D0BCB83259A1FC70035BAA8 /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		1D0BCB93259A21EF0035BAA8 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Joystix.ttf; sourceTree = "<group>"; };
 		1D0BCB95259A23690035BAA8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1D0BCB98259A23AC0035BAA8 /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftArrow.png; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 		1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXGameCenterManager.m; sourceTree = "<group>"; };
 		1D1BDDFE259A5791000145A4 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		1D1BDE00259A75E6000145A4 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
+		1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -218,8 +220,6 @@
 				1D0BCB71259A1FC60035BAA8 /* MXToolBox.h */,
 				1D0BCB76259A1FC70035BAA8 /* UIImage+MX.h */,
 				1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */,
-				1D0BCB6E259A1FC60035BAA8 /* UIImageView+MX.h */,
-				1D0BCB77259A1FC70035BAA8 /* UIImageView+MX.m */,
 			);
 			name = MXToolBox;
 			sourceTree = "<group>";
@@ -266,10 +266,13 @@
 				1D1BDDFE259A5791000145A4 /* AudioManager.swift */,
 				1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */,
 				1D0BCBD4259A2EAA0035BAA8 /* UIView+Utils.swift */,
-				1D0BCB83259A1FC70035BAA8 /* UIImage+utils.swift */,
+				1D0BCB83259A1FC70035BAA8 /* UIImage+Utils.swift */,
 				1D1BDDFB259A5151000145A4 /* MXGameCenterManager.h */,
 				1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */,
 				1D1BDE00259A75E6000145A4 /* ScoreManager.swift */,
+				1D2C00A3259B212900BFE4B6 /* UIImageView+Utils.swift */,
+				1D0BCB6E259A1FC60035BAA8 /* UIImageView+Utils.h */,
+				1D0BCB77259A1FC70035BAA8 /* UIImageView+Utills.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -542,8 +545,9 @@
 				1D0BCB4D259A1ECA0035BAA8 /* TNTile.m in Sources */,
 				1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */,
 				1D0BCB8C259A1FC70035BAA8 /* UIImage+MX.m in Sources */,
-				1D0BCB89259A1FC70035BAA8 /* UIImageView+MX.m in Sources */,
+				1D0BCB89259A1FC70035BAA8 /* UIImageView+Utills.m in Sources */,
 				1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */,
+				1D2C00A4259B212900BFE4B6 /* UIImageView+Utils.swift in Sources */,
 				1D0BCB50259A1ECA0035BAA8 /* AppDelegate.swift in Sources */,
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
 				1D1BDDFD259A515C000145A4 /* MXGameCenterManager.m in Sources */,
@@ -551,7 +555,7 @@
 				1D0BCB51259A1ECA0035BAA8 /* TNEnemyCollaborator.m in Sources */,
 				1D0BCB42259A1ECA0035BAA8 /* TNEnemy.m in Sources */,
 				1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */,
-				1D0BCB90259A1FC70035BAA8 /* UIImage+utils.swift in Sources */,
+				1D0BCB90259A1FC70035BAA8 /* UIImage+Utils.swift in Sources */,
 				1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */,
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,

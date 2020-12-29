@@ -9,5 +9,4 @@
 
 @interface UIImageView (MX)
 - (void)explode:(void (^)())completion;
-- (void)blink:(NSUInteger)duration completion:(void (^)())completion;
 @end

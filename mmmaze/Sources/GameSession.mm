@@ -117,7 +117,7 @@
 			{
 				TNTile *tile = [[TNTile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.tag = TTWall;
-				[tile setImage:[[UIImage imageNamed:@"wall"] imageColored:BKG_COLORS[self.bkgColorIndex]]];
+				[tile setImage:[[UIImage imageNamed:@"wall"] coloredWith:BKG_COLORS[self.bkgColorIndex]]];
 				tile.isDestroyable = !(r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1);
 				tile.x = r;
 				tile.y = c;
@@ -166,7 +166,7 @@
 	keyItem.x = c;
 	keyItem.y = r;
 	keyItem.tag = TTKey;
-	keyItem.image = [[UIImage imageNamed:@"key"] imageColored:Constants.magentaColor];
+	keyItem.image = [[UIImage imageNamed:@"key"] coloredWith:Constants.magentaColor];
 	[self.mazeView addSubview:keyItem];
 	[self.items addObject:keyItem];
 
@@ -185,19 +185,19 @@
 	if ((arc4random() % 100) >= 50)
 	{
 		item.tag = TTCoin;
-		item.image = [[UIImage imageNamed:@"coin"] imageColored:[UIColor yellowColor]];
+		item.image = [[UIImage imageNamed:@"coin"] coloredWith:[UIColor yellowColor]];
 		[item flip];
 	}
 	else if ((arc4random() % 100) >= 90)
 	{
 		item.tag = TTWhirlwind;
-		item.image = [[UIImage imageNamed:@"whirlwind"] imageColored:BKG_COLORS[self.bkgColorIndex]];
+		item.image = [[UIImage imageNamed:@"whirlwind"] coloredWith:BKG_COLORS[self.bkgColorIndex]];
 		[item spin];
 	}
 	else if ((arc4random() % 100) >= 80)
 	{
 		item.tag = TTBomb;
-		item.image = [[UIImage imageNamed:@"bomb"] imageColored:Constants.redColor];
+		item.image = [[UIImage imageNamed:@"bomb"] coloredWith:Constants.redColor];
 	}
 	else if ((arc4random() % 100) >= 98)
 	{
