@@ -18,23 +18,6 @@ enum ScreenType {
     case STCredits
 }
 
-@objc
-enum SoundType: UInt {
-    case STHitCoin = 1
-    case STHitWhirlwind = 2
-    case STHitBomb = 3
-    case STHitHearth = 4
-    case STHitTimeBonus = 5
-    case STStartGame = 6
-    case STGame = 7
-    case STSelectItem = 8
-    case STTimeOver = 9
-    case STGameOver = 10
-    case STLevelChange = 11
-    case STEnemySpawn = 12
-    case STHitPlayer = 13
-}
-
 @objcMembers
 class Constants: NSObject {
 //    #define GAME_CENTER_ENABLED !DEBUG

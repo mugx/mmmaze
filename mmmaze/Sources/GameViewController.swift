@@ -155,7 +155,7 @@ extension GameViewController: GameSessionDelegate {
 			UIView.animate(withDuration: 0.1, animations: {
 				self.hurryUpLabel.alpha = 1
 			}) { (success) in
-				AudioManager.shared.play(SoundType.STTimeOver)
+				playSound(SoundType.timeOver)
 
 				// Add the animation
 				let animation = CABasicAnimation(keyPath: "opacity")

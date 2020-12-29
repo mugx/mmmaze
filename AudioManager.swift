@@ -8,53 +8,75 @@
 
 import AVFoundation
 
-enum AudioFileType: String {
-	case mp3 = "mp3"
-	case wav = "wav"
+@objc
+enum SoundType: UInt {
+		case hitCoin
+		case hitWhirlwind
+		case hitBomb
+		case hitHearth
+		case hitTimeBonus
+		case startGame
+		case game
+		case selectItem
+		case timeOver
+		case gameOver
+		case levelChange
+		case enemySpawn
+		case hitPlayer
+}
+
+func playSound(_ sound: SoundType) {
+	AudioManager.shared.play(sound: sound)
 }
 
 @objc class AudioManager: NSObject {
 	@objc static let shared = AudioManager()
-	var player: AVAudioPlayer!
 	var soundEnabled: Bool = false
 	var volume: Float = 0
+	private var sounds = [SoundType: AVAudioPlayer]()
 
-	@objc func play(_ sound: SoundType) {
+	func play(sound: SoundType) {
+		guard soundEnabled else { return }
+
+		try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+		try? AVAudioSession.sharedInstance().setActive(true)
+
 		var fileName = ""
 		switch sound {
-		case .STHitCoin:
+		case .hitCoin:
 			fileName = "soundHitCoin"
-		case .STSelectItem:
+		case .selectItem:
 			fileName = "soundSelectItem"
-		case .STHitWhirlwind:
+		case .hitWhirlwind:
 			fileName = "soundSelectItem"
-		case .STHitBomb:
+		case .hitBomb:
 			fileName = "soundHitBomb"
-		case .STHitHearth:
+		case .hitHearth:
 			fileName = "soundHitHearth"
-		case .STHitTimeBonus:
+		case .hitTimeBonus:
 			fileName = "soundHitTimeBonus"
-		case .STStartGame:
+		case .startGame:
 			fileName = "soundStartGame"
-		case .STGame:
+		case .game:
 			fileName = "soundGame"
-		case .STTimeOver:
+		case .timeOver:
 			fileName = "soundTimeOver"
-		case .STGameOver:
+		case .gameOver:
 			fileName = "soundGameOver"
-		case .STLevelChange:
+		case .levelChange:
 			fileName = "soundLevelChange"
-		case .STEnemySpawn:
+		case .enemySpawn:
 			fileName = "soundEnemySpawn"
-		case .STHitPlayer:
+		case .hitPlayer:
 			fileName = "soundHitPlayer"
 		}
 
-		try! AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-		try! AVAudioSession.sharedInstance().setActive(true)
-
-		let url = Bundle.main.url(forResource: fileName, withExtension: "caf")
-		player = try! AVAudioPlayer(contentsOf: url!)
-		//player.play()
+		if sounds[sound] == nil, let url = Bundle.main.url(forResource: fileName, withExtension: "caf") {
+			let player = try? AVAudioPlayer(contentsOf: url)
+			player?.prepareToPlay()
+			sounds[sound] = player
+		}
+		sounds[sound]?.volume = volume
+		sounds[sound]?.play()
 	}
 }
