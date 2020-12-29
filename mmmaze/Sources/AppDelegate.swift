@@ -20,14 +20,8 @@ import Foundation
 		window.makeKeyAndVisible()
 		window.rootViewController = MenuViewController()
 
-		prepareSounds()
-	}
-
-	func prepareSounds() {
 		AudioManager.shared.soundEnabled = Bool(truncating: Constants.SOUND_ENABLED as NSNumber)
 		AudioManager.shared.volume = Constants.SOUND_DEFAULT_VOLUME
-		let json = MXUtils.json(fromFile: "gameConfiguration.json") as!  [AnyHashable: Any]
-		//AudioManager.shared.load(json)
 	}
 
 	//MARK: - Select Screen

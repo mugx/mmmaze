@@ -8,11 +8,6 @@
 
 #import "MXGameCenterManager.h"
 
-@interface MXGameCenterManager ()
-@property(nonatomic,strong) NSString *leaderboardIdentifier;
-@property(nonatomic,strong) NSMutableDictionary *achievementsDictionary;
-@end
-
 @implementation MXGameCenterManager
 
 + (instancetype)sharedInstance
@@ -25,14 +20,6 @@
 	return gameSettings;
 }
 
-- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController*)gameCenterViewController
-{
-	[gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (int64_t)highScore {
-	return [[[NSUserDefaults standardUserDefaults] objectForKey:SAVE_KEY_HIGH_SCORES] firstObject];
-}
 
 - (void)saveScore:(int64_t)score
 {

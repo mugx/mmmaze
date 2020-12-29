@@ -44,31 +44,21 @@
                         <constraint firstAttribute="width" constant="32" id="Ifu-cT-0MJ"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="DlT-ev-XqM" userLabel="Swipe Image" customClass="MXImageView">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="DlT-ev-XqM" userLabel="Swipe Image">
                     <rect key="frame" x="221.5" y="317.5" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="VGA-17-xWF"/>
                         <constraint firstAttribute="height" constant="32" id="qjU-bB-NMl"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="mxImageColor">
-                            <color key="value" red="0.12926812469959259" green="1" blue="0.99905514717102051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="KoU-fV-R6s" userLabel="Swipe Image" customClass="MXImageView">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="KoU-fV-R6s" userLabel="Swipe Image">
                     <rect key="frame" x="121.5" y="317.5" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="4Sb-wu-TrJ"/>
                         <constraint firstAttribute="height" constant="32" id="ljP-0e-uiS"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="mxImageColor">
-                            <color key="value" red="0.12926812469959259" green="1" blue="0.99905514717102051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVt-XV-jvV" customClass="MXLabel">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVt-XV-jvV">
                     <rect key="frame" x="151" y="236.5" width="73" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

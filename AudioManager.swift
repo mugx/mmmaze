@@ -15,6 +15,7 @@ enum AudioFileType: String {
 
 @objc class AudioManager: NSObject {
 	@objc static let shared = AudioManager()
+	var player: AVAudioPlayer!
 	var soundEnabled: Bool = false
 	var volume: Float = 0
 
@@ -53,7 +54,7 @@ enum AudioFileType: String {
 		try! AVAudioSession.sharedInstance().setActive(true)
 
 		let url = Bundle.main.url(forResource: fileName, withExtension: "caf")
-		let player: AVAudioPlayer! = try! AVAudioPlayer(contentsOf: url!)
-		player.play()
+		player = try! AVAudioPlayer(contentsOf: url!)
+		//player.play()
 	}
 }

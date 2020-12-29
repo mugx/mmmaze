@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D07BEE81CCD36E80062EFE6 /* GameKit.framework */; };
 		1D0BCB3A259A1ECA0035BAA8 /* TNTile+AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB13259A1EC90035BAA8 /* TNTile+AI.m */; };
 		1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */; };
 		1D0BCB3F259A1ECA0035BAA8 /* TNCollisionCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB19259A1ECA0035BAA8 /* TNCollisionCollaborator.m */; };
@@ -36,16 +35,8 @@
 		1D0BCB63259A1ED30035BAA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */; };
 		1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB5E259A1ED30035BAA8 /* Contents.json */; };
 		1D0BCB85259A1FC70035BAA8 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */; };
-		1D0BCB86259A1FC70035BAA8 /* UIColor+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB73259A1FC60035BAA8 /* UIColor+MX.m */; };
-		1D0BCB87259A1FC70035BAA8 /* MXUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB74259A1FC60035BAA8 /* MXUtils.m */; };
-		1D0BCB88259A1FC70035BAA8 /* MXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB75259A1FC60035BAA8 /* MXButton.m */; };
 		1D0BCB89259A1FC70035BAA8 /* UIImageView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB77259A1FC70035BAA8 /* UIImageView+MX.m */; };
-		1D0BCB8A259A1FC70035BAA8 /* MXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB79259A1FC70035BAA8 /* MXImageView.m */; };
-		1D0BCB8B259A1FC70035BAA8 /* UIView+MX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB7E259A1FC70035BAA8 /* UIView+MX.swift */; };
 		1D0BCB8C259A1FC70035BAA8 /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */; };
-		1D0BCB8D259A1FC70035BAA8 /* UIView+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB80259A1FC70035BAA8 /* UIView+MX.m */; };
-		1D0BCB8E259A1FC70035BAA8 /* MXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB81259A1FC70035BAA8 /* MXLabel.m */; };
-		1D0BCB8F259A1FC70035BAA8 /* MXLocalizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB82259A1FC70035BAA8 /* MXLocalizationManager.m */; };
 		1D0BCB90259A1FC70035BAA8 /* UIImage+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB83259A1FC70035BAA8 /* UIImage+utils.swift */; };
 		1D0BCB94259A233A0035BAA8 /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB93259A21EF0035BAA8 /* Joystix.ttf */; };
 		1D0BCB96259A23780035BAA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB95259A23690035BAA8 /* Localizable.strings */; };
@@ -80,7 +71,7 @@
 		1D1BDDFA259A4F97000145A4 /* soundTimeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1D1BDDED259A4F97000145A4 /* soundTimeOver.caf */; };
 		1D1BDDFD259A515C000145A4 /* MXGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */; };
 		1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDDFE259A5791000145A4 /* AudioManager.swift */; };
-		1D1BDE01259A75E6000145A4 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDE00259A75E6000145A4 /* GameCenter.swift */; };
+		1D1BDE01259A75E6000145A4 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1BDE00259A75E6000145A4 /* ScoreManager.swift */; };
 		1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB93422337F35C00CF02AF /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,27 +127,12 @@
 		1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "mmmaze/Resources/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D0BCB5B259A1ED30035BAA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mmmaze/Resources/Info.plist; sourceTree = "<group>"; };
 		1D0BCB5E259A1ED30035BAA8 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = mmmaze/Resources/Contents.json; sourceTree = "<group>"; };
-		1D0BCB6C259A1FC60035BAA8 /* MXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXButton.h; sourceTree = "<group>"; };
 		1D0BCB6E259A1FC60035BAA8 /* UIImageView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MX.h"; sourceTree = "<group>"; };
-		1D0BCB6F259A1FC60035BAA8 /* MXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXLabel.h; sourceTree = "<group>"; };
 		1D0BCB71259A1FC60035BAA8 /* MXToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXToolBox.h; sourceTree = "<group>"; };
 		1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
-		1D0BCB73259A1FC60035BAA8 /* UIColor+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MX.m"; sourceTree = "<group>"; };
-		1D0BCB74259A1FC60035BAA8 /* MXUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXUtils.m; sourceTree = "<group>"; };
-		1D0BCB75259A1FC60035BAA8 /* MXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXButton.m; sourceTree = "<group>"; };
 		1D0BCB76259A1FC70035BAA8 /* UIImage+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MX.h"; sourceTree = "<group>"; };
 		1D0BCB77259A1FC70035BAA8 /* UIImageView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MX.m"; sourceTree = "<group>"; };
-		1D0BCB78259A1FC70035BAA8 /* MXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXImageView.h; sourceTree = "<group>"; };
-		1D0BCB79259A1FC70035BAA8 /* MXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXImageView.m; sourceTree = "<group>"; };
-		1D0BCB7A259A1FC70035BAA8 /* MXLocalizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXLocalizationManager.h; sourceTree = "<group>"; };
-		1D0BCB7B259A1FC70035BAA8 /* UIColor+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MX.h"; sourceTree = "<group>"; };
-		1D0BCB7C259A1FC70035BAA8 /* UIView+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MX.h"; sourceTree = "<group>"; };
-		1D0BCB7D259A1FC70035BAA8 /* MXUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXUtils.h; sourceTree = "<group>"; };
-		1D0BCB7E259A1FC70035BAA8 /* UIView+MX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+MX.swift"; sourceTree = "<group>"; };
 		1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MX.m"; sourceTree = "<group>"; };
-		1D0BCB80259A1FC70035BAA8 /* UIView+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MX.m"; sourceTree = "<group>"; };
-		1D0BCB81259A1FC70035BAA8 /* MXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXLabel.m; sourceTree = "<group>"; };
-		1D0BCB82259A1FC70035BAA8 /* MXLocalizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXLocalizationManager.m; sourceTree = "<group>"; };
 		1D0BCB83259A1FC70035BAA8 /* UIImage+utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+utils.swift"; sourceTree = "<group>"; };
 		1D0BCB93259A21EF0035BAA8 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Joystix.ttf; sourceTree = "<group>"; };
 		1D0BCB95259A23690035BAA8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -192,7 +168,7 @@
 		1D1BDDFB259A5151000145A4 /* MXGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXGameCenterManager.h; sourceTree = "<group>"; };
 		1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXGameCenterManager.m; sourceTree = "<group>"; };
 		1D1BDDFE259A5791000145A4 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		1D1BDE00259A75E6000145A4 /* GameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
+		1D1BDE00259A75E6000145A4 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -203,7 +179,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */,
-				1D07BEE91CCD36E80062EFE6 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,27 +233,11 @@
 		1D0BCB6B259A1FBC0035BAA8 /* MXToolBox */ = {
 			isa = PBXGroup;
 			children = (
-				1D0BCB6C259A1FC60035BAA8 /* MXButton.h */,
-				1D0BCB75259A1FC60035BAA8 /* MXButton.m */,
-				1D0BCB78259A1FC70035BAA8 /* MXImageView.h */,
-				1D0BCB79259A1FC70035BAA8 /* MXImageView.m */,
-				1D0BCB6F259A1FC60035BAA8 /* MXLabel.h */,
-				1D0BCB81259A1FC70035BAA8 /* MXLabel.m */,
-				1D0BCB7A259A1FC70035BAA8 /* MXLocalizationManager.h */,
-				1D0BCB82259A1FC70035BAA8 /* MXLocalizationManager.m */,
 				1D0BCB71259A1FC60035BAA8 /* MXToolBox.h */,
-				1D0BCB7D259A1FC70035BAA8 /* MXUtils.h */,
-				1D0BCB74259A1FC60035BAA8 /* MXUtils.m */,
-				1D0BCB7B259A1FC70035BAA8 /* UIColor+MX.h */,
-				1D0BCB73259A1FC60035BAA8 /* UIColor+MX.m */,
 				1D0BCB76259A1FC70035BAA8 /* UIImage+MX.h */,
 				1D0BCB7F259A1FC70035BAA8 /* UIImage+MX.m */,
-				1D0BCB83259A1FC70035BAA8 /* UIImage+utils.swift */,
 				1D0BCB6E259A1FC60035BAA8 /* UIImageView+MX.h */,
 				1D0BCB77259A1FC70035BAA8 /* UIImageView+MX.m */,
-				1D0BCB7C259A1FC70035BAA8 /* UIView+MX.h */,
-				1D0BCB80259A1FC70035BAA8 /* UIView+MX.m */,
-				1D0BCB7E259A1FC70035BAA8 /* UIView+MX.swift */,
 			);
 			name = MXToolBox;
 			sourceTree = "<group>";
@@ -323,11 +282,12 @@
 			children = (
 				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
 				1D1BDDFE259A5791000145A4 /* AudioManager.swift */,
-				1D1BDDFB259A5151000145A4 /* MXGameCenterManager.h */,
-				1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */,
 				1D0BCB72259A1FC60035BAA8 /* String+Utils.swift */,
 				1D0BCBD4259A2EAA0035BAA8 /* UIView+Utils.swift */,
-				1D1BDE00259A75E6000145A4 /* GameCenter.swift */,
+				1D0BCB83259A1FC70035BAA8 /* UIImage+utils.swift */,
+				1D1BDDFB259A5151000145A4 /* MXGameCenterManager.h */,
+				1D1BDDFC259A515C000145A4 /* MXGameCenterManager.m */,
+				1D1BDE00259A75E6000145A4 /* ScoreManager.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -559,30 +519,22 @@
 				1D0BCB48259A1ECA0035BAA8 /* TNMazeGenerator.cpp in Sources */,
 				1D0BCB44259A1ECA0035BAA8 /* TNPlayer.m in Sources */,
 				1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */,
-				1D0BCB88259A1FC70035BAA8 /* MXButton.m in Sources */,
-				1D0BCB8A259A1FC70035BAA8 /* MXImageView.m in Sources */,
-				1D1BDE01259A75E6000145A4 /* GameCenter.swift in Sources */,
+				1D1BDE01259A75E6000145A4 /* ScoreManager.swift in Sources */,
 				1D0BCB4D259A1ECA0035BAA8 /* TNTile.m in Sources */,
-				1D0BCB86259A1FC70035BAA8 /* UIColor+MX.m in Sources */,
 				1D0BCB4F259A1ECA0035BAA8 /* TNGameSession.mm in Sources */,
 				1D0BCB8C259A1FC70035BAA8 /* UIImage+MX.m in Sources */,
 				1D0BCB89259A1FC70035BAA8 /* UIImageView+MX.m in Sources */,
 				1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */,
-				1D0BCB87259A1FC70035BAA8 /* MXUtils.m in Sources */,
 				1D0BCB3F259A1ECA0035BAA8 /* TNCollisionCollaborator.m in Sources */,
 				1D0BCB50259A1ECA0035BAA8 /* AppDelegate.swift in Sources */,
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
-				1D0BCB8D259A1FC70035BAA8 /* UIView+MX.m in Sources */,
 				1D1BDDFD259A515C000145A4 /* MXGameCenterManager.m in Sources */,
 				1D0BCBD5259A2EAA0035BAA8 /* UIView+Utils.swift in Sources */,
-				1D0BCB8E259A1FC70035BAA8 /* MXLabel.m in Sources */,
 				1D0BCB51259A1ECA0035BAA8 /* TNEnemyCollaborator.m in Sources */,
 				1D0BCB42259A1ECA0035BAA8 /* TNEnemy.m in Sources */,
 				1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */,
-				1D0BCB8B259A1FC70035BAA8 /* UIView+MX.swift in Sources */,
 				1D0BCB90259A1FC70035BAA8 /* UIImage+utils.swift in Sources */,
 				1D1BDDFF259A5791000145A4 /* AudioManager.swift in Sources */,
-				1D0BCB8F259A1FC70035BAA8 /* MXLocalizationManager.m in Sources */,
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,
 				1D0BCB85259A1FC70035BAA8 /* String+Utils.swift in Sources */,
@@ -691,6 +643,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8XE9QV2E26;
 				INFOPLIST_FILE = mmmaze/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
@@ -711,6 +664,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8XE9QV2E26;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=0";
 				INFOPLIST_FILE = mmmaze/Resources/Info.plist;

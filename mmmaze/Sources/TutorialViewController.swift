@@ -39,12 +39,16 @@ class TutorialViewController: UIViewController {
 		goalImage.startAnimating()
 
 		//--- arrows stuff ---//
+		firstArrow.image = firstArrow.image?.withRenderingMode(.alwaysTemplate)
+		firstArrow.tintColor = .cyan
 		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse], animations: {
 			self.firstArrow.alpha = 0.4
 		}) { (finished) in
 			self.firstArrow.alpha = 1.0;
 		}
 
+		secondArrow.image = secondArrow.image?.withRenderingMode(.alwaysTemplate)
+		secondArrow.tintColor = .cyan
 		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse], animations: {
 			self.secondArrow.alpha = 0.4
 		}) { (finished) in

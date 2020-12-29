@@ -55,40 +55,6 @@ class SettingsViewController: UIViewController {
 
 	//MARK: - IBActions
 
-	@IBAction func languageDecrTouched() {
-		AudioManager.shared.play(SoundType.STSelectItem)
-
-		//--- decr logic ---//
-		let langs = MXLocalizationManager.sharedInstance()!.availableLanguages()!
-		for i in 0...langs.count {
-			let currentCode = langs[i] as! String
-			if currentCode == MXLocalizationManager.sharedInstance()!.currentLanguageCode! {
-				let newIndex = (i - 1 + langs.count) % langs.count
-				let newLangCode = langs[newIndex] as! String
-				MXLocalizationManager.sharedInstance()?.currentLanguageCode = newLangCode
-				break
-			}
-		}
-		refresh()
-	}
-
-	@IBAction func languageIncrTouched() {
-		AudioManager.shared.play(SoundType.STSelectItem)
-
-		//--- incr logic ---//
-		let langs = MXLocalizationManager.sharedInstance()!.availableLanguages()!
-		for i in 0...langs.count {
-			let currentCode = langs[i] as! String
-			if currentCode == MXLocalizationManager.sharedInstance()!.currentLanguageCode! {
-				let newIndex = (i + 1) % langs.count
-				let newLangCode = langs[newIndex] as! String
-				MXLocalizationManager.sharedInstance()?.currentLanguageCode = newLangCode
-				break
-			}
-		}
-		refresh()
-	}
-
 	@IBAction func soundVolumeTouched() {
 		switch VolumeType(rawValue: Int(AudioManager.shared.volume * 10))! {
 		case .mute:

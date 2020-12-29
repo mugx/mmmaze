@@ -10,8 +10,7 @@ import Foundation
 
 @objc
 extension UIImage {
-
-    func sprites(with size: CGSize) -> [UIImage]? {
-        return (sprites(with: size, in: NSMakeRange(0, lroundf(MAXFLOAT))) as? [UIImage]) ?? []
-    }
+	func sprites(with size: CGSize) -> [UIImage]? {
+		return (sprites(with: size, in: NSMakeRange(0, lroundf(MAXFLOAT))) as? [UIImage]) ?? []
+	}
 }

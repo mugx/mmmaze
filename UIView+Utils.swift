@@ -9,13 +9,40 @@
 import UIKit
 
 extension UIView {
+	@IBInspectable var cornerRadius: CGFloat {
+		get {
+			return layer.cornerRadius
+		}
+		set {
+			layer.cornerRadius = newValue
+			layer.masksToBounds = newValue > 0
+		}
+	}
+	
 	@IBInspectable var localization: String {
 		get {
 			return description
 		}
 		set {
-			(self as? UIButton)?.setTitle(newValue.localized, for: .normal)
-			(self as? UILabel)?.text = newValue.localized
+			if let button = self as? UIButton {
+				button.setTitle(newValue.localized, for: .normal)
+			}
+
+			if let label = self as? UILabel {
+				label.text = newValue.localized
+			}
+		}
+	}
+
+	open override func awakeFromNib() {
+		super.awakeFromNib()
+
+		if let button = self as? UIButton, button.buttonType == .system {
+			button.titleLabel?.font = UIFont(name: Constants.FONT_FAMILY, size: button.titleLabel?.font.pointSize ?? 0)!
+		}
+
+		if let label = self as? UILabel {
+			label.font = UIFont(name: Constants.FONT_FAMILY, size: label.font.pointSize)!
 		}
 	}
 }

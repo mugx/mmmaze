@@ -35,7 +35,7 @@ class BestScoresViewController: UIViewController {
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
-		cell.backgroundColor = UIColor.clear
+		cell.backgroundColor = UIColor.white
 		cell.textLabel?.textColor = UIColor.black
 		cell.textLabel?.font = UIFont(name: Constants.FONT_FAMILY, size: 16)
 		cell.detailTextLabel?.textColor = UIColor.black;

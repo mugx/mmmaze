@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GameKit/GameKit.h>
 
 #define SAVE_KEY_HIGH_SCORES @"highScores"
 #define MAX_HIGH_SCORES_COUNT 10
 
-@interface MXGameCenterManager : NSObject <GKGameCenterControllerDelegate>
+@interface MXGameCenterManager : NSObject
 + (instancetype)sharedInstance;
 - (void)saveScore:(int64_t)score;
-- (int64_t)highScore;
 @end

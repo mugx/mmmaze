@@ -8,8 +8,6 @@
 
 #import "UIImage+MX.h"
 #import "UIImageView+MX.h"
-#import "MXUtils.h"
-#import "MXLocalizationManager.h"
 #import "MXGameCenterManager.h"
 #import "TNGameSession.h"
 #import "TNTile.h"
