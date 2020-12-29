@@ -8,27 +8,9 @@
 
 #import "Enemy.h"
 #import "Tile+AI.h"
-
-#define ANIM_TIME 0.5
-
-@interface Enemy()
-@property(nonatomic,assign) BOOL exploding;
-@property(nonatomic,strong) NSMutableArray *path;
-@property(nonatomic,assign) float timeAccumulator;
-@property(nonatomic,assign) float upatePathAccumulator;
-@end
+#import "mmmaze-Swift.h"
 
 @implementation Enemy
-
-- (instancetype)initWithFrame:(CGRect)frame withGameSession:(GameSession *)gameSession
-{
-  self = [super initWithFrame:frame];
-  self.gameSession = gameSession;
-  self.layer.zPosition = 10;
-  self.path = [@[] mutableCopy];
-  self.velocity = CGPointMake(0, 0);
-  return self;
-}
 
 - (void)update:(CGFloat)deltaTime
 {
@@ -40,7 +22,7 @@
   if (self.timeAccumulator > 1 || self.path.count == 0)
   {
     self.timeAccumulator = 0;
-		NSArray *newPath = [self search: [self.gameSession playerFrame]];
+		NSArray *newPath = [self search: self.gameSession.player.frame];
     CGRect firstPathFrame = [self.path.firstObject CGRectValue];
     CGRect firstNewPathFrame = [newPath.firstObject CGRectValue];
     NSUInteger currentSteps = self.path.count;
@@ -57,8 +39,7 @@
   if (self.path.count > 0)
   {
     CGRect nextFrame = [self.path.firstObject CGRectValue];
-    if ([self collidesTarget:originalFrame path:self.path])
-    {
+    if ([self collidesWithTarget: originalFrame path: self.path]) {
       [self.path removeObject:[NSValue valueWithCGRect:originalFrame]];
     }
     

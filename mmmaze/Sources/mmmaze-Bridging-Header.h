@@ -9,3 +9,4 @@
 #import "UIImage+MX.h"
 #import "MXGameCenterManager.h"
 #import "Tile.h"
+#import "Enemy.h"

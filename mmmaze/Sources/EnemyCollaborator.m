@@ -38,14 +38,15 @@
 {
   self.enemies = [NSMutableArray array];
   self.spawnableEnemies = [NSMutableArray array];
-  self.speed = ENEMY_SPEED + 0.1 * (self.gameSession.currentLevel - 1);
+  self.speed = Enemy.SPEED + 0.1 * (self.gameSession.currentLevel - 1);
   if (self.speed > Player.SPEED)
   {
     self.speed = Player.SPEED;
   }
   for (int i = 0;i < MAX_ENEMIES;++i)
   {
-    Enemy *enemy = [[Enemy alloc] initWithFrame:CGRectMake(STARTING_CELL.y * TILE_SIZE + self.speed / 2.0, STARTING_CELL.x * TILE_SIZE + self.speed / 2.0, TILE_SIZE - self.speed, TILE_SIZE - self.speed) withGameSession:self.gameSession];
+		CGRect frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + self.speed / 2.0, STARTING_CELL.x * TILE_SIZE + self.speed / 2.0, TILE_SIZE - self.speed, TILE_SIZE - self.speed);
+    Enemy *enemy = [[Enemy alloc] initWithFrame:frame gameSession:self.gameSession];
     enemy.animationDuration = 0.4f;
     enemy.animationRepeatCount = 0;
     enemy.alpha = 0.0;

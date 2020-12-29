@@ -7,45 +7,23 @@
 //
 
 #import "Tile+AI.h"
+#import "mmmaze-Swift.h"
 
 @implementation Tile (AI)
 
 CGFloat distance(CGRect rect1, CGRect rect2)
 {
-  return manhattanDistance(rect1, rect2);
-}
-
-CGFloat manhattanDistance(CGRect rect1, CGRect rect2)
-{
-  return fabs(rect1.origin.x - rect2.origin.x) + fabs(rect1.origin.y - rect2.origin.y);
-}
-
-CGFloat chebyshevDistance(CGRect rect1, CGRect rect2)
-{
-  return MAX(fabs(rect1.origin.x - rect2.origin.x), fabs(rect1.origin.y - rect2.origin.y));
+	return (rect1.origin.x - rect2.origin.x) + fabs(rect1.origin.y - rect2.origin.y);
 }
 
 CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
 {
-   //--- euclidean ---//
    CGPoint center1 = CGPointMake(CGRectGetMidX(rect1), CGRectGetMidY(rect1));
    CGPoint center2 = CGPointMake(CGRectGetMidX(rect2), CGRectGetMidY(rect2));
    CGFloat horizontalDistance = (center2.x - center1.x);
    CGFloat verticalDistance = (center2.y - center1.y);
    CGFloat distance = sqrt((horizontalDistance * horizontalDistance) + (verticalDistance * verticalDistance));
    return distance;
-}
-
-- (bool)collidesTarget:(CGRect)target path:(NSArray *)path
-{
-  for (NSValue *cell in path)
-  {
-    if (CGRectIntersectsRect(target, [cell CGRectValue]))
-    {
-      return true;
-    }
-  }
-  return false;
 }
 
 - (char)getBestDirection:(NSArray *)directions targetFrame:(CGRect)targetFrame
@@ -76,14 +54,12 @@ CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
   bool targetFound = false;
   do
   {
-    targetFound = [self collidesTarget:target path:path];
-    if (targetFound)
-    {
+
+		targetFound = [self collidesWithTarget:target path:path];
+		if (targetFound) {
       [path removeObject:[NSValue valueWithCGRect:originalFrame]];
       break;
-    }
-    else
-    {
+    } else {
       CGRect eastFrame = CGRectMake(currentFrame.origin.x - currentSpeed, currentFrame.origin.y, currentSize, currentSize);
       CGRect westFrame = CGRectMake(currentFrame.origin.x + currentSpeed, currentFrame.origin.y, currentSize, currentSize);
       CGRect northFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y - currentSpeed, currentSize, currentSize);
@@ -118,13 +94,10 @@ CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
             break;
         }
         [path addObject:[NSValue valueWithCGRect:currentFrame]];
-      }
-      else
-      {
+      } else {
         // backtracking
         NSInteger currentIndex = [path indexOfObject:[NSValue valueWithCGRect:currentFrame]];
-        if (currentIndex)
-        {
+        if (currentIndex) {
           currentFrame = [[path objectAtIndex:currentIndex -1] CGRectValue];
         }
       }

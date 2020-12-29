@@ -32,7 +32,6 @@
 @property(nonatomic,weak) Tile *mazeGoalTile;
 @property(nonatomic,assign) float mazeRotation;
 @property(nonatomic,assign) BOOL isGameStarted;
-@property(nonatomic,strong) Player *player;
 @end
 
 @implementation GameSession
@@ -241,10 +240,6 @@
 	self.player.animationRepeatCount = 0;
 	[self.player startAnimating];
 	[self.mazeView addSubview:self.player];
-}
-
-- (CGRect)playerFrame {
-	return self.player.frame;
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction {

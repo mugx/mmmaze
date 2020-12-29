@@ -10,10 +10,10 @@
 #import "GameSession.h"
 #import "Tile.h"
 
-#define ENEMY_SPEED 1.5
-
 @interface Enemy : Tile
-- (instancetype)initWithFrame:(CGRect)frame withGameSession:(GameSession *)gameSession;
-- (void)update:(CGFloat)deltaTime;
 @property(nonatomic,assign) BOOL wantSpawn;
+@property(nonatomic,assign) BOOL exploding;
+@property(nonatomic,assign) float timeAccumulator;
+@property(nonatomic,assign) float upatePathAccumulator;
+@property(nonatomic,strong) NSMutableArray *path;
 @end
