@@ -16,7 +16,7 @@ import UIKit
 
 		self.gameSession = gameSession
 		speed = Float(Self.SPEED)
-		layer.zPosition = 10
+
 		animationImages = UIImage(named: "player")?.sprites(with: CGSize(width: TILE_SIZE, height: TILE_SIZE))
 		animationDuration = 0.4
 		animationRepeatCount = 0

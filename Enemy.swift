@@ -14,7 +14,7 @@ class Enemy: Tile {
 	var timeAccumulator: CGFloat = 0.0
 	var path: NSMutableArray
 	@objc static let SPEED = 1.5
-	
+
 	init(gameSession: GameSession) {
 		path = NSMutableArray()
 
@@ -22,7 +22,6 @@ class Enemy: Tile {
 
 		self.gameSession = gameSession
 		speed = Float(Self.SPEED)
-		layer.zPosition = 10
 		velocity = CGPoint.zero
 
 		respawnAtInitialFrame()
