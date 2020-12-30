@@ -22,23 +22,22 @@ import Foundation
 		return distance;
 	}
 
-//	@objc func getBestDirection(_ directions: [AnyHashable], targetFrame: CGRect) -> String {
-//		return "d"
-////	 CGFloat bestManhattan = FLT_MAX;
-////	 char bestDirection = ' ';
-////	 for (NSDictionary * direction in directions)
-////	 {
-////		 CGRect frame = [direction[@"frame"] CGRectValue];
-////		 char move = [direction[@"move"] charValue];
-////		 CGFloat manhattan = [self euclideanDistanceWithRect1:frame rect2:targetFrame];
-////		 if (manhattan < bestManhattan)
-////		 {
-////			 bestManhattan = manhattan;
-////			 bestDirection = move;
-////		 }
-////	 }
-////	 return bestDirection;
-// }
+	@objc func getBestDirection(_ directions: [[String: Any]], targetFrame: CGRect) -> String {
+		var bestManhattan = CGFloat(Float.greatestFiniteMagnitude)
+		var bestDirection = ""
+
+		for direction in directions {
+			let frame = (direction["frame"] as! NSValue).cgRectValue
+			let move = (direction["move"] as! String)
+			let manhattan = euclideanDistance(rect1: frame, rect2: targetFrame)
+			if manhattan < bestManhattan {
+				bestManhattan = manhattan
+				bestDirection = move
+			}
+		}
+		
+		return bestDirection
+ }
 
 	@objc func collides(target: CGRect, path: [CGRect]) -> Bool {
 		for p in path {

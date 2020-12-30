@@ -11,24 +11,6 @@
 
 @implementation Tile (AI)
 
-- (char)getBestDirection:(NSArray *)directions targetFrame:(CGRect)targetFrame
-{
-  CGFloat bestManhattan = FLT_MAX;
-  char bestDirection = ' ';
-  for (NSDictionary * direction in directions)
-  {
-    CGRect frame = [direction[@"frame"] CGRectValue];
-    char move = [direction[@"move"] charValue];
-    CGFloat manhattan = [self euclideanDistanceWithRect1:frame rect2:targetFrame];
-    if (manhattan < bestManhattan)
-    {
-      bestManhattan = manhattan;
-      bestDirection = move;
-    }
-  }
-  return bestDirection;
-}
-
 - (NSArray *)search:(CGRect)target
 {
   CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
@@ -55,29 +37,23 @@
       BOOL collidesSouth = [self collidesSouthOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:southFrame]];
       
       NSMutableArray *possibleDirections = [NSMutableArray array];
-      if (!collidesEast) [possibleDirections addObject:@{@"move":@('e'), @"frame":[NSValue valueWithCGRect:eastFrame]}];
-      if (!collidesWest) [possibleDirections addObject:@{@"move":@('w'), @"frame":[NSValue valueWithCGRect:westFrame]}];
-      if (!collidesNorth) [possibleDirections addObject:@{@"move":@('n'), @"frame":[NSValue valueWithCGRect:northFrame]}];
-      if (!collidesSouth) [possibleDirections addObject:@{@"move":@('s'), @"frame":[NSValue valueWithCGRect:southFrame]}];
+      if (!collidesEast) [possibleDirections addObject:@{@"move":@"e", @"frame":[NSValue valueWithCGRect:eastFrame]}];
+      if (!collidesWest) [possibleDirections addObject:@{@"move":@"w", @"frame":[NSValue valueWithCGRect:westFrame]}];
+      if (!collidesNorth) [possibleDirections addObject:@{@"move":@"n", @"frame":[NSValue valueWithCGRect:northFrame]}];
+      if (!collidesSouth) [possibleDirections addObject:@{@"move":@"s", @"frame":[NSValue valueWithCGRect:southFrame]}];
       
       if (possibleDirections.count > 0)
       {
-        char direction = [self getBestDirection:possibleDirections targetFrame:target];
-        switch(direction)
-        {
-          case 'n':
-            currentFrame = northFrame;
-            break;
-          case 's':
-            currentFrame = southFrame;
-            break;
-          case 'e':
-            currentFrame = eastFrame;
-            break;
-          case 'w':
-            currentFrame = westFrame;
-            break;
-        }
+        NSString* direction = [self getBestDirection:possibleDirections targetFrame:target];
+				if ([direction isEqualToString:@"n"]) {
+					currentFrame = northFrame;
+				} else if ([direction isEqualToString:@"s"]) {
+					currentFrame = southFrame;
+				} else if ([direction isEqualToString:@"e"]) {
+					currentFrame = eastFrame;
+				} else if ([direction isEqualToString:@"w"]) {
+					currentFrame = westFrame;
+				}
         [path addObject:[NSValue valueWithCGRect:currentFrame]];
       } else {
         // backtracking

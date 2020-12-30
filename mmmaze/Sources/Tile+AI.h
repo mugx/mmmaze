@@ -9,6 +9,5 @@
 #import "Tile.h"
 
 @interface Tile (AI)
-- (char)getBestDirection:(NSArray *)directions targetFrame:(CGRect)targetFrame;
 - (NSArray *)search:(CGRect)target;
 @end

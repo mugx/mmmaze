@@ -93,38 +93,25 @@ class Enemy: Tile {
 		let collidesNorth = checkWallCollision(northFrame) != nil
 		let collidesSouth = checkWallCollision(southFrame) != nil
 
-		var possibleDirections: [AnyHashable] = []
+		var possibleDirections: [[String: Any]] = []
 		if !collidesEast {
-			possibleDirections.append([
-				"move": NSNumber(value: String("e").utf8.map{ Int8($0) }.first ?? 0),
-				"frame": NSValue(cgRect: eastFrame)
-			])
+			possibleDirections.append(["move": "e", "frame": NSValue(cgRect: eastFrame)])
 		}
 
 		if !collidesWest {
-			possibleDirections.append([
-				"move": NSNumber(value: String("w").utf8.map{ Int8($0) }.first ?? 0),
-				"frame": NSValue(cgRect: westFrame)
-			])
+			possibleDirections.append(["move": "w", "frame": NSValue(cgRect: westFrame)])
 		}
 
 		if !collidesNorth {
-			possibleDirections.append([
-				"move": NSNumber(value: String("n").utf8.map{ Int8($0) }.first ?? 0),
-				"frame": NSValue(cgRect: northFrame)
-			])
+			possibleDirections.append(["move": "n","frame": NSValue(cgRect: northFrame)])
 		}
 
 		if !collidesSouth {
-			possibleDirections.append([
-				"move": NSNumber(value: String("s").utf8.map{ Int8($0) }.first ?? 0),
-				"frame": NSValue(cgRect: southFrame)
-			])
+			possibleDirections.append(["move": "s","frame": NSValue(cgRect: southFrame)])
 		}
 
 		let nextFrame = (path.firstObject as? NSValue)?.cgRectValue ?? CGRect.zero
-		let dir = UInt8(getBestDirection(possibleDirections, targetFrame: nextFrame))
-		switch Character(UnicodeScalar(dir)) {
+		switch getBestDirection(possibleDirections, targetFrame: nextFrame) {
 		case "e":
 			didSwipe(UISwipeGestureRecognizer.Direction.left)
 		case "w":
