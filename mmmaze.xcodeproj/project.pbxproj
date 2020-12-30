@@ -10,7 +10,6 @@
 		1D0BCB3A259A1ECA0035BAA8 /* Tile+AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB13259A1EC90035BAA8 /* Tile+AI.m */; };
 		1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */; };
 		1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */; };
-		1D0BCB42259A1ECA0035BAA8 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1D259A1ECA0035BAA8 /* Enemy.m */; };
 		1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */; };
 		1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB22259A1ECA0035BAA8 /* SettingsViewController.swift */; };
 		1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB23259A1ECA0035BAA8 /* SettingsViewController.xib */; };
@@ -100,7 +99,6 @@
 		1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BestScoresViewController.xib; path = mmmaze/Sources/BestScoresViewController.xib; sourceTree = "<group>"; };
 		1D0BCB1A259A1ECA0035BAA8 /* Tile+AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Tile+AI.h"; path = "mmmaze/Sources/Tile+AI.h"; sourceTree = "<group>"; };
 		1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = mmmaze/Sources/GameViewController.swift; sourceTree = "<group>"; };
-		1D0BCB1D259A1ECA0035BAA8 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enemy.m; path = mmmaze/Sources/Enemy.m; sourceTree = "<group>"; };
 		1D0BCB1E259A1ECA0035BAA8 /* MazeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MazeGenerator.hpp; path = mmmaze/Sources/MazeGenerator.hpp; sourceTree = "<group>"; };
 		1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = mmmaze/Sources/Constants.swift; sourceTree = "<group>"; };
 		1D0BCB22259A1ECA0035BAA8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = mmmaze/Sources/SettingsViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 		1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MazeGenerator.cpp; path = mmmaze/Sources/MazeGenerator.cpp; sourceTree = "<group>"; };
 		1D0BCB27259A1ECA0035BAA8 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = mmmaze/Sources/MenuViewController.xib; sourceTree = "<group>"; };
 		1D0BCB28259A1ECA0035BAA8 /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsViewController.swift; path = mmmaze/Sources/CreditsViewController.swift; sourceTree = "<group>"; };
-		1D0BCB29259A1ECA0035BAA8 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = mmmaze/Sources/Enemy.h; sourceTree = "<group>"; };
 		1D0BCB2A259A1ECA0035BAA8 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TutorialViewController.xib; path = mmmaze/Sources/TutorialViewController.xib; sourceTree = "<group>"; };
 		1D0BCB2B259A1ECA0035BAA8 /* GameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSession.h; path = mmmaze/Sources/GameSession.h; sourceTree = "<group>"; };
 		1D0BCB2D259A1ECA0035BAA8 /* BestScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BestScoresViewController.swift; path = mmmaze/Sources/BestScoresViewController.swift; sourceTree = "<group>"; };
@@ -404,8 +401,6 @@
 		1D9ADB48259B17EC003CC8C2 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				1D0BCB29259A1ECA0035BAA8 /* Enemy.h */,
-				1D0BCB1D259A1ECA0035BAA8 /* Enemy.m */,
 				1D8292F7259BCFD5000C6208 /* Enemy.swift */,
 				1D8292F9259BCFE1000C6208 /* EnemyCollaborator.swift */,
 				1D8292F5259BC775000C6208 /* Player.swift */,
@@ -559,7 +554,6 @@
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
-				1D0BCB42259A1ECA0035BAA8 /* Enemy.m in Sources */,
 				1D8292FE259BCFF7000C6208 /* Tile+AI.swift in Sources */,
 				1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */,
 				1DA4C757259BA1B200E4DE1E /* UIImage+MX.m in Sources */,

@@ -8,13 +8,10 @@
 
 #import "mmmaze-Swift.h"
 #import "GameSession.h"
-#import "Enemy.h"
 #import "ToolBox.h"
 #import "MazeGenerator.hpp"
 
 #define BASE_MAZE_DIMENSION 7
-#define BKG_COLORS @[[UIColor whiteColor]]
-//#define BKG_COLORS @[Constants.electricColor, Constants.blueColor, Constants.greenColor, Constants.cyanColor, Constants.yellowColor, Constants.redColor]
 
 @interface GameSession ()
 @property(nonatomic,assign,readwrite) NSUInteger currentLevel;
@@ -22,8 +19,6 @@
 @property(nonatomic,strong,readwrite) NSMutableDictionary<NSValue*, Tile *> *wallsDictionary;
 @property(nonatomic,strong) NSMutableArray<Tile *> *items;
 
-@property(nonatomic,assign) int bkgColorIndex;
-@property(nonatomic,assign) float bkgColorTimeAccumulator;
 @property(nonatomic,strong,readwrite) UIView *mazeView;
 @property(nonatomic,weak) UIView *gameView;
 @property(nonatomic,weak) Tile *mazeGoalTile;
@@ -55,12 +50,9 @@
 		self.currentLives = MAX_LIVES;
 		self.numCol = BASE_MAZE_DIMENSION;
 		self.numRow = BASE_MAZE_DIMENSION;
-		self.bkgColorIndex = 0;
 	} else {
 		//--- play start level sound ---//
 		[self playWithSound: SoundTypeLevelChange];
-
-		self.bkgColorIndex = (self.bkgColorIndex + 1) % (BKG_COLORS.count);
 	}
 
 	//--- reset random rotation ---//
@@ -113,7 +105,7 @@
 			{
 				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.tag = TTWall;
-				[tile setImage:[[UIImage imageNamed:@"wall"] coloredWith:BKG_COLORS[self.bkgColorIndex]]];
+				[tile setImage:[[UIImage imageNamed:@"wall"] coloredWith:[UIColor whiteColor]]];
 				tile.isDestroyable = !(r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1);
 				tile.x = r;
 				tile.y = c;
@@ -187,7 +179,7 @@
 	else if ((arc4random() % 100) >= 90)
 	{
 		item.tag = TTWhirlwind;
-		item.image = [[UIImage imageNamed:@"whirlwind"] coloredWith:BKG_COLORS[self.bkgColorIndex]];
+		item.image = [[UIImage imageNamed:@"whirlwind"] coloredWith:[UIColor whiteColor]];
 		[item spin];
 	}
 	else if ((arc4random() % 100) >= 80)

@@ -22,9 +22,9 @@ import Foundation
 		return distance;
 	}
 
-	@objc func collides(target: CGRect, path: Array<NSValue>) -> Bool {
+	@objc func collides(target: CGRect, path: [CGRect]) -> Bool {
 		for p in path {
-			if target.intersects(p.cgRectValue) {
+			if target.intersects(p) {
 				return true
 			}
 		}
