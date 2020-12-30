@@ -31,8 +31,8 @@ func playSound(_ sound: SoundType) {
 
 @objc class AudioManager: NSObject {
 	@objc static let shared = AudioManager()
-	var soundEnabled: Bool = false
-	var volume: Float = 0
+	var soundEnabled: Bool = true
+	var volume: Float = 0.5
 	private var sounds = [SoundType: AVAudioPlayer]()
 
 	func play(sound: SoundType) {

@@ -13,19 +13,6 @@
 
 #define BASE_MAZE_DIMENSION 7
 
-@interface GameSession ()
-@property(nonatomic,assign,readwrite) NSUInteger currentLevel;
-@property(nonatomic,assign,readwrite) NSUInteger currentScore;
-@property(nonatomic,strong,readwrite) NSMutableDictionary<NSValue*, Tile *> *wallsDictionary;
-@property(nonatomic,strong) NSMutableArray<Tile *> *items;
-
-@property(nonatomic,strong,readwrite) UIView *mazeView;
-@property(nonatomic,weak) UIView *gameView;
-@property(nonatomic,weak) Tile *mazeGoalTile;
-@property(nonatomic,assign) float mazeRotation;
-@property(nonatomic,assign) BOOL isGameStarted;
-@end
-
 @implementation GameSession
 
 - (instancetype)initWithView:(UIView *)gameView {
@@ -36,12 +23,12 @@
 
 - (void)startLevel:(NSUInteger)levelNumber {
 	self.gameView.alpha = 0;
-
+	
 	//--- setup gameplay varables ---//
 	self.currentLevel = levelNumber;
 	self.currentTime = MAX_TIME;
 	self.isGameStarted = NO;
-
+	
 	if (levelNumber == 1) {
 		//--- play start game sound ---//
 		[self playWithSound: SoundTypeStartGame];
@@ -54,29 +41,29 @@
 		//--- play start level sound ---//
 		[self playWithSound: SoundTypeLevelChange];
 	}
-
+	
 	//--- reset random rotation ---//
 	self.gameView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, 0);
-
+	
 	//--- remove old views ---//
 	for (UIView *view in self.mazeView.subviews) {
 		view.hidden = YES;
 		[view removeFromSuperview];
 	}
-
+	
 	//--- init scene elements ---//
 	self.numCol = (self.numCol + 2) < 30 ? self.numCol + 2 : self.numCol;
 	self.numRow = (self.numRow + 2) < 30 ? self.numRow + 2 : self.numRow;
 	[self makeMaze];
 	[self makePlayer];
-
+	
 	///--- setup collaborator ---//
 	self.enemyCollaborator = [[EnemyCollaborator alloc] initWithGameSession: self];
-
+	
 	//--- update external delegate ---//
 	[self.delegate didUpdateScore:self.currentScore];
 	[self.delegate didUpdateLives:self.currentLives];
-
+	
 	[UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		self.gameView.alpha = 1;
 	} completion:^(BOOL finished) {
@@ -90,12 +77,12 @@
 	[self.gameView addSubview:self.mazeView];
 	self.mazeRotation = 0;
 	self.isGameOver = NO;
-
+	
 	//--- generating the maze ---//
 	MazeGenerator *mazeGenerator = new MazeGenerator();
-	MazeTyleType **maze = mazeGenerator->calculateMaze(static_cast<int>(STARTING_CELL.x), static_cast<int>(STARTING_CELL.y), static_cast<int>(self.numCol), static_cast<int>(self.numRow));
+	MazeTyleType **maze = mazeGenerator->calculateMaze(static_cast<int>(Constants.STARTING_CELL.x), static_cast<int>(Constants.STARTING_CELL.y), static_cast<int>(self.numCol), static_cast<int>(self.numRow));
 	self.wallsDictionary = [NSMutableDictionary dictionary];
-
+	
 	NSMutableArray *freeTiles = [NSMutableArray array];
 	for (int r = 0; r < self.numRow ; r++)
 	{
@@ -145,7 +132,7 @@
 			}
 		}
 	}
-
+	
 	//--- make key ---//
 	NSDictionary *keyPosition = freeTiles[arc4random() % freeTiles.count];
 	int c = [keyPosition[@"c"] intValue];
@@ -157,7 +144,7 @@
 	keyItem.image = [[UIImage imageNamed:@"key"] coloredWith:Constants.magentaColor];
 	[self.mazeView addSubview:keyItem];
 	[self.items addObject:keyItem];
-
+	
 	for (int i = 0; i < self.numCol; ++i)
 	{
 		free(maze[i]);
@@ -169,7 +156,7 @@
 {
 	Tile *item = [[Tile alloc] initWithFrame:CGRectMake(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 	item.tag = -1;
-
+	
 	if ((arc4random() % 100) >= 50)
 	{
 		item.tag = TTCoin;
@@ -201,7 +188,7 @@
 		item.tag = TTHearth;
 		item.image = [UIImage imageNamed:@"hearth"];
 	}
-
+	
 	if (item.tag != -1)
 	{
 		item.x = col;
@@ -216,31 +203,17 @@
 	}
 }
 
-- (void)makePlayer
-{
-	if (self.player) {
-		[self.player removeFromSuperview];
-	}
-
-	CGRect frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + Player.SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + Player.SPEED / 2.0, TILE_SIZE - Player.SPEED, TILE_SIZE - Player.SPEED);
-	self.player = [[Player alloc] initWithFrame: frame gameSession: self];
-	self.player.animationImages = [[UIImage imageNamed:@"player"] spritesWith:CGSizeMake(TILE_SIZE, TILE_SIZE)];
-	self.player.animationDuration = 0.4f;
-	self.player.animationRepeatCount = 0;
-	[self.player startAnimating];
-	[self.mazeView addSubview:self.player];
-}
-
-- (void)didSwipe:(UISwipeGestureRecognizerDirection)direction {
-	self.isGameStarted = YES;
-	[self.player didSwipe:direction];
-}
-
 - (void)respawnPlayerAtOrigin:(int)blinkingTime {
 	self.player.isBlinking = YES;
 	[UIView animateWithDuration:0.4 animations:^{
 		self.player.velocity = CGPointZero;
-		self.player.frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + Player.SPEED / 2.0, STARTING_CELL.x * TILE_SIZE + Player.SPEED / 2.0, TILE_SIZE - Player.SPEED, TILE_SIZE - Player.SPEED);
+		self.player.frame = CGRectMake
+		(
+		 Constants.STARTING_CELL.y * TILE_SIZE + Player.SPEED / 2.0,
+		 Constants.STARTING_CELL.x * TILE_SIZE + Player.SPEED / 2.0,
+		 TILE_SIZE - Player.SPEED,
+		 TILE_SIZE - Player.SPEED
+		 );
 		self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
 	} completion:^(BOOL finished) {
 		[self.player blink:blinkingTime completion:^{
@@ -253,25 +226,25 @@
 {
 	self.currentTime = self.currentTime - deltaTime > 0 ? self.currentTime - deltaTime : 0;
 	[self.delegate didUpdateTime:self.currentTime];
-
+	
 	//--- hurry up ---//
 	if (self.currentTime <= 10)
 	{
 		[self.delegate didHurryUp];
 	}
-
+	
 	//--- updating enemies stuff ---//
 	if (self.isGameStarted)
 	{
 		[self.enemyCollaborator update:deltaTime];
 	}
-
+	
 	//--- checking walls collisions ---//
 	if (!self.isGameOver)
 	{
 		[self.player update:deltaTime];
 	}
-
+	
 	//--- checking items collisions ---//
 	NSMutableArray *itemsToRemove = [NSMutableArray array];
 	for (Tile *item in self.items)
@@ -291,7 +264,7 @@
 				[self playWithSound: SoundTypeHitWhirlwind];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
-
+				
 				[UIView animateWithDuration:0.2 animations:^{
 					self.mazeRotation += M_PI_2;
 					self.gameView.transform = CGAffineTransformRotate(self.gameView.transform, M_PI_2);
@@ -330,7 +303,7 @@
 				int player_x = (int)self.player.frame.origin.x;
 				int player_y = (int)self.player.frame.origin.y;
 				self.player.isAngry = YES;
-
+				
 				for (Tile *tile in [self.wallsDictionary allValues])
 				{
 					if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x + TILE_SIZE, player_y, TILE_SIZE, TILE_SIZE)))
@@ -343,13 +316,13 @@
 						[tile explode:nil];
 						tile.tag = TTExplodedWall;
 					}
-
+					
 					if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x, player_y + TILE_SIZE, TILE_SIZE, TILE_SIZE)))
 					{
 						[tile explode:nil];
 						tile.tag = TTExplodedWall;
 					}
-
+					
 					if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x, player_y - TILE_SIZE, TILE_SIZE, TILE_SIZE)))
 					{
 						[tile explode:nil];
@@ -378,10 +351,10 @@
 		item.transform = CGAffineTransformMakeRotation(-self.mazeRotation);
 	}
 	[self.items removeObjectsInArray:itemsToRemove];
-
+	
 	//--- updating maze frame ---//
 	self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
-
+	
 	///--- collision player vs enemies ---//
 	for (Enemy *enemy in self.enemyCollaborator.enemies)
 	{
@@ -401,7 +374,13 @@
 			{
 				[UIView animateWithDuration:0.4 animations:^{
 					enemy.velocity = CGPointZero;
-					enemy.frame = CGRectMake(STARTING_CELL.y * TILE_SIZE + enemy.speed / 2.0, STARTING_CELL.x * TILE_SIZE + enemy.speed / 2.0, TILE_SIZE - enemy.speed, TILE_SIZE - enemy.speed);
+					enemy.frame = CGRectMake
+					(
+					 Constants.STARTING_CELL.y * TILE_SIZE + enemy.speed / 2.0,
+					 Constants.STARTING_CELL.x * TILE_SIZE + enemy.speed / 2.0,
+					 TILE_SIZE - enemy.speed,
+					 TILE_SIZE - enemy.speed
+					 );
 				} completion:^(BOOL finished) {
 					self.player.isAngry = NO;
 				}];
@@ -409,14 +388,14 @@
 			break;
 		}
 	}
-
+	
 	//--- collision player vs maze goal---//
 	if (self.mazeGoalTile.tag == TTMazeEnd_open  && CGRectIntersectsRect(self.player.frame, self.mazeGoalTile.frame))
 	{
 		[self startLevel:self.currentLevel + 1];
 		self.currentScore += 100;
 	}
-
+	
 	//--- collision if player is dead---//
 	if (!self.isGameOver && (self.currentLives == 0 || self.currentTime <= 0))
 	{

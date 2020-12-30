@@ -12,7 +12,6 @@
 @class Player;
 
 #define TILE_SIZE 32.0
-#define STARTING_CELL CGPointMake(1,1)
 #define MAX_TIME 60
 #define MAX_LIVES 3
 
@@ -22,24 +21,29 @@
 @interface GameSession : NSObject
 - (instancetype)initWithView:(UIView *)gameView;
 - (void)startLevel:(NSUInteger)levelNumber;
-- (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 - (void)update:(CGFloat)deltaTime;
-- (void)makePlayer;
+
 @property(nonatomic,assign) id <GameSessionDelegate> delegate;
 
-@property(readonly) NSUInteger currentLevel;
-@property(readonly) NSUInteger currentScore;
 @property(readwrite) NSUInteger currentLives;
 @property(readwrite) CGFloat currentTime;
 @property(nonatomic,assign) BOOL isGameOver;
-@property(readonly) NSMutableArray<Tile *> *items;
 
 @property(nonatomic,assign) NSUInteger numRow;
 @property(nonatomic,assign) NSUInteger numCol;
-@property(readonly) NSMutableDictionary<NSValue *, Tile *> *wallsDictionary;
-@property(readonly) UIView *mazeView;
 @property(nonatomic,strong) EnemyCollaborator *enemyCollaborator;
 @property(nonatomic,strong) Player *player;
+
+@property(nonatomic,assign,readwrite) NSUInteger currentLevel;
+@property(nonatomic,assign,readwrite) NSUInteger currentScore;
+@property(nonatomic,strong,readwrite) NSMutableDictionary<NSValue*, Tile *> *wallsDictionary;
+@property(nonatomic,strong) NSMutableArray<Tile *> *items;
+
+@property(nonatomic,strong,readwrite) UIView *mazeView;
+@property(nonatomic,weak) UIView *gameView;
+@property(nonatomic,weak) Tile *mazeGoalTile;
+@property(nonatomic,assign) float mazeRotation;
+@property(nonatomic,assign) BOOL isGameStarted;
 @end
 
 @protocol GameSessionDelegate <NSObject>

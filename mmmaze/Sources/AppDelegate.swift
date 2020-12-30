@@ -19,9 +19,6 @@ import Foundation
 		self.window = window
 		window.makeKeyAndVisible()
 		window.rootViewController = MenuViewController()
-
-		AudioManager.shared.soundEnabled = Bool(truncating: Constants.SOUND_ENABLED as NSNumber)
-		AudioManager.shared.volume = Constants.SOUND_DEFAULT_VOLUME
 	}
 
 	//MARK: - Select Screen
