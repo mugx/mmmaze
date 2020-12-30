@@ -9,6 +9,18 @@
 import Foundation
 
 extension Tile {
+	@objc func flip() {
+		let anim = CABasicAnimation.flipAnimation()
+		layer.add(anim, forKey: "flip")
+		animations.setObject(anim, forKey: "flip" as NSString)
+	}
+
+	@objc func spin() {
+		let anim = CABasicAnimation.spinAnimation()
+		layer.add(anim, forKey: "spin")
+		animations.setObject(anim, forKey: "spin" as NSString)
+	}
+
 	func restoreAnimations() {
 		animations.forEach({ (arg0) in
 			layer.add(arg0.value as! CAAnimation, forKey: arg0.key as? String)

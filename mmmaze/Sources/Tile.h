@@ -25,8 +25,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 };
 
 @interface Tile : UIImageView
-- (void)spin;
-- (void)flip;
 - (Tile *)checkWallCollision:(CGRect)frame;
 - (bool)collidesNorthOf:(CGRect)frame;
 - (bool)collidesSouthOf:(CGRect)frame;

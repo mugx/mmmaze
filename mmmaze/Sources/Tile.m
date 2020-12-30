@@ -25,30 +25,6 @@ typedef enum : NSUInteger {
 	return self;
 }
 
-- (void)flip
-{
-	CABasicAnimation *anim;
-	anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-	anim.fromValue = [NSNumber numberWithFloat:0];
-	anim.toValue = [NSNumber numberWithFloat:((360 * M_PI) / 180)];
-	anim.duration = 3.0;
-	anim.repeatCount = MAXFLOAT;
-	[self.layer addAnimation:anim forKey:@"flip"];
-	[self.animations setObject:anim forKey:@"flip"];
-}
-
-- (void)spin
-{
-	CABasicAnimation *anim;
-	anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-	anim.fromValue = [NSNumber numberWithFloat:0];
-	anim.toValue = [NSNumber numberWithFloat:((360 * M_PI) / 180)];
-	anim.duration = 3.0;
-	anim.repeatCount = MAXFLOAT;
-	[self.layer addAnimation:anim forKey:@"spin"];
-	[self.animations setObject:anim forKey:@"spin"];
-}
-
 - (Tile *)checkWallCollision:(CGRect)frame
 {
   NSArray *walls = [self.gameSession.wallsDictionary allValues];
