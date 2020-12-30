@@ -13,28 +13,11 @@
 
 #define MAX_ENEMIES 5
 
-@interface EnemyCollaborator()
-@property(nonatomic,weak) GameSession *gameSession;
-@property(nonatomic,assign) float enemyTimeAccumulator;
-@property(nonatomic,strong,readwrite) NSMutableArray *enemies;
-@property(nonatomic,strong,readwrite) NSMutableArray *spawnableEnemies;
-@property(nonatomic,assign) BOOL medusaWasOut;
-@property(nonatomic,assign) float speed;
-@end
-
 @implementation EnemyCollaborator
-
-- (instancetype)init:(GameSession *)gameSession
-{
-  self = [super init];
-  _gameSession = gameSession;
-  [self _initEnemies];
-  return self;
-}
 
 #pragma mark - Private Functions
 
-- (void)_initEnemies
+- (void)initEnemies
 {
   self.enemies = [NSMutableArray array];
   self.spawnableEnemies = [NSMutableArray array];
@@ -54,28 +37,6 @@
     enemy.wantSpawn = i == 0;
     [self.gameSession.mazeView addSubview:enemy];
     [self.spawnableEnemies addObject:enemy];
-  }
-}
-
-- (void)spawnFrom:(Enemy *)enemy
-{
-  for (Enemy *currentEnemy in self.spawnableEnemies)
-  {
-    if (currentEnemy.hidden)
-    {
-        currentEnemy.animationImages = [[UIImage imageNamed:@"enemy"] spritesWith:CGSizeMake(TILE_SIZE, TILE_SIZE)];
-      [currentEnemy startAnimating];
-      [self.spawnableEnemies removeObject:currentEnemy];
-      [self.enemies addObject:currentEnemy];
-      [UIView animateWithDuration:0.5 delay:1.0 options:0 animations:^{
-        currentEnemy.hidden = NO;
-        currentEnemy.alpha = 1.0;
-      } completion:^(BOOL finished) {
-        currentEnemy.speed = self.speed;
-      }];
-      currentEnemy.frame = enemy.frame;
-      break;
-    }
   }
 }
 

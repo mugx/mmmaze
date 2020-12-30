@@ -12,7 +12,12 @@
 @class Enemy;
 
 @interface EnemyCollaborator : NSObject
-- (instancetype)init:(GameSession *)gameSession;
 - (void)update:(CGFloat)deltaTime;
-@property(readonly) NSMutableArray *enemies;
+- (void)initEnemies;
+@property(nonatomic,weak) GameSession *gameSession;
+@property(nonatomic,assign) float enemyTimeAccumulator;
+@property(nonatomic,strong,readwrite) NSMutableArray *enemies;
+@property(nonatomic,strong,readwrite) NSMutableArray *spawnableEnemies;
+@property(nonatomic,assign) BOOL medusaWasOut;
+@property(nonatomic,assign) float speed;
 @end

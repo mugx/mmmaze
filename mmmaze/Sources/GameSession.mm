@@ -80,7 +80,7 @@
 	[self makePlayer];
 
 	///--- setup collaborator ---//
-	self.enemyCollaborator = [[EnemyCollaborator alloc] init:self];
+	self.enemyCollaborator = [[EnemyCollaborator alloc] initWithGameSession: self];
 
 	//--- update external delegate ---//
 	[self.delegate didUpdateScore:self.currentScore];
