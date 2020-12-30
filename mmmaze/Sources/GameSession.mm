@@ -206,14 +206,8 @@
 - (void)respawnPlayerAtOrigin:(int)blinkingTime {
 	self.player.isBlinking = YES;
 	[UIView animateWithDuration:0.4 animations:^{
-		self.player.velocity = CGPointZero;
-		self.player.frame = CGRectMake
-		(
-		 Constants.STARTING_CELL.y * TILE_SIZE + Player.SPEED / 2.0,
-		 Constants.STARTING_CELL.x * TILE_SIZE + Player.SPEED / 2.0,
-		 TILE_SIZE - Player.SPEED,
-		 TILE_SIZE - Player.SPEED
-		 );
+		[self.player respawnAtInitialFrame];
+
 		self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
 	} completion:^(BOOL finished) {
 		[self.player blink:blinkingTime completion:^{
@@ -373,14 +367,7 @@
 			else
 			{
 				[UIView animateWithDuration:0.4 animations:^{
-					enemy.velocity = CGPointZero;
-					enemy.frame = CGRectMake
-					(
-					 Constants.STARTING_CELL.y * TILE_SIZE + enemy.speed / 2.0,
-					 Constants.STARTING_CELL.x * TILE_SIZE + enemy.speed / 2.0,
-					 TILE_SIZE - enemy.speed,
-					 TILE_SIZE - enemy.speed
-					 );
+					[enemy respawnAtInitialFrame];
 				} completion:^(BOOL finished) {
 					self.player.isAngry = NO;
 				}];

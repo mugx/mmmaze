@@ -13,6 +13,10 @@ import Foundation
 		return abs(rect1.origin.x - rect2.origin.x) + abs(rect1.origin.y - rect2.origin.y)
 	}
 
+	@objc func collides(target: CGRect, path: [CGRect]) -> Bool {
+		path.contains { $0.intersects(target) }
+	}
+
 	@objc func euclideanDistance(rect1: CGRect, rect2: CGRect) -> CGFloat {
 		let center1 = CGPoint(x: rect1.midX, y: rect1.midY)
 		let center2 = CGPoint(x: rect2.midX, y: rect2.midY)
@@ -39,12 +43,19 @@ import Foundation
 		return bestDirection
  }
 
-	@objc func collides(target: CGRect, path: [CGRect]) -> Bool {
-		for p in path {
-			if target.intersects(p) {
-				return true
-			}
-		}
-		return false
+	@objc func search2() {
+		let originalFrame = CGRect(
+			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
+			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
+			width: TILE_SIZE,
+			height: TILE_SIZE
+		)
+
+//		CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+//		CGRect currentFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+//		CGFloat currentSpeed = TILE_SIZE;
+//		CGFloat currentSize = TILE_SIZE;
+//		NSMutableArray *path = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
+//		bool targetFound = false;
 	}
 }

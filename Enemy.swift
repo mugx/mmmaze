@@ -14,14 +14,18 @@ class Enemy: Tile {
 	var timeAccumulator: CGFloat = 0.0
 	var path: NSMutableArray
 	@objc static let SPEED = 1.5
-
-	init(frame: CGRect, gameSession: GameSession) {
+	
+	init(gameSession: GameSession) {
 		path = NSMutableArray()
-		super.init(frame: frame)
+
+		super.init(frame: .zero)
 
 		self.gameSession = gameSession
+		speed = Float(Self.SPEED)
 		layer.zPosition = 10
 		velocity = CGPoint.zero
+
+		respawnAtInitialFrame()
 	}
 
 	required init?(coder: NSCoder) {

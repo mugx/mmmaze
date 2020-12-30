@@ -14,4 +14,19 @@ extension Tile {
 			layer.add(arg0.value as! CAAnimation, forKey: arg0.key as? String)
 		})
 	}
+
+	// A moving tile can't match the TILE_SIZE or it collides with the borders, hence it doesn't move.
+	// Instead we consider its frame as centered and resized of a speed factor so it has margin to move.
+	@objc func respawnAtInitialFrame() {
+		velocity = .zero
+
+		let initialTile_x = Double(Constants.STARTING_CELL.x * CGFloat(TILE_SIZE))
+		let initialTile_y = Double(Constants.STARTING_CELL.y * CGFloat(TILE_SIZE))
+		frame = CGRect(
+			x: initialTile_x + Double(speed) / 2.0,
+			y: initialTile_y + Double(speed) / 2.0,
+			width: TILE_SIZE - Double(speed),
+			height: TILE_SIZE - Double(speed)
+		)
+	}
 }

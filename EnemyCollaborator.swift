@@ -9,14 +9,13 @@
 import Foundation
 
 @objc class EnemyCollaborator: NSObject {
-	let STARTING_CELL = CGPoint(x: 1, y: 1)
-	let MAX_ENEMIES = 5
-	let gameSession: GameSession!
-	var enemyTimeAccumulator: TimeInterval = 0
 	@objc var enemies: [Enemy] = []
 	@objc var spawnableEnemies: [Enemy] = []
-	let medusaWasOut: Bool = false
-	var speed: Double = 0
+	private let gameSession: GameSession!
+	private let MAX_ENEMIES = 5
+	private let MIN_SPEED = 1.5
+	private var speed: Double = 0
+	private var enemyTimeAccumulator: TimeInterval = 0
 
 	@objc public init(gameSession: GameSession) {
 		self.gameSession = gameSession
@@ -24,34 +23,6 @@ import Foundation
 		super.init()
 
 		initEnemies()
-	}
-
-	func initEnemies() {
-		let level = Double(gameSession.currentLevel - 1)
-		self.speed = Double(Enemy.SPEED + 0.1 * level)
-		if speed > Player.SPEED {
-			speed = Player.SPEED
-		}
-
-		let initialTile_x = Double(STARTING_CELL.y * CGFloat(TILE_SIZE))
-		let initialTile_y = Double(STARTING_CELL.x * CGFloat(TILE_SIZE))
-		for i in 0 ..< MAX_ENEMIES {
-			let rect = CGRect(
-				x: initialTile_x + speed / 2.0,
-				y: initialTile_y + speed / 2.0,
-				width: TILE_SIZE - speed,
-				height: TILE_SIZE - speed
-			)
-
-			let enemy = Enemy(frame: rect, gameSession: gameSession)
-			enemy.animationDuration = 0.4
-			enemy.animationRepeatCount = 0
-			enemy.alpha = 0.0
-			enemy.isHidden = true
-			enemy.wantSpawn = i == 0
-			gameSession.mazeView.addSubview(enemy)
-			spawnableEnemies.append(enemy)
-		}
 	}
 
 	@objc func spawn(from enemy: Enemy) {
@@ -86,6 +57,31 @@ import Foundation
 
 		enemies.forEach {
 			$0.update(CGFloat(delta))
+		}
+	}
+
+	// MARK: - Private
+
+	func initEnemies() {
+		refreshEnemySpeed()
+
+		for i in 0 ..< MAX_ENEMIES {
+			let enemy = Enemy(gameSession: gameSession)
+			enemy.animationDuration = 0.4
+			enemy.animationRepeatCount = 0
+			enemy.alpha = 0.0
+			enemy.isHidden = true
+			enemy.wantSpawn = i == 0
+			gameSession.mazeView.addSubview(enemy)
+			spawnableEnemies.append(enemy)
+		}
+	}
+
+	private func refreshEnemySpeed() {
+		let level = gameSession.currentLevel - 1
+		speed = Double(MIN_SPEED + 0.1 * Double(level))
+		if speed > Player.SPEED {
+			speed = Player.SPEED
 		}
 	}
 }

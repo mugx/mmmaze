@@ -19,9 +19,9 @@
   CGFloat currentSize = TILE_SIZE;
   NSMutableArray *path = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
   bool targetFound = false;
-  do
-  {
 
+	do
+  {
 		targetFound = [self collidesWithTarget:target path:path];
 		if (targetFound) {
       [path removeObject:[NSValue valueWithCGRect:originalFrame]];
