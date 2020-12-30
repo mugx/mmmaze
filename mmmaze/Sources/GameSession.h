@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EnemyCollaborator.h"
 
 @class Tile;
 @class Player;
@@ -18,6 +17,7 @@
 #define MAX_LIVES 3
 
 @protocol GameSessionDelegate;
+@class EnemyCollaborator;
 
 @interface GameSession : NSObject
 - (instancetype)initWithView:(UIView *)gameView;

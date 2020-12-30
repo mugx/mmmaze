@@ -24,7 +24,6 @@
 		1D0BCB4E259A1ECA0035BAA8 /* CreditsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB30259A1ECA0035BAA8 /* CreditsViewController.xib */; };
 		1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */; };
 		1D0BCB50259A1ECA0035BAA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */; };
-		1D0BCB51259A1ECA0035BAA8 /* EnemyCollaborator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB34259A1ECA0035BAA8 /* EnemyCollaborator.m */; };
 		1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB37259A1ECA0035BAA8 /* TutorialViewController.swift */; };
 		1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */; };
 		1D0BCB60259A1ED30035BAA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */; };
@@ -119,8 +118,6 @@
 		1D0BCB30259A1ECA0035BAA8 /* CreditsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreditsViewController.xib; path = mmmaze/Sources/CreditsViewController.xib; sourceTree = "<group>"; };
 		1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameSession.mm; path = mmmaze/Sources/GameSession.mm; sourceTree = "<group>"; };
 		1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = mmmaze/Sources/AppDelegate.swift; sourceTree = "<group>"; };
-		1D0BCB33259A1ECA0035BAA8 /* EnemyCollaborator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyCollaborator.h; path = mmmaze/Sources/EnemyCollaborator.h; sourceTree = "<group>"; };
-		1D0BCB34259A1ECA0035BAA8 /* EnemyCollaborator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyCollaborator.m; path = mmmaze/Sources/EnemyCollaborator.m; sourceTree = "<group>"; };
 		1D0BCB37259A1ECA0035BAA8 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = mmmaze/Sources/TutorialViewController.swift; sourceTree = "<group>"; };
 		1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = mmmaze/Sources/MenuViewController.swift; sourceTree = "<group>"; };
 		1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = mmmaze/Resources/Assets.xcassets; sourceTree = "<group>"; };
@@ -410,8 +407,6 @@
 				1D0BCB29259A1ECA0035BAA8 /* Enemy.h */,
 				1D0BCB1D259A1ECA0035BAA8 /* Enemy.m */,
 				1D8292F7259BCFD5000C6208 /* Enemy.swift */,
-				1D0BCB33259A1ECA0035BAA8 /* EnemyCollaborator.h */,
-				1D0BCB34259A1ECA0035BAA8 /* EnemyCollaborator.m */,
 				1D8292F9259BCFE1000C6208 /* EnemyCollaborator.swift */,
 				1D8292F5259BC775000C6208 /* Player.swift */,
 				1D0BCB24259A1ECA0035BAA8 /* Tile.h */,
@@ -563,7 +558,6 @@
 				1D8292FA259BCFE1000C6208 /* EnemyCollaborator.swift in Sources */,
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
-				1D0BCB51259A1ECA0035BAA8 /* EnemyCollaborator.m in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
 				1D0BCB42259A1ECA0035BAA8 /* Enemy.m in Sources */,
 				1D8292FE259BCFF7000C6208 /* Tile+AI.swift in Sources */,

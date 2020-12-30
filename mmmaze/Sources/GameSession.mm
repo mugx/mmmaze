@@ -8,7 +8,6 @@
 
 #import "mmmaze-Swift.h"
 #import "GameSession.h"
-#import "EnemyCollaborator.h"
 #import "Enemy.h"
 #import "ToolBox.h"
 #import "MazeGenerator.hpp"
