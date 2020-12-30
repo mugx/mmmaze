@@ -11,7 +11,7 @@
 @interface Enemy : Tile
 @property(nonatomic,assign) BOOL wantSpawn;
 @property(nonatomic,assign) BOOL exploding;
-@property(nonatomic,assign) float timeAccumulator;
 @property(nonatomic,assign) float upatePathAccumulator;
 @property(nonatomic,strong) NSMutableArray *path;
 @end
+
