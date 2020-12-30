@@ -27,8 +27,12 @@
     CGRect firstNewPathFrame = [newPath.firstObject CGRectValue];
     NSUInteger currentSteps = self.path.count;
     NSUInteger newSteps = newPath.count;
-    
-    BOOL hasToUpdatePath = currentSteps == 0 || currentSteps > newSteps || (distance(originalFrame, firstPathFrame) > distance(originalFrame, firstNewPathFrame));
+
+
+    BOOL hasToUpdatePath =
+		currentSteps == 0 ||
+		currentSteps > newSteps ||
+		([self distanceWithRect1:originalFrame rect2:firstPathFrame] > [self distanceWithRect1:originalFrame rect2:firstNewPathFrame]);
     if (hasToUpdatePath)
     {
       self.upatePathAccumulator = 0;

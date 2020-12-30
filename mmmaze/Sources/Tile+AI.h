@@ -9,7 +9,6 @@
 #import "Tile.h"
 
 @interface Tile (AI)
-CGFloat distance(CGRect rect1, CGRect rect2);
 - (char)getBestDirection:(NSArray *)directions targetFrame:(CGRect)targetFrame;
 - (NSArray *)search:(CGRect)target;
 @end

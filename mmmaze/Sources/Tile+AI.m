@@ -11,21 +11,6 @@
 
 @implementation Tile (AI)
 
-CGFloat distance(CGRect rect1, CGRect rect2)
-{
-	return (rect1.origin.x - rect2.origin.x) + fabs(rect1.origin.y - rect2.origin.y);
-}
-
-CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
-{
-   CGPoint center1 = CGPointMake(CGRectGetMidX(rect1), CGRectGetMidY(rect1));
-   CGPoint center2 = CGPointMake(CGRectGetMidX(rect2), CGRectGetMidY(rect2));
-   CGFloat horizontalDistance = (center2.x - center1.x);
-   CGFloat verticalDistance = (center2.y - center1.y);
-   CGFloat distance = sqrt((horizontalDistance * horizontalDistance) + (verticalDistance * verticalDistance));
-   return distance;
-}
-
 - (char)getBestDirection:(NSArray *)directions targetFrame:(CGRect)targetFrame
 {
   CGFloat bestManhattan = FLT_MAX;
@@ -34,7 +19,7 @@ CGFloat euclideanDistance(CGRect rect1, CGRect rect2)
   {
     CGRect frame = [direction[@"frame"] CGRectValue];
     char move = [direction[@"move"] charValue];
-    CGFloat manhattan = euclideanDistance(frame, targetFrame);
+    CGFloat manhattan = [self euclideanDistanceWithRect1:frame rect2:targetFrame];
     if (manhattan < bestManhattan)
     {
       bestManhattan = manhattan;

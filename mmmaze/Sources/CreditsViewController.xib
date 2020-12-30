@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditsViewController">
             <connections>
                 <outlet property="backButton" destination="Kn6-Nk-4xk" id="Tub-AR-Ukg"/>
-                <outlet property="sendFeedbackButton" destination="dga-mk-g0J" id="UGq-gI-tiH"/>
                 <outlet property="versionLabel" destination="8Us-lo-wG3" id="FG6-wX-U3R"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -65,33 +64,7 @@
                             <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dga-mk-g0J">
-                            <rect key="frame" x="80.5" y="81.5" width="139" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="100" id="jDw-1D-QqF"/>
-                                <constraint firstAttribute="height" constant="40" id="vxX-qD-Tbq"/>
-                            </constraints>
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                            <size key="titleShadowOffset" width="1" height="1"/>
-                            <state key="normal" title="Send a Feedback">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="mmmaze.menu.send_a_feedback"/>
-                            </userDefinedRuntimeAttributes>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="jDw-1D-QqF"/>
-                                </mask>
-                            </variation>
-                            <connections>
-                                <action selector="sendFeedbackTouched" destination="-1" eventType="touchUpInside" id="oVc-Gg-ZwH"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Programming by mugx" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eot-zn-rf5">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dev by mugx" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eot-zn-rf5">
                             <rect key="frame" x="10" y="46" width="280" height="15.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,9 +83,7 @@
                         <constraint firstItem="eot-zn-rf5" firstAttribute="top" secondItem="mHo-ui-XpV" secondAttribute="bottom" constant="20" id="WSr-RI-ZXf"/>
                         <constraint firstAttribute="trailing" secondItem="eot-zn-rf5" secondAttribute="trailing" constant="10" id="YES-8E-beB"/>
                         <constraint firstItem="eot-zn-rf5" firstAttribute="leading" secondItem="Wh8-ax-Sbe" secondAttribute="leading" constant="10" id="myE-pT-gFH"/>
-                        <constraint firstItem="dga-mk-g0J" firstAttribute="centerX" secondItem="Wh8-ax-Sbe" secondAttribute="centerX" id="nJY-go-pYM"/>
                         <constraint firstItem="mHo-ui-XpV" firstAttribute="centerY" secondItem="Wh8-ax-Sbe" secondAttribute="centerY" id="rzk-CJ-cH5"/>
-                        <constraint firstItem="dga-mk-g0J" firstAttribute="top" secondItem="eot-zn-rf5" secondAttribute="bottom" constant="20" id="vGO-Jk-fmM"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">

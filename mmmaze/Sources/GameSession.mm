@@ -6,13 +6,11 @@
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-#import <MessageUI/MessageUI.h>
-
 #import "mmmaze-Swift.h"
 #import "GameSession.h"
 #import "EnemyCollaborator.h"
 #import "Enemy.h"
-#import "MXToolBox.h"
+#import "ToolBox.h"
 #import "MazeGenerator.hpp"
 
 #define BASE_MAZE_DIMENSION 7

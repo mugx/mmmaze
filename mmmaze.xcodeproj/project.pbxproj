@@ -79,7 +79,6 @@
 		1DA4C757259BA1B200E4DE1E /* UIImage+MX.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C750259BA1B200E4DE1E /* UIImage+MX.m */; };
 		1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */; };
 		1DA4C75A259BA29800E4DE1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C759259BA29800E4DE1E /* README.md */; };
-		1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB93422337F35C00CF02AF /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -180,7 +179,7 @@
 		1DA4C750259BA1B200E4DE1E /* UIImage+MX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MX.m"; path = "mmmaze/Sources/UIImage+MX.m"; sourceTree = "<group>"; };
 		1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "mmmaze/Sources/UIView+Utils.swift"; sourceTree = "<group>"; };
 		1DA4C752259BA1B200E4DE1E /* UIImage+MX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MX.h"; path = "mmmaze/Sources/UIImage+MX.h"; sourceTree = "<group>"; };
-		1DA4C753259BA1B200E4DE1E /* MXToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXToolBox.h; path = mmmaze/Sources/MXToolBox.h; sourceTree = "<group>"; };
+		1DA4C753259BA1B200E4DE1E /* ToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolBox.h; path = mmmaze/Sources/ToolBox.h; sourceTree = "<group>"; };
 		1DA4C759259BA29800E4DE1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -190,7 +189,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DDB93432337F35C00CF02AF /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,14 +262,14 @@
 		1D0BCBCB259A25330035BAA8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				1DA4C753259BA1B200E4DE1E /* MXToolBox.h */,
+				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
+				1DA4C753259BA1B200E4DE1E /* ToolBox.h */,
 				1DA4C74C259BA1B200E4DE1E /* MXGameCenterManager.h */,
 				1DA4C74E259BA1B200E4DE1E /* MXGameCenterManager.m */,
 				1DA4C752259BA1B200E4DE1E /* UIImage+MX.h */,
 				1DA4C750259BA1B200E4DE1E /* UIImage+MX.m */,
 				1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */,
 				1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */,
-				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
 				1DA4C741259BA11700E4DE1E /* AudioManager.swift */,
 				1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */,
 				1DA4C745259BA14200E4DE1E /* String+Utils.swift */,
@@ -624,7 +622,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -666,7 +664,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

@@ -1,13 +1,13 @@
 //
-//  MXToolBox.h
-//  MXToolBox
+//  ToolBox.h
+//  ToolBox
 //
 //  Created by mugx on 13/01/16.
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //  
 
-#ifndef MXToolBox_h
-#define MXToolBox_h
+#ifndef ToolBox_h
+#define ToolBox_h
 
 #import "MXGameCenterManager.h"
 #import "UIImage+MX.h"

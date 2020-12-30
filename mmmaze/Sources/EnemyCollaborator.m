@@ -9,7 +9,7 @@
 #import "mmmaze-Swift.h"
 #import "EnemyCollaborator.h"
 #import "Enemy.h"
-#import "MXToolBox.h"
+#import "ToolBox.h"
 
 #define MAX_ENEMIES 5
 

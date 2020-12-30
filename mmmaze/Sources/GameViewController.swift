@@ -38,6 +38,8 @@ class GameViewController: UIViewController {
 	override open func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 
+		headerView.isHidden = false
+
 		if gameSession == nil {
 			//--- setup current level stuff ---//
 			currentLevelPanel.isHidden = true
@@ -66,16 +68,12 @@ class GameViewController: UIViewController {
 			gameSession = GameSession(view: gameView)
 			gameSession.delegate = self
 			gameSession.startLevel(1)
-
-			//--- setup timer ---//
-			displayLink = CADisplayLink(target: self, selector: #selector(update))
-			displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
-		} else {
-			displayLink = CADisplayLink(target: self, selector: #selector(update))
-			displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
-			gameSession.items.forEach { ($0 as! Tile).restoreAnimations() }
 		}
-		headerView.isHidden = false
+
+		//--- setup timer ---//
+		displayLink = CADisplayLink(target: self, selector: #selector(update))
+		displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
+		gameSession.items.forEach { ($0 as! Tile).restoreAnimations() }
 	}
 
 	//MARK: - Actions

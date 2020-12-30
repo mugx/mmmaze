@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+extension Tile {
+	func restoreAnimations() {
+		animations.forEach({ (arg0) in
+			layer.add(arg0.value as! CAAnimation, forKey: arg0.key as? String)
+		})
+	}
+}

@@ -7,7 +7,7 @@
 //
 
 #import "Tile.h"
-#import "MXToolBox.h"
+#import "ToolBox.h"
 #import "mmmaze-Swift.h"
 
 typedef enum : NSUInteger {
@@ -17,24 +17,12 @@ typedef enum : NSUInteger {
   FTWest
 } FacingType;
 
-@interface Tile()
-@property(nonatomic,assign) int lastSwipe;
-@property(nonatomic,strong) NSMutableDictionary *animations;
-@end
-
 @implementation Tile
 
 - (instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	_animations = [NSMutableDictionary dictionary];
 	return self;
-}
-
-- (void)restoreAnimations {
-	for (NSString *key in self.animations.allKeys) {
-		CABasicAnimation *anim = self.animations[key];
-		[self.layer addAnimation:anim forKey:key];
-	}
 }
 
 - (void)flip
