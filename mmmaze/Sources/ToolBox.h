@@ -9,8 +9,7 @@
 #ifndef ToolBox_h
 #define ToolBox_h
 
-#import "MXGameCenterManager.h"
 #import "UIImage+MX.h"
 #import "UIImageView+Utils.h"
 
-#endif /* MXToolBox_h */
+#endif /* ToolBox_h */

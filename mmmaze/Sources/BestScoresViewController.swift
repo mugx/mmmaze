@@ -12,10 +12,6 @@ class BestScoresViewController: UIViewController {
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet var backButton: UIButton!
 
-	@objc func getHighScores() -> [Any]? {
-		UserDefaults.standard.array(forKey: SAVE_KEY_HIGH_SCORES)
-	}
-
 	//MARK: - Actions
 
 	@IBAction func backTouched() {
@@ -26,11 +22,8 @@ class BestScoresViewController: UIViewController {
 
 @objc extension BestScoresViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		var count = getHighScores()?.count ?? 0
-		if count < 10 {
-			count = 10
-		}
-		return count
+		let count = ScoreManager.highScores.count
+		return count < 10 ? 10 : count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,7 +34,7 @@ class BestScoresViewController: UIViewController {
 		cell.detailTextLabel?.textColor = UIColor.black;
 		cell.detailTextLabel?.font = UIFont(name: Constants.FONT_FAMILY, size: 16)
 
-		let highScores = getHighScores() ?? []
+		let highScores = ScoreManager.highScores
 		if indexPath.row <= highScores.count - 1 {
 			let score = highScores[indexPath.row]
 			cell.textLabel?.text = "mmmaze.game.score".localized

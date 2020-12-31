@@ -173,12 +173,12 @@ extension GameViewController: GameSessionDelegate {
 		view.bringSubviewToFront(gameOverView)
 		gameOverView.alpha = 0
 		gameOverPanel.isHidden = false
-		highScoreValueLabel_inGameOver.text = String(describing: ScoreManager.highScore())
+		highScoreValueLabel_inGameOver.text = String(describing: ScoreManager.highScore)
 
 		UIView.animate(withDuration: 0.5, animations: {
 			self.gameOverView.alpha = 1.0
 		}) { (success) in
-			MXGameCenterManager.sharedInstance()!.saveScore(Int64(self.gameSession!.currentScore))
+			ScoreManager.save(score: self.gameSession.currentScore)
 		}
 	}
 }
