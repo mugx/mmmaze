@@ -24,7 +24,6 @@ class Enemy: Tile {
 		self.gameSession = gameSession
 
 		assignSpeed()
-		setupAnimations()
 		respawnAtInitialFrame()
 	}
 
@@ -34,8 +33,8 @@ class Enemy: Tile {
 
 	// MARK: - Public
 
-	@objc func show() {
-		UIView.animateKeyframes(withDuration: 0.5, delay: 1.0) {
+	@objc func show(after time: TimeInterval = 1.0) {
+		UIView.animate(withDuration: 0.5, delay: time) {
 			self.isHidden = false
 			self.alpha = 1.0
 		} completion: { _ in
@@ -46,10 +45,10 @@ class Enemy: Tile {
 	@objc func spawn() -> Enemy {
 		wantSpawn = false
 
-		let enemy = Enemy(gameSession: gameSession)
-		enemy.frame = frame
-		enemy.show()
-		return enemy
+		let spawnedEnemy = Enemy(gameSession: gameSession)
+		spawnedEnemy.frame = frame
+		spawnedEnemy.show(after: 0)
+		return spawnedEnemy
 	}
 	
 	@objc override func update(_ delta: TimeInterval) {
@@ -69,6 +68,7 @@ class Enemy: Tile {
 		isHidden = true
 		alpha = 0.0
 
+		setupAnimations()
 		super.respawnAtInitialFrame()
 	}
 

@@ -32,6 +32,10 @@
 		1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB5E259A1ED30035BAA8 /* Contents.json */; };
 		1D451C74259D245D001A291C /* CABasicAnimation+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D451C73259D245D001A291C /* CABasicAnimation+Utils.swift */; };
 		1D451C7B259E2183001A291C /* Enemy+AI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D451C7A259E2183001A291C /* Enemy+AI.swift */; };
+		1D451C7D259E2863001A291C /* GameSession+Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D451C7C259E2863001A291C /* GameSession+Items.swift */; };
+		1D451C7F259E287C001A291C /* GameSession+Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D451C7E259E287C001A291C /* GameSession+Maze.swift */; };
+		1D451C81259E2896001A291C /* GameSession+Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D451C80259E2896001A291C /* GameSession+Enemy.swift */; };
+		1D451C83259E28AE001A291C /* GameSession+Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D451C82259E28AE001A291C /* GameSession+Player.swift */; };
 		1D8292F6259BC775000C6208 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8292F5259BC775000C6208 /* Player.swift */; };
 		1D8292F8259BCFD5000C6208 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8292F7259BCFD5000C6208 /* Enemy.swift */; };
 		1D8292FA259BCFE1000C6208 /* EnemyCollaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8292F9259BCFE1000C6208 /* EnemyCollaborator.swift */; };
@@ -126,6 +130,10 @@
 		1D0BCB5E259A1ED30035BAA8 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = mmmaze/Resources/Contents.json; sourceTree = "<group>"; };
 		1D451C73259D245D001A291C /* CABasicAnimation+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Utils.swift"; sourceTree = "<group>"; };
 		1D451C7A259E2183001A291C /* Enemy+AI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enemy+AI.swift"; sourceTree = "<group>"; };
+		1D451C7C259E2863001A291C /* GameSession+Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameSession+Items.swift"; sourceTree = "<group>"; };
+		1D451C7E259E287C001A291C /* GameSession+Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameSession+Maze.swift"; sourceTree = "<group>"; };
+		1D451C80259E2896001A291C /* GameSession+Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameSession+Enemy.swift"; sourceTree = "<group>"; };
+		1D451C82259E28AE001A291C /* GameSession+Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameSession+Player.swift"; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D8292F5259BC775000C6208 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1D8292F7259BCFD5000C6208 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
@@ -414,6 +422,10 @@
 				1D0BCB2B259A1ECA0035BAA8 /* GameSession.h */,
 				1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */,
 				1DA4C73F259BA10900E4DE1E /* GameSession.swift */,
+				1D451C7E259E287C001A291C /* GameSession+Maze.swift */,
+				1D451C7C259E2863001A291C /* GameSession+Items.swift */,
+				1D451C80259E2896001A291C /* GameSession+Enemy.swift */,
+				1D451C82259E28AE001A291C /* GameSession+Player.swift */,
 				1D451C77259E0F89001A291C /* Tile */,
 				1D451C79259E0FB0001A291C /* Enemy */,
 				1D451C78259E0F9A001A291C /* Player */,
@@ -569,17 +581,21 @@
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
 				1DA4C749259BA16400E4DE1E /* UIImageView+Utills.m in Sources */,
 				1D8292FA259BCFE1000C6208 /* EnemyCollaborator.swift in Sources */,
+				1D451C83259E28AE001A291C /* GameSession+Player.swift in Sources */,
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
 				1D8292FE259BCFF7000C6208 /* Tile+AI.swift in Sources */,
 				1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */,
 				1DA4C757259BA1B200E4DE1E /* UIImage+Utils.m in Sources */,
+				1D451C7D259E2863001A291C /* GameSession+Items.swift in Sources */,
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
 				1DA4C744259BA12200E4DE1E /* UIDevice+Utils.swift in Sources */,
 				1D451C7B259E2183001A291C /* Enemy+AI.swift in Sources */,
+				1D451C81259E2896001A291C /* GameSession+Enemy.swift in Sources */,
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,
 				1DA4C754259BA1B200E4DE1E /* UIImage+Utils.swift in Sources */,
+				1D451C7F259E287C001A291C /* GameSession+Maze.swift in Sources */,
 				1DA4C742259BA11700E4DE1E /* AudioManager.swift in Sources */,
 				1D8292F6259BC775000C6208 /* Player.swift in Sources */,
 				1D0BCB4A259A1ECA0035BAA8 /* CreditsViewController.swift in Sources */,

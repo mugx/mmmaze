@@ -8,23 +8,24 @@
 
 import Foundation
 
+//protocol GameSessionDelegate {
+//	func didUpdateScore(_ score: UInt)
+//	func didUpdateTime(_ time: TimeInterval)
+//	func didUpdateLives(_ livesCount: UInt)
+//	func didUpdateLevel(_ levelCount: UInt)
+//	func didHurryUp()
+//	func didGameOver(_ session: GameSession)
+//}
+
 extension GameSession {
 	@objc func play(sound: SoundType) {
 		playSound(sound)
-	}
-
-	@objc func makePlayer() {
-		player?.removeFromSuperview()
-		player = Player(gameSession: self)
-		mazeView.addSubview(player)
 	}
 
 	@objc func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 		isGameStarted = true
 		player.didSwipe(direction)
 	}
-
-	// MARK: - Updates
 
 	@objc func update(delta: TimeInterval) {
 		updateTime(delta)
@@ -38,8 +39,20 @@ extension GameSession {
 		checkCollisionPlayerVsEnemies()
 		checkGoalHit()
 	}
-	
-	@objc func updateTime(_ delta: TimeInterval) {
+
+	func gameOver() {
+		guard !isGameOver else { return }
+
+		isGameOver = true
+		play(sound: .gameOver)
+		player.explode {
+			self.delegate.didGameOver(self)
+		}
+	}
+
+	// MARK: - Private
+
+	private func updateTime(_ delta: TimeInterval) {
 		currentTime = currentTime - delta > 0 ? currentTime - delta : 0
 		delegate.didUpdateTime(currentTime)
 
@@ -52,58 +65,46 @@ extension GameSession {
 		}
 	}
 
-	// MARK: - Private
-
 	@objc private func checkCollisionPlayerVsEnemies() {
 		guard !player.isBlinking else { return }
 
 		var collided = false
 		enemyCollaborator.collide(with: player) { (enemy) in
 			guard !collided else { return }
-
 			collided = true
-			if !player.isAngry {
-				playerGetsHit(from: enemy)
-			} else {
+			
+			if player.isAngry {
 				playerHits(enemy)
+			} else {
+				playerGetsHit(from: enemy)
 			}
 		}
 	}
 
-	private func checkGoalHit() {
-		guard
-			mazeGoalTile.tag == TyleType.TTMazeEnd_open.rawValue &&
-				player.frame.intersects(mazeGoalTile.frame) else {
-			return
-		}
+	func playerHits(_ enemy: Enemy) {
+		guard !enemy.isBlinking else { return }
+		play(sound: .hitPlayer)
 
-		currentScore += 100
-		startLevel(currentLevel + 1)
+		player.isAngry = false
+		enemy.isBlinking = true
+		enemy.explode {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				enemy.respawnAtInitialFrame()
+				enemy.isBlinking = false
+				enemy.show(after: 1)
+			}
+		}
 	}
 
-
-	private func playerGetsHit(from enemy: Enemy) {
+	func playerGetsHit(from enemy: Enemy) {
+		guard !enemy.isBlinking else { return }
 		play(sound: .hitPlayer)
 
 		enemy.wantSpawn = true
 		currentLives -= 1
 		delegate.didUpdateLives(currentLives)
 
-		if currentLives > 0 {
-			respawnPlayer()
-		} else {
-			gameOver()
-		}
-	}
-
-	private func playerHits(_ enemy: Enemy) {
-		play(sound: .hitPlayer)
-
-		enemy.explode {
-			enemy.respawnAtInitialFrame()
-			enemy.show()
-			self.player.isAngry = false
-		}
+		currentLives > 0 ? respawnPlayer() : gameOver()
 	}
 
 	private func respawnPlayer() {
@@ -118,13 +119,14 @@ extension GameSession {
 		}
 	}
 
-	private func gameOver() {
-		guard !isGameOver else { return }
-
-		isGameOver = true
-		play(sound: .gameOver)
-		player.explode {
-			self.delegate.didGameOver(self)
+	private func checkGoalHit() {
+		guard
+			mazeGoalTile.tag == TyleType.TTMazeEnd_open.rawValue &&
+				player.frame.intersects(mazeGoalTile.frame) else {
+			return
 		}
+
+		currentScore += 100
+		startLevel(currentLevel + 1)
 	}
 }

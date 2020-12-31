@@ -42,20 +42,19 @@ import Foundation
 		
 		return bestDirection
  }
-
-	@objc func search2() {
-		let originalFrame = CGRect(
-			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
-			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
-			width: TILE_SIZE,
-			height: TILE_SIZE
-		)
-
+//
+//	@objc func search2() {
+//		let originalFrame = CGRect(
+//			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
+//			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
+//			width: TILE_SIZE,
+//			height: TILE_SIZE
+//		)
+// }
 //		CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 //		CGRect currentFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 //		CGFloat currentSpeed = TILE_SIZE;
 //		CGFloat currentSize = TILE_SIZE;
 //		NSMutableArray *path = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
 //		bool targetFound = false;
-	}
 }

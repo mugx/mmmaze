@@ -56,6 +56,7 @@
 	self.numRow = (self.numRow + 2) < 30 ? self.numRow + 2 : self.numRow;
 	[self makeMaze];
 	[self makePlayer];
+	[self.mazeView centerTo:self.player];
 	
 	///--- setup collaborator ---//
 	self.enemyCollaborator = [[EnemyCollaborator alloc] initWithGameSession: self];
