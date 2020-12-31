@@ -24,10 +24,5 @@ class Constants: NSObject {
 //	static let TILE_SIZE = CGSize(width: Constants.TILE_SIDE, height: Constants.TILE_SIDE)
 	static let STARTING_CELL = CGPoint(x: 1, y: 1)
 	static let FONT_FAMILY = "Joystix"
-	static let whiteColor = UIColor(red:255.0/255.0, green:255.0/255.0, blue:255.0/255.0, alpha:1.0)
-	static let magentaColor = UIColor(red:255.0/255.0, green:0.0/255.0, blue:255.0/255.0, alpha:1.0)
-	static let cyanColor = UIColor(red:0.0/255.0, green:255.0/255.0, blue:255.0/255.0, alpha:1.0)
-	static let yellowColor = UIColor(red:230.0/255.0, green:220.0/255.0, blue:0.0, alpha:1.0)
-	static let redColor = UIColor.red
 }
 

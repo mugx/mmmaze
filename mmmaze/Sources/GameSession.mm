@@ -142,7 +142,7 @@
 	keyItem.x = c;
 	keyItem.y = r;
 	keyItem.tag = TTKey;
-	keyItem.image = [[UIImage imageNamed:@"key"] coloredWith:Constants.magentaColor];
+	keyItem.image = [[UIImage imageNamed:@"key"] coloredWith: [UIColor magentaColor]];
 	[self.mazeView addSubview:keyItem];
 	[self.items addObject:keyItem];
 	
