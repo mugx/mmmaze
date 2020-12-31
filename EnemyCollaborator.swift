@@ -38,25 +38,36 @@ import Foundation
 		if enemyTimeAccumulator > 1 {
 			enemyTimeAccumulator = 0
 
-			// spawn first enemy
-			if enemies.isEmpty {
-				let enemy = Enemy(gameSession: self.gameSession)
-				self.enemies.append(enemy)
-				self.gameSession.mazeView.addSubview(enemy)
-				enemy.show()
-			}
-
-			// search for enemy to spawn
-			if let spawnableEnemy = enemies.first(where: { $0.wantSpawn }) {
-				let spawnedEnemy = spawnableEnemy.spawn()
-				enemies.append(spawnedEnemy)
-				gameSession.mazeView.addSubview(spawnedEnemy)
-			}
+			spawnFirstEnemy()
+			spawnEnemies()
 		}
 
+		updateEnemies(delta)
+	}
+
+	// MARK: - Private
+
+	private func spawnFirstEnemy() {
+		guard enemies.isEmpty else { return }
+
+		let enemy = Enemy(gameSession: gameSession)
+		enemies.append(enemy)
+		gameSession.mazeView.addSubview(enemy)
+		enemy.show()
+	}
+
+	private func spawnEnemies() {
+		guard let spawnableEnemy = enemies.first(where: { $0.wantSpawn }) else { return }
+
+		let spawnedEnemy = spawnableEnemy.spawn()
+		enemies.append(spawnedEnemy)
+		gameSession.mazeView.addSubview(spawnedEnemy)
+	}
+
+	private func updateEnemies(_ delta: TimeInterval) {
 		enemies.forEach {
 			if $0.visible {
-				$0.update(CGFloat(delta))
+				$0.update(delta)
 			}
 		}
 	}

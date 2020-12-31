@@ -9,7 +9,7 @@
 #ifndef ToolBox_h
 #define ToolBox_h
 
-#import "UIImage+MX.h"
+#import "UIImage+Utils.h"
 #import "UIImageView+Utils.h"
 
 #endif /* ToolBox_h */

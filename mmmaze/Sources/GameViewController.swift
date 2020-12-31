@@ -120,8 +120,8 @@ extension GameViewController: GameSessionDelegate {
 		scoreValueLabel_inGameOver.text = "\(score)"
 	}
 
-	public func didUpdateTime(_ time: UInt) {
-		timeLabel.text = "\("mmmaze.game.time".localized)\n\(time)"
+	public func didUpdateTime(_ time: TimeInterval) {
+		timeLabel.text = "\("mmmaze.game.time".localized)\n\(Int(time))"
 	}
 
 	public func didUpdateLives(_ livesCount: UInt) {

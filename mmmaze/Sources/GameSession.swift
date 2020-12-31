@@ -24,31 +24,87 @@ extension GameSession {
 		player.didSwipe(direction)
 	}
 
-	@objc func collisionPlayerVsEnemies() {
-		guard !player.isBlinking, currentLives > 0 else { return }
+	// MARK: - Updates
 
-		enemyCollaborator.collide(with: player) { (enemy) in
-			if !player.isAngry {
-				enemy.wantSpawn = true
+	@objc func update(delta: TimeInterval) {
+		updateTime(delta)
+		mazeView.center(to: player)
+		
+		guard isGameStarted else { return }
 
-				play(sound: .hitPlayer)
-				currentLives -= 1
-				delegate.didUpdateLives(currentLives)
+		enemyCollaborator.update(delta)
+		player.update(delta)
 
-				if currentLives > 0 {
-					respawnPlayer()
-				}
-			} else {
-				UIView.animate(withDuration: 0.4) {
-					enemy.respawnAtInitialFrame()
-				} completion: { _ in
-					self.player.isAngry = false
-				}
-			}
+		checkCollisionPlayerVsEnemies()
+		checkGoalHit()
+	}
+	
+	@objc func updateTime(_ delta: TimeInterval) {
+		currentTime = currentTime - delta > 0 ? currentTime - delta : 0
+		delegate.didUpdateTime(currentTime)
+
+		if currentTime <= 10 {
+			delegate.didHurryUp()
+		}
+
+		if currentTime <= 0 {
+			gameOver()
 		}
 	}
 
 	// MARK: - Private
+
+	@objc private func checkCollisionPlayerVsEnemies() {
+		guard !player.isBlinking else { return }
+
+		var collided = false
+		enemyCollaborator.collide(with: player) { (enemy) in
+			guard !collided else { return }
+
+			collided = true
+			if !player.isAngry {
+				playerGetsHit(from: enemy)
+			} else {
+				playerHits(enemy)
+			}
+		}
+	}
+
+	private func checkGoalHit() {
+		guard
+			mazeGoalTile.tag == TyleType.TTMazeEnd_open.rawValue &&
+				player.frame.intersects(mazeGoalTile.frame) else {
+			return
+		}
+
+		currentScore += 100
+		startLevel(currentLevel + 1)
+	}
+
+
+	private func playerGetsHit(from enemy: Enemy) {
+		play(sound: .hitPlayer)
+
+		enemy.wantSpawn = true
+		currentLives -= 1
+		delegate.didUpdateLives(currentLives)
+
+		if currentLives > 0 {
+			respawnPlayer()
+		} else {
+			gameOver()
+		}
+	}
+
+	private func playerHits(_ enemy: Enemy) {
+		play(sound: .hitPlayer)
+
+		enemy.explode {
+			enemy.respawnAtInitialFrame()
+			enemy.show()
+			self.player.isAngry = false
+		}
+	}
 
 	private func respawnPlayer() {
 		player.isBlinking = true
@@ -59,6 +115,16 @@ extension GameSession {
 			self.player.blink(2) {
 				self.player.isBlinking = false
 			}
+		}
+	}
+
+	private func gameOver() {
+		guard !isGameOver else { return }
+
+		isGameOver = true
+		play(sound: .gameOver)
+		player.explode {
+			self.delegate.didGameOver(self)
 		}
 	}
 }

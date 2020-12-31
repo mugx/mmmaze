@@ -1,14 +1,14 @@
 //
-//  UIImage+MX.m
+//  UIImage+Utils.m
 //  MXToolBox
 //
 //  Created by mugx on 26/11/15.
 //  Copyright © 2015 mugx. All rights reserved.
 //
 
-#import "UIImage+MX.h"
+#import "UIImage+Utils.h"
 
-@implementation UIImage (MX)
+@implementation UIImage (Utils)
 
 - (NSArray *)spritesWithSize:(CGSize)size inRange:(NSRange)range
 {

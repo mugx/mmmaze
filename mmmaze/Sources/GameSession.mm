@@ -203,33 +203,14 @@
 	}
 }
 
-- (void)update:(CGFloat)deltaTime
-{
-	self.currentTime = self.currentTime - deltaTime > 0 ? self.currentTime - deltaTime : 0;
-	[self.delegate didUpdateTime:self.currentTime];
-	
-	//--- hurry up ---//
-	if (self.currentTime <= 10)
-	{
-		[self.delegate didHurryUp];
-	}
-	
-	//--- updating enemies stuff ---//
-	if (self.isGameStarted)
-	{
-		[self.enemyCollaborator update:deltaTime];
-	}
-	
-	//--- checking walls collisions ---//
-	if (!self.isGameOver)
-	{
-		[self.player update:deltaTime];
-	}
+- (void)update:(CGFloat)deltaTime {
+	if (self.isGameOver) { return; }
+
+	[self updateWithDelta: deltaTime];
 	
 	//--- checking items collisions ---//
 	NSMutableArray *itemsToRemove = [NSMutableArray array];
-	for (Tile *item in self.items)
-	{
+	for (Tile *item in self.items) {
 		if (CGRectIntersectsRect(item.frame, self.player.frame))
 		{
 			if (item.tag == TTCoin)
@@ -326,28 +307,6 @@
 		item.transform = CGAffineTransformMakeRotation(-self.mazeRotation);
 	}
 	[self.items removeObjectsInArray:itemsToRemove];
-	
-	//--- updating maze frame ---//
-	self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
-
-	//--- collision player vs enemies ---//
-	[self collisionPlayerVsEnemies];
-	
-	//--- collision player vs maze goal---//
-	if (self.mazeGoalTile.tag == TTMazeEnd_open  && CGRectIntersectsRect(self.player.frame, self.mazeGoalTile.frame))
-	{
-		[self startLevel:self.currentLevel + 1];
-		self.currentScore += 100;
-	}
-	
-	//--- collision if player is dead---//
-	if (!self.isGameOver && (self.currentLives == 0 || self.currentTime <= 0))
-	{
-		self.isGameOver = YES;
-		[self playWithSound: SoundTypeGameOver];
-		[self.player explode:^{
-			[self.delegate performSelector:@selector(didGameOver:) withObject:self];
-		}];
-	}
 }
+
 @end

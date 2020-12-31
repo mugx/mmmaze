@@ -26,7 +26,7 @@
 @property(nonatomic,assign) id <GameSessionDelegate> delegate;
 
 @property(readwrite) NSUInteger currentLives;
-@property(readwrite) CGFloat currentTime;
+@property(readwrite) NSTimeInterval currentTime;
 @property(nonatomic,assign) BOOL isGameOver;
 
 @property(nonatomic,assign) NSUInteger numRow;
@@ -48,7 +48,7 @@
 
 @protocol GameSessionDelegate <NSObject>
 - (void)didUpdateScore:(NSUInteger)score;
-- (void)didUpdateTime:(NSUInteger)time;
+- (void)didUpdateTime:(NSTimeInterval)time;
 - (void)didUpdateLives:(NSUInteger)livesCount;
 - (void)didUpdateLevel:(NSUInteger)levelCount;
 - (void)didHurryUp;

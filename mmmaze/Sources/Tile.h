@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 - (bool)collidesWestOf:(CGRect)frame;
 - (bool)collidesEastOf:(CGRect)frame;
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
-- (void)update:(CGFloat)updateTime;
+- (void)update:(NSTimeInterval)updateTime;
 @property(nonatomic,assign) CGPoint velocity;
 @property(nonatomic,assign) float speed;
 @property(nonatomic,assign) bool didVerticalSwipe;
