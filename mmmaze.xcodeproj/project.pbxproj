@@ -437,8 +437,8 @@
 		1D9ADB47259B1760003CC8C2 /* Generator */ = {
 			isa = PBXGroup;
 			children = (
-				1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */,
 				1D0BCB1E259A1ECA0035BAA8 /* MazeGenerator.hpp */,
+				1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */,
 			);
 			name = Generator;
 			sourceTree = "<group>";

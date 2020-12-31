@@ -29,12 +29,12 @@ extension GameSession {
 
 	@objc func update(delta: TimeInterval) {
 		updateTime(delta)
-		mazeView.center(to: player)
-		
+
 		guard isGameStarted else { return }
 
 		enemyCollaborator.update(delta)
 		player.update(delta)
+		mazeView.follow(player)
 
 		checkCollisionPlayerVsEnemies()
 		checkGoalHit()
@@ -111,7 +111,7 @@ extension GameSession {
 		player.isBlinking = true
 		UIView.animate(withDuration: 0.4) {
 			self.player.respawnAtInitialFrame()
-			self.mazeView.center(to: self.player)
+			self.mazeView.follow(self.player)
 		} completion: { _ in
 			self.player.blink(2) {
 				self.player.isBlinking = false

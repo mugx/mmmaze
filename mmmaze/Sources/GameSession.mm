@@ -56,7 +56,7 @@
 	self.numRow = (self.numRow + 2) < 30 ? self.numRow + 2 : self.numRow;
 	[self makeMaze];
 	[self makePlayer];
-	[self.mazeView centerTo:self.player];
+	[self.mazeView follow:self.player];
 	
 	///--- setup collaborator ---//
 	self.enemyCollaborator = [[EnemyCollaborator alloc] initWithGameSession: self];
@@ -125,7 +125,7 @@
 			}
 			else
 			{
-				Tile *item = [self makeItem:c row:r];
+				Tile *item = [self makeItemWithCol:c row:r];
 				if (!item)
 				{
 					[freeTiles addObject:@{@"c":@(c), @"r":@(r)}];
@@ -151,57 +151,6 @@
 		free(maze[i]);
 	}
 	free(maze);
-}
-
-- (Tile *)makeItem:(int)col row:(int)row
-{
-	Tile *item = [[Tile alloc] initWithFrame:CGRectMake(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
-	item.tag = -1;
-	
-	if ((arc4random() % 100) >= 50)
-	{
-		item.tag = TTCoin;
-		item.image = [[UIImage imageNamed:@"coin"] coloredWith:[UIColor yellowColor]];
-		[item spin];
-	}
-	else if ((arc4random() % 100) >= 90)
-	{
-		item.tag = TTWhirlwind;
-		item.image = [[UIImage imageNamed:@"whirlwind"] coloredWith:[UIColor whiteColor]];
-		[item spin];
-	}
-	else if ((arc4random() % 100) >= 80)
-	{
-		item.tag = TTBomb;
-		item.image = [[UIImage imageNamed:@"bomb"] coloredWith:Constants.redColor];
-	}
-	else if ((arc4random() % 100) >= 98)
-	{
-		item.tag = TTTime;
-		item.animationImages = [[UIImage imageNamed:@"time"] spritesWith:CGSizeMake(TILE_SIZE, TILE_SIZE)];
-		item.animationDuration = 1;
-		[item startAnimating];
-	}
-	else if ((arc4random() % 100) >= 99)
-	{
-		int hearthSize = TILE_SIZE;
-		item = [[Tile alloc] initWithFrame:CGRectMake(col * hearthSize, row * hearthSize, hearthSize, hearthSize)];
-		item.tag = TTHearth;
-		item.image = [UIImage imageNamed:@"hearth"];
-	}
-	
-	if (item.tag != -1)
-	{
-		item.x = col;
-		item.y = row;
-		[self.mazeView addSubview:item];
-		[self.items addObject:item];
-		return item;
-	}
-	else
-	{
-		return nil;
-	}
 }
 
 - (void)update:(CGFloat)deltaTime {
