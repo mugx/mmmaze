@@ -45,4 +45,13 @@ extension UIView {
 			label.font = UIFont(name: Constants.FONT_FAMILY, size: label.font.pointSize)!
 		}
 	}
+
+	func center(to pivot: UIView) {
+		frame = CGRect(
+			x: frame.size.width / 2.0 - pivot.frame.origin.x,
+			y: frame.size.height / 2.0 - pivot.frame.origin.y,
+			width: frame.size.width,
+			height: frame.size.height
+		)
+	}
 }

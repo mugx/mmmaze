@@ -203,19 +203,6 @@
 	}
 }
 
-- (void)respawnPlayerAtOrigin:(int)blinkingTime {
-	self.player.isBlinking = YES;
-	[UIView animateWithDuration:0.4 animations:^{
-		[self.player respawnAtInitialFrame];
-
-		self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
-	} completion:^(BOOL finished) {
-		[self.player blink:blinkingTime completion:^{
-			self.player.isBlinking = NO;
-		}];
-	}];
-}
-
 - (void)update:(CGFloat)deltaTime
 {
 	self.currentTime = self.currentTime - deltaTime > 0 ? self.currentTime - deltaTime : 0;
@@ -327,19 +314,13 @@
 		}
 		else
 		{
-			if (item.tag == TTBomb)
-			{
-				for (Enemy *enemy in self.enemyCollaborator.enemies)
-				{
-					if (CGRectIntersectsRect(enemy.frame, item.frame))
-					{
-						item.hidden = true;
-						[itemsToRemove addObject:item];
-						enemy.wantSpawn = YES;
-						[self playWithSound: SoundTypeEnemySpawn];
-						break;
-					}
-				}
+			if (item.tag == TTBomb) {
+				[self.enemyCollaborator collideWith: item completion:^(Enemy *enemy) {
+					item.hidden = true;
+					[itemsToRemove addObject:item];
+					enemy.wantSpawn = YES;
+					[self playWithSound: SoundTypeEnemySpawn];
+				}];
 			}
 		}
 		item.transform = CGAffineTransformMakeRotation(-self.mazeRotation);

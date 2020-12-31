@@ -20,6 +20,8 @@ enum ScreenType {
 
 @objcMembers
 class Constants: NSObject {
+//	static let TILE_SIDE = 32.0
+//	static let TILE_SIZE = CGSize(width: Constants.TILE_SIDE, height: Constants.TILE_SIDE)
 	static let STARTING_CELL = CGPoint(x: 1, y: 1)
 	static let FONT_FAMILY = "Joystix"
 	static let whiteColor = UIColor(red:255.0/255.0, green:255.0/255.0, blue:255.0/255.0, alpha:1.0)

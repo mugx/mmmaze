@@ -10,10 +10,11 @@ import Foundation
 
 class Enemy: Tile {
 	@objc var wantSpawn: Bool = false
-	let exploding: Bool = false
-	var timeAccumulator: CGFloat = 0.0
-	var path: NSMutableArray
-	@objc static let SPEED = 1.5
+	var visible: Bool { alpha == 1 && !isHidden }
+	
+	private static let SPEED = 1.5
+	private var path: NSMutableArray
+	private var timeAccumulator: CGFloat = 0.0
 
 	init(gameSession: GameSession) {
 		path = NSMutableArray()
@@ -21,9 +22,9 @@ class Enemy: Tile {
 		super.init(frame: .zero)
 
 		self.gameSession = gameSession
-		speed = Float(Self.SPEED)
-		velocity = CGPoint.zero
-
+		self.speed = Float(Self.SPEED)
+ 
+		setupAnimations()
 		respawnAtInitialFrame()
 	}
 
@@ -31,6 +32,26 @@ class Enemy: Tile {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	// MARK: - Public
+
+	@objc func spawn() -> Enemy {
+		wantSpawn = false
+
+		let enemy = Enemy(gameSession: gameSession)
+		enemy.frame = frame
+		enemy.show()
+		return enemy
+	}
+	
+	@objc func show() {
+		UIView.animateKeyframes(withDuration: 0.5, delay: 1.0) {
+			self.isHidden = false
+			self.alpha = 1.0
+		} completion: { _ in
+			self.speed = Float(self.speed)
+		}
+	}
+	
 	@objc override func update(_ delta: CGFloat) {
 		timeAccumulator += delta
 
@@ -44,16 +65,34 @@ class Enemy: Tile {
 		super.update(delta)
 	}
 
-	@objc func currentPosition() -> CGRect {
+	//MARK: - Private
+	
+	override func respawnAtInitialFrame() {
+		isHidden = true
+		alpha = 0.0
+
+		super.respawnAtInitialFrame()
+	}
+
+	private func setupAnimations() {
+		animationDuration = 0.4
+		animationImages = UIImage(named: "enemy")?.sprites(with: CGSize(width: TILE_SIZE, height: TILE_SIZE))
+		startAnimating()
+	}
+
+	@objc private func currentPosition() -> CGRect {
+		let initialTile_x = round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE
+		let initialTile_y = round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE
+		
 		return CGRect(
-			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
-			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
+			x: initialTile_x,
+			y: initialTile_y,
 			width: TILE_SIZE,
 			height: TILE_SIZE
 		)
 	}
 	
-	@objc func calculatePath() {
+	@objc private func calculatePath() {
 		guard timeAccumulator > 1 || path.count == 0 else { return }
 		timeAccumulator = 0
 
@@ -77,7 +116,7 @@ class Enemy: Tile {
 		}
 	}
 
-	@objc func refinesPath() {
+	@objc private func refinesPath() {
 		let currentPosition = self.currentPosition()
 		let enrolledPath: [CGRect] = path.compactMap { ($0 as? NSValue)?.cgRectValue }
 		if collides(target: currentPosition, path: enrolledPath) {
@@ -85,7 +124,7 @@ class Enemy: Tile {
 		}
 	}
 
-	@objc func decideNextMove(_ delta: CGFloat) {
+	@objc private func decideNextMove(_ delta: CGFloat) {
 		let speed = CGFloat(self.speed + self.speed * Float(delta))
 		let eastFrame = CGRect(x: CGFloat(frame.origin.x - speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
 		let westFrame = CGRect(x: CGFloat(frame.origin.x + speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)

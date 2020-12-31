@@ -30,6 +30,7 @@
 		1D0BCB62259A1ED30035BAA8 /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB57259A1ED30035BAA8 /* gameConfiguration.json */; };
 		1D0BCB63259A1ED30035BAA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */; };
 		1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB5E259A1ED30035BAA8 /* Contents.json */; };
+		1D451C74259D245D001A291C /* CABasicAnimation+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D451C73259D245D001A291C /* CABasicAnimation+Utils.swift */; };
 		1D8292F6259BC775000C6208 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8292F5259BC775000C6208 /* Player.swift */; };
 		1D8292F8259BCFD5000C6208 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8292F7259BCFD5000C6208 /* Enemy.swift */; };
 		1D8292FA259BCFE1000C6208 /* EnemyCollaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8292F9259BCFE1000C6208 /* EnemyCollaborator.swift */; };
@@ -123,6 +124,7 @@
 		1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "mmmaze/Resources/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D0BCB5B259A1ED30035BAA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mmmaze/Resources/Info.plist; sourceTree = "<group>"; };
 		1D0BCB5E259A1ED30035BAA8 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = mmmaze/Resources/Contents.json; sourceTree = "<group>"; };
+		1D451C73259D245D001A291C /* CABasicAnimation+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Utils.swift"; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D8292F5259BC775000C6208 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1D8292F7259BCFD5000C6208 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				1DA4C747259BA15200E4DE1E /* UIImageView+Utils.h */,
 				1DA4C748259BA16400E4DE1E /* UIImageView+Utills.m */,
 				1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */,
+				1D451C73259D245D001A291C /* CABasicAnimation+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */,
 				1DA4C74B259BA17D00E4DE1E /* ScoreManager.swift in Sources */,
 				1D0BCB50259A1ECA0035BAA8 /* AppDelegate.swift in Sources */,
+				1D451C74259D245D001A291C /* CABasicAnimation+Utils.swift in Sources */,
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
 				1DA4C749259BA16400E4DE1E /* UIImageView+Utills.m in Sources */,
 				1D8292FA259BCFE1000C6208 /* EnemyCollaborator.swift in Sources */,

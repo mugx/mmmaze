@@ -27,16 +27,16 @@ extension GameSession {
 	@objc func collisionPlayerVsEnemies() {
 		guard !player.isBlinking, currentLives > 0 else { return }
 
-		enemyCollaborator.enemies.filter {
-			!$0.isHidden && player.frame.intersects($0.frame)
-		}.forEach { enemy in
+		enemyCollaborator.collide(with: player) { (enemy) in
 			if !player.isAngry {
-				play(sound: .hitPlayer)
 				enemy.wantSpawn = true
+
+				play(sound: .hitPlayer)
 				currentLives -= 1
 				delegate.didUpdateLives(currentLives)
+
 				if currentLives > 0 {
-					respawnPlayer(atOrigin: 2)
+					respawnPlayer()
 				}
 			} else {
 				UIView.animate(withDuration: 0.4) {
@@ -44,6 +44,20 @@ extension GameSession {
 				} completion: { _ in
 					self.player.isAngry = false
 				}
+			}
+		}
+	}
+
+	// MARK: - Private
+
+	private func respawnPlayer() {
+		player.isBlinking = true
+		UIView.animate(withDuration: 0.4) {
+			self.player.respawnAtInitialFrame()
+			self.mazeView.center(to: self.player)
+		} completion: { _ in
+			self.player.blink(2) {
+				self.player.isBlinking = false
 			}
 		}
 	}

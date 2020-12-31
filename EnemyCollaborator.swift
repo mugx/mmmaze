@@ -9,79 +9,55 @@
 import Foundation
 
 @objc class EnemyCollaborator: NSObject {
-	@objc var enemies: [Enemy] = []
-	@objc var spawnableEnemies: [Enemy] = []
 	private let gameSession: GameSession!
-	private let MAX_ENEMIES = 5
-	private let MIN_SPEED = 1.5
-	private var speed: Double = 0
+	private var enemies: [Enemy] = []
 	private var enemyTimeAccumulator: TimeInterval = 0
 
 	@objc public init(gameSession: GameSession) {
 		self.gameSession = gameSession
 
 		super.init()
-
-		initEnemies()
 	}
 
-	@objc func spawn(from enemy: Enemy) {
-		guard let indexToSpawn = spawnableEnemies.firstIndex(where: { $0.isHidden }) else { return }
-		let enemyToSpawn = spawnableEnemies[indexToSpawn]
-		let size = CGSize(width: TILE_SIZE, height: TILE_SIZE)
-		enemyToSpawn.animationImages = UIImage(named: "enemy")?.sprites(with: size)
-		enemyToSpawn.startAnimating()
-		spawnableEnemies.remove(at: indexToSpawn)
-		enemies.append(enemyToSpawn)
+	deinit {
+		enemies.forEach { $0.removeFromSuperview() }
+	}
 
-		UIView.animateKeyframes(withDuration: 0.5, delay: 1.0) {
-			enemyToSpawn.isHidden = false
-			enemyToSpawn.alpha = 1.0
-		} completion: { _ in
-			enemyToSpawn.speed = Float(self.speed)
+	// MARK: - Public
+
+	@objc func collide(with tile: Tile, completion: (Enemy) -> ()){
+		enemies.forEach { enemy in
+			if enemy.visible && enemy.frame.intersects(tile.frame) {
+				completion(enemy)
+			}
 		}
-
-		enemyToSpawn.frame = enemy.frame;
 	}
 
 	@objc func update(_ delta: TimeInterval) {
 		enemyTimeAccumulator += delta
 		if enemyTimeAccumulator > 1 {
 			enemyTimeAccumulator = 0
-			let enemiesArray = enemies.isEmpty ? spawnableEnemies : enemies
-			if let enemy = enemiesArray.first(where: { $0.wantSpawn }) {
-				enemy.wantSpawn = false
-				spawn(from: enemy)
+
+			// spawn first enemy
+			if enemies.isEmpty {
+				let enemy = Enemy(gameSession: self.gameSession)
+				self.enemies.append(enemy)
+				self.gameSession.mazeView.addSubview(enemy)
+				enemy.show()
+			}
+
+			// search for enemy to spawn
+			if let spawnableEnemy = enemies.first(where: { $0.wantSpawn }) {
+				let spawnedEnemy = spawnableEnemy.spawn()
+				enemies.append(spawnedEnemy)
+				gameSession.mazeView.addSubview(spawnedEnemy)
 			}
 		}
 
 		enemies.forEach {
-			$0.update(CGFloat(delta))
-		}
-	}
-
-	// MARK: - Private
-
-	func initEnemies() {
-		refreshEnemySpeed()
-
-		for i in 0 ..< MAX_ENEMIES {
-			let enemy = Enemy(gameSession: gameSession)
-			enemy.animationDuration = 0.4
-			enemy.animationRepeatCount = 0
-			enemy.alpha = 0.0
-			enemy.isHidden = true
-			enemy.wantSpawn = i == 0
-			gameSession.mazeView.addSubview(enemy)
-			spawnableEnemies.append(enemy)
-		}
-	}
-
-	private func refreshEnemySpeed() {
-		let level = gameSession.currentLevel - 1
-		speed = Double(MIN_SPEED + 0.1 * Double(level))
-		if speed > Player.SPEED {
-			speed = Player.SPEED
+			if $0.visible {
+				$0.update(CGFloat(delta))
+			}
 		}
 	}
 }
