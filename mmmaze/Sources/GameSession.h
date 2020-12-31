@@ -22,6 +22,7 @@
 - (instancetype)initWithView:(UIView *)gameView;
 - (void)startLevel:(NSUInteger)levelNumber;
 - (void)update:(CGFloat)deltaTime;
+- (void)respawnPlayerAtOrigin:(int)blinkingTime;
 
 @property(nonatomic,assign) id <GameSessionDelegate> delegate;
 

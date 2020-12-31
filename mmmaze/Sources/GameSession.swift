@@ -23,4 +23,28 @@ extension GameSession {
 		isGameStarted = true
 		player.didSwipe(direction)
 	}
+
+	@objc func collisionPlayerVsEnemies() {
+		guard !player.isBlinking, currentLives > 0 else { return }
+
+		enemyCollaborator.enemies.filter {
+			!$0.isHidden && player.frame.intersects($0.frame)
+		}.forEach { enemy in
+			if !player.isAngry {
+				play(sound: .hitPlayer)
+				enemy.wantSpawn = true
+				currentLives -= 1
+				delegate.didUpdateLives(currentLives)
+				if currentLives > 0 {
+					respawnPlayer(atOrigin: 2)
+				}
+			} else {
+				UIView.animate(withDuration: 0.4) {
+					enemy.respawnAtInitialFrame()
+				} completion: { _ in
+					self.player.isAngry = false
+				}
+			}
+		}
+	}
 }

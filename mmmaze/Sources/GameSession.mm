@@ -348,33 +348,9 @@
 	
 	//--- updating maze frame ---//
 	self.mazeView.frame = CGRectMake(self.mazeView.frame.size.width / 2.0 - self.player.frame.origin.x, self.mazeView.frame.size.height / 2.0 - self.player.frame.origin.y, self.mazeView.frame.size.width, self.mazeView.frame.size.height);
-	
-	///--- collision player vs enemies ---//
-	for (Enemy *enemy in self.enemyCollaborator.enemies)
-	{
-		if (!self.player.isBlinking && self.currentLives > 0 && CGRectIntersectsRect(enemy.frame, self.player.frame))
-		{
-			if (!self.player.isAngry)
-			{
-				[self playWithSound: SoundTypeHitPlayer];
-				enemy.wantSpawn = YES;
-				self.currentLives = self.currentLives - 1;
-				[self.delegate didUpdateLives:self.currentLives];
-				if (self.currentLives > 0) {
-					[self respawnPlayerAtOrigin:2];
-				}
-			}
-			else
-			{
-				[UIView animateWithDuration:0.4 animations:^{
-					[enemy respawnAtInitialFrame];
-				} completion:^(BOOL finished) {
-					self.player.isAngry = NO;
-				}];
-			}
-			break;
-		}
-	}
+
+	//--- collision player vs enemies ---//
+	[self collisionPlayerVsEnemies];
 	
 	//--- collision player vs maze goal---//
 	if (self.mazeGoalTile.tag == TTMazeEnd_open  && CGRectIntersectsRect(self.player.frame, self.mazeGoalTile.frame))
