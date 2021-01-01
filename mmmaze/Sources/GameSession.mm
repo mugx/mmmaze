@@ -10,65 +10,12 @@
 #import "GameSession.h"
 #import "MazeGenerator.hpp"
 
-#define BASE_MAZE_DIMENSION 7
-
 @implementation GameSession
 
 - (instancetype)initWithView:(UIView *)gameView {
 	self = [super init];
 	_gameView = gameView;
 	return self;
-}
-
-- (void)startLevel:(NSUInteger)levelNumber {
-	self.gameView.alpha = 0;
-	
-	//--- setup gameplay varables ---//
-	self.currentLevel = levelNumber;
-	self.currentTime = MAX_TIME;
-	self.isGameStarted = NO;
-	
-	if (levelNumber == 1) {
-		//--- play start game sound ---//
-		[self playWithSound: SoundTypeStartGame];
-		
-		self.currentScore = 0;
-		self.currentLives = MAX_LIVES;
-		self.numCol = BASE_MAZE_DIMENSION;
-		self.numRow = BASE_MAZE_DIMENSION;
-	} else {
-		//--- play start level sound ---//
-		[self playWithSound: SoundTypeLevelChange];
-	}
-	
-	//--- reset random rotation ---//
-	self.gameView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, 0);
-	
-	//--- remove old views ---//
-	for (UIView *view in self.mazeView.subviews) {
-		view.hidden = YES;
-		[view removeFromSuperview];
-	}
-	
-	//--- init scene elements ---//
-	self.numCol = (self.numCol + 2) < 30 ? self.numCol + 2 : self.numCol;
-	self.numRow = (self.numRow + 2) < 30 ? self.numRow + 2 : self.numRow;
-	[self makeMaze];
-	[self makePlayer];
-	[self.mazeView follow:self.player];
-	
-	///--- setup collaborator ---//
-	self.enemyCollaborator = [[EnemyCollaborator alloc] initWithGameSession: self];
-	
-	//--- update external delegate ---//
-	[self.delegate didUpdateScore:self.currentScore];
-	[self.delegate didUpdateLives:self.currentLives];
-	
-	[UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-		self.gameView.alpha = 1;
-	} completion:^(BOOL finished) {
-		[self.delegate didUpdateLevel:self.currentLevel];
-	}];
 }
 
 - (void)makeMaze {

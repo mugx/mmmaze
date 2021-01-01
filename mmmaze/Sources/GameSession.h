@@ -12,16 +12,14 @@
 @class Player;
 
 #define TILE_SIZE 32.0
-#define MAX_TIME 60
-#define MAX_LIVES 3
 
 @protocol GameSessionDelegate;
 @class EnemyCollaborator;
 
 @interface GameSession : NSObject
 - (instancetype)initWithView:(UIView *)gameView;
-- (void)startLevel:(NSUInteger)levelNumber;
 - (void)update:(CGFloat)deltaTime;
+- (void)makeMaze;
 
 @property(nonatomic,assign) id <GameSessionDelegate> delegate;
 
