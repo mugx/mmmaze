@@ -25,8 +25,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 };
 
 @interface Tile : UIImageView
-- (Tile * _Nullable)checkWallCollision:(CGRect)frame;
-- (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 - (void)update:(NSTimeInterval)updateTime;
 @property(nonatomic,assign) CGPoint velocity;
 @property(nonatomic,assign) float speed;
@@ -39,6 +37,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) BOOL isAngry;
 @property(nonatomic,weak) Tile * _Nullable collidedWall;
 @property(nonatomic,weak, null_resettable) GameSession * gameSession;
-@property(nonatomic,assign) int lastSwipe;
+@property(nonatomic,assign) UISwipeGestureRecognizerDirection lastSwipe;
 @property(nonatomic,strong) NSMutableDictionary<NSString*, CABasicAnimation*> *_Nullable animations;
 @end

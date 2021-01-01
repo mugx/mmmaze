@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 	var gameSession: GameSession!
 	var displayLink: CADisplayLink!
 	var previousTimestamp: CFTimeInterval = 0.0
@@ -47,18 +47,22 @@ class GameViewController: UIViewController {
 			//--- setup swipes ---//
 			swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
 			swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+			swipeRight.delegate = self
 			gameView.addGestureRecognizer(swipeRight)
 
 			swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
 			swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+			swipeLeft.delegate = self
 			gameView.addGestureRecognizer(swipeLeft)
 
 			swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
 			swipeUp.direction = UISwipeGestureRecognizer.Direction.up
+			swipeUp.delegate = self
 			gameView.addGestureRecognizer(swipeUp)
 
 			swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
 			swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+			swipeDown.delegate = self
 			gameView.addGestureRecognizer(swipeDown)
 
 			//--- game over view ---//
@@ -74,6 +78,10 @@ class GameViewController: UIViewController {
 		displayLink = CADisplayLink(target: self, selector: #selector(update))
 		displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
 		gameSession.items.forEach { ($0 as! Tile).restoreAnimations() }
+	}
+
+	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+			return true
 	}
 
 	//MARK: - Actions

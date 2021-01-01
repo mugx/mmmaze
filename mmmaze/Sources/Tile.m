@@ -17,40 +17,6 @@
 	return self;
 }
 
-- (Tile *)checkWallCollision:(CGRect)frame {
-  NSArray *walls = [self.gameSession.wallsDictionary allValues];
-  for (Tile *wall in walls) {
-    if (wall.tag != TTExplodedWall && CGRectIntersectsRect(wall.frame, frame)) {
-      return wall;
-    }
-  }
-  return nil;
-}
-
-- (CGRect)wallCollision:(CGRect)frame {
-  NSArray *walls = [self.gameSession.wallsDictionary allValues];
-	for (Tile *wall in walls) {
-    if (wall.tag != TTExplodedWall && CGRectIntersectsRect(wall.frame, frame)) {
-      return CGRectIntersection(wall.frame, frame);
-    }
-  }
-  return CGRectZero;
-}
-
-- (void)didSwipe:(UISwipeGestureRecognizerDirection)direction {
-  self.lastSwipe = (int)direction;
-  
-  if (self.lastSwipe == UISwipeGestureRecognizerDirectionRight) {
-    self.velocity = CGPointMake(self.speed, self.velocity.y);
-  } else if (self.lastSwipe == UISwipeGestureRecognizerDirectionLeft) {
-    self.velocity = CGPointMake(-self.speed, self.velocity.y);
-  } else if (self.lastSwipe == UISwipeGestureRecognizerDirectionUp) {
-    self.velocity = CGPointMake(self.velocity.x, -self.speed);
-  } else if (self.lastSwipe == UISwipeGestureRecognizerDirectionDown) {
-    self.velocity = CGPointMake(self.velocity.x, self.speed);
-  }
-}
-
 - (void)update:(CGFloat)deltaTime
 {
   CGRect frame = self.frame;

@@ -27,9 +27,10 @@ extension GameSession {
 			item.animationDuration = 1
 			item.startAnimating()
 		case 90 ... 100:
-			item.tag = Int(TyleType.TTWhirlwind.rawValue)
-			item.image = UIImage(named: "whirlwind")?.colored(with: UIColor.white)
-			item.spin()
+//			item.tag = Int(TyleType.TTWhirlwind.rawValue)
+//			item.image = UIImage(named: "whirlwind")?.colored(with: UIColor.white)
+//			item.spin()
+		break
 		case 80 ... 100:
 			item.tag = Int(TyleType.TTBomb.rawValue)
 			item.image = UIImage(named: "bomb")?.colored(with: UIColor.red)

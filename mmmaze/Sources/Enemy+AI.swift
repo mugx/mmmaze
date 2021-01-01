@@ -43,42 +43,38 @@ extension Enemy {
 
 	@objc func decideNextMove(_ delta: TimeInterval) {
 		let speed = CGFloat(self.speed + self.speed * Float(delta))
-		let eastFrame = CGRect(x: CGFloat(frame.origin.x - speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
-		let westFrame = CGRect(x: CGFloat(frame.origin.x + speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
-		let northFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y - speed), width: frame.size.width, height: frame.size.height)
-		let southFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y + speed), width: frame.size.width, height: frame.size.height)
-		let collidesEast = checkWallCollision(eastFrame) != nil
-		let collidesWest = checkWallCollision(westFrame) != nil
-		let collidesNorth = checkWallCollision(northFrame) != nil
-		let collidesSouth = checkWallCollision(southFrame) != nil
+		let upFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y - speed), width: frame.size.width, height: frame.size.height)
+		let downFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y + speed), width: frame.size.width, height: frame.size.height)
+		let leftFrame = CGRect(x: CGFloat(frame.origin.x - speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
+		let rightFrame = CGRect(x: CGFloat(frame.origin.x + speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
+		let collidesUp = checkWallCollision(upFrame) != nil
+		let collidesDown = checkWallCollision(downFrame) != nil
+		let collidesLeft = checkWallCollision(leftFrame) != nil
+		let collidesRight = checkWallCollision(rightFrame) != nil
 
 		var possibleDirections: [[String: Any]] = []
-		if !collidesEast {
-			possibleDirections.append(["move": "e", "frame": NSValue(cgRect: eastFrame)])
+		if !collidesUp {
+			possibleDirections.append(["move": "up", "frame": NSValue(cgRect: upFrame)])
 		}
 
-		if !collidesWest {
-			possibleDirections.append(["move": "w", "frame": NSValue(cgRect: westFrame)])
+		if !collidesDown {
+			possibleDirections.append(["move": "down", "frame": NSValue(cgRect: downFrame)])
 		}
 
-		if !collidesNorth {
-			possibleDirections.append(["move": "n","frame": NSValue(cgRect: northFrame)])
+		if !collidesLeft {
+			possibleDirections.append(["move": "left", "frame": NSValue(cgRect: leftFrame)])
 		}
 
-		if !collidesSouth {
-			possibleDirections.append(["move": "s","frame": NSValue(cgRect: southFrame)])
+		if !collidesRight {
+			possibleDirections.append(["move": "right", "frame": NSValue(cgRect: rightFrame)])
 		}
 
 		let nextFrame = (path.firstObject as? NSValue)?.cgRectValue ?? CGRect.zero
 		switch getBestDirection(possibleDirections, targetFrame: nextFrame) {
-		case "e":
-			didSwipe(UISwipeGestureRecognizer.Direction.left)
-		case "w":
-			didSwipe(UISwipeGestureRecognizer.Direction.right)
-		case "n":
-			didSwipe(UISwipeGestureRecognizer.Direction.up)
-		case "s":
-			didSwipe(UISwipeGestureRecognizer.Direction.down)
+		case "up": didSwipe(.up)
+		case "down": didSwipe(.down)
+		case "left": didSwipe(.left)
+		case "right": didSwipe(.right)
 		default:
 			break
 		}

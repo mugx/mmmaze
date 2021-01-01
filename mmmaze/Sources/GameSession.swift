@@ -25,10 +25,18 @@ extension GameSession {
 	@objc func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 		isGameStarted = true
 		player.didSwipe(direction)
+		play(sound: .selectItem)
+//		switch direction {
+//		case .left: player.didSwipe(.left)
+//		case .right: player.didSwipe(.right)
+//		case .up: player.didSwipe(.up)
+//		case .down: player.didSwipe(.down)
+//		default: break
+//		}
 	}
 
 	@objc func update(delta: TimeInterval) {
-		updateTime(delta)
+		//updateTime(delta)
 
 		guard isGameStarted else { return }
 
@@ -100,11 +108,12 @@ extension GameSession {
 		guard !enemy.isBlinking else { return }
 		play(sound: .hitPlayer)
 
+		/*
 		enemy.wantSpawn = true
 		currentLives -= 1
 		delegate.didUpdateLives(currentLives)
-
 		currentLives > 0 ? respawnPlayer() : gameOver()
+		*/
 	}
 
 	private func respawnPlayer() {

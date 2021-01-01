@@ -27,32 +27,32 @@
       [path removeObject:[NSValue valueWithCGRect:originalFrame]];
       break;
     } else {
-      CGRect eastFrame = CGRectMake(currentFrame.origin.x - currentSpeed, currentFrame.origin.y, currentSize, currentSize);
-      CGRect westFrame = CGRectMake(currentFrame.origin.x + currentSpeed, currentFrame.origin.y, currentSize, currentSize);
-      CGRect northFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y - currentSpeed, currentSize, currentSize);
-      CGRect southFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y + currentSpeed, currentSize, currentSize);
-      BOOL collidesEast = [self isWallAt:currentFrame direction:DirectionE] || [path containsObject:[NSValue valueWithCGRect:eastFrame]];
-      BOOL collidesWest = [self isWallAt:currentFrame direction:DirectionW] || [path containsObject:[NSValue valueWithCGRect:westFrame]];
-      BOOL collidesNorth = [self isWallAt:currentFrame direction:DirectionN] || [path containsObject:[NSValue valueWithCGRect:northFrame]];
-      BOOL collidesSouth = [self isWallAt:currentFrame direction:DirectionS] || [path containsObject:[NSValue valueWithCGRect:southFrame]];
-      
+			CGRect upFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y - currentSpeed, currentSize, currentSize);
+			CGRect downFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y + currentSpeed, currentSize, currentSize);
+      CGRect leftFrame = CGRectMake(currentFrame.origin.x - currentSpeed, currentFrame.origin.y, currentSize, currentSize);
+      CGRect rightFrame = CGRectMake(currentFrame.origin.x + currentSpeed, currentFrame.origin.y, currentSize, currentSize);
+			BOOL collidesUp = [self isWallAt:currentFrame direction:UISwipeGestureRecognizerDirectionUp] || [path containsObject:[NSValue valueWithCGRect: upFrame]];
+			BOOL collidesDown = [self isWallAt:currentFrame direction:UISwipeGestureRecognizerDirectionDown] || [path containsObject:[NSValue valueWithCGRect: downFrame]];
+      BOOL collidesLeft = [self isWallAt:currentFrame direction:UISwipeGestureRecognizerDirectionLeft] || [path containsObject:[NSValue valueWithCGRect: leftFrame]];
+      BOOL collidesRight = [self isWallAt:currentFrame direction:UISwipeGestureRecognizerDirectionRight] || [path containsObject:[NSValue valueWithCGRect: rightFrame]];
+
       NSMutableArray *possibleDirections = [NSMutableArray array];
-      if (!collidesEast) [possibleDirections addObject:@{@"move":@"e", @"frame":[NSValue valueWithCGRect:eastFrame]}];
-      if (!collidesWest) [possibleDirections addObject:@{@"move":@"w", @"frame":[NSValue valueWithCGRect:westFrame]}];
-      if (!collidesNorth) [possibleDirections addObject:@{@"move":@"n", @"frame":[NSValue valueWithCGRect:northFrame]}];
-      if (!collidesSouth) [possibleDirections addObject:@{@"move":@"s", @"frame":[NSValue valueWithCGRect:southFrame]}];
-      
+			if (!collidesUp) [possibleDirections addObject:@{@"move":@"up", @"frame":[NSValue valueWithCGRect:upFrame]}];
+			if (!collidesDown) [possibleDirections addObject:@{@"move":@"down", @"frame":[NSValue valueWithCGRect:downFrame]}];
+			if (!collidesLeft) [possibleDirections addObject:@{@"move":@"left", @"frame":[NSValue valueWithCGRect:leftFrame]}];
+      if (!collidesRight) [possibleDirections addObject:@{@"move":@"right", @"frame":[NSValue valueWithCGRect:rightFrame]}];
+
       if (possibleDirections.count > 0)
       {
         NSString* direction = [self getBestDirection:possibleDirections targetFrame:target];
-				if ([direction isEqualToString:@"n"]) {
-					currentFrame = northFrame;
-				} else if ([direction isEqualToString:@"s"]) {
-					currentFrame = southFrame;
-				} else if ([direction isEqualToString:@"e"]) {
-					currentFrame = eastFrame;
-				} else if ([direction isEqualToString:@"w"]) {
-					currentFrame = westFrame;
+				if ([direction isEqualToString:@"up"]) {
+					currentFrame = upFrame;
+				} else if ([direction isEqualToString:@"down"]) {
+					currentFrame = downFrame;
+				} else if ([direction isEqualToString:@"left"]) {
+					currentFrame = leftFrame;
+				} else if ([direction isEqualToString:@"right"]) {
+					currentFrame = rightFrame;
 				}
         [path addObject:[NSValue valueWithCGRect:currentFrame]];
       } else {
