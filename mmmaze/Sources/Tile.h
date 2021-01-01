@@ -25,7 +25,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 };
 
 @interface Tile : UIImageView
-- (void)update:(NSTimeInterval)updateTime;
 @property(nonatomic,assign) CGPoint velocity;
 @property(nonatomic,assign) float speed;
 @property(nonatomic,assign) bool didVerticalSwipe;

@@ -9,5 +9,5 @@
 #import "Tile.h"
 
 @interface Tile (AI)
-- (NSArray *)search:(CGRect)target;
+//- (NSArray *)search:(CGRect)target;
 @end

@@ -8,15 +8,6 @@
 
 import Foundation
 
-//protocol GameSessionDelegate {
-//	func didUpdateScore(_ score: UInt)
-//	func didUpdateTime(_ time: TimeInterval)
-//	func didUpdateLives(_ livesCount: UInt)
-//	func didUpdateLevel(_ levelCount: UInt)
-//	func didHurryUp()
-//	func didGameOver(_ session: GameSession)
-//}
-
 extension GameSession {
 	@objc func play(sound: SoundType) {
 		playSound(sound)
@@ -26,17 +17,10 @@ extension GameSession {
 		isGameStarted = true
 		player.didSwipe(direction)
 		play(sound: .selectItem)
-//		switch direction {
-//		case .left: player.didSwipe(.left)
-//		case .right: player.didSwipe(.right)
-//		case .up: player.didSwipe(.up)
-//		case .down: player.didSwipe(.down)
-//		default: break
-//		}
 	}
 
 	@objc func update(delta: TimeInterval) {
-		//updateTime(delta)
+		updateTime(delta)
 
 		guard isGameStarted else { return }
 
@@ -108,12 +92,10 @@ extension GameSession {
 		guard !enemy.isBlinking else { return }
 		play(sound: .hitPlayer)
 
-		/*
 		enemy.wantSpawn = true
 		currentLives -= 1
 		delegate.didUpdateLives(currentLives)
 		currentLives > 0 ? respawnPlayer() : gameOver()
-		*/
 	}
 
 	private func respawnPlayer() {

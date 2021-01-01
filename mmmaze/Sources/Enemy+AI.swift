@@ -14,9 +14,10 @@ extension Enemy {
 		timeAccumulator = 0
 
 		let currentPosition = self.currentPosition()
-		let newPath = search(gameSession.player.frame) ?? []
-		let firstPathFrame = (path.firstObject as? NSValue)?.cgRectValue ?? CGRect.zero
-		let firstNewPathFrame = (newPath.first as? NSValue)?.cgRectValue ?? CGRect.zero
+		let newPath = search(gameSession.player.frame)
+		let firstPathFrame = path.firstObject as? CGRect ?? CGRect.zero
+		let firstNewPathFrame = newPath.first ?? CGRect.zero
+		
 		let currentSteps = path.count
 		let newSteps = newPath.count
 
@@ -52,32 +53,26 @@ extension Enemy {
 		let collidesLeft = checkWallCollision(leftFrame) != nil
 		let collidesRight = checkWallCollision(rightFrame) != nil
 
-		var possibleDirections: [[String: Any]] = []
+		var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
 		if !collidesUp {
-			possibleDirections.append(["move": "up", "frame": NSValue(cgRect: upFrame)])
+			possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
 		}
 
 		if !collidesDown {
-			possibleDirections.append(["move": "down", "frame": NSValue(cgRect: downFrame)])
+			possibleDirections.append((UISwipeGestureRecognizer.Direction.down, downFrame))
 		}
 
 		if !collidesLeft {
-			possibleDirections.append(["move": "left", "frame": NSValue(cgRect: leftFrame)])
+			possibleDirections.append((UISwipeGestureRecognizer.Direction.left, leftFrame))
 		}
 
 		if !collidesRight {
-			possibleDirections.append(["move": "right", "frame": NSValue(cgRect: rightFrame)])
+			possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
 		}
 
 		let nextFrame = (path.firstObject as? NSValue)?.cgRectValue ?? CGRect.zero
-		switch getBestDirection(possibleDirections, targetFrame: nextFrame) {
-		case "up": didSwipe(.up)
-		case "down": didSwipe(.down)
-		case "left": didSwipe(.left)
-		case "right": didSwipe(.right)
-		default:
-			break
-		}
+		let bestDirection = getBestDirection(possibleDirections, targetFrame: nextFrame)
+		didSwipe(bestDirection.0)
 	}
 
 	// MARK: - Private

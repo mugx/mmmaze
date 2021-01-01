@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc extension Tile {
+extension Tile {
 	@objc func distance(rect1: CGRect, rect2: CGRect) -> CGFloat {
 		return abs(rect1.origin.x - rect2.origin.x) + abs(rect1.origin.y - rect2.origin.y)
 	}
@@ -26,35 +26,75 @@ import Foundation
 		return distance;
 	}
 
-	@objc func getBestDirection(_ directions: [[String: Any]], targetFrame: CGRect) -> String {
+	func getBestDirection(_ directions: [(UISwipeGestureRecognizer.Direction, CGRect)], targetFrame: CGRect) -> (UISwipeGestureRecognizer.Direction, CGRect) {
 		var bestManhattan = CGFloat(Float.greatestFiniteMagnitude)
-		var bestDirection = ""
+		var bestDirection: (UISwipeGestureRecognizer.Direction, CGRect)!
 
 		for direction in directions {
-			let frame = (direction["frame"] as! NSValue).cgRectValue
-			let move = (direction["move"] as! String)
-			let manhattan = euclideanDistance(rect1: frame, rect2: targetFrame)
+			let manhattan = euclideanDistance(rect1: direction.1, rect2: targetFrame)
 			if manhattan < bestManhattan {
 				bestManhattan = manhattan
-				bestDirection = move
+				bestDirection = direction
 			}
 		}
 		
 		return bestDirection
- }
+	}
 
-//	@objc func search2() {
-//		let originalFrame = CGRect(
-//			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
-//			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
-//			width: TILE_SIZE,
-//			height: TILE_SIZE
-//		)
-// }
-//		CGRect originalFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-//		CGRect currentFrame = CGRectMake((int)roundf(self.frame.origin.x / TILE_SIZE) * TILE_SIZE, (int)roundf(self.frame.origin.y / TILE_SIZE) * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-//		CGFloat currentSpeed = TILE_SIZE;
-//		CGFloat currentSize = TILE_SIZE;
-//		NSMutableArray *path = [@[[NSValue valueWithCGRect:currentFrame]] mutableCopy];
-//		bool targetFound = false;
+	@objc func search(_ target: CGRect) -> [CGRect] {
+		let originalFrame = CGRect(
+			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
+			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
+			width: TILE_SIZE,
+			height: TILE_SIZE
+		)
+		var currentFrame = originalFrame
+		let currentSpeed = TILE_SIZE
+		let currentSize = TILE_SIZE
+		
+		var path = [currentFrame]
+		var targetFound = false
+
+		while (!targetFound) {
+			targetFound = collides(target: target, path: path)
+			let upFrame = CGRect(x: Double(currentFrame.origin.x), y: Double(currentFrame.origin.y) - currentSpeed, width: currentSize, height: currentSize)
+			let downFrame = CGRect(x: Double(currentFrame.origin.x), y: Double(currentFrame.origin.y) + currentSpeed, width: currentSize, height: currentSize)
+			let leftFrame = CGRect(x: Double(currentFrame.origin.x) - currentSpeed, y: Double(currentFrame.origin.y), width: currentSize, height: currentSize)
+			let rightFrame = CGRect(x: Double(currentFrame.origin.x) + currentSpeed, y: Double(currentFrame.origin.y), width: currentSize, height: currentSize)
+
+			let collidesUp = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.up) || path.contains(upFrame)
+			let collidesDown = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.down) || path.contains(downFrame)
+			let collidesLeft = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.left) || path.contains(leftFrame)
+			let collidesRight = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.right) || path.contains(rightFrame)
+
+			var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
+			if !collidesUp {
+				possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
+			}
+
+			if !collidesDown {
+				possibleDirections.append((UISwipeGestureRecognizer.Direction.down, downFrame))
+			}
+
+			if !collidesLeft {
+				possibleDirections.append((UISwipeGestureRecognizer.Direction.left, leftFrame))
+			}
+
+			if !collidesRight {
+				possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
+			}
+
+			if !possibleDirections.isEmpty {
+				let direction = getBestDirection(possibleDirections, targetFrame: target)
+				currentFrame = direction.1
+				path.append(currentFrame)
+			} else {
+				// backtracking
+				if let currentIndex = path.firstIndex(of: currentFrame) {
+					currentFrame = path[currentIndex - 1]
+				}
+			}
+		}
+		return path
+	}
 }

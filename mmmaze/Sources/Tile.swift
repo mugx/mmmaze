@@ -24,23 +24,57 @@ extension Tile {
 		default:
 			break
 		}
-		
-		if self is Player {
-			if lastSwipe == .up {
-				print("up")
+	}
+
+	@objc func update(_ delta: TimeInterval) {
+		var frame = self.frame
+		let velx = velocity.x + velocity.x * CGFloat(delta)
+		let vely = velocity.y + velocity.y * CGFloat(delta)
+
+		var didHorizontalMove = false
+		var didVerticalMove = false
+		var didWallExplosion = false
+
+		//--- checking horizontal move ---//
+		if (velx < 0 || velx > 0) {
+			let frameOnHorizontalMove = CGRect(x: frame.origin.x + velx, y: frame.origin.y, width :frame.size.width, height: frame.size.height)
+
+			self.collidedWall = checkWallCollision(frameOnHorizontalMove)
+			if (self.collidedWall == nil) {
+				didHorizontalMove = true
+				frame = frameOnHorizontalMove
+
+				if (vely != 0 && !(self.lastSwipe == UISwipeGestureRecognizer.Direction.up || self.lastSwipe == UISwipeGestureRecognizer.Direction.down)) {
+					self.velocity = CGPoint(x: self.velocity.x, y: 0);
+				}
 			}
-			if lastSwipe == .down {
-				print("down")
+
+			didWallExplosion = explodeWall()
+		}
+
+		//--- checking vertical move ---//
+		if (vely < 0 || vely > 0) {
+			let frameOnVerticalMove = CGRect(x: frame.origin.x, y: frame.origin.y + vely, width: frame.size.width, height: frame.size.height)
+			self.collidedWall = checkWallCollision(frameOnVerticalMove)
+			if (self.collidedWall == nil) {
+				didVerticalMove = true
+				frame = frameOnVerticalMove
+
+				if (velx != 0 && !(self.lastSwipe == UISwipeGestureRecognizer.Direction.left || self.lastSwipe == UISwipeGestureRecognizer.Direction.right)) {
+					self.velocity = CGPoint(x: 0, y: self.velocity.y)
+				}
 			}
-			if lastSwipe == .left {
-				print("left")
-			}
-			if lastSwipe == .right {
-				print("right")
-			}
+
+			didWallExplosion = explodeWall()
+		}
+
+		if (didHorizontalMove || didVerticalMove || didWallExplosion) {
+			self.frame = frame
+		} else {
+			self.velocity = .zero
 		}
 	}
-	
+
 	@objc func checkWallCollision(_ frame: CGRect) -> Tile? {
 		return (gameSession.wallsDictionary.allValues as! [Tile]).first(where: {
 			$0.tag != TyleType.TTExplodedWall.rawValue && $0.frame.intersects(frame)
