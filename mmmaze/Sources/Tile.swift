@@ -9,6 +9,21 @@
 import Foundation
 
 extension Tile {
+	@objc enum Direction: Int {
+		case n, s, e, w
+	}
+
+	@objc func isWall(at frame: CGRect, direction: Direction) -> Bool {
+		let col = Int(round(Double(frame.origin.x) / TILE_SIZE))
+		let row = Int(round(Double(frame.origin.y) / TILE_SIZE))
+		let col_offset = direction == .w ? col + 1 : direction == .e ? col - 1 : col
+		let row_offset = direction == .n ? row - 1 : direction == .s ? row + 1 : row
+		let wallPosition = NSValue(cgPoint: CGPoint(x: row_offset, y: col_offset))
+
+		guard let tile = gameSession.wallsDictionary[wallPosition] as? Tile else { return false }
+		return tile.tag != TyleType.TTExplodedWall.rawValue
+	}
+
 	@objc func flip() {
 		let anim = CABasicAnimation.flipAnimation()
 		layer.add(anim, forKey: "flip")

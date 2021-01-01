@@ -26,10 +26,6 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 
 @interface Tile : UIImageView
 - (Tile * _Nullable)checkWallCollision:(CGRect)frame;
-- (bool)collidesNorthOf:(CGRect)frame;
-- (bool)collidesSouthOf:(CGRect)frame;
-- (bool)collidesWestOf:(CGRect)frame;
-- (bool)collidesEastOf:(CGRect)frame;
 - (void)didSwipe:(UISwipeGestureRecognizerDirection)direction;
 - (void)update:(NSTimeInterval)updateTime;
 @property(nonatomic,assign) CGPoint velocity;

@@ -42,7 +42,7 @@ import Foundation
 		
 		return bestDirection
  }
-//
+
 //	@objc func search2() {
 //		let originalFrame = CGRect(
 //			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,

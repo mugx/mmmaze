@@ -31,10 +31,10 @@
       CGRect westFrame = CGRectMake(currentFrame.origin.x + currentSpeed, currentFrame.origin.y, currentSize, currentSize);
       CGRect northFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y - currentSpeed, currentSize, currentSize);
       CGRect southFrame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y + currentSpeed, currentSize, currentSize);
-      BOOL collidesEast = [self collidesEastOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:eastFrame]];
-      BOOL collidesWest = [self collidesWestOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:westFrame]];
-      BOOL collidesNorth = [self collidesNorthOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:northFrame]];
-      BOOL collidesSouth = [self collidesSouthOf:currentFrame] || [path containsObject:[NSValue valueWithCGRect:southFrame]];
+      BOOL collidesEast = [self isWallAt:currentFrame direction:DirectionE] || [path containsObject:[NSValue valueWithCGRect:eastFrame]];
+      BOOL collidesWest = [self isWallAt:currentFrame direction:DirectionW] || [path containsObject:[NSValue valueWithCGRect:westFrame]];
+      BOOL collidesNorth = [self isWallAt:currentFrame direction:DirectionN] || [path containsObject:[NSValue valueWithCGRect:northFrame]];
+      BOOL collidesSouth = [self isWallAt:currentFrame direction:DirectionS] || [path containsObject:[NSValue valueWithCGRect:southFrame]];
       
       NSMutableArray *possibleDirections = [NSMutableArray array];
       if (!collidesEast) [possibleDirections addObject:@{@"move":@"e", @"frame":[NSValue valueWithCGRect:eastFrame]}];
