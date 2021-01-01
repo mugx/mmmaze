@@ -112,7 +112,7 @@ extension GameSession {
 
 	private func checkGoalHit() {
 		guard
-			mazeGoalTile.tag == TyleType.TTMazeEnd_open.rawValue &&
+			mazeGoalTile.tag == TyleType.mazeEnd_open.rawValue &&
 				player.frame.intersects(mazeGoalTile.frame) else {
 			return
 		}

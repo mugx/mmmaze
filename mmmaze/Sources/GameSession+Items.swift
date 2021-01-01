@@ -19,23 +19,23 @@ extension GameSession {
 		let rand = Int.random(in: 0 ..< 100)
 		switch rand {
 		case 99 ... 100:
-			item.tag = Int(TyleType.TTHearth.rawValue)
+			item.tag = TyleType.hearth.rawValue
 			item.image = UIImage(named: "hearth")
 		case 98 ... 100:
-			item.tag = Int(TyleType.TTTime.rawValue)
+			item.tag = TyleType.time.rawValue
 			item.animationImages = UIImage(named: "time")?.sprites(with: TILE_SIZE)
 			item.animationDuration = 1
 			item.startAnimating()
 		case 90 ... 100:
-//			item.tag = Int(TyleType.TTWhirlwind.rawValue)
-//			item.image = UIImage(named: "whirlwind")?.colored(with: UIColor.white)
-//			item.spin()
+			item.tag = TyleType.whirlwind.rawValue
+			item.image = UIImage(named: "whirlwind")?.colored(with: UIColor.white)
+			item.spin()
 		break
 		case 80 ... 100:
-			item.tag = Int(TyleType.TTBomb.rawValue)
+			item.tag = TyleType.bomb.rawValue
 			item.image = UIImage(named: "bomb")?.colored(with: UIColor.red)
 		case 50 ... 100:
-			item.tag = Int(TyleType.TTCoin.rawValue)
+			item.tag = TyleType.coin.rawValue
 			item.image = UIImage(named: "coin")?.colored(with: UIColor.yellow)
 			item.spin()
 		default:
@@ -43,8 +43,8 @@ extension GameSession {
 		}
 
 		if item.tag != -1 {
-			item.x = Int32(col)
-			item.y = Int32(row)
+			item.x = Int(col)
+			item.y = Int(row)
 			mazeView.addSubview(item)
 			items.add(item)
 			return item

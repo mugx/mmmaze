@@ -14,7 +14,7 @@ extension Enemy {
 		timeAccumulator = 0
 
 		let currentPosition = self.currentPosition()
-		let newPath = search(gameSession.player.frame)
+		let newPath = search(gameSession!.player.frame)
 		let firstPathFrame = path.firstObject as? CGRect ?? CGRect.zero
 		let firstNewPathFrame = newPath.first ?? CGRect.zero
 		

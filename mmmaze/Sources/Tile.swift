@@ -8,7 +8,43 @@
 
 import Foundation
 
-extension Tile {
+@objc enum TyleType: Int {
+	case door
+	case wall
+	case explodedWall
+	case coin
+	case whirlwind
+	case bomb
+	case time
+	case hearth
+	case key
+	case mazeEnd_close
+	case mazeEnd_open
+}
+
+class Tile: UIImageView {
+	var velocity: CGPoint = .zero
+	var speed: Float = 0
+	var didVerticalSwipe: Bool = false
+	var didHorizontalSwipe: Bool = false
+	@objc var x: Int = 0
+	@objc var y: Int = 0
+	@objc var isDestroyable: Bool = false
+	var isBlinking: Bool = false
+	@objc var isAngry: Bool = false
+	var collidedWall: Tile?
+	var gameSession: GameSession?
+	var lastSwipe: UISwipeGestureRecognizer.Direction?
+	var animations: [String: CABasicAnimation] = [:]
+
+	@objc override init(frame: CGRect) {
+		super.init(frame: frame)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	@objc func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 		lastSwipe = direction
 		
@@ -76,8 +112,8 @@ extension Tile {
 	}
 
 	@objc func checkWallCollision(_ frame: CGRect) -> Tile? {
-		return (gameSession.wallsDictionary.allValues as! [Tile]).first(where: {
-			$0.tag != TyleType.TTExplodedWall.rawValue && $0.frame.intersects(frame)
+		return (gameSession?.wallsDictionary.allValues as! [Tile]).first(where: {
+			$0.tag != TyleType.explodedWall.rawValue && $0.frame.intersects(frame)
 		})
 	}
 	
@@ -88,25 +124,25 @@ extension Tile {
 		let row_offset = direction == .up ? row - 1 : direction == .down ? row + 1 : row
 		let wallPosition = NSValue(cgPoint: CGPoint(x: row_offset, y: col_offset))
 		
-		guard let tile = gameSession.wallsDictionary[wallPosition] as? Tile else { return false }
-		return tile.tag != TyleType.TTExplodedWall.rawValue
+		guard let tile = gameSession?.wallsDictionary[wallPosition] as? Tile else { return false }
+		return tile.tag != TyleType.explodedWall.rawValue
 	}
 	
 	@objc func flip() {
 		let anim = CABasicAnimation.flipAnimation()
 		layer.add(anim, forKey: "flip")
-		animations?.setObject(anim, forKey: "flip" as NSString)
+		animations["flip"] = anim
 	}
 	
 	@objc func spin() {
 		let anim = CABasicAnimation.spinAnimation()
 		layer.add(anim, forKey: "spin")
-		animations?.setObject(anim, forKey: "spin" as NSString)
+		animations["spin"] = anim
 	}
 	
 	func restoreAnimations() {
-		animations?.forEach({ (arg0) in
-			layer.add(arg0.value as! CAAnimation, forKey: arg0.key as? String)
+		animations.forEach({ (arg0) in
+			layer.add(arg0.value, forKey: arg0.key)
 		})
 	}
 	
@@ -127,12 +163,12 @@ extension Tile {
 	
 	@objc func explodeWall() -> Bool {
 		guard let collidedWall = collidedWall,
-					collidedWall.tag == TyleType.TTWall.rawValue,
+					collidedWall.tag == TyleType.wall.rawValue,
 					collidedWall.isDestroyable,
 					isAngry else { return false }
 		
 		collidedWall.explode()
-		collidedWall.tag = Int(TyleType.TTExplodedWall.rawValue)
+		collidedWall.tag = TyleType.explodedWall.rawValue
 		isAngry = false
 		return true
 	}

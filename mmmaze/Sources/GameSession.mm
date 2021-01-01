@@ -91,7 +91,7 @@
 			if (maze[r][c] == MTWall)
 			{
 				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
-				tile.tag = TTWall;
+				tile.tag = TyleTypeWall;
 				[tile setImage:[[UIImage imageNamed:@"wall"] coloredWith:[UIColor whiteColor]]];
 				tile.isDestroyable = !(r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1);
 				tile.x = r;
@@ -104,7 +104,7 @@
 				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.x = r;
 				tile.y = c;
-				tile.tag = TTDoor;
+				tile.tag = TyleTypeDoor;
 				tile.isDestroyable = NO;
 				[self.mazeView addSubview:tile];
 				[self.items addObject:tile];
@@ -114,7 +114,7 @@
 				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.x = r;
 				tile.y = c;
-				tile.tag = TTMazeEnd_close;
+				tile.tag = TyleTypeMazeEnd_close;
 				tile.isDestroyable = NO;
 				[tile setImage:[UIImage imageNamed:@"gate_close"]];
 				[self.mazeView addSubview:tile];
@@ -140,7 +140,7 @@
 	Tile *keyItem = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 	keyItem.x = c;
 	keyItem.y = r;
-	keyItem.tag = TTKey;
+	keyItem.tag = TyleTypeKey;
 	keyItem.image = [[UIImage imageNamed:@"key"] coloredWith: [UIColor magentaColor]];
 	[self.mazeView addSubview:keyItem];
 	[self.items addObject:keyItem];
@@ -162,7 +162,7 @@
 	for (Tile *item in self.items) {
 		if (CGRectIntersectsRect(item.frame, self.player.frame))
 		{
-			if (item.tag == TTCoin)
+			if (item.tag == TyleTypeCoin)
 			{
 				[self playWithSound: SoundTypeHitCoin];
 				item.hidden = true;
@@ -170,7 +170,7 @@
 				self.currentScore += 15;
 				[self.delegate didUpdateScore:self.currentScore];
 			}
-			else if (item.tag == TTWhirlwind)
+			else if (item.tag == TyleTypeWhirlwind)
 			{
 				[self playWithSound: SoundTypeHitWhirlwind];
 				item.hidden = true;
@@ -182,23 +182,23 @@
 					self.player.transform = CGAffineTransformMakeRotation(-self.mazeRotation);
 				}];
 			}
-			else if (item.tag == TTTime)
+			else if (item.tag == TyleTypeTime)
 			{
 				[self playWithSound: SoundTypeHitTimeBonus];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
 				self.currentTime += 5;
 			}
-			else if (item.tag == TTKey)
+			else if (item.tag == TyleTypeKey)
 			{
 				[self playWithSound: SoundTypeHitHearth];
 				item.hidden = true;
 				[itemsToRemove addObject:item];
-				self.mazeGoalTile.tag = TTMazeEnd_open;
+				self.mazeGoalTile.tag = TyleTypeMazeEnd_open;
 				[self.mazeGoalTile setImage:[UIImage imageNamed:@"gate_open"]];
 				[self.wallsDictionary removeObjectForKey:[NSValue valueWithCGPoint:CGPointMake(self.mazeGoalTile.x, self.mazeGoalTile.y)]];
 			}
-			else if (item.tag == TTHearth)
+			else if (item.tag == TyleTypeHearth)
 			{
 				[self playWithSound: SoundTypeHitHearth];
 				item.hidden = true;
@@ -206,7 +206,7 @@
 				++self.currentLives;
 				[self.delegate didUpdateLives:self.currentLives];
 			}
-			else if (item.tag == TTBomb)
+			else if (item.tag == TyleTypeBomb)
 			{
 				[self playWithSound: SoundTypeHitBomb];
 				item.hidden = true;
@@ -220,31 +220,31 @@
 					if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x + TILE_SIZE, player_y, TILE_SIZE, TILE_SIZE)))
 					{
 						[tile explode:nil];
-						tile.tag = TTExplodedWall;
+						tile.tag = TyleTypeExplodedWall;
 					}
 					else if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x - TILE_SIZE, player_y, TILE_SIZE, TILE_SIZE)))
 					{
 						[tile explode:nil];
-						tile.tag = TTExplodedWall;
+						tile.tag = TyleTypeExplodedWall;
 					}
 					
 					if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x, player_y + TILE_SIZE, TILE_SIZE, TILE_SIZE)))
 					{
 						[tile explode:nil];
-						tile.tag = TTExplodedWall;
+						tile.tag = TyleTypeExplodedWall;
 					}
 					
 					if (tile.isDestroyable && CGRectIntersectsRect(tile.frame, CGRectMake(player_x, player_y - TILE_SIZE, TILE_SIZE, TILE_SIZE)))
 					{
 						[tile explode:nil];
-						tile.tag = TTExplodedWall;
+						tile.tag = TyleTypeExplodedWall;
 					}
 				}
 			}
 		}
 		else
 		{
-			if (item.tag == TTBomb) {
+			if (item.tag == TyleTypeBomb) {
 				[self.enemyCollaborator collideWith: item completion:^(Enemy *enemy) {
 					item.hidden = true;
 					[itemsToRemove addObject:item];

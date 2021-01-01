@@ -45,7 +45,7 @@ class Enemy: Tile {
 	@objc func spawn() -> Enemy {
 		wantSpawn = false
 
-		let spawnedEnemy = Enemy(gameSession: gameSession)
+		let spawnedEnemy = Enemy(gameSession: gameSession!)
 		spawnedEnemy.frame = frame
 		spawnedEnemy.show(after: 0)
 		return spawnedEnemy
