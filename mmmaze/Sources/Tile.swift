@@ -12,17 +12,17 @@ extension Tile {
 	@objc func flip() {
 		let anim = CABasicAnimation.flipAnimation()
 		layer.add(anim, forKey: "flip")
-		animations.setObject(anim, forKey: "flip" as NSString)
+		animations?.setObject(anim, forKey: "flip" as NSString)
 	}
 
 	@objc func spin() {
 		let anim = CABasicAnimation.spinAnimation()
 		layer.add(anim, forKey: "spin")
-		animations.setObject(anim, forKey: "spin" as NSString)
+		animations?.setObject(anim, forKey: "spin" as NSString)
 	}
 
 	func restoreAnimations() {
-		animations.forEach({ (arg0) in
+		animations?.forEach({ (arg0) in
 			layer.add(arg0.value as! CAAnimation, forKey: arg0.key as? String)
 		})
 	}
@@ -40,5 +40,17 @@ extension Tile {
 			width: TILE_SIZE - Double(speed),
 			height: TILE_SIZE - Double(speed)
 		)
+	}
+
+	@objc func explodeWall() -> Bool {
+		guard let collidedWall = collidedWall,
+					collidedWall.tag == TyleType.TTWall.rawValue,
+					collidedWall.isDestroyable,
+					isAngry else { return false }
+
+		collidedWall.explode()
+		collidedWall.tag = Int(TyleType.TTExplodedWall.rawValue)
+		isAngry = false
+		return true
 	}
 }

@@ -75,7 +75,6 @@
 		1DA4C742259BA11700E4DE1E /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C741259BA11700E4DE1E /* AudioManager.swift */; };
 		1DA4C744259BA12200E4DE1E /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */; };
 		1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C745259BA14200E4DE1E /* String+Utils.swift */; };
-		1DA4C749259BA16400E4DE1E /* UIImageView+Utills.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C748259BA16400E4DE1E /* UIImageView+Utills.m */; };
 		1DA4C74B259BA17D00E4DE1E /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */; };
 		1DA4C754259BA1B200E4DE1E /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */; };
 		1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */; };
@@ -173,13 +172,10 @@
 		1DA4C741259BA11700E4DE1E /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = mmmaze/Sources/AudioManager.swift; sourceTree = "<group>"; };
 		1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIDevice+Utils.swift"; path = "mmmaze/Sources/UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		1DA4C745259BA14200E4DE1E /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "mmmaze/Sources/String+Utils.swift"; sourceTree = "<group>"; };
-		1DA4C747259BA15200E4DE1E /* UIImageView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Utils.h"; path = "mmmaze/Sources/UIImageView+Utils.h"; sourceTree = "<group>"; };
-		1DA4C748259BA16400E4DE1E /* UIImageView+Utills.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Utills.m"; path = "mmmaze/Sources/UIImageView+Utills.m"; sourceTree = "<group>"; };
 		1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreManager.swift; path = mmmaze/Sources/ScoreManager.swift; sourceTree = "<group>"; };
 		1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Utils.swift"; path = "mmmaze/Sources/UIImage+Utils.swift"; sourceTree = "<group>"; };
 		1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+Utils.swift"; path = "mmmaze/Sources/UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "mmmaze/Sources/UIView+Utils.swift"; sourceTree = "<group>"; };
-		1DA4C753259BA1B200E4DE1E /* ToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolBox.h; path = mmmaze/Sources/ToolBox.h; sourceTree = "<group>"; };
 		1DA4C759259BA29800E4DE1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -263,15 +259,12 @@
 			isa = PBXGroup;
 			children = (
 				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
-				1DA4C753259BA1B200E4DE1E /* ToolBox.h */,
 				1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */,
-				1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */,
-				1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */,
 				1DA4C741259BA11700E4DE1E /* AudioManager.swift */,
-				1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */,
 				1DA4C745259BA14200E4DE1E /* String+Utils.swift */,
-				1DA4C747259BA15200E4DE1E /* UIImageView+Utils.h */,
-				1DA4C748259BA16400E4DE1E /* UIImageView+Utills.m */,
+				1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */,
+				1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */,
+				1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */,
 				1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */,
 				1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */,
 			);
@@ -573,7 +566,6 @@
 				1D184C5A259E9C87007DECA0 /* GameSession+Maze.swift in Sources */,
 				1D184C65259E9CB8007DECA0 /* EnemyCollaborator.swift in Sources */,
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
-				1DA4C749259BA16400E4DE1E /* UIImageView+Utills.m in Sources */,
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */,
 				1D184C5F259E9CA6007DECA0 /* Tile.swift in Sources */,

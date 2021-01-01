@@ -7,7 +7,6 @@
 //
 
 #import "Tile.h"
-#import "ToolBox.h"
 #import "mmmaze-Swift.h"
 
 typedef enum : NSUInteger {
@@ -110,7 +109,7 @@ typedef enum : NSUInteger {
   float vely = self.velocity.y + self.velocity.y * deltaTime;
   bool didHorizontalMove = false;
   bool didVerticalMove = false;
-  bool didExplosion = false;
+  bool didWallExplosion = false;
   
   //--- checking horizontal move ---//
   CGRect frameOnHorizontalMove = CGRectMake(frame.origin.x + velx, frame.origin.y, frame.size.width, frame.size.height);
@@ -127,14 +126,8 @@ typedef enum : NSUInteger {
         self.velocity = CGPointMake(self.velocity.x, 0);
       }
     }
-    
-    if (self.collidedWall && self.isAngry && self.collidedWall.tag == TTWall && self.collidedWall.isDestroyable)
-    {
-      [self.collidedWall explode:nil];
-      self.collidedWall.tag = TTExplodedWall;
-      [self setIsAngry:NO];
-      didExplosion = YES;
-    }
+
+		didWallExplosion = [self explodeWall];
   }
   
   //--- checking vertical move ---//
@@ -153,23 +146,16 @@ typedef enum : NSUInteger {
       }
     }
     
-    if (self.collidedWall && self.isAngry && self.collidedWall.tag == TTWall && self.collidedWall.isDestroyable)
-    {
-      [self.collidedWall explode:nil];
-      self.collidedWall.tag = TTExplodedWall;
-      [self setIsAngry:NO];
-      didExplosion = YES;
-    }
+		didWallExplosion = [self explodeWall];
   }
   
-  if (didHorizontalMove || didVerticalMove || didExplosion)
+  if (didHorizontalMove || didVerticalMove || didWallExplosion)
   {
     self.frame = frame;
   }
   else
   {
     self.velocity = CGPointMake(0, 0);
-    self.speed = self.speed;
   }
 }
 

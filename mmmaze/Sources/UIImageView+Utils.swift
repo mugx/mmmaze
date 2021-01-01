@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIImageView {
+	static let ANIM_DURATION = 1.0
+	static let SUB_TILE_DIVIDER_SIZE: CGFloat = 5.0
+
 	@objc func blink(_ duration: CFTimeInterval, completion: @escaping ()->()) {
 		let repeatCount: Float = 10
 		let flash = CABasicAnimation(keyPath: "opacity")
@@ -22,6 +25,50 @@ extension UIImageView {
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
 			completion()
+		}
+	}
+
+	@objc func explode(_ completion:(() -> ())? = nil) {
+		guard let image = self.image ?? self.animationImages?.first else { return }
+		self.animationImages = nil
+		self.image = nil
+		
+		let originalW = image.size.width / Self.SUB_TILE_DIVIDER_SIZE
+		let originalH = image.size.width / Self.SUB_TILE_DIVIDER_SIZE
+		let cols = Int(floor(image.size.width / originalW))
+		let rows = Int(floor(image.size.height / originalH))
+
+		//--- preparing sub tiles ---//
+		for y in 0 ... cols {
+			for x in 0 ... rows {
+				let frame = CGRect(
+					x: CGFloat(x) * originalW,
+					y: CGFloat(y) * originalH,
+					width: originalW,
+					height: originalH)
+
+				let subTile = UIImageView(image: image.crop(with: frame))
+				subTile.frame = frame
+				addSubview(subTile)
+			}
+		}
+
+		//--- starting to animate the sub tiles ---//
+		let subviews = self.subviews
+		for subTile in subviews {
+			UIView.animate(withDuration: Self.ANIM_DURATION, delay: 0, options: UIView.AnimationOptions.curveEaseOut) {
+				let splat_x = Bool.random() ? 1 : -1 * CGFloat.random(in: 0 ..< 50)
+				let splat_y = Bool.random() ? 1 : -1 * CGFloat.random(in: 0 ..< 50)
+				subTile.frame = subTile.frame.offsetBy(dx: subTile.frame.origin.x + splat_x, dy: subTile.frame.origin.y + splat_y)
+				subTile.alpha = 0;
+			} completion: { _ in
+				subTile.removeFromSuperview()
+				self.isHidden = true
+
+				if self.subviews.isEmpty {
+					completion?()
+				}
+			}
 		}
 	}
 }

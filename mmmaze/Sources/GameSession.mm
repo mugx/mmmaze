@@ -8,7 +8,6 @@
 
 #import "mmmaze-Swift.h"
 #import "GameSession.h"
-#import "ToolBox.h"
 #import "MazeGenerator.hpp"
 
 #define BASE_MAZE_DIMENSION 7

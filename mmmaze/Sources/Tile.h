@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 };
 
 @interface Tile : UIImageView
-- (Tile *)checkWallCollision:(CGRect)frame;
+- (Tile * _Nullable)checkWallCollision:(CGRect)frame;
 - (bool)collidesNorthOf:(CGRect)frame;
 - (bool)collidesSouthOf:(CGRect)frame;
 - (bool)collidesWestOf:(CGRect)frame;
@@ -41,8 +41,8 @@ typedef NS_ENUM(NSUInteger, TyleType) {
 @property(nonatomic,assign) BOOL isDestroyable;
 @property(nonatomic,assign) BOOL isBlinking;
 @property(nonatomic,assign) BOOL isAngry;
-@property(nonatomic,weak) Tile *collidedWall;
-@property(nonatomic,weak) GameSession *gameSession;
+@property(nonatomic,weak) Tile * _Nullable collidedWall;
+@property(nonatomic,weak, null_resettable) GameSession * gameSession;
 @property(nonatomic,assign) int lastSwipe;
-@property(nonatomic,strong) NSMutableDictionary<NSString*, CABasicAnimation*> *animations;
+@property(nonatomic,strong) NSMutableDictionary<NSString*, CABasicAnimation*> *_Nullable animations;
 @end
