@@ -10,8 +10,19 @@ import Foundation
 
 @objc
 extension UIImage {
-	func sprites(with size: CGSize) -> [UIImage]? {
-		return (sprites(with: size, in: NSMakeRange(0, lroundf(MAXFLOAT))) as? [UIImage]) ?? []
+	func sprites(with size: Double) -> [UIImage]? {
+		guard let cgImage = self.cgImage else { return [] }
+
+		var images = [UIImage]()
+		let width = cgImage.width
+
+		stride(from: 0, to: width, by: Int(size)).forEach { i in
+			let rect = CGRect(origin: CGPoint(x: i, y: 0), size: CGSize(width: size, height: size))
+			if let sprite = cgImage.cropping(to: rect) {
+				images.append(UIImage(cgImage: sprite))
+			}
+		}
+		return images
 	}
 
 	@objc func crop(with rect: CGRect) -> UIImage {

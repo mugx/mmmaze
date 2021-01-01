@@ -80,7 +80,7 @@ class Enemy: Tile {
 
 	private func setupAnimations() {
 		animationDuration = Double.random(in: 0.3 ... 0.6)
-		animationImages = UIImage(named: "enemy")?.sprites(with: CGSize(width: TILE_SIZE, height: TILE_SIZE))
+		animationImages = UIImage(named: "enemy")?.sprites(with: TILE_SIZE)
 		startAnimating()
 	}
 }

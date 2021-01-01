@@ -29,7 +29,7 @@ import UIKit
 
 	private func setupAnimations() {
 		animationDuration = 0.4
-		animationImages = UIImage(named: isAngry ? "player_angry" : "player")?.sprites(with: CGSize(width: TILE_SIZE, height: TILE_SIZE))
+		animationImages = UIImage(named: isAngry ? "player_angry" : "player")?.sprites(with: TILE_SIZE)
 		startAnimating()
 	}
 }

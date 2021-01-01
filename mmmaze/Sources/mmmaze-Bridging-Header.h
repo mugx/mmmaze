@@ -6,7 +6,6 @@
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-#import "UIImage+Utils.h"
 #import "UIImageView+Utils.h"
 #import "Tile.h"
 #import "Tile+AI.h"

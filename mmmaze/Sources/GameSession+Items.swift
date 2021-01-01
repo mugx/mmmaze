@@ -23,7 +23,7 @@ extension GameSession {
 			item.image = UIImage(named: "hearth")
 		case 98 ... 100:
 			item.tag = Int(TyleType.TTTime.rawValue)
-			item.animationImages = UIImage(named: "time")?.sprites(with: frame.size)
+			item.animationImages = UIImage(named: "time")?.sprites(with: TILE_SIZE)
 			item.animationDuration = 1
 			item.startAnimating()
 		case 90 ... 100:

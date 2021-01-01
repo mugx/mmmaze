@@ -21,13 +21,13 @@ class TutorialViewController: UIViewController {
 		super.viewDidLoad()
 
 		//--- enemyImage stuff ---//
-		enemyImage.animationImages = UIImage(named: "enemy")?.sprites(with: CGSize(width: 32, height: 32))
+		enemyImage.animationImages = UIImage(named: "enemy")?.sprites(with: TILE_SIZE);
 		enemyImage.animationDuration = 0.4
 		enemyImage.animationRepeatCount = 0
 		enemyImage.startAnimating()
 
 		//--- playerImage stuff ---//
-		playerImage.animationImages = UIImage(named: "player")?.sprites(with: CGSize(width: 32, height: 32))
+		playerImage.animationImages = UIImage(named: "player")?.sprites(with: TILE_SIZE)
 		playerImage.animationDuration = 0.4
 		playerImage.animationRepeatCount = 0
 		playerImage.startAnimating()

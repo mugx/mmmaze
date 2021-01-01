@@ -79,7 +79,6 @@
 		1DA4C74B259BA17D00E4DE1E /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */; };
 		1DA4C754259BA1B200E4DE1E /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */; };
 		1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */; };
-		1DA4C757259BA1B200E4DE1E /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C750259BA1B200E4DE1E /* UIImage+Utils.m */; };
 		1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */; };
 		1DA4C75A259BA29800E4DE1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C759259BA29800E4DE1E /* README.md */; };
 /* End PBXBuildFile section */
@@ -179,9 +178,7 @@
 		1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreManager.swift; path = mmmaze/Sources/ScoreManager.swift; sourceTree = "<group>"; };
 		1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Utils.swift"; path = "mmmaze/Sources/UIImage+Utils.swift"; sourceTree = "<group>"; };
 		1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+Utils.swift"; path = "mmmaze/Sources/UIImageView+Utils.swift"; sourceTree = "<group>"; };
-		1DA4C750259BA1B200E4DE1E /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Utils.m"; path = "mmmaze/Sources/UIImage+Utils.m"; sourceTree = "<group>"; };
 		1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "mmmaze/Sources/UIView+Utils.swift"; sourceTree = "<group>"; };
-		1DA4C752259BA1B200E4DE1E /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Utils.h"; path = "mmmaze/Sources/UIImage+Utils.h"; sourceTree = "<group>"; };
 		1DA4C753259BA1B200E4DE1E /* ToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolBox.h; path = mmmaze/Sources/ToolBox.h; sourceTree = "<group>"; };
 		1DA4C759259BA29800E4DE1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -268,8 +265,6 @@
 				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
 				1DA4C753259BA1B200E4DE1E /* ToolBox.h */,
 				1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */,
-				1DA4C752259BA1B200E4DE1E /* UIImage+Utils.h */,
-				1DA4C750259BA1B200E4DE1E /* UIImage+Utils.m */,
 				1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */,
 				1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */,
 				1DA4C741259BA11700E4DE1E /* AudioManager.swift */,
@@ -589,7 +584,6 @@
 				1D184C64259E9CB8007DECA0 /* Enemy.swift in Sources */,
 				1D184C5B259E9C87007DECA0 /* GameSession+Enemy.swift in Sources */,
 				1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */,
-				1DA4C757259BA1B200E4DE1E /* UIImage+Utils.m in Sources */,
 				1D184C63259E9CB8007DECA0 /* Enemy+AI.swift in Sources */,
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
 				1DA4C744259BA12200E4DE1E /* UIDevice+Utils.swift in Sources */,
