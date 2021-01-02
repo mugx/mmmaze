@@ -16,6 +16,10 @@ extension CGRect {
 		)
 	}
 
+	func translate(x: CGFloat = 0, y: CGFloat = 0) -> CGRect {
+		applying(CGAffineTransform(translationX: x, y: y))
+	}
+
 	func distance(from rect: CGRect) -> CGFloat {
 		return abs(origin.x - rect.origin.x) + abs(origin.y - rect.origin.y)
 	}

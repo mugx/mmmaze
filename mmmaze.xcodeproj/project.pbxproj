@@ -75,6 +75,7 @@
 		1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262EC25A0A60200BAC78A /* VersionLabel.swift */; };
 		1DE262F125A0E20500BAC78A /* CGRect+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */; };
 		1DEC3DEB25A0FF8B000A863D /* TyleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC3DEA25A0FF8B000A863D /* TyleType.swift */; };
+		1DEC3DED25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -163,6 +164,7 @@
 		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
 		1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Utils.swift"; sourceTree = "<group>"; };
 		1DEC3DEA25A0FF8B000A863D /* TyleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyleType.swift; sourceTree = "<group>"; };
+		1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwipeGestureRecognizer+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 				1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */,
 				1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */,
 				1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */,
+				1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				1DE262F125A0E20500BAC78A /* CGRect+Utils.swift in Sources */,
 				1D184C58259E9C87007DECA0 /* GameSession+Items.swift in Sources */,
 				1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */,
+				1DEC3DED25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
 				1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */,

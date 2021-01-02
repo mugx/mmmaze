@@ -32,7 +32,7 @@ class Tile: UIImageView {
 	}
 
 	// MARK: - Public
-	
+
 	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 		lastSwipe = direction
 		
@@ -94,33 +94,35 @@ class Tile: UIImageView {
 		)
 	}
 
-
 	// MARK: - Private
 
 	private func manageWallCollision(_ velx: CGFloat, _ vely: CGFloat) {
 		var frame = self.frame
-		let frameOnMove = CGRect(x: frame.origin.x + velx, y: frame.origin.y + vely, width: frame.size.width, height: frame.size.height)
 		var collidedWall: Tile?
-		var didMove = false
-		var didWallExplosion = false
 
+		// check vertical collision
+		var frameOnMove = frame.translate(y: vely)
 		collidedWall = gameSession?.checkWallCollision(frameOnMove)
-		if (collidedWall == nil) {
-			didMove = true
+		if collidedWall == nil {
 			frame = frameOnMove
 
-			if velx != 0 && !(lastSwipe == UISwipeGestureRecognizer.Direction.left || lastSwipe == UISwipeGestureRecognizer.Direction.right) {
+			if velx != 0 && lastSwipe?.isVertical ?? false {
 				velocity = CGPoint(x: 0, y: velocity.y)
 			}
+		}
 
-			if vely != 0 && !(lastSwipe == UISwipeGestureRecognizer.Direction.up || lastSwipe == UISwipeGestureRecognizer.Direction.down) {
+		// check horizontal collision
+		frameOnMove = frame.translate(x: velx)
+		collidedWall = gameSession?.checkWallCollision(frameOnMove)
+		if collidedWall == nil {
+			frame = frameOnMove
+
+			if vely != 0 && lastSwipe?.isHorizontal ?? false {
 				velocity = CGPoint(x: velocity.x, y: 0)
 			}
 		}
 
-		didWallExplosion = explodeWall(collidedWall)
-
-		if (didMove || didWallExplosion) {
+		if self.frame != frame || explodeWall(collidedWall) {
 			self.frame = frame
 		} else {
 			velocity = .zero
