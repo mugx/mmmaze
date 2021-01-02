@@ -35,7 +35,7 @@ extension GameSession {
 					mazeView.addSubview(tile)
 					wallsDictionary[NSValue(cgPoint: CGPoint(x: r, y: c))] = tile
 				} else if maze[r, c] == .start {
-					let tile = Tile(type: .door, frame: CGRect(row: r, col: c))
+					let tile = Tile(type: .start, frame: CGRect(row: r, col: c))
 					tile.isDestroyable = false
 					tile.x = r
 					tile.y = c
@@ -67,5 +67,11 @@ extension GameSession {
 		keyItem.image = TyleType.key.image
 		mazeView.addSubview(keyItem)
 		items.append(keyItem)
+	}
+
+	func checkWallCollision(_ frame: CGRect) -> Tile? {
+		return wallsDictionary.values.first(where: {
+			$0.type != TyleType.explodedWall && $0.frame.intersects(frame)
+		})
 	}
 }

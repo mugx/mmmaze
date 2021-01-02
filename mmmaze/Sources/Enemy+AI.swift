@@ -21,8 +21,8 @@ extension Enemy {
 		let currentSteps = path.count
 		let newSteps = newPath.count
 
-		let d1 = distance(rect1: currentPosition, rect2: firstPathFrame)
-		let d2 = distance(rect1: currentPosition, rect2: firstNewPathFrame)
+		let d1 = currentPosition.distance(from: firstPathFrame)
+		let d2 = currentPosition.distance(from: firstNewPathFrame)
 
 		let hasToUpdatePath =
 			currentSteps == 0 ||
@@ -48,10 +48,10 @@ extension Enemy {
 		let downFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y + speed), width: frame.size.width, height: frame.size.height)
 		let leftFrame = CGRect(x: CGFloat(frame.origin.x - speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
 		let rightFrame = CGRect(x: CGFloat(frame.origin.x + speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
-		let collidesUp = checkWallCollision(upFrame) != nil
-		let collidesDown = checkWallCollision(downFrame) != nil
-		let collidesLeft = checkWallCollision(leftFrame) != nil
-		let collidesRight = checkWallCollision(rightFrame) != nil
+		let collidesUp = gameSession?.checkWallCollision(upFrame) != nil
+		let collidesDown = gameSession?.checkWallCollision(downFrame) != nil
+		let collidesLeft = gameSession?.checkWallCollision(leftFrame) != nil
+		let collidesRight = gameSession?.checkWallCollision(rightFrame) != nil
 
 		var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
 		if !collidesUp {

@@ -15,4 +15,8 @@ extension CGRect {
 			size: CGSize(width: TILE_SIZE, height: TILE_SIZE)
 		)
 	}
+
+	func distance(from rect: CGRect) -> CGFloat {
+		return abs(origin.x - rect.origin.x) + abs(origin.y - rect.origin.y)
+	}
 }

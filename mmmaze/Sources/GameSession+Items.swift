@@ -9,6 +9,9 @@
 import UIKit
 
 extension GameSession {
+
+	// MARK: - Public
+
 	func makeItem(col: Int, row: Int) -> Tile? {
 		let item = Tile(frame: CGRect(row: row, col: col))
 
@@ -60,7 +63,9 @@ extension GameSession {
 		items.removeAll { itemsToRemove.contains($0) }
 	}
 
-	func checkPlayerCollision(with item: Tile) -> Bool {
+	// MARK: - Private
+
+	private func checkPlayerCollision(with item: Tile) -> Bool {
 		guard item.frame.intersects(player.frame) else { return false }
 
 		if item.type == TyleType.coin {
@@ -119,7 +124,7 @@ extension GameSession {
 		return false
 	}
 
-	func checkEnemyCollision(with item: Tile) -> Bool {
+	private func checkEnemyCollision(with item: Tile) -> Bool {
 		guard item.type == TyleType.bomb else { return false }
 
 		var collide = false

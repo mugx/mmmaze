@@ -8,63 +8,6 @@
 
 import UIKit
 
-enum TyleType: String {
-	case none
-	case door
-	case wall
-	case explodedWall
-	case coin
-	case whirlwind
-	case bomb
-	case time
-	case hearth
-	case key
-	case enemy
-	case goal_close
-	case goal_open
-	case minion
-	case player_angry
-	case player
-
-	var image: UIImage? {
-		var color: UIColor!
-
-		switch self {
-		case .bomb:
-			color = .red
-		case .coin:
-			color = .yellow
-		case .enemy:
-			color = .white
-		case .goal_close:
-			color = .white
-		case .goal_open:
-			color = .white
-		case .hearth:
-			color = .red
-		case .key:
-			color = .green
-		case .minion:
-			color = .white
-		case .player_angry:
-			color = .white
-		case .player:
-			color = .white
-		case .time:
-			color = .magenta
-		case .wall:
-			color = .white
-		case .whirlwind:
-			color = .white
-		case .none, .door, .explodedWall:
-			break
-		}
-
-		return UIImage(named: "\(rawValue)")?.withTintColor(color)
-	}
-
-}
-
 class Tile: UIImageView {
 	var type: TyleType = .none
 	var velocity: CGPoint = .zero
@@ -87,78 +30,30 @@ class Tile: UIImageView {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+
+	// MARK: - Public
 	
 	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 		lastSwipe = direction
 		
 		switch direction {
 		case .right:
-			self.velocity = CGPoint(x: CGFloat(self.speed), y: self.velocity.y)
+			velocity = CGPoint(x: CGFloat(speed), y: velocity.y)
 		case .left:
-			self.velocity = CGPoint(x: CGFloat(-self.speed), y: self.velocity.y)
+			velocity = CGPoint(x: CGFloat(-speed), y: self.velocity.y)
 		case .up:
-			self.velocity = CGPoint(x: self.velocity.x, y: CGFloat(-self.speed))
+			velocity = CGPoint(x: velocity.x, y: CGFloat(-speed))
 		case .down:
-			self.velocity = CGPoint(x: self.velocity.x, y: CGFloat(self.speed))
+			velocity = CGPoint(x: velocity.x, y: CGFloat(speed))
 		default:
 			break
 		}
 	}
 
 	func update(_ delta: TimeInterval) {
-		var frame = self.frame
 		let velx = velocity.x + velocity.x * CGFloat(delta)
 		let vely = velocity.y + velocity.y * CGFloat(delta)
-
-		var didHorizontalMove = false
-		var didVerticalMove = false
-		var didWallExplosion = false
-		var collidedWall: Tile?
-
-		// checking horizontal move 
-		if (velx < 0 || velx > 0) {
-			let frameOnHorizontalMove = CGRect(x: frame.origin.x + velx, y: frame.origin.y, width :frame.size.width, height: frame.size.height)
-
-			collidedWall = checkWallCollision(frameOnHorizontalMove)
-			if (collidedWall == nil) {
-				didHorizontalMove = true
-				frame = frameOnHorizontalMove
-
-				if (vely != 0 && !(self.lastSwipe == UISwipeGestureRecognizer.Direction.up || self.lastSwipe == UISwipeGestureRecognizer.Direction.down)) {
-					self.velocity = CGPoint(x: self.velocity.x, y: 0)
-				}
-			}
-
-			didWallExplosion = explodeWall(collidedWall)
-		}
-
-		// checking vertical move 
-		if (vely < 0 || vely > 0) {
-			let frameOnVerticalMove = CGRect(x: frame.origin.x, y: frame.origin.y + vely, width: frame.size.width, height: frame.size.height)
-			collidedWall = checkWallCollision(frameOnVerticalMove)
-			if (collidedWall == nil) {
-				didVerticalMove = true
-				frame = frameOnVerticalMove
-
-				if (velx != 0 && !(self.lastSwipe == UISwipeGestureRecognizer.Direction.left || self.lastSwipe == UISwipeGestureRecognizer.Direction.right)) {
-					self.velocity = CGPoint(x: 0, y: self.velocity.y)
-				}
-			}
-
-			didWallExplosion = explodeWall(collidedWall)
-		}
-
-		if (didHorizontalMove || didVerticalMove || didWallExplosion) {
-			self.frame = frame
-		} else {
-			self.velocity = .zero
-		}
-	}
-
-	func checkWallCollision(_ frame: CGRect) -> Tile? {
-		return gameSession?.wallsDictionary.values.first(where: {
-			$0.type != TyleType.explodedWall && $0.frame.intersects(frame)
-		})
+		manageWallCollision(velx, vely)
 	}
 	
 	func isWall(at frame: CGRect, direction: UISwipeGestureRecognizer.Direction) -> Bool {
@@ -198,13 +93,46 @@ class Tile: UIImageView {
 			height: TILE_SIZE - Double(speed)
 		)
 	}
-	
-	func explodeWall(_ collidedWall: Tile?) -> Bool {
+
+
+	// MARK: - Private
+
+	private func manageWallCollision(_ velx: CGFloat, _ vely: CGFloat) {
+		var frame = self.frame
+		let frameOnMove = CGRect(x: frame.origin.x + velx, y: frame.origin.y + vely, width: frame.size.width, height: frame.size.height)
+		var collidedWall: Tile?
+		var didMove = false
+		var didWallExplosion = false
+
+		collidedWall = gameSession?.checkWallCollision(frameOnMove)
+		if (collidedWall == nil) {
+			didMove = true
+			frame = frameOnMove
+
+			if velx != 0 && !(lastSwipe == UISwipeGestureRecognizer.Direction.left || lastSwipe == UISwipeGestureRecognizer.Direction.right) {
+				velocity = CGPoint(x: 0, y: velocity.y)
+			}
+
+			if vely != 0 && !(lastSwipe == UISwipeGestureRecognizer.Direction.up || lastSwipe == UISwipeGestureRecognizer.Direction.down) {
+				velocity = CGPoint(x: velocity.x, y: 0)
+			}
+		}
+
+		didWallExplosion = explodeWall(collidedWall)
+
+		if (didMove || didWallExplosion) {
+			self.frame = frame
+		} else {
+			velocity = .zero
+		}
+	}
+
+	private func explodeWall(_ collidedWall: Tile?) -> Bool {
 		guard let collidedWall = collidedWall,
 					collidedWall.type == TyleType.wall,
 					collidedWall.isDestroyable,
 					isAngry else { return false }
-		
+
 		collidedWall.explode()
 		collidedWall.type = TyleType.explodedWall
 		isAngry = false

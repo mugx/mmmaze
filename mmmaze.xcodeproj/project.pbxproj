@@ -74,6 +74,7 @@
 		1DA4C75A259BA29800E4DE1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C759259BA29800E4DE1E /* README.md */; };
 		1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262EC25A0A60200BAC78A /* VersionLabel.swift */; };
 		1DE262F125A0E20500BAC78A /* CGRect+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */; };
+		1DEC3DEB25A0FF8B000A863D /* TyleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC3DEA25A0FF8B000A863D /* TyleType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -161,6 +162,7 @@
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
 		1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Utils.swift"; sourceTree = "<group>"; };
+		1DEC3DEA25A0FF8B000A863D /* TyleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyleType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +329,7 @@
 		1D451C77259E0F89001A291C /* Tile */ = {
 			isa = PBXGroup;
 			children = (
+				1DEC3DEA25A0FF8B000A863D /* TyleType.swift */,
 				1D184C5D259E9CA6007DECA0 /* Tile.swift */,
 				1D184C5C259E9CA6007DECA0 /* Tile+AI.swift */,
 			);
@@ -547,6 +550,7 @@
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
 				1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */,
 				1D184C5E259E9CA6007DECA0 /* Tile+AI.swift in Sources */,
+				1DEC3DEB25A0FF8B000A863D /* TyleType.swift in Sources */,
 				1D184C64259E9CB8007DECA0 /* Enemy.swift in Sources */,
 				1D184C5B259E9C87007DECA0 /* GameSession+Enemy.swift in Sources */,
 				1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */,
