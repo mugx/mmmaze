@@ -19,7 +19,6 @@
 @interface GameSession : NSObject
 - (instancetype)initWithView:(UIView *)gameView;
 - (void)update:(CGFloat)deltaTime;
-- (void)makeMaze;
 
 @property(nonatomic,assign) id <GameSessionDelegate> delegate;
 
