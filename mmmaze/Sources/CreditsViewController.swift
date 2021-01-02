@@ -6,10 +6,8 @@
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-import Foundation
-import MessageUI
+import UIKit
 
-@objcMembers
 class CreditsViewController: UIViewController {
 	@IBOutlet var versionLabel: UILabel!
 	@IBOutlet var logoIconImage: UIImageView!

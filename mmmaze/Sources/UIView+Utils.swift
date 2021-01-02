@@ -46,7 +46,7 @@ extension UIView {
 		}
 	}
 
-	@objc func follow(_ pivot: UIView) {
+	func follow(_ pivot: UIView) {
 		frame = CGRect(
 			x: frame.size.width / 2.0 - pivot.frame.origin.x,
 			y: frame.size.height / 2.0 - pivot.frame.origin.y,

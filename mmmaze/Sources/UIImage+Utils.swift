@@ -6,9 +6,8 @@
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-@objc
 extension UIImage {
 	func sprites(with size: Double) -> [UIImage]? {
 		guard let cgImage = self.cgImage else { return [] }
@@ -25,7 +24,7 @@ extension UIImage {
 		return images
 	}
 
-	@objc func crop(with rect: CGRect) -> UIImage {
+	func crop(with rect: CGRect) -> UIImage {
 		UIGraphicsBeginImageContextWithOptions(rect.size, false, scale)
 		draw(at: CGPoint(x: -rect.origin.x, y: -rect.origin.y))
 		let croppedImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -33,7 +32,7 @@ extension UIImage {
 		return croppedImage!
 	}
 
-	@objc func colored(with color: UIColor) -> UIImage {
+	func colored(with color: UIColor) -> UIImage {
 		UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
 		color.setFill()
 		let context:CGContext = UIGraphicsGetCurrentContext()!

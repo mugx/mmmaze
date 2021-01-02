@@ -6,7 +6,7 @@
 //  Copyright © 2020 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ScoreManager {
 	private static let SAVE_KEY_HIGH_SCORES = "highScores"

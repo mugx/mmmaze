@@ -6,10 +6,10 @@
 //  Copyright © 2020 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension CABasicAnimation {
-	@objc static func flipAnimation() -> CABasicAnimation {
+	static func flipAnimation() -> CABasicAnimation {
 		let anim = CABasicAnimation(keyPath: "transform.rotation.y")
 		anim.fromValue = 0
 		anim.toValue = 360 * Double.pi / 180
@@ -18,7 +18,7 @@ extension CABasicAnimation {
 		return anim
 	}
 
-	@objc static func spinAnimation() -> CABasicAnimation {
+	static func spinAnimation() -> CABasicAnimation {
 		let anim = CABasicAnimation(keyPath: "transform.rotation")
 		anim.fromValue = 0
 		anim.toValue = 360 * Double.pi / 180

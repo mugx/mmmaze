@@ -7,8 +7,8 @@
 //
 
 import AVFoundation
+import UIKit
 
-@objc
 enum SoundType: UInt {
 		case hitCoin
 		case hitWhirlwind
@@ -29,8 +29,8 @@ func playSound(_ sound: SoundType) {
 	AudioManager.shared.play(sound: sound)
 }
 
-@objc class AudioManager: NSObject {
-	@objc static let shared = AudioManager()
+class AudioManager {
+	static let shared = AudioManager()
 	var soundEnabled: Bool = true
 	var volume: Float = 0.5
 	private var sounds = [SoundType: AVAudioPlayer]()

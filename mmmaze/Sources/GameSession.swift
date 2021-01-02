@@ -6,24 +6,54 @@
 //  Copyright © 2020 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-extension GameSession {
+protocol GameSessionDelegate {
+	func didUpdateScore(_ score: UInt)
+	func didUpdateTime(_ time: TimeInterval)
+	func didUpdateLives(_ livesCount: UInt)
+	func didUpdateLevel(_ levelCount: UInt)
+	func didHurryUp()
+	func didGameOver(_ gameSession: GameSession)
+}
+
+class GameSession {
 	static let MAX_TIME: TimeInterval = 60
 	static let MAX_LIVES: UInt = 3
 	static let BASE_MAZE_DIMENSION: UInt = 7
+	var delegate: GameSessionDelegate?
+	var currentLives: UInt = 0
+	var currentTime: TimeInterval = 0
+	var isGameOver: Bool = false
+	var numRow: UInt = 0
+	var numCol: UInt = 0
+	var enemyCollaborator: EnemyCollaborator!
+	var player: Player!
+	var currentLevel: UInt = 0
+	var currentScore: UInt = 0
+	var wallsDictionary: [NSValue: Tile] = [:]
+	var items: [Tile] = []
+	var mazeView: UIView!
+	var gameView: UIView!
+	var mazeGoalTile: Tile!
+	var mazeRotation: Float = 0
+	var isGameStarted: Bool = false
 
-	@objc func play(sound: SoundType) {
+	init(view: UIView) {
+		self.gameView = view
+	}
+
+	func play(sound: SoundType) {
 		playSound(sound)
 	}
 
-	@objc func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
+	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 		isGameStarted = true
 		player.didSwipe(direction)
 		play(sound: .selectItem)
 	}
 
-	@objc func startLevel(_ levelNumber: UInt) {
+	func startLevel(_ levelNumber: UInt) {
 		gameView.alpha = 0
 
 		//--- setup gameplay varables ---//
@@ -62,17 +92,19 @@ extension GameSession {
 		enemyCollaborator = EnemyCollaborator(gameSession: self)
 
 		//--- update external delegate ---//
-		delegate.didUpdateScore(currentScore)
-		delegate.didUpdateLives(currentLives)
+		delegate?.didUpdateScore(currentScore)
+		delegate?.didUpdateLives(currentLives)
 
 		UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveEaseOut) {
 			self.gameView.alpha = 1
 		} completion: { _ in
-			self.delegate.didUpdateLevel(self.currentLevel)
+			self.delegate?.didUpdateLevel(self.currentLevel)
 		}
 	}
 
-	@objc func update(delta: TimeInterval) {
+	func update(_ delta: TimeInterval) {
+		guard !isGameOver else { return }
+
 		updateTime(delta)
 
 		guard isGameStarted else { return }
@@ -83,6 +115,7 @@ extension GameSession {
 
 		checkCollisionPlayerVsEnemies()
 		checkGoalHit()
+		checkItemsCollisions()
 	}
 
 	func gameOver() {
@@ -91,7 +124,7 @@ extension GameSession {
 		isGameOver = true
 		play(sound: .gameOver)
 		player.explode {
-			self.delegate.didGameOver(self)
+			self.delegate?.didGameOver(self)
 		}
 	}
 
@@ -99,10 +132,10 @@ extension GameSession {
 
 	private func updateTime(_ delta: TimeInterval) {
 		currentTime = currentTime - delta > 0 ? currentTime - delta : 0
-		delegate.didUpdateTime(currentTime)
+		delegate?.didUpdateTime(currentTime)
 
 		if currentTime <= 10 {
-			delegate.didHurryUp()
+			delegate?.didHurryUp()
 		}
 
 		if currentTime <= 0 {
@@ -110,7 +143,7 @@ extension GameSession {
 		}
 	}
 
-	@objc private func checkCollisionPlayerVsEnemies() {
+	private func checkCollisionPlayerVsEnemies() {
 		guard !player.isBlinking else { return }
 
 		var collided = false
@@ -147,7 +180,7 @@ extension GameSession {
 
 		enemy.wantSpawn = true
 		currentLives -= 1
-		delegate.didUpdateLives(currentLives)
+		delegate?.didUpdateLives(currentLives)
 		currentLives > 0 ? respawnPlayer() : gameOver()
 	}
 

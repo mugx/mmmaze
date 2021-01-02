@@ -18,7 +18,6 @@
 		1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB2A259A1ECA0035BAA8 /* TutorialViewController.xib */; };
 		1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB2D259A1ECA0035BAA8 /* BestScoresViewController.swift */; };
 		1D0BCB4E259A1ECA0035BAA8 /* CreditsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB30259A1ECA0035BAA8 /* CreditsViewController.xib */; };
-		1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */; };
 		1D0BCB50259A1ECA0035BAA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */; };
 		1D0BCB53259A1ECA0035BAA8 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB37259A1ECA0035BAA8 /* TutorialViewController.swift */; };
 		1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */; };
@@ -38,7 +37,7 @@
 		1D184C65259E9CB8007DECA0 /* EnemyCollaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C62259E9CB8007DECA0 /* EnemyCollaborator.swift */; };
 		1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */; };
 		1D184C69259E9CD8007DECA0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C68259E9CD8007DECA0 /* Player.swift */; };
-		1D184C6B259FE477007DECA0 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C6A259FE477007DECA0 /* MazeGenerator.swift */; };
+		1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */; };
 		1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* whirlwind.png */; };
 		1DA4C713259BA0B300E4DE1E /* gate_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* gate_open.png */; };
 		1DA4C714259BA0B300E4DE1E /* gate_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* gate_close.png */; };
@@ -95,7 +94,6 @@
 
 /* Begin PBXFileReference section */
 		1D07BEE81CCD36E80062EFE6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		1D0BCB14259A1EC90035BAA8 /* mmmaze-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "mmmaze-Bridging-Header.h"; path = "mmmaze/Sources/mmmaze-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BestScoresViewController.xib; path = mmmaze/Sources/BestScoresViewController.xib; sourceTree = "<group>"; };
 		1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = mmmaze/Sources/GameViewController.swift; sourceTree = "<group>"; };
 		1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = mmmaze/Sources/Constants.swift; sourceTree = "<group>"; };
@@ -105,10 +103,8 @@
 		1D0BCB27259A1ECA0035BAA8 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = mmmaze/Sources/MenuViewController.xib; sourceTree = "<group>"; };
 		1D0BCB28259A1ECA0035BAA8 /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsViewController.swift; path = mmmaze/Sources/CreditsViewController.swift; sourceTree = "<group>"; };
 		1D0BCB2A259A1ECA0035BAA8 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TutorialViewController.xib; path = mmmaze/Sources/TutorialViewController.xib; sourceTree = "<group>"; };
-		1D0BCB2B259A1ECA0035BAA8 /* GameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSession.h; path = mmmaze/Sources/GameSession.h; sourceTree = "<group>"; };
 		1D0BCB2D259A1ECA0035BAA8 /* BestScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BestScoresViewController.swift; path = mmmaze/Sources/BestScoresViewController.swift; sourceTree = "<group>"; };
 		1D0BCB30259A1ECA0035BAA8 /* CreditsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreditsViewController.xib; path = mmmaze/Sources/CreditsViewController.xib; sourceTree = "<group>"; };
-		1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameSession.mm; path = mmmaze/Sources/GameSession.mm; sourceTree = "<group>"; };
 		1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = mmmaze/Sources/AppDelegate.swift; sourceTree = "<group>"; };
 		1D0BCB37259A1ECA0035BAA8 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = mmmaze/Sources/TutorialViewController.swift; sourceTree = "<group>"; };
 		1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = mmmaze/Sources/MenuViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +125,7 @@
 		1D184C62259E9CB8007DECA0 /* EnemyCollaborator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyCollaborator.swift; path = mmmaze/Sources/EnemyCollaborator.swift; sourceTree = "<group>"; };
 		1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CABasicAnimation+Utils.swift"; path = "mmmaze/Sources/CABasicAnimation+Utils.swift"; sourceTree = "<group>"; };
 		1D184C68259E9CD8007DECA0 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = mmmaze/Sources/Player.swift; sourceTree = "<group>"; };
-		1D184C6A259FE477007DECA0 /* MazeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGenerator.swift; sourceTree = "<group>"; };
+		1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MazeGenerator.swift; path = mmmaze/Sources/MazeGenerator.swift; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA4C703259BA0B300E4DE1E /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = mmmaze/Resources/whirlwind.png; sourceTree = "<group>"; };
 		1DA4C704259BA0B300E4DE1E /* gate_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_open.png; path = mmmaze/Resources/gate_open.png; sourceTree = "<group>"; };
@@ -187,7 +183,6 @@
 		1D0BCB11259A1DE80035BAA8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1D0BCB14259A1EC90035BAA8 /* mmmaze-Bridging-Header.h */,
 				1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */,
 				1D0BCB91259A21050035BAA8 /* Screens */,
 				1D9ADB46259B1743003CC8C2 /* Maze */,
@@ -396,8 +391,6 @@
 		1D9ADB46259B1743003CC8C2 /* Maze */ = {
 			isa = PBXGroup;
 			children = (
-				1D0BCB2B259A1ECA0035BAA8 /* GameSession.h */,
-				1D0BCB31259A1ECA0035BAA8 /* GameSession.mm */,
 				1DA4C73F259BA10900E4DE1E /* GameSession.swift */,
 				1D184C56259E9C87007DECA0 /* GameSession+Maze.swift */,
 				1D184C54259E9C87007DECA0 /* GameSession+Items.swift */,
@@ -414,7 +407,7 @@
 		1D9ADB47259B1760003CC8C2 /* Generator */ = {
 			isa = PBXGroup;
 			children = (
-				1D184C6A259FE477007DECA0 /* MazeGenerator.swift */,
+				1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */,
 			);
 			name = Generator;
 			sourceTree = "<group>";
@@ -543,7 +536,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */,
-				1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */,
 				1DA4C740259BA10900E4DE1E /* GameSession.swift in Sources */,
 				1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */,
 				1DA4C74B259BA17D00E4DE1E /* ScoreManager.swift in Sources */,
@@ -553,9 +545,9 @@
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */,
-				1D184C6B259FE477007DECA0 /* MazeGenerator.swift in Sources */,
 				1D184C5F259E9CA6007DECA0 /* Tile.swift in Sources */,
 				1D184C58259E9C87007DECA0 /* GameSession+Items.swift in Sources */,
+				1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
 				1D184C5E259E9CA6007DECA0 /* Tile+AI.swift in Sources */,
@@ -586,7 +578,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_LINK_OBJC_RUNTIME = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -601,10 +594,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -621,6 +615,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -634,7 +630,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_LINK_OBJC_RUNTIME = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -650,8 +647,9 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -662,7 +660,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -683,7 +683,6 @@
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
 				PRODUCT_NAME = mmmaze;
-				SWIFT_OBJC_BRIDGING_HEADER = "mmmaze/Sources/mmmaze-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -705,7 +704,6 @@
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
 				PRODUCT_NAME = mmmaze;
-				SWIFT_OBJC_BRIDGING_HEADER = "mmmaze/Sources/mmmaze-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

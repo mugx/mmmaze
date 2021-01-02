@@ -6,10 +6,10 @@
 //  Copyright © 2020 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Enemy {
-	@objc func calculatePath() {
+	func calculatePath() {
 		guard timeAccumulator > 1 || path.count == 0 else { return }
 		timeAccumulator = 0
 
@@ -34,7 +34,7 @@ extension Enemy {
 		}
 	}
 
-	@objc func refinesPath() {
+	func refinesPath() {
 		let currentPosition = self.currentPosition()
 		let enrolledPath: [CGRect] = path.compactMap { ($0 as? NSValue)?.cgRectValue }
 		if collides(target: currentPosition, path: enrolledPath) {
@@ -42,7 +42,7 @@ extension Enemy {
 		}
 	}
 
-	@objc func decideNextMove(_ delta: TimeInterval) {
+	func decideNextMove(_ delta: TimeInterval) {
 		let speed = CGFloat(self.speed + self.speed * Float(delta))
 		let upFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y - speed), width: frame.size.width, height: frame.size.height)
 		let downFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y + speed), width: frame.size.width, height: frame.size.height)
@@ -77,7 +77,7 @@ extension Enemy {
 
 	// MARK: - Private
 
-	@objc private func currentPosition() -> CGRect {
+	private func currentPosition() -> CGRect {
 		let initialTile_x = round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE
 		let initialTile_y = round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE
 

@@ -6,17 +6,15 @@
 //  Copyright © 2020 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-@objc class EnemyCollaborator: NSObject {
+class EnemyCollaborator {
 	private let gameSession: GameSession!
 	private var enemies: [Enemy] = []
 	private var enemyTimeAccumulator: TimeInterval = 0
 
-	@objc public init(gameSession: GameSession) {
+	public init(gameSession: GameSession) {
 		self.gameSession = gameSession
-
-		super.init()
 	}
 
 	deinit {
@@ -25,7 +23,7 @@ import Foundation
 
 	// MARK: - Public
 
-	@objc func collide(with tile: Tile, completion: (Enemy) -> ()){
+	func collide(with tile: Tile, completion: (Enemy) -> ()){
 		enemies.forEach { enemy in
 			if enemy.visible && enemy.frame.intersects(tile.frame) {
 				completion(enemy)
@@ -33,7 +31,7 @@ import Foundation
 		}
 	}
 
-	@objc func update(_ delta: TimeInterval) {
+	func update(_ delta: TimeInterval) {
 		enemyTimeAccumulator += delta
 		if enemyTimeAccumulator > 1 {
 			enemyTimeAccumulator = 0

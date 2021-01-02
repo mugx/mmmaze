@@ -12,7 +12,7 @@ extension UIImageView {
 	static let ANIM_DURATION = 1.0
 	static let SUB_TILE_DIVIDER_SIZE: CGFloat = 5.0
 
-	@objc func blink(_ duration: CFTimeInterval, completion: @escaping ()->()) {
+	func blink(_ duration: CFTimeInterval, completion: @escaping ()->()) {
 		let repeatCount: Float = 10
 		let flash = CABasicAnimation(keyPath: "opacity")
 		flash.duration = duration / Double(repeatCount)
@@ -28,7 +28,7 @@ extension UIImageView {
 		}
 	}
 
-	@objc func explode(_ completion:(() -> ())? = nil) {
+	func explode(_ completion:(() -> ())? = nil) {
 		guard let image = self.image ?? self.animationImages?.first else { return }
 		self.animationImages = nil
 		self.image = nil

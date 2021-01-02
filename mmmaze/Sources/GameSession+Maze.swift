@@ -6,11 +6,11 @@
 //  Copyright © 2020 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension GameSession {
 	func makeMaze() {
-		items = NSMutableArray(array: [Tile]())
+		items = [Tile]()
 		mazeView = UIView(frame: gameView.frame)
 		gameView.addSubview(mazeView)
 		mazeRotation = 0
@@ -22,7 +22,7 @@ extension GameSession {
 		let numRow = Int(self.numRow)
 		let numCol = Int(self.numCol)
 		let maze = MazeGenerator.calculateMaze(startRow: startRow, startCol: startCol, rows: numRow, cols: numCol)
-		wallsDictionary = NSMutableDictionary()
+		wallsDictionary = [:]
 
 		for r in 0 ..< numRow {
 			for c in 0 ..< numCol {
@@ -34,7 +34,7 @@ extension GameSession {
 					tile.x = r;
 					tile.y = c;
 					mazeView.addSubview(tile)
-					wallsDictionary.setObject(tile, forKey: NSValue(cgPoint: CGPoint(x: r, y: c)))
+					wallsDictionary[NSValue(cgPoint: CGPoint(x: r, y: c))] = tile
 				} else if maze[r, c] == .start {
 					let tile = Tile(frame: CGRect(x: Double(c) * TILE_SIZE, y: Double(r) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
 					tile.tag = TyleType.door.rawValue
@@ -42,7 +42,7 @@ extension GameSession {
 					tile.x = r;
 					tile.y = c;
 					mazeView.addSubview(tile)
-					items.add(tile)
+					items.append(tile)
 				} else if maze[r, c] == .end {
 					let tile = Tile(frame: CGRect(x: Double(c) * TILE_SIZE, y: Double(r) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
 					tile.x = r
@@ -51,9 +51,9 @@ extension GameSession {
 					tile.isDestroyable = false
 					tile.image = UIImage(named: "gate_close")
 					mazeView.addSubview(tile)
-					wallsDictionary.setObject(tile, forKey: NSValue(cgPoint: CGPoint(x: r, y: c)))
+					wallsDictionary[NSValue(cgPoint: CGPoint(x: r, y: c))] = tile
 					mazeGoalTile = tile
-					items.add(tile)
+					items.append(tile)
 				} else {
 					if makeItem(col: c, row: r) == nil {
 						maze.markFree(row: r, col: c)
@@ -70,6 +70,6 @@ extension GameSession {
 		keyItem.tag = TyleType.key.rawValue
 		keyItem.image = UIImage(named: "key")?.colored(with: .green)
 		mazeView.addSubview(keyItem)
-		items.add(keyItem)
+		items.append(keyItem)
 	}
 }

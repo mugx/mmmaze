@@ -6,9 +6,8 @@
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-@objcMembers
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
 	static var sharedInstance: AppDelegate! { return (UIApplication.shared.delegate as! AppDelegate) }
 	var window: UIWindow?

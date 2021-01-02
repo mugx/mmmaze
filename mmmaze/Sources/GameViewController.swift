@@ -6,7 +6,7 @@
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 	var gameSession: GameSession!
@@ -77,7 +77,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 		//--- setup timer ---//
 		displayLink = CADisplayLink(target: self, selector: #selector(update))
 		displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
-		gameSession.items.forEach { ($0 as! Tile).restoreAnimations() }
+		gameSession.items.forEach { $0.restoreAnimations() }
 	}
 
 	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -115,14 +115,13 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 		var deltaTime = currentTime - previousTimestamp
 		previousTimestamp = currentTime
 		deltaTime = deltaTime < 0.1 ? deltaTime : 0.015
-		gameSession.update(CGFloat(deltaTime))
+		gameSession.update(deltaTime)
 	}
 }
 
 //MARK: - GameSessionDelegate
 
 extension GameViewController: GameSessionDelegate {
-
 	public func didUpdateScore(_ score: UInt) {
 		scoreLabel.text = "\("mmmaze.game.score".localized)\n\(score)"
 		scoreValueLabel_inGameOver.text = "\(score)"
@@ -175,7 +174,7 @@ extension GameViewController: GameSessionDelegate {
 		}
 	}
 
-	public func didGameOver(_ session: GameSession!) {
+	func didGameOver(_ gameSession: GameSession) {
 		displayLink.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
 		gameOverView.isHidden = false
 		view.bringSubviewToFront(gameOverView)

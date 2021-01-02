@@ -6,9 +6,9 @@
 //  Copyright © 2021 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-@objc enum MazeTyleType: Int {
+enum MazeTyleType: Int {
 	case wall
 	case path
 	case start
@@ -21,7 +21,7 @@ struct MazeTile {
 	let steps: Int
 }
 
-@objc class Maze: NSObject {
+class Maze {
 	let rows: Int, columns: Int
 	var grid: [MazeTyleType]
 	var freeTiles: [(Int,Int)] = []
@@ -37,22 +37,22 @@ struct MazeTile {
 		set { grid[(row * columns) + column] = newValue }
 	}
 
-	@objc func at(row: Int, col: Int) -> MazeTyleType {
+	func at(row: Int, col: Int) -> MazeTyleType {
 		return grid[(row * columns) + col]
 	}
 
-	@objc func markFree(row: Int, col: Int) {
+	func markFree(row: Int, col: Int) {
 		freeTiles.append((row, col))
 	}
 
-	@objc func randFreeTile() -> CGPoint {
+	func randFreeTile() -> CGPoint {
 		let tile = freeTiles[Int(arc4random()) % freeTiles.count]
 		return CGPoint(x: tile.1, y: tile.0)
 	}
 }
 
-@objc class MazeGenerator: NSObject {
-	@objc static func calculateMaze(startRow: Int, startCol: Int, rows: Int, cols: Int) -> Maze {
+class MazeGenerator {
+	static func calculateMaze(startRow: Int, startCol: Int, rows: Int, cols: Int) -> Maze {
 		let maze = Maze(rows: rows, columns: cols)
 		let startTile = MazeTile(row: startRow, col: startCol, steps: 0)
 		maze[startRow, startCol] = MazeTyleType.start

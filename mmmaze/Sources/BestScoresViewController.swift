@@ -6,7 +6,7 @@
 //  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class BestScoresViewController: UIViewController {
 	@IBOutlet var tableView: UITableView!
@@ -20,7 +20,7 @@ class BestScoresViewController: UIViewController {
 	}
 }
 
-@objc extension BestScoresViewController: UITableViewDataSource {
+extension BestScoresViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		let count = ScoreManager.highScores.count
 		return count < 10 ? 10 : count

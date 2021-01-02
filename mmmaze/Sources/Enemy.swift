@@ -6,15 +6,14 @@
 //  Copyright © 2020 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Enemy: Tile {
-	@objc var wantSpawn: Bool = false
+	var wantSpawn: Bool = false
 	var visible: Bool { alpha == 1 && !isHidden }
-	
-	private static let SPEED = 1.5
 	var path: NSMutableArray
 	var timeAccumulator: TimeInterval = 0.0
+	private static let SPEED = 1.5
 
 	init(gameSession: GameSession) {
 		path = NSMutableArray()
@@ -33,7 +32,7 @@ class Enemy: Tile {
 
 	// MARK: - Public
 
-	@objc func show(after time: TimeInterval = 1.0) {
+	func show(after time: TimeInterval = 1.0) {
 		UIView.animate(withDuration: 0.5, delay: time) {
 			self.isHidden = false
 			self.alpha = 1.0
@@ -42,7 +41,7 @@ class Enemy: Tile {
 		}
 	}
 	
-	@objc func spawn() -> Enemy {
+	func spawn() -> Enemy {
 		wantSpawn = false
 
 		let spawnedEnemy = Enemy(gameSession: gameSession!)
@@ -51,7 +50,7 @@ class Enemy: Tile {
 		return spawnedEnemy
 	}
 	
-	@objc override func update(_ delta: TimeInterval) {
+	override func update(_ delta: TimeInterval) {
 		timeAccumulator += delta
 
 		calculatePath()

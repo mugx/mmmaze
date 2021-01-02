@@ -6,9 +6,9 @@
 //  Copyright © 2020 mugx. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-@objc enum TyleType: Int {
+enum TyleType: Int {
 	case door
 	case wall
 	case explodedWall
@@ -27,25 +27,18 @@ class Tile: UIImageView {
 	var speed: Float = 0
 	var didVerticalSwipe: Bool = false
 	var didHorizontalSwipe: Bool = false
-	@objc var x: Int = 0
-	@objc var y: Int = 0
-	@objc var isDestroyable: Bool = false
+	var x: Int = 0
+	var y: Int = 0
+	var isDestroyable: Bool = false
 	var isBlinking: Bool = false
-	@objc var isAngry: Bool = false
+	var isAngry: Bool = false
 	var collidedWall: Tile?
 	var gameSession: GameSession?
 	var lastSwipe: UISwipeGestureRecognizer.Direction?
 	var animations: [String: CABasicAnimation] = [:]
 
-	@objc override init(frame: CGRect) {
-		super.init(frame: frame)
-	}
 	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
-	@objc func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
+	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 		lastSwipe = direction
 		
 		switch direction {
@@ -62,7 +55,7 @@ class Tile: UIImageView {
 		}
 	}
 
-	@objc func update(_ delta: TimeInterval) {
+	func update(_ delta: TimeInterval) {
 		var frame = self.frame
 		let velx = velocity.x + velocity.x * CGFloat(delta)
 		let vely = velocity.y + velocity.y * CGFloat(delta)
@@ -111,30 +104,30 @@ class Tile: UIImageView {
 		}
 	}
 
-	@objc func checkWallCollision(_ frame: CGRect) -> Tile? {
-		return (gameSession?.wallsDictionary.allValues as! [Tile]).first(where: {
+	func checkWallCollision(_ frame: CGRect) -> Tile? {
+		return gameSession?.wallsDictionary.values.first(where: {
 			$0.tag != TyleType.explodedWall.rawValue && $0.frame.intersects(frame)
 		})
 	}
 	
-	@objc func isWall(at frame: CGRect, direction: UISwipeGestureRecognizer.Direction) -> Bool {
+	func isWall(at frame: CGRect, direction: UISwipeGestureRecognizer.Direction) -> Bool {
 		let col = Int(round(Double(frame.origin.x) / TILE_SIZE))
 		let row = Int(round(Double(frame.origin.y) / TILE_SIZE))
 		let col_offset = direction == .left ? col - 1 : direction == .right ? col + 1 : col
 		let row_offset = direction == .up ? row - 1 : direction == .down ? row + 1 : row
 		let wallPosition = NSValue(cgPoint: CGPoint(x: row_offset, y: col_offset))
 		
-		guard let tile = gameSession?.wallsDictionary[wallPosition] as? Tile else { return false }
+		guard let tile = gameSession?.wallsDictionary[wallPosition] else { return false }
 		return tile.tag != TyleType.explodedWall.rawValue
 	}
 	
-	@objc func flip() {
+	func flip() {
 		let anim = CABasicAnimation.flipAnimation()
 		layer.add(anim, forKey: "flip")
 		animations["flip"] = anim
 	}
 	
-	@objc func spin() {
+	func spin() {
 		let anim = CABasicAnimation.spinAnimation()
 		layer.add(anim, forKey: "spin")
 		animations["spin"] = anim
@@ -148,7 +141,7 @@ class Tile: UIImageView {
 	
 	// A moving tile can't match the TILE_SIZE or it collides with the borders, hence it doesn't move.
 	// Instead we consider its frame as centered and resized of a speed factor so it has margin to move.
-	@objc func respawnAtInitialFrame() {
+	func respawnAtInitialFrame() {
 		velocity = .zero
 		
 		let initialTile_x = Double(Constants.STARTING_CELL.x * CGFloat(TILE_SIZE))
@@ -161,7 +154,7 @@ class Tile: UIImageView {
 		)
 	}
 	
-	@objc func explodeWall() -> Bool {
+	func explodeWall() -> Bool {
 		guard let collidedWall = collidedWall,
 					collidedWall.tag == TyleType.wall.rawValue,
 					collidedWall.isDestroyable,

@@ -8,10 +8,10 @@
 
 import UIKit
 
-@objc class Player: Tile {
-	@objc static let SPEED = 3.0
+class Player: Tile {
 	open override var isAngry: Bool { didSet { setupAnimations() } }
-
+	private static let SPEED = 3.0
+	
 	init(gameSession: GameSession) {
 		super.init(frame: .zero)
 
