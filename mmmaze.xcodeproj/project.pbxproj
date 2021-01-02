@@ -13,7 +13,6 @@
 		1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB22259A1ECA0035BAA8 /* SettingsViewController.swift */; };
 		1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB23259A1ECA0035BAA8 /* SettingsViewController.xib */; };
 		1D0BCB47259A1ECA0035BAA8 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB25259A1ECA0035BAA8 /* GameViewController.xib */; };
-		1D0BCB48259A1ECA0035BAA8 /* MazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */; };
 		1D0BCB49259A1ECA0035BAA8 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB27259A1ECA0035BAA8 /* MenuViewController.xib */; };
 		1D0BCB4A259A1ECA0035BAA8 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB28259A1ECA0035BAA8 /* CreditsViewController.swift */; };
 		1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB2A259A1ECA0035BAA8 /* TutorialViewController.xib */; };
@@ -39,6 +38,7 @@
 		1D184C65259E9CB8007DECA0 /* EnemyCollaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C62259E9CB8007DECA0 /* EnemyCollaborator.swift */; };
 		1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */; };
 		1D184C69259E9CD8007DECA0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C68259E9CD8007DECA0 /* Player.swift */; };
+		1D184C6B259FE477007DECA0 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C6A259FE477007DECA0 /* MazeGenerator.swift */; };
 		1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* whirlwind.png */; };
 		1DA4C713259BA0B300E4DE1E /* gate_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* gate_open.png */; };
 		1DA4C714259BA0B300E4DE1E /* gate_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* gate_close.png */; };
@@ -98,12 +98,10 @@
 		1D0BCB14259A1EC90035BAA8 /* mmmaze-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "mmmaze-Bridging-Header.h"; path = "mmmaze/Sources/mmmaze-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BestScoresViewController.xib; path = mmmaze/Sources/BestScoresViewController.xib; sourceTree = "<group>"; };
 		1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = mmmaze/Sources/GameViewController.swift; sourceTree = "<group>"; };
-		1D0BCB1E259A1ECA0035BAA8 /* MazeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MazeGenerator.hpp; path = mmmaze/Sources/MazeGenerator.hpp; sourceTree = "<group>"; };
 		1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = mmmaze/Sources/Constants.swift; sourceTree = "<group>"; };
 		1D0BCB22259A1ECA0035BAA8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = mmmaze/Sources/SettingsViewController.swift; sourceTree = "<group>"; };
 		1D0BCB23259A1ECA0035BAA8 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = mmmaze/Sources/SettingsViewController.xib; sourceTree = "<group>"; };
 		1D0BCB25259A1ECA0035BAA8 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController.xib; path = mmmaze/Sources/GameViewController.xib; sourceTree = "<group>"; };
-		1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MazeGenerator.cpp; path = mmmaze/Sources/MazeGenerator.cpp; sourceTree = "<group>"; };
 		1D0BCB27259A1ECA0035BAA8 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = mmmaze/Sources/MenuViewController.xib; sourceTree = "<group>"; };
 		1D0BCB28259A1ECA0035BAA8 /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsViewController.swift; path = mmmaze/Sources/CreditsViewController.swift; sourceTree = "<group>"; };
 		1D0BCB2A259A1ECA0035BAA8 /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TutorialViewController.xib; path = mmmaze/Sources/TutorialViewController.xib; sourceTree = "<group>"; };
@@ -131,6 +129,7 @@
 		1D184C62259E9CB8007DECA0 /* EnemyCollaborator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyCollaborator.swift; path = mmmaze/Sources/EnemyCollaborator.swift; sourceTree = "<group>"; };
 		1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CABasicAnimation+Utils.swift"; path = "mmmaze/Sources/CABasicAnimation+Utils.swift"; sourceTree = "<group>"; };
 		1D184C68259E9CD8007DECA0 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = mmmaze/Sources/Player.swift; sourceTree = "<group>"; };
+		1D184C6A259FE477007DECA0 /* MazeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGenerator.swift; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA4C703259BA0B300E4DE1E /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = mmmaze/Resources/whirlwind.png; sourceTree = "<group>"; };
 		1DA4C704259BA0B300E4DE1E /* gate_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_open.png; path = mmmaze/Resources/gate_open.png; sourceTree = "<group>"; };
@@ -415,8 +414,7 @@
 		1D9ADB47259B1760003CC8C2 /* Generator */ = {
 			isa = PBXGroup;
 			children = (
-				1D0BCB1E259A1ECA0035BAA8 /* MazeGenerator.hpp */,
-				1D0BCB26259A1ECA0035BAA8 /* MazeGenerator.cpp */,
+				1D184C6A259FE477007DECA0 /* MazeGenerator.swift */,
 			);
 			name = Generator;
 			sourceTree = "<group>";
@@ -544,7 +542,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0BCB48259A1ECA0035BAA8 /* MazeGenerator.cpp in Sources */,
 				1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */,
 				1D0BCB4F259A1ECA0035BAA8 /* GameSession.mm in Sources */,
 				1DA4C740259BA10900E4DE1E /* GameSession.swift in Sources */,
@@ -556,6 +553,7 @@
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */,
+				1D184C6B259FE477007DECA0 /* MazeGenerator.swift in Sources */,
 				1D184C5F259E9CA6007DECA0 /* Tile.swift in Sources */,
 				1D184C58259E9C87007DECA0 /* GameSession+Items.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,

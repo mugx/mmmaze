@@ -8,7 +8,6 @@
 
 #import "mmmaze-Swift.h"
 #import "GameSession.h"
-#import "MazeGenerator.hpp"
 
 @implementation GameSession
 
@@ -24,19 +23,16 @@
 	[self.gameView addSubview:self.mazeView];
 	self.mazeRotation = 0;
 	self.isGameOver = NO;
-	
+
 	//--- generating the maze ---//
-	MazeGenerator *mazeGenerator = new MazeGenerator();
-	MazeTyleType **maze = mazeGenerator->calculateMaze(static_cast<int>(Constants.STARTING_CELL.x), static_cast<int>(Constants.STARTING_CELL.y), static_cast<int>(self.numCol), static_cast<int>(self.numRow));
+	int startRow = Constants.STARTING_CELL.x;
+	int startCol = Constants.STARTING_CELL.y;
+	Maze *maze = [MazeGenerator calculateMazeWithStartRow:startRow startCol:startCol rows:self.numRow cols:self.numCol];
 	self.wallsDictionary = [NSMutableDictionary dictionary];
-	
-	NSMutableArray *freeTiles = [NSMutableArray array];
-	for (int r = 0; r < self.numRow ; r++)
-	{
-		for (int c = 0; c < self.numCol; c++)
-		{
-			if (maze[r][c] == MTWall)
-			{
+
+	for (int r = 0; r < self.numRow ; r++) {
+		for (int c = 0; c < self.numCol; c++) {
+			if ([maze atRow:r col:c] == MazeTyleTypeWall) {
 				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.tag = TyleTypeWall;
 				[tile setImage:[[UIImage imageNamed:@"wall"] coloredWith:[UIColor whiteColor]]];
@@ -45,9 +41,7 @@
 				tile.y = c;
 				[self.mazeView addSubview:tile];
 				[self.wallsDictionary setObject:tile forKey:[NSValue valueWithCGPoint:CGPointMake(r, c)]];
-			}
-			else if (maze[r][c] == MTStart)
-			{
+			} else if ([maze atRow:r col:c] == MazeTyleTypeStart)	{
 				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.x = r;
 				tile.y = c;
@@ -55,9 +49,7 @@
 				tile.isDestroyable = NO;
 				[self.mazeView addSubview:tile];
 				[self.items addObject:tile];
-			}
-			else if (maze[r][c] == MTEnd)
-			{
+			} else if ([maze atRow:r col:c] == MazeTyleTypeEnd)	{
 				Tile *tile = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
 				tile.x = r;
 				tile.y = c;
@@ -68,35 +60,23 @@
 				[self.wallsDictionary setObject:tile forKey:[NSValue valueWithCGPoint:CGPointMake(r, c)]];
 				self.mazeGoalTile = tile;
 				[self.items addObject:tile];
-			}
-			else
-			{
-				Tile *item = [self makeItemWithCol:c row:r];
-				if (!item)
-				{
-					[freeTiles addObject:@{@"c":@(c), @"r":@(r)}];
+			} else {
+				if (![self makeItemWithCol:c row:r]) {
+					[maze markFreeWithRow:r col:c];
 				}
 			}
 		}
 	}
-	
+
 	//--- make key ---//
-	NSDictionary *keyPosition = freeTiles[arc4random() % freeTiles.count];
-	int c = [keyPosition[@"c"] intValue];
-	int r = [keyPosition[@"r"] intValue];
-	Tile *keyItem = [[Tile alloc] initWithFrame:CGRectMake(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
-	keyItem.x = c;
-	keyItem.y = r;
+	CGPoint freeTile = [maze randFreeTile];
+	Tile *keyItem = [[Tile alloc] initWithFrame: CGRectMake(freeTile.x * TILE_SIZE, freeTile.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)];
+	keyItem.x = freeTile.x;
+	keyItem.y = freeTile.y;
 	keyItem.tag = TyleTypeKey;
-	keyItem.image = [[UIImage imageNamed:@"key"] coloredWith: [UIColor magentaColor]];
+	keyItem.image = [[UIImage imageNamed:@"key"] coloredWith: [UIColor greenColor]];
 	[self.mazeView addSubview:keyItem];
 	[self.items addObject:keyItem];
-	
-	for (int i = 0; i < self.numCol; ++i)
-	{
-		free(maze[i]);
-	}
-	free(maze);
 }
 
 - (void)update:(CGFloat)deltaTime {
