@@ -66,7 +66,7 @@ class GameSession {
 			currentScore = 0
 			currentLives = Self.MAX_LIVES
 			
-			numCol = Self.BASE_MAZE_DIMENSION;
+			numCol = Self.BASE_MAZE_DIMENSION
 			numRow = Self.BASE_MAZE_DIMENSION
 		} else {
 			play(sound: .levelChange)

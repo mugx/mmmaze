@@ -94,7 +94,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 	@IBAction func gameOverTouched() {
 		gameOverView.isHidden = true
 		view.sendSubviewToBack(gameOverView)
-		hurryUpLabel.isHidden = true;
+		hurryUpLabel.isHidden = true
 		gameSession.startLevel(1)
 
 		//--- setup timer ---//

@@ -44,6 +44,6 @@ extension UIImage {
 		context.fill(rect)
 		let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
 		UIGraphicsEndImageContext()
-		return newImage;
+		return newImage
 	}
 }

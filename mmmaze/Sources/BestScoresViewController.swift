@@ -31,7 +31,7 @@ extension BestScoresViewController: UITableViewDataSource {
 		cell.backgroundColor = UIColor.white
 		cell.textLabel?.textColor = UIColor.black
 		cell.textLabel?.font = UIFont(name: Constants.FONT_FAMILY, size: 16)
-		cell.detailTextLabel?.textColor = UIColor.black;
+		cell.detailTextLabel?.textColor = UIColor.black
 		cell.detailTextLabel?.font = UIFont(name: Constants.FONT_FAMILY, size: 16)
 
 		let highScores = ScoreManager.highScores
@@ -44,6 +44,6 @@ extension BestScoresViewController: UITableViewDataSource {
 			cell.textLabel?.text = "mmmaze.game.score".localized
 			cell.detailTextLabel?.text = "xxx"
 		}
-		return cell;
+		return cell
 	}
 }

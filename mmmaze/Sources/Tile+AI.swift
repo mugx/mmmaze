@@ -23,7 +23,7 @@ extension Tile {
 		let horizontalDistance = center2.x - center1.x
 		let verticalDistance = center2.y - center1.y
 		let distance = sqrt(pow(horizontalDistance, 2) + pow(verticalDistance, 2))
-		return distance;
+		return distance
 	}
 
 	func getBestDirection(_ directions: [(UISwipeGestureRecognizer.Direction, CGRect)], targetFrame: CGRect) -> (UISwipeGestureRecognizer.Direction, CGRect) {

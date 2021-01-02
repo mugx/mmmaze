@@ -65,20 +65,20 @@ class MazeGenerator {
 		while !currentPath.isEmpty {
 			var possibleDirections = [String]()
 			if (currentRow - 2 >= 0) && maze[currentRow - 2, currentCol] == .wall {
-				possibleDirections.append("n");
+				possibleDirections.append("n")
 			}
 
 			if (currentRow + 2 < rows) && maze[currentRow + 2, currentCol] == .wall {
-				possibleDirections.append("s");
+				possibleDirections.append("s")
 			}
 
 
 			if (currentCol + 2 < cols) && maze[currentRow, currentCol + 2] == .wall {
-				possibleDirections.append("e");
+				possibleDirections.append("e")
 			}
 
 			if (currentCol - 2 >= 0) && maze[currentRow, currentCol - 2] == .wall {
-				possibleDirections.append("w");
+				possibleDirections.append("w")
 			}
 
 			if !possibleDirections.isEmpty {  // forward

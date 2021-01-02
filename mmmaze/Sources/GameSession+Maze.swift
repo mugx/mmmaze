@@ -31,16 +31,16 @@ extension GameSession {
 					tile.tag = TyleType.wall.rawValue
 					tile.image = UIImage(named: "wall")?.colored(with: UIColor.white)
 					tile.isDestroyable = !(r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1)
-					tile.x = r;
-					tile.y = c;
+					tile.x = r
+					tile.y = c
 					mazeView.addSubview(tile)
 					wallsDictionary[NSValue(cgPoint: CGPoint(x: r, y: c))] = tile
 				} else if maze[r, c] == .start {
 					let tile = Tile(frame: CGRect(x: Double(c) * TILE_SIZE, y: Double(r) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
 					tile.tag = TyleType.door.rawValue
 					tile.isDestroyable = false
-					tile.x = r;
-					tile.y = c;
+					tile.x = r
+					tile.y = c
 					mazeView.addSubview(tile)
 					items.append(tile)
 				} else if maze[r, c] == .end {

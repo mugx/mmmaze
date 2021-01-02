@@ -54,7 +54,7 @@ extension GameSession {
 	}
 
 	func checkItemsCollisions() {
-		var itemsToRemove = [Tile]();
+		var itemsToRemove = [Tile]()
 		for item in items {
 			if checkPlayerCollision(with: item) || checkEnemyCollision(with: item){
 				item.isHidden = true

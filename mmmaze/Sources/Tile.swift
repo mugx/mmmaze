@@ -43,13 +43,13 @@ class Tile: UIImageView {
 		
 		switch direction {
 		case .right:
-			self.velocity = CGPoint(x: CGFloat(self.speed), y: self.velocity.y);
+			self.velocity = CGPoint(x: CGFloat(self.speed), y: self.velocity.y)
 		case .left:
-			self.velocity = CGPoint(x: CGFloat(-self.speed), y: self.velocity.y);
+			self.velocity = CGPoint(x: CGFloat(-self.speed), y: self.velocity.y)
 		case .up:
 			self.velocity = CGPoint(x: self.velocity.x, y: CGFloat(-self.speed))
 		case .down:
-			self.velocity = CGPoint(x: self.velocity.x, y: CGFloat(self.speed));
+			self.velocity = CGPoint(x: self.velocity.x, y: CGFloat(self.speed))
 		default:
 			break
 		}
@@ -74,7 +74,7 @@ class Tile: UIImageView {
 				frame = frameOnHorizontalMove
 
 				if (vely != 0 && !(self.lastSwipe == UISwipeGestureRecognizer.Direction.up || self.lastSwipe == UISwipeGestureRecognizer.Direction.down)) {
-					self.velocity = CGPoint(x: self.velocity.x, y: 0);
+					self.velocity = CGPoint(x: self.velocity.x, y: 0)
 				}
 			}
 
@@ -119,12 +119,6 @@ class Tile: UIImageView {
 		
 		guard let tile = gameSession?.wallsDictionary[wallPosition] else { return false }
 		return tile.tag != TyleType.explodedWall.rawValue
-	}
-	
-	func flip() {
-		let anim = CABasicAnimation.flipAnimation()
-		layer.add(anim, forKey: "flip")
-		animations["flip"] = anim
 	}
 	
 	func spin() {

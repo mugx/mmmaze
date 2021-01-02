@@ -21,7 +21,7 @@ class TutorialViewController: UIViewController {
 		super.viewDidLoad()
 
 		//--- enemyImage stuff ---//
-		enemyImage.animationImages = UIImage(named: "enemy")?.sprites(with: TILE_SIZE);
+		enemyImage.animationImages = UIImage(named: "enemy")?.sprites(with: TILE_SIZE)
 		enemyImage.animationDuration = 0.4
 		enemyImage.animationRepeatCount = 0
 		enemyImage.startAnimating()
@@ -44,7 +44,7 @@ class TutorialViewController: UIViewController {
 		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse], animations: {
 			self.firstArrow.alpha = 0.4
 		}) { (finished) in
-			self.firstArrow.alpha = 1.0;
+			self.firstArrow.alpha = 1.0
 		}
 
 		secondArrow.image = secondArrow.image?.withRenderingMode(.alwaysTemplate)
@@ -52,7 +52,7 @@ class TutorialViewController: UIViewController {
 		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse], animations: {
 			self.secondArrow.alpha = 0.4
 		}) { (finished) in
-			self.secondArrow.alpha = 1.0;
+			self.secondArrow.alpha = 1.0
 		}
 	}
 

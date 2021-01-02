@@ -23,8 +23,6 @@
 		1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */; };
 		1D0BCB60259A1ED30035BAA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */; };
 		1D0BCB61259A1ED30035BAA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB56259A1ED30035BAA8 /* LaunchScreen.storyboard */; };
-		1D0BCB62259A1ED30035BAA8 /* gameConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB57259A1ED30035BAA8 /* gameConfiguration.json */; };
-		1D0BCB63259A1ED30035BAA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */; };
 		1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB5E259A1ED30035BAA8 /* Contents.json */; };
 		1D184C58259E9C87007DECA0 /* GameSession+Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C54259E9C87007DECA0 /* GameSession+Items.swift */; };
 		1D184C59259E9C87007DECA0 /* GameSession+Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C55259E9C87007DECA0 /* GameSession+Player.swift */; };
@@ -48,9 +46,7 @@
 		1DA4C719259BA0B300E4DE1E /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70A259BA0B300E4DE1E /* time.png */; };
 		1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70B259BA0B300E4DE1E /* wall.png */; };
 		1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70C259BA0B300E4DE1E /* bomb.png */; };
-		1DA4C71C259BA0B300E4DE1E /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70D259BA0B300E4DE1E /* rightArrow.png */; };
 		1DA4C71D259BA0B300E4DE1E /* player_angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70E259BA0B300E4DE1E /* player_angry.png */; };
-		1DA4C71E259BA0B300E4DE1E /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70F259BA0B300E4DE1E /* leftArrow.png */; };
 		1DA4C71F259BA0B300E4DE1E /* minion.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C710259BA0B300E4DE1E /* minion.png */; };
 		1DA4C720259BA0B300E4DE1E /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C711259BA0B300E4DE1E /* enemy.png */; };
 		1DA4C72E259BA0C200E4DE1E /* soundStartGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C721259BA0C200E4DE1E /* soundStartGame.caf */; };
@@ -110,8 +106,6 @@
 		1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = mmmaze/Sources/MenuViewController.swift; sourceTree = "<group>"; };
 		1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = mmmaze/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		1D0BCB56259A1ED30035BAA8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mmmaze/Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1D0BCB57259A1ED30035BAA8 /* gameConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = gameConfiguration.json; path = mmmaze/Resources/gameConfiguration.json; sourceTree = "<group>"; };
-		1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "mmmaze/Resources/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D0BCB5B259A1ED30035BAA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mmmaze/Resources/Info.plist; sourceTree = "<group>"; };
 		1D0BCB5E259A1ED30035BAA8 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = mmmaze/Resources/Contents.json; sourceTree = "<group>"; };
 		1D184C54259E9C87007DECA0 /* GameSession+Items.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GameSession+Items.swift"; path = "mmmaze/Sources/GameSession+Items.swift"; sourceTree = "<group>"; };
@@ -137,9 +131,7 @@
 		1DA4C70A259BA0B300E4DE1E /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time.png; path = mmmaze/Resources/time.png; sourceTree = "<group>"; };
 		1DA4C70B259BA0B300E4DE1E /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = mmmaze/Resources/wall.png; sourceTree = "<group>"; };
 		1DA4C70C259BA0B300E4DE1E /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb.png; path = mmmaze/Resources/bomb.png; sourceTree = "<group>"; };
-		1DA4C70D259BA0B300E4DE1E /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightArrow.png; path = mmmaze/Resources/rightArrow.png; sourceTree = "<group>"; };
 		1DA4C70E259BA0B300E4DE1E /* player_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_angry.png; path = mmmaze/Resources/player_angry.png; sourceTree = "<group>"; };
-		1DA4C70F259BA0B300E4DE1E /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftArrow.png; path = mmmaze/Resources/leftArrow.png; sourceTree = "<group>"; };
 		1DA4C710259BA0B300E4DE1E /* minion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minion.png; path = mmmaze/Resources/minion.png; sourceTree = "<group>"; };
 		1DA4C711259BA0B300E4DE1E /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = mmmaze/Resources/enemy.png; sourceTree = "<group>"; };
 		1DA4C721259BA0C200E4DE1E /* soundStartGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundStartGame.caf; path = mmmaze/Resources/soundStartGame.caf; sourceTree = "<group>"; };
@@ -198,8 +190,6 @@
 				1D0BCB5E259A1ED30035BAA8 /* Contents.json */,
 				1DA4C73D259BA0F400E4DE1E /* Joystix.ttf */,
 				1DA4C73B259BA0EC00E4DE1E /* Localizable.strings */,
-				1D0BCB57259A1ED30035BAA8 /* gameConfiguration.json */,
-				1D0BCB58259A1ED30035BAA8 /* GoogleService-Info.plist */,
 				1D0BCB5B259A1ED30035BAA8 /* Info.plist */,
 				1D0BCB56259A1ED30035BAA8 /* LaunchScreen.storyboard */,
 				1D0BCB97259A23A40035BAA8 /* Images */,
@@ -231,11 +221,9 @@
 				1DA4C704259BA0B300E4DE1E /* gate_open.png */,
 				1DA4C708259BA0B300E4DE1E /* hearth.png */,
 				1DA4C707259BA0B300E4DE1E /* key.png */,
-				1DA4C70F259BA0B300E4DE1E /* leftArrow.png */,
 				1DA4C710259BA0B300E4DE1E /* minion.png */,
 				1DA4C70E259BA0B300E4DE1E /* player_angry.png */,
 				1DA4C706259BA0B300E4DE1E /* player.png */,
-				1DA4C70D259BA0B300E4DE1E /* rightArrow.png */,
 				1DA4C70A259BA0B300E4DE1E /* time.png */,
 				1DA4C70B259BA0B300E4DE1E /* wall.png */,
 				1DA4C703259BA0B300E4DE1E /* whirlwind.png */,
@@ -491,9 +479,7 @@
 				1DA4C733259BA0C200E4DE1E /* soundGame.caf in Resources */,
 				1DA4C719259BA0B300E4DE1E /* time.png in Resources */,
 				1DA4C739259BA0C200E4DE1E /* soundHitBomb.caf in Resources */,
-				1DA4C71E259BA0B300E4DE1E /* leftArrow.png in Resources */,
 				1DA4C737259BA0C200E4DE1E /* soundTimeOver.caf in Resources */,
-				1DA4C71C259BA0B300E4DE1E /* rightArrow.png in Resources */,
 				1DA4C71D259BA0B300E4DE1E /* player_angry.png in Resources */,
 				1DA4C72F259BA0C200E4DE1E /* soundLevelChange.caf in Resources */,
 				1DA4C732259BA0C200E4DE1E /* soundSelectItem.caf in Resources */,
@@ -508,7 +494,6 @@
 				1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */,
 				1D0BCB4E259A1ECA0035BAA8 /* CreditsViewController.xib in Resources */,
 				1DA4C75A259BA29800E4DE1E /* README.md in Resources */,
-				1D0BCB62259A1ED30035BAA8 /* gameConfiguration.json in Resources */,
 				1DA4C716259BA0B300E4DE1E /* key.png in Resources */,
 				1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */,
 				1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */,
@@ -517,7 +502,6 @@
 				1DA4C72E259BA0C200E4DE1E /* soundStartGame.caf in Resources */,
 				1DA4C73C259BA0EC00E4DE1E /* Localizable.strings in Resources */,
 				1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */,
-				1D0BCB63259A1ED30035BAA8 /* GoogleService-Info.plist in Resources */,
 				1DA4C713259BA0B300E4DE1E /* gate_open.png in Resources */,
 				1DA4C714259BA0B300E4DE1E /* gate_close.png in Resources */,
 				1D0BCB60259A1ED30035BAA8 /* Assets.xcassets in Resources */,

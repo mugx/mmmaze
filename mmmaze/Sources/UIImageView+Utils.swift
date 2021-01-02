@@ -60,7 +60,7 @@ extension UIImageView {
 				let splat_x = Bool.random() ? 1 : -1 * CGFloat.random(in: 0 ..< 50)
 				let splat_y = Bool.random() ? 1 : -1 * CGFloat.random(in: 0 ..< 50)
 				subTile.frame = subTile.frame.offsetBy(dx: subTile.frame.origin.x + splat_x, dy: subTile.frame.origin.y + splat_y)
-				subTile.alpha = 0;
+				subTile.alpha = 0
 			} completion: { _ in
 				subTile.removeFromSuperview()
 				self.isHidden = true
