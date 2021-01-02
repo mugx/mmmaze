@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 29/12/20.
-//  Copyright © 2020 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
@@ -38,7 +38,7 @@ extension UIImageView {
 		let cols = Int(floor(image.size.width / originalW))
 		let rows = Int(floor(image.size.height / originalH))
 
-		//--- preparing sub tiles ---//
+		// preparing sub tiles 
 		for y in 0 ... cols {
 			for x in 0 ... rows {
 				let frame = CGRect(
@@ -53,7 +53,7 @@ extension UIImageView {
 			}
 		}
 
-		//--- starting to animate the sub tiles ---//
+		// starting to animate the sub tiles 
 		let subviews = self.subviews
 		for subTile in subviews {
 			UIView.animate(withDuration: Self.ANIM_DURATION, delay: 0, options: UIView.AnimationOptions.curveEaseOut) {

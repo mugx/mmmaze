@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 28/12/20.
-//  Copyright © 2020 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
@@ -31,6 +31,4 @@ class ScoreManager {
 		}
 		UserDefaults.standard.setValue(highScores, forKey: Self.SAVE_KEY_HIGH_SCORES)
 	}
-
-	// MARK: - Private
 }

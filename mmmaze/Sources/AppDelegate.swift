@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
-	static var sharedInstance: AppDelegate! { return (UIApplication.shared.delegate as! AppDelegate) }
+	static var shared: AppDelegate! { return (UIApplication.shared.delegate as! AppDelegate) }
 	var window: UIWindow?
 	var gameVc: GameViewController?
 
@@ -20,7 +20,7 @@ import UIKit
 		window.rootViewController = MenuViewController()
 	}
 
-	//MARK: - Select Screen
+	// MARK: - Select Screen
 
 	func selectScreen(_ screenType:ScreenType ) {
 		switch (screenType) {
@@ -46,7 +46,6 @@ import UIKit
 		UIView.animate(withDuration: 0.5, animations: {
 			self.window?.rootViewController?.view.alpha = 0
 		}) { (success) in
-			//viewController.view.alpha = 0
 			self.window?.rootViewController = viewController
 			UIView.animate(withDuration: 1) {
 				self.window?.rootViewController?.view.alpha = 1

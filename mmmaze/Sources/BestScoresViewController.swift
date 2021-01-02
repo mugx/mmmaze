@@ -9,14 +9,12 @@
 import UIKit
 
 class BestScoresViewController: UIViewController {
-	@IBOutlet var tableView: UITableView!
-	@IBOutlet var backButton: UIButton!
 
-	//MARK: - Actions
+	// MARK: - Actions
 
 	@IBAction func backTouched() {
 		playSound(SoundType.selectItem)
-		AppDelegate.sharedInstance.selectScreen(.STMenu)
+		AppDelegate.shared.selectScreen(.STMenu)
 	}
 }
 

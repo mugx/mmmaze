@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 31/12/20.
-//  Copyright © 2020 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ extension GameSession {
 		mazeRotation = 0
 		isGameOver = false
 
-		//--- generating the maze ---//
+		// generating the maze 
 		let startRow: Int = Int(Constants.STARTING_CELL.x)
 		let startCol: Int = Int(Constants.STARTING_CELL.y)
 		let numRow = Int(self.numRow)
@@ -27,29 +27,26 @@ extension GameSession {
 		for r in 0 ..< numRow {
 			for c in 0 ..< numCol {
 				if maze[r, c] == .wall {
-					let tile = Tile(frame: CGRect(x: Double(c) * TILE_SIZE, y: Double(r) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
-					tile.tag = TyleType.wall.rawValue
-					tile.image = UIImage(named: "wall")?.colored(with: UIColor.white)
+					let tile = Tile(type: .wall, frame: CGRect(row: r, col: c))
+					tile.image = TyleType.wall.image
 					tile.isDestroyable = !(r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1)
 					tile.x = r
 					tile.y = c
 					mazeView.addSubview(tile)
 					wallsDictionary[NSValue(cgPoint: CGPoint(x: r, y: c))] = tile
 				} else if maze[r, c] == .start {
-					let tile = Tile(frame: CGRect(x: Double(c) * TILE_SIZE, y: Double(r) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
-					tile.tag = TyleType.door.rawValue
+					let tile = Tile(type: .door, frame: CGRect(row: r, col: c))
 					tile.isDestroyable = false
 					tile.x = r
 					tile.y = c
 					mazeView.addSubview(tile)
 					items.append(tile)
-				} else if maze[r, c] == .end {
-					let tile = Tile(frame: CGRect(x: Double(c) * TILE_SIZE, y: Double(r) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
+				} else if maze[r, c] == .goal {
+					let tile = Tile(type: .goal_close, frame: CGRect(row: r, col: c))
 					tile.x = r
 					tile.y = c
-					tile.tag = TyleType.mazeEnd_close.rawValue
 					tile.isDestroyable = false
-					tile.image = UIImage(named: "gate_close")
+					tile.image = TyleType.goal_close.image
 					mazeView.addSubview(tile)
 					wallsDictionary[NSValue(cgPoint: CGPoint(x: r, y: c))] = tile
 					mazeGoalTile = tile
@@ -62,13 +59,12 @@ extension GameSession {
 			}
 		}
 
-		//--- make key ---//
+		// make key 
 		let freeTile = maze.randFreeTile()
-		let keyItem = Tile(frame: CGRect(x: Double(freeTile.x) * TILE_SIZE, y: Double(freeTile.y) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
+		let keyItem = Tile(type: .key, frame: CGRect(x: Double(freeTile.x) * TILE_SIZE, y: Double(freeTile.y) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
 		keyItem.x = Int(freeTile.x)
 		keyItem.y = Int(freeTile.y)
-		keyItem.tag = TyleType.key.rawValue
-		keyItem.image = UIImage(named: "key")?.colored(with: .green)
+		keyItem.image = TyleType.key.image
 		mazeView.addSubview(keyItem)
 		items.append(keyItem)
 	}

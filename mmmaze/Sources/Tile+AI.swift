@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 29/12/20.
-//  Copyright © 2020 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +17,7 @@ extension Tile {
 		path.contains { $0.intersects(target) }
 	}
 
-	func euclideanDistance(rect1: CGRect, rect2: CGRect) -> CGFloat {
+	private func euclideanDistance(rect1: CGRect, rect2: CGRect) -> CGFloat {
 		let center1 = CGPoint(x: rect1.midX, y: rect1.midY)
 		let center2 = CGPoint(x: rect2.midX, y: rect2.midY)
 		let horizontalDistance = center2.x - center1.x
@@ -103,4 +103,6 @@ extension Tile {
 		}
 		return path
 	}
+
+	// MARK: - Private
 }

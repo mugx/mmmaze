@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,6 @@
 		1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB39259A1ECA0035BAA8 /* MenuViewController.swift */; };
 		1D0BCB60259A1ED30035BAA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */; };
 		1D0BCB61259A1ED30035BAA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB56259A1ED30035BAA8 /* LaunchScreen.storyboard */; };
-		1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB5E259A1ED30035BAA8 /* Contents.json */; };
 		1D184C58259E9C87007DECA0 /* GameSession+Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C54259E9C87007DECA0 /* GameSession+Items.swift */; };
 		1D184C59259E9C87007DECA0 /* GameSession+Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C55259E9C87007DECA0 /* GameSession+Player.swift */; };
 		1D184C5A259E9C87007DECA0 /* GameSession+Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C56259E9C87007DECA0 /* GameSession+Maze.swift */; };
@@ -37,8 +36,8 @@
 		1D184C69259E9CD8007DECA0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C68259E9CD8007DECA0 /* Player.swift */; };
 		1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */; };
 		1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* whirlwind.png */; };
-		1DA4C713259BA0B300E4DE1E /* gate_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* gate_open.png */; };
-		1DA4C714259BA0B300E4DE1E /* gate_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* gate_close.png */; };
+		1DA4C713259BA0B300E4DE1E /* goal_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* goal_open.png */; };
+		1DA4C714259BA0B300E4DE1E /* goal_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* goal_close.png */; };
 		1DA4C715259BA0B300E4DE1E /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C706259BA0B300E4DE1E /* player.png */; };
 		1DA4C716259BA0B300E4DE1E /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C707259BA0B300E4DE1E /* key.png */; };
 		1DA4C717259BA0B300E4DE1E /* hearth.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C708259BA0B300E4DE1E /* hearth.png */; };
@@ -73,6 +72,8 @@
 		1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */; };
 		1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */; };
 		1DA4C75A259BA29800E4DE1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C759259BA29800E4DE1E /* README.md */; };
+		1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262EC25A0A60200BAC78A /* VersionLabel.swift */; };
+		1DE262F125A0E20500BAC78A /* CGRect+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,7 +108,6 @@
 		1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = mmmaze/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		1D0BCB56259A1ED30035BAA8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mmmaze/Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D0BCB5B259A1ED30035BAA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mmmaze/Resources/Info.plist; sourceTree = "<group>"; };
-		1D0BCB5E259A1ED30035BAA8 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Contents.json; path = mmmaze/Resources/Contents.json; sourceTree = "<group>"; };
 		1D184C54259E9C87007DECA0 /* GameSession+Items.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GameSession+Items.swift"; path = "mmmaze/Sources/GameSession+Items.swift"; sourceTree = "<group>"; };
 		1D184C55259E9C87007DECA0 /* GameSession+Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GameSession+Player.swift"; path = "mmmaze/Sources/GameSession+Player.swift"; sourceTree = "<group>"; };
 		1D184C56259E9C87007DECA0 /* GameSession+Maze.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GameSession+Maze.swift"; path = "mmmaze/Sources/GameSession+Maze.swift"; sourceTree = "<group>"; };
@@ -122,8 +122,8 @@
 		1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MazeGenerator.swift; path = mmmaze/Sources/MazeGenerator.swift; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA4C703259BA0B300E4DE1E /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = mmmaze/Resources/whirlwind.png; sourceTree = "<group>"; };
-		1DA4C704259BA0B300E4DE1E /* gate_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_open.png; path = mmmaze/Resources/gate_open.png; sourceTree = "<group>"; };
-		1DA4C705259BA0B300E4DE1E /* gate_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gate_close.png; path = mmmaze/Resources/gate_close.png; sourceTree = "<group>"; };
+		1DA4C704259BA0B300E4DE1E /* goal_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_open.png; path = mmmaze/Resources/goal_open.png; sourceTree = "<group>"; };
+		1DA4C705259BA0B300E4DE1E /* goal_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_close.png; path = mmmaze/Resources/goal_close.png; sourceTree = "<group>"; };
 		1DA4C706259BA0B300E4DE1E /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = mmmaze/Resources/player.png; sourceTree = "<group>"; };
 		1DA4C707259BA0B300E4DE1E /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = key.png; path = mmmaze/Resources/key.png; sourceTree = "<group>"; };
 		1DA4C708259BA0B300E4DE1E /* hearth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hearth.png; path = mmmaze/Resources/hearth.png; sourceTree = "<group>"; };
@@ -159,6 +159,8 @@
 		1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "mmmaze/Sources/UIView+Utils.swift"; sourceTree = "<group>"; };
 		1DA4C759259BA29800E4DE1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
+		1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				1D0BCB55259A1ED30035BAA8 /* Assets.xcassets */,
-				1D0BCB5E259A1ED30035BAA8 /* Contents.json */,
 				1DA4C73D259BA0F400E4DE1E /* Joystix.ttf */,
 				1DA4C73B259BA0EC00E4DE1E /* Localizable.strings */,
 				1D0BCB5B259A1ED30035BAA8 /* Info.plist */,
@@ -202,11 +203,12 @@
 			isa = PBXGroup;
 			children = (
 				1D0BCBD6259A321B0035BAA8 /* Menu */,
-				1D1BDDCE259A40DC000145A4 /* BestScores */,
 				1D1BDDCF259A45E1000145A4 /* Settings */,
+				1D1BDDCE259A40DC000145A4 /* BestScores */,
 				1D1BDDDF259A4D21000145A4 /* Credits */,
 				1D0BCBDA259A37F90035BAA8 /* Tutorial */,
 				1D0BCBD7259A32250035BAA8 /* Game */,
+				1DE262EB25A0A5EE00BAC78A /* Utils */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -217,8 +219,8 @@
 				1DA4C70C259BA0B300E4DE1E /* bomb.png */,
 				1DA4C709259BA0B300E4DE1E /* coin.png */,
 				1DA4C711259BA0B300E4DE1E /* enemy.png */,
-				1DA4C705259BA0B300E4DE1E /* gate_close.png */,
-				1DA4C704259BA0B300E4DE1E /* gate_open.png */,
+				1DA4C705259BA0B300E4DE1E /* goal_close.png */,
+				1DA4C704259BA0B300E4DE1E /* goal_open.png */,
 				1DA4C708259BA0B300E4DE1E /* hearth.png */,
 				1DA4C707259BA0B300E4DE1E /* key.png */,
 				1DA4C710259BA0B300E4DE1E /* minion.png */,
@@ -243,6 +245,7 @@
 				1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */,
 				1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */,
 				1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */,
+				1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -400,6 +403,14 @@
 			name = Generator;
 			sourceTree = "<group>";
 		};
+		1DE262EB25A0A5EE00BAC78A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1DE262EC25A0A60200BAC78A /* VersionLabel.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,7 +438,7 @@
 		1D7670261C7B5B050065F110 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = TN;
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = mugx;
 				TargetAttributes = {
@@ -448,7 +459,7 @@
 				};
 			};
 			buildConfigurationList = 1D7670291C7B5B050065F110 /* Build configuration list for PBXProject "mmmaze" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -488,7 +499,6 @@
 				1D0BCB47259A1ECA0035BAA8 /* GameViewController.xib in Resources */,
 				1DA4C735259BA0C200E4DE1E /* soundHitHearth.caf in Resources */,
 				1DA4C734259BA0C200E4DE1E /* soundHitCoin.caf in Resources */,
-				1D0BCB69259A1ED30035BAA8 /* Contents.json in Resources */,
 				1DA4C718259BA0B300E4DE1E /* coin.png in Resources */,
 				1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */,
 				1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */,
@@ -502,8 +512,8 @@
 				1DA4C72E259BA0C200E4DE1E /* soundStartGame.caf in Resources */,
 				1DA4C73C259BA0EC00E4DE1E /* Localizable.strings in Resources */,
 				1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */,
-				1DA4C713259BA0B300E4DE1E /* gate_open.png in Resources */,
-				1DA4C714259BA0B300E4DE1E /* gate_close.png in Resources */,
+				1DA4C713259BA0B300E4DE1E /* goal_open.png in Resources */,
+				1DA4C714259BA0B300E4DE1E /* goal_close.png in Resources */,
 				1D0BCB60259A1ED30035BAA8 /* Assets.xcassets in Resources */,
 				1DA4C731259BA0C200E4DE1E /* soundEnemySpawn.caf in Resources */,
 				1DA4C717259BA0B300E4DE1E /* hearth.png in Resources */,
@@ -530,10 +540,12 @@
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */,
 				1D184C5F259E9CA6007DECA0 /* Tile.swift in Sources */,
+				1DE262F125A0E20500BAC78A /* CGRect+Utils.swift in Sources */,
 				1D184C58259E9C87007DECA0 /* GameSession+Items.swift in Sources */,
 				1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
+				1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */,
 				1D184C5E259E9CA6007DECA0 /* Tile+AI.swift in Sources */,
 				1D184C64259E9CB8007DECA0 /* Enemy.swift in Sources */,
 				1D184C5B259E9C87007DECA0 /* GameSession+Enemy.swift in Sources */,
@@ -595,7 +607,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -641,11 +653,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -659,12 +672,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8XE9QV2E26;
 				INFOPLIST_FILE = mmmaze/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.0.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
 				PRODUCT_NAME = mmmaze;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -679,13 +694,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8XE9QV2E26;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=0";
 				INFOPLIST_FILE = mmmaze/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.0.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
 				PRODUCT_NAME = mmmaze;
 				SWIFT_VERSION = 5.0;

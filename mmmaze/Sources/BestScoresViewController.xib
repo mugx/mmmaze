@@ -9,8 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BestScoresViewController">
             <connections>
-                <outlet property="backButton" destination="8jf-nR-YeC" id="tpS-b6-jrA"/>
-                <outlet property="tableView" destination="xRk-e4-XnB" id="1vu-Ck-rvm"/>
                 <outlet property="view" destination="iN0-l3-epB" id="M5F-Ye-ylA"/>
             </connections>
         </placeholder>

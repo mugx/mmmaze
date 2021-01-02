@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 29/12/20.
-//  Copyright © 2020 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
@@ -71,7 +71,7 @@ class Enemy: Tile {
 		super.respawnAtInitialFrame()
 	}
 
-	//MARK: - Private
+	// MARK: - Private
 
 	private func assignSpeed() {
 		speed = Float(Double.random(in: Self.SPEED - 0.2 ... Self.SPEED + 0.2))
@@ -79,7 +79,7 @@ class Enemy: Tile {
 
 	private func setupAnimations() {
 		animationDuration = Double.random(in: 0.3 ... 0.6)
-		animationImages = UIImage(named: "enemy")?.sprites(with: TILE_SIZE)
+		animationImages = TyleType.enemy.image?.sprites(with: TILE_SIZE)
 		startAnimating()
 	}
 }

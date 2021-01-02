@@ -15,37 +15,36 @@ class MenuViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		versionLabel.text = "v\(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!)"
+		versionLabel.text = APP_VERSION
 
-		//--- setting buttons ---//
-		let title = AppDelegate.sharedInstance.gameVc == nil ? "mmmaze.menu.new_game".localized : "mmmaze.menu.resume_game".localized
+		let title = AppDelegate.shared.gameVc == nil ? "mmmaze.menu.new_game".localized : "mmmaze.menu.resume_game".localized
 		gameButton.titleLabel?.text = title
 		gameButton.setTitle(title, for: .normal)
 	}
 
-	//MARK: - Actions
+	// MARK: - Actions
 
 	@IBAction func newGameTouched() {
 		playSound(SoundType.selectItem)
-		if AppDelegate.sharedInstance.gameVc == nil {
-			AppDelegate.sharedInstance.selectScreen(ScreenType.STTutorial)
+		if AppDelegate.shared.gameVc == nil {
+			AppDelegate.shared.selectScreen(ScreenType.STTutorial)
 		} else {
-			AppDelegate.sharedInstance.selectScreen(ScreenType.STResumeGame)
+			AppDelegate.shared.selectScreen(ScreenType.STResumeGame)
 		}
 	}
 
 	@IBAction func highScoresTouched() {
 		playSound(SoundType.selectItem)
-		AppDelegate.sharedInstance.selectScreen(ScreenType.STHighScores)
+		AppDelegate.shared.selectScreen(ScreenType.STHighScores)
 	}
 
 	@IBAction func settingsTouched() {
 		playSound(SoundType.selectItem)
-		AppDelegate.sharedInstance.selectScreen(ScreenType.STSettings)
+		AppDelegate.shared.selectScreen(ScreenType.STSettings)
 	}
 
 	@IBAction func aboutTouched() {
 		playSound(SoundType.selectItem)
-		AppDelegate.sharedInstance.selectScreen(ScreenType.STCredits)
+		AppDelegate.shared.selectScreen(ScreenType.STCredits)
 	}
 }

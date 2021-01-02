@@ -25,64 +25,38 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCL-LP-Urn" userLabel="settings view">
-                    <rect key="frame" x="57" y="363" width="300" height="170"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDK-bj-Mvg">
+                    <rect key="frame" x="171" y="269" width="72.5" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localization" value="mmmaze.menu.settings"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YyP-4f-RLe">
+                    <rect key="frame" x="57" y="343" width="300" height="110"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZn-6e-KAg" userLabel="sound enabled view">
-                            <rect key="frame" x="0.0" y="10" width="300" height="50"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hJU-g3-k5w">
-                                    <rect key="frame" x="127.5" y="3.5" width="45" height="19"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <size key="shadowOffset" width="1" height="1"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wwu-sf-YRK">
-                                    <rect key="frame" x="122" y="27.5" width="56" height="19"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <size key="shadowOffset" width="1" height="1"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="wwu-sf-YRK" firstAttribute="centerY" secondItem="WZn-6e-KAg" secondAttribute="centerY" constant="12" id="9wr-f2-YUM"/>
-                                <constraint firstItem="hJU-g3-k5w" firstAttribute="centerX" secondItem="WZn-6e-KAg" secondAttribute="centerX" id="UR6-t8-Vhg"/>
-                                <constraint firstItem="wwu-sf-YRK" firstAttribute="centerX" secondItem="WZn-6e-KAg" secondAttribute="centerX" id="Vvw-d1-ELm"/>
-                                <constraint firstItem="hJU-g3-k5w" firstAttribute="centerY" secondItem="WZn-6e-KAg" secondAttribute="centerY" constant="-12" id="bFJ-jH-AmA"/>
-                                <constraint firstAttribute="height" constant="50" id="qtc-7B-qQi"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="TQ3-pd-G5j" appends="YES" id="Zhk-gq-yUP"/>
-                            </connections>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7Y-WK-j5b" userLabel="sound volume view">
-                            <rect key="frame" x="0.0" y="70" width="300" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uOO-Wa-LzI">
-                                    <rect key="frame" x="124" y="3.5" width="52" height="19"/>
+                                    <rect key="frame" x="124.5" y="4" width="51" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
-                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <size key="shadowOffset" width="1" height="1"/>
+                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jwZ-rf-Hkk">
-                                    <rect key="frame" x="122" y="27.5" width="56" height="19"/>
+                                    <rect key="frame" x="122.5" y="28" width="55" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
-                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <size key="shadowOffset" width="1" height="1"/>
+                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,61 +68,83 @@
                                 <constraint firstItem="jwZ-rf-Hkk" firstAttribute="centerY" secondItem="a7Y-WK-j5b" secondAttribute="centerY" constant="12" id="weh-Is-JGA"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="2"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="eWn-lb-4Ti" appends="YES" id="HDC-vb-hWC"/>
                             </connections>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZn-6e-KAg" userLabel="sound enabled view">
+                            <rect key="frame" x="0.0" y="60" width="300" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hJU-g3-k5w">
+                                    <rect key="frame" x="128" y="4" width="44" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wwu-sf-YRK">
+                                    <rect key="frame" x="122.5" y="28" width="55" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="wwu-sf-YRK" firstAttribute="centerY" secondItem="WZn-6e-KAg" secondAttribute="centerY" constant="12" id="9wr-f2-YUM"/>
+                                <constraint firstItem="hJU-g3-k5w" firstAttribute="centerX" secondItem="WZn-6e-KAg" secondAttribute="centerX" id="UR6-t8-Vhg"/>
+                                <constraint firstItem="wwu-sf-YRK" firstAttribute="centerX" secondItem="WZn-6e-KAg" secondAttribute="centerX" id="Vvw-d1-ELm"/>
+                                <constraint firstItem="hJU-g3-k5w" firstAttribute="centerY" secondItem="WZn-6e-KAg" secondAttribute="centerY" constant="-12" id="bFJ-jH-AmA"/>
+                                <constraint firstAttribute="height" constant="50" id="qtc-7B-qQi"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="TQ3-pd-G5j" appends="YES" id="Zhk-gq-yUP"/>
+                            </connections>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="WZn-6e-KAg" firstAttribute="top" secondItem="LCL-LP-Urn" secondAttribute="top" constant="10" id="3lb-wj-FQK"/>
-                        <constraint firstAttribute="height" constant="170" id="QFn-J4-18i"/>
-                        <constraint firstItem="a7Y-WK-j5b" firstAttribute="top" secondItem="WZn-6e-KAg" secondAttribute="bottom" constant="10" id="i4I-zO-Aeo"/>
-                        <constraint firstAttribute="width" constant="300" id="itk-hH-HVN"/>
-                        <constraint firstAttribute="trailing" secondItem="a7Y-WK-j5b" secondAttribute="trailing" id="myB-CX-Sfg"/>
-                        <constraint firstItem="WZn-6e-KAg" firstAttribute="leading" secondItem="LCL-LP-Urn" secondAttribute="leading" id="sp7-Ft-TnG"/>
-                        <constraint firstItem="a7Y-WK-j5b" firstAttribute="leading" secondItem="LCL-LP-Urn" secondAttribute="leading" id="v7m-DJ-J6J"/>
-                        <constraint firstAttribute="trailing" secondItem="WZn-6e-KAg" secondAttribute="trailing" id="x1Q-oD-gbd"/>
+                        <constraint firstAttribute="width" constant="300" id="J7h-Y7-ox7"/>
                     </constraints>
-                </view>
+                </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ih-mO-2VD">
                     <rect key="frame" x="147" y="846" width="120" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="KNG-jx-Qgn"/>
                     </constraints>
-                    <size key="titleShadowOffset" width="1" height="1"/>
                     <state key="normal" title="Back">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="backTouched" destination="-1" eventType="touchUpInside" id="oFM-Kw-zQx"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDK-bj-Mvg">
-                    <rect key="frame" x="171" y="289" width="72.5" height="24"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <size key="shadowOffset" width="0.0" height="0.0"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="localization" value="mmmaze.menu.settings"/>
-                    </userDefinedRuntimeAttributes>
-                </label>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="LCL-LP-Urn" firstAttribute="top" secondItem="mDK-bj-Mvg" secondAttribute="bottom" constant="50" id="0Ks-jX-cZT"/>
-                <constraint firstItem="LCL-LP-Urn" firstAttribute="centerY" secondItem="QE5-o0-JBF" secondAttribute="centerY" id="12t-7F-krK"/>
+                <constraint firstItem="YyP-4f-RLe" firstAttribute="centerX" secondItem="QE5-o0-JBF" secondAttribute="centerX" id="41A-Ty-rgD"/>
                 <constraint firstItem="4ih-mO-2VD" firstAttribute="centerX" secondItem="QE5-o0-JBF" secondAttribute="centerX" id="AFh-MP-zNP"/>
-                <constraint firstItem="mDK-bj-Mvg" firstAttribute="centerX" secondItem="QE5-o0-JBF" secondAttribute="centerX" id="BXU-wR-xSW"/>
-                <constraint firstItem="LCL-LP-Urn" firstAttribute="centerX" secondItem="QE5-o0-JBF" secondAttribute="centerX" id="NxV-by-IDE"/>
+                <constraint firstItem="mDK-bj-Mvg" firstAttribute="centerX" secondItem="YyP-4f-RLe" secondAttribute="centerX" id="HYP-dk-Fn2"/>
+                <constraint firstItem="YyP-4f-RLe" firstAttribute="centerY" secondItem="QE5-o0-JBF" secondAttribute="centerY" constant="-50" id="Wb8-ht-4Xe"/>
+                <constraint firstItem="YyP-4f-RLe" firstAttribute="top" secondItem="mDK-bj-Mvg" secondAttribute="bottom" constant="50" id="aCV-r1-Tav"/>
                 <constraint firstAttribute="bottom" secondItem="4ih-mO-2VD" secondAttribute="bottom" constant="20" id="haI-l7-TaA"/>
             </constraints>
             <point key="canvasLocation" x="33.333333333333336" y="53.571428571428569"/>

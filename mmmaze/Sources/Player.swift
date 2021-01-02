@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 29/12/20.
-//  Copyright © 2020 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
@@ -26,10 +26,9 @@ class Player: Tile {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-
 	private func setupAnimations() {
 		animationDuration = 0.4
-		animationImages = UIImage(named: isAngry ? "player_angry" : "player")?.sprites(with: TILE_SIZE)
+		animationImages = (isAngry ? TyleType.player_angry.image : TyleType.player.image)?.sprites(with: TILE_SIZE)
 		startAnimating()
 	}
 }

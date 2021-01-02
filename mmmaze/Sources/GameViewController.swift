@@ -41,10 +41,10 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 		headerView.isHidden = false
 
 		if gameSession == nil {
-			//--- setup current level stuff ---//
+			// setup current level stuff
 			currentLevelPanel.isHidden = true
 
-			//--- setup swipes ---//
+			// setup swipes
 			swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
 			swipeRight.direction = UISwipeGestureRecognizer.Direction.right
 			swipeRight.delegate = self
@@ -65,16 +65,16 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 			swipeDown.delegate = self
 			gameView.addGestureRecognizer(swipeDown)
 
-			//--- game over view ---//
+			// game over view
 			gameOverView.isHidden = true
 
-			//--- setup game session ---//
+			// setup game session
 			gameSession = GameSession(view: gameView)
 			gameSession.delegate = self
 			gameSession.startLevel(1)
 		}
 
-		//--- setup timer ---//
+		// setup timer
 		displayLink = CADisplayLink(target: self, selector: #selector(update))
 		displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
 		gameSession.items.forEach { $0.restoreAnimations() }
@@ -84,11 +84,11 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 			return true
 	}
 
-	//MARK: - Actions
+	// MARK: - Actions
 
 	@IBAction func pauseAction() {
 		displayLink.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
-		AppDelegate.sharedInstance.selectScreen(ScreenType.STMenu)
+		AppDelegate.shared.selectScreen(ScreenType.STMenu)
 	}
 
 	@IBAction func gameOverTouched() {
@@ -97,18 +97,18 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 		hurryUpLabel.isHidden = true
 		gameSession.startLevel(1)
 
-		//--- setup timer ---//
+		// setup timer
 		displayLink = CADisplayLink(target: self, selector: #selector(update))
 		displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
 	}
 
-	//MARK: - Gesture Recognizer Stuff
+	// MARK: - Gesture Recognizer Stuff
 
 	@objc func didSwipe(sender: UISwipeGestureRecognizer) {
 		gameSession.didSwipe(sender.direction)
 	}
 
-	//MARK: - Update Stuff
+	// MARK: - Update Stuff
 
 	@objc func update() {
 		let currentTime = displayLink.timestamp
@@ -119,7 +119,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 }
 
-//MARK: - GameSessionDelegate
+// MARK: - GameSessionDelegate
 
 extension GameViewController: GameSessionDelegate {
 	public func didUpdateScore(_ score: UInt) {

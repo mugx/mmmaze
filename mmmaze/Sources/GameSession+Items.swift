@@ -3,46 +3,40 @@
 //  mmmaze
 //
 //  Created by mugx on 31/12/20.
-//  Copyright © 2020 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
 
 extension GameSession {
 	func makeItem(col: Int, row: Int) -> Tile? {
-		let col = Double(col)
-		let row = Double(row)
-		let frame = CGRect(x: col * TILE_SIZE, y: row * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE)
-		let item = Tile(frame: frame)
-		item.tag = -1
+		let item = Tile(frame: CGRect(row: row, col: col))
 
-		let rand = Int.random(in: 0 ..< 100)
-		switch rand {
+		switch Int.random(in: 0 ..< 100) {
 		case 99 ... 100:
-			item.tag = TyleType.hearth.rawValue
-			item.image = UIImage(named: "hearth")
+			item.type = TyleType.hearth
+			item.image = TyleType.hearth.image
 		case 98 ... 100:
-			item.tag = TyleType.time.rawValue
-			item.animationImages = UIImage(named: "time")?.sprites(with: TILE_SIZE)
+			item.type = TyleType.time
+			item.animationImages = TyleType.time.image?.sprites(with: TILE_SIZE)
 			item.animationDuration = 1
 			item.startAnimating()
 		case 90 ... 100:
-			item.tag = TyleType.whirlwind.rawValue
-			item.image = UIImage(named: "whirlwind")?.colored(with: UIColor.white)
+			item.type = TyleType.whirlwind
+			item.image = TyleType.whirlwind.image
 			item.spin()
-			break
 		case 80 ... 100:
-			item.tag = TyleType.bomb.rawValue
-			item.image = UIImage(named: "bomb")?.colored(with: UIColor.red)
+			item.type = TyleType.bomb
+			item.image = TyleType.bomb.image
 		case 50 ... 100:
-			item.tag = TyleType.coin.rawValue
-			item.image = UIImage(named: "coin")?.colored(with: UIColor.yellow)
+			item.type = TyleType.coin
+			item.image = TyleType.coin.image
 			item.spin()
 		default:
 			break
 		}
 
-		if item.tag != -1 {
+		if item.type != .none {
 			item.x = Int(col)
 			item.y = Int(row)
 			mazeView.addSubview(item)
@@ -69,12 +63,12 @@ extension GameSession {
 	func checkPlayerCollision(with item: Tile) -> Bool {
 		guard item.frame.intersects(player.frame) else { return false }
 
-		if item.tag == TyleType.coin.rawValue {
+		if item.type == TyleType.coin {
 			play(sound: .hitCoin)
 			currentScore += 15
 			delegate?.didUpdateScore(currentScore)
 			return true
-		} else if item.tag == TyleType.whirlwind.rawValue {
+		} else if item.type == TyleType.whirlwind {
 			play(sound: .hitWhirlwind)
 
 			UIView.animate(withDuration: 0.2) {
@@ -83,22 +77,22 @@ extension GameSession {
 				self.player.transform = CGAffineTransform(rotationAngle: -CGFloat(self.mazeRotation))
 			}
 			return true
-		} else if item.tag == TyleType.time.rawValue {
+		} else if item.type == TyleType.time {
 			play(sound: .hitTimeBonus)
 			currentTime += 5
 			return true
-		} else if item.tag == TyleType.key.rawValue {
+		} else if item.type == TyleType.key {
 			play(sound: .hitHearth)
-			mazeGoalTile.tag = TyleType.mazeEnd_open.rawValue
-			mazeGoalTile.image = UIImage(named: "gate_open")
+			mazeGoalTile.type = TyleType.goal_open
+			mazeGoalTile.image = TyleType.goal_open.image
 			wallsDictionary.removeValue(forKey: NSValue(cgPoint: CGPoint(x: mazeGoalTile.x, y: mazeGoalTile.y)))
 			return true
-		} else if item.tag == TyleType.hearth.rawValue {
+		} else if item.type == TyleType.hearth {
 			play(sound: .hitHearth)
 			currentLives += 1
 			delegate?.didUpdateLives(currentLives)
 			return true
-		} else if item.tag == TyleType.bomb.rawValue {
+		} else if item.type == TyleType.bomb {
 			play(sound: .hitBomb)
 			player.isAngry = true
 
@@ -113,10 +107,10 @@ extension GameSession {
 						tile.frame.intersects(CGRect(x: player_x, y: player_y + TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE)) ||
 				tile.frame.intersects(CGRect(x: player_x, y: player_y - TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE)) {
 					tile.explode()
-					tile.tag = TyleType.explodedWall.rawValue
+					tile.type = TyleType.explodedWall
 				} else if tile.frame.intersects(CGRect(x: player_x - TILE_SIZE, y: player_y, width: TILE_SIZE, height: TILE_SIZE)) {
 					tile.explode()
-					tile.tag = TyleType.explodedWall.rawValue
+					tile.type = TyleType.explodedWall
 				}
 			}
 			return true
@@ -126,7 +120,7 @@ extension GameSession {
 	}
 
 	func checkEnemyCollision(with item: Tile) -> Bool {
-		guard item.tag == TyleType.bomb.rawValue else { return false }
+		guard item.type == TyleType.bomb else { return false }
 
 		var collide = false
 		enemyCollaborator.collide(with: item) { enemy in

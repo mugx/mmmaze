@@ -9,36 +9,35 @@
 import UIKit
 
 class TutorialViewController: UIViewController {
+	@IBOutlet var hurryupLabel: UILabel!
 	@IBOutlet var enemyImage: UIImageView!
-	@IBOutlet var enemyImage2: UIImageView!
 	@IBOutlet var playerImage: UIImageView!
 	@IBOutlet var goalImage: UIImageView!
 	@IBOutlet var firstArrow: UIImageView!
 	@IBOutlet var secondArrow: UIImageView!
-	@IBOutlet var hurryupLabel: UILabel!
 
 	override open func viewDidLoad() {
 		super.viewDidLoad()
 
-		//--- enemyImage stuff ---//
-		enemyImage.animationImages = UIImage(named: "enemy")?.sprites(with: TILE_SIZE)
+		// enemyImage stuff
+		enemyImage.animationImages = TyleType.enemy.image?.sprites(with: TILE_SIZE)
 		enemyImage.animationDuration = 0.4
 		enemyImage.animationRepeatCount = 0
 		enemyImage.startAnimating()
 
-		//--- playerImage stuff ---//
-		playerImage.animationImages = UIImage(named: "player")?.sprites(with: TILE_SIZE)
+		// playerImage stuff
+		playerImage.animationImages = TyleType.player.image?.sprites(with: TILE_SIZE)
 		playerImage.animationDuration = 0.4
 		playerImage.animationRepeatCount = 0
 		playerImage.startAnimating()
 
-		//--- goalImage stuff ---//
-		goalImage.animationImages = [UIImage(named: "gate_open")!, UIImage(named: "gate_close")!]
+		// goalImage stuff
+		goalImage.animationImages = [TyleType.goal_close.image!, TyleType.goal_open.image!]
 		goalImage.animationDuration = 0.4
 		goalImage.animationRepeatCount = 0
 		goalImage.startAnimating()
 
-		//--- arrows stuff ---//
+		// arrows stuff
 		firstArrow.image = firstArrow.image?.withRenderingMode(.alwaysTemplate)
 		firstArrow.tintColor = .cyan
 		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse], animations: {
@@ -64,9 +63,9 @@ class TutorialViewController: UIViewController {
 		}
 	}
 
-	//MARK: - IBAction
+	// MARK: - Actions
 
 	@IBAction func newGame() {
-		AppDelegate.sharedInstance.selectScreen(.STNewGame)
+		AppDelegate.shared.selectScreen(.STNewGame)
 	}
 }

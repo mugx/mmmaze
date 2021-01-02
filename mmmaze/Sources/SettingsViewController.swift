@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController {
 		refresh()
 	}
 
-	//MARK: - Refresh
+	// MARK: - Refresh
 
 	func refresh() {
 		soundEnabledTitleLabel.text = "mmmaze.settings.sound".localized
@@ -53,7 +53,7 @@ class SettingsViewController: UIViewController {
 		}
 	}
 
-	//MARK: - IBActions
+	// MARK: - Actions
 
 	@IBAction func soundVolumeTouched() {
 		switch VolumeType(rawValue: Int(AudioManager.shared.volume * 10))! {
@@ -78,6 +78,6 @@ class SettingsViewController: UIViewController {
 
 	@IBAction func backTouched() {
 		playSound(SoundType.selectItem)
-		AppDelegate.sharedInstance.selectScreen(ScreenType.STMenu)
+		AppDelegate.shared.selectScreen(ScreenType.STMenu)
 	}
 }

@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 29/12/20.
-//  Copyright © 2020 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
@@ -56,7 +56,7 @@ class GameSession {
 	func startLevel(_ levelNumber: UInt) {
 		gameView.alpha = 0
 
-		//--- setup gameplay varables ---//
+		// setup gameplay varables
 		currentLevel = levelNumber
 		currentTime = Self.MAX_TIME
 		isGameStarted = false
@@ -72,26 +72,26 @@ class GameSession {
 			play(sound: .levelChange)
 		}
 
-		//--- reset random rotation ---//
+		// reset random rotation
 		gameView.transform = CGAffineTransform(rotationAngle: 0)
 
-		//--- remove old views ---//
+		// remove old views
 		for view in mazeView?.subviews ?? [] {
 			view.isHidden = true
 			view.removeFromSuperview()
 		}
 
-		//--- init scene elements ---//
+		// init scene elements
 		numCol = (numCol + 2) < 30 ? numCol + 2 : numCol
 		numRow = (numRow + 2) < 30 ? numRow + 2 : numRow
 		makeMaze()
 		makePlayer()
 		mazeView.follow(player)
 
-		//--- setup collaborator ---//
+		// setup collaborator
 		enemyCollaborator = EnemyCollaborator(gameSession: self)
 
-		//--- update external delegate ---//
+		// update external delegate
 		delegate?.didUpdateScore(currentScore)
 		delegate?.didUpdateLives(currentLives)
 
@@ -198,7 +198,7 @@ class GameSession {
 
 	private func checkGoalHit() {
 		guard
-			mazeGoalTile.tag == TyleType.mazeEnd_open.rawValue &&
+			mazeGoalTile.type == TyleType.goal_open &&
 				player.frame.intersects(mazeGoalTile.frame) else {
 			return
 		}

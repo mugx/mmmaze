@@ -31,19 +31,4 @@ extension UIImage {
 		UIGraphicsEndImageContext()
 		return croppedImage!
 	}
-
-	func colored(with color: UIColor) -> UIImage {
-		UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-		color.setFill()
-		let context:CGContext = UIGraphicsGetCurrentContext()!
-		context.translateBy(x: 0, y: size.height)
-		context.scaleBy(x: 1.0, y: -1.0)
-		context.setBlendMode(CGBlendMode.normal)
-		let rect:CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-		context.clip(to: rect, mask: cgImage!)
-		context.fill(rect)
-		let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-		UIGraphicsEndImageContext()
-		return newImage
-	}
 }

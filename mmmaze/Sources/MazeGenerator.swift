@@ -3,7 +3,7 @@
 //  mmmaze
 //
 //  Created by mugx on 01/01/21.
-//  Copyright © 2021 mugx. All rights reserved.
+//  Copyright © 2016-2021 mugx. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ enum MazeTyleType: Int {
 	case wall
 	case path
 	case start
-	case end
+	case goal
 }
 
 struct MazeTile {
@@ -35,10 +35,6 @@ class Maze {
 	subscript(row: Int, column: Int) -> MazeTyleType {
 		get { grid[(row * columns) + column] }
 		set { grid[(row * columns) + column] = newValue }
-	}
-
-	func at(row: Int, col: Int) -> MazeTyleType {
-		return grid[(row * columns) + col]
 	}
 
 	func markFree(row: Int, col: Int) {
@@ -115,14 +111,14 @@ class MazeGenerator {
 			}
 		}
 
-		//--- taking end tile ---//
+		// taking end tile 
 		var end = startTile
 		for tile in visitedTiles {
 			if tile.steps >= end.steps {
 				end = tile
 			}
 		}
-		maze[end.row, end.col] = .end
+		maze[end.row, end.col] = .goal
 		return maze
 	}
 }

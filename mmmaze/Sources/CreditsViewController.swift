@@ -10,18 +10,16 @@ import UIKit
 
 class CreditsViewController: UIViewController {
 	@IBOutlet var versionLabel: UILabel!
-	@IBOutlet var logoIconImage: UIImageView!
-	@IBOutlet var backButton: UIButton!
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		versionLabel.text = "v\(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!)"
 	}
 
-	//MARK: - Actions
+	// MARK: - Actions
 
 	@IBAction func backTouched() {
 		playSound(SoundType.selectItem)
-		AppDelegate.sharedInstance.selectScreen(.STMenu)
+		AppDelegate.shared.selectScreen(.STMenu)
 	}
 }
