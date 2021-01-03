@@ -20,13 +20,13 @@ protocol GameSessionDelegate {
 class GameSession {
 	static let MAX_TIME: TimeInterval = 60
 	static let MAX_LIVES: UInt = 3
-	static let BASE_MAZE_DIMENSION: UInt = 7
+	static let BASE_MAZE_DIMENSION: Int = DEBUG ? 15 : 7
 	var delegate: GameSessionDelegate?
 	var currentLives: UInt = 0
 	var currentTime: TimeInterval = 0
 	var isGameOver: Bool = false
-	var numRow: UInt = 0
-	var numCol: UInt = 0
+	var numRow: Int = 0
+	var numCol: Int = 0
 	var enemyCollaborator: EnemyCollaborator!
 	var player: Player!
 	var currentLevel: UInt = 0
@@ -145,6 +145,7 @@ class GameSession {
 	// MARK: - Private
 
 	private func updateTime(_ delta: TimeInterval) {
+		if DEBUG { return }
 		currentTime = currentTime - delta > 0 ? currentTime - delta : 0
 		delegate?.didUpdateTime(currentTime)
 
@@ -191,6 +192,8 @@ class GameSession {
 		guard !enemy.isBlinking else { return }
 		play(sound: .hitPlayer)
 
+		if DEBUG { return }
+		
 		enemy.wantSpawn = true
 		currentLives -= 1
 		delegate?.didUpdateLives(currentLives)

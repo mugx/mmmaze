@@ -19,8 +19,6 @@ extension GameSession {
 		// generating the maze 
 		let startRow: Int = Int(Constants.STARTING_CELL.x)
 		let startCol: Int = Int(Constants.STARTING_CELL.y)
-		let numRow = Int(self.numRow)
-		let numCol = Int(self.numCol)
 		let maze = MazeGenerator.calculateMaze(startRow: startRow, startCol: startCol, rows: numRow, cols: numCol)
 		wallsDictionary = [:]
 

@@ -76,6 +76,8 @@ extension GameSession {
 		} else if item.type == TyleType.whirlwind {
 			play(sound: .hitWhirlwind)
 
+			if DEBUG { return true }
+			
 			UIView.animate(withDuration: 0.2) {
 				self.mazeRotation += .pi / 2
 				self.gameView.transform = self.gameView.transform.rotated(by: .pi / 2)
@@ -99,6 +101,8 @@ extension GameSession {
 			return true
 		} else if item.type == TyleType.bomb {
 			play(sound: .hitBomb)
+			if DEBUG { return true }
+
 			player.power += 1
 			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
