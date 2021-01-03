@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0AC4E925A1D445004A5AF1 /* Sequence+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0AC4E825A1D445004A5AF1 /* Sequence+Utils.swift */; };
 		1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */; };
 		1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */; };
 		1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */; };
@@ -93,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		1D07BEE81CCD36E80062EFE6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		1D0AC4E825A1D445004A5AF1 /* Sequence+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Utils.swift"; sourceTree = "<group>"; };
 		1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BestScoresViewController.xib; path = mmmaze/Sources/BestScoresViewController.xib; sourceTree = "<group>"; };
 		1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = mmmaze/Sources/GameViewController.swift; sourceTree = "<group>"; };
 		1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = mmmaze/Sources/Constants.swift; sourceTree = "<group>"; };
@@ -249,8 +251,9 @@
 				1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */,
 				1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */,
 				1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */,
-				1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */,
 				1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */,
+				1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */,
+				1D0AC4E825A1D445004A5AF1 /* Sequence+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D0BCB54259A1ECA0035BAA8 /* MenuViewController.swift in Sources */,
+				1D0AC4E925A1D445004A5AF1 /* Sequence+Utils.swift in Sources */,
 				1DA4C740259BA10900E4DE1E /* GameSession.swift in Sources */,
 				1D0BCB45259A1ECA0035BAA8 /* SettingsViewController.swift in Sources */,
 				1DA4C74B259BA17D00E4DE1E /* ScoreManager.swift in Sources */,

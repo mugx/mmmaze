@@ -16,7 +16,7 @@ class Tile: UIImageView {
 	var y: Int = 0
 	var isDestroyable: Bool = false
 	var isBlinking: Bool = false
-	var isAngry: Bool = false
+	var power: UInt = 0
 	var gameSession: GameSession?
 	var lastSwipe: UISwipeGestureRecognizer.Direction?
 	var animations: [String: CABasicAnimation] = [:]
@@ -40,7 +40,7 @@ class Tile: UIImageView {
 		case .right:
 			velocity = CGPoint(x: CGFloat(speed), y: velocity.y)
 		case .left:
-			velocity = CGPoint(x: CGFloat(-speed), y: self.velocity.y)
+			velocity = CGPoint(x: CGFloat(-speed), y: velocity.y)
 		case .up:
 			velocity = CGPoint(x: velocity.x, y: CGFloat(-speed))
 		case .down:
@@ -55,18 +55,18 @@ class Tile: UIImageView {
 		let vely = velocity.y + velocity.y * CGFloat(delta)
 		manageWallCollision(velx, vely)
 	}
-	
+
 	func isWall(at frame: CGRect, direction: UISwipeGestureRecognizer.Direction) -> Bool {
 		let col = Int(round(Double(frame.origin.x) / TILE_SIZE))
 		let row = Int(round(Double(frame.origin.y) / TILE_SIZE))
 		let col_offset = direction == .left ? col - 1 : direction == .right ? col + 1 : col
 		let row_offset = direction == .up ? row - 1 : direction == .down ? row + 1 : row
 		let wallPosition = NSValue(cgPoint: CGPoint(x: row_offset, y: col_offset))
-		
+
 		guard let tile = gameSession?.wallsDictionary[wallPosition] else { return false }
 		return tile.type != TyleType.explodedWall
 	}
-	
+
 	func spin() {
 		let anim = CABasicAnimation.spinAnimation()
 		layer.add(anim, forKey: "spin")
@@ -83,7 +83,7 @@ class Tile: UIImageView {
 	// Instead we consider its frame as centered and resized of a speed factor so it has margin to move.
 	func respawnAtInitialFrame() {
 		velocity = .zero
-		
+
 		let initialTile_x = Double(Constants.STARTING_CELL.x * CGFloat(TILE_SIZE))
 		let initialTile_y = Double(Constants.STARTING_CELL.y * CGFloat(TILE_SIZE))
 		frame = CGRect(
@@ -122,22 +122,10 @@ class Tile: UIImageView {
 			}
 		}
 
-		if self.frame != frame || explodeWall(collidedWall) {
+		if self.frame != frame {
 			self.frame = frame
 		} else {
 			velocity = .zero
 		}
-	}
-
-	private func explodeWall(_ collidedWall: Tile?) -> Bool {
-		guard let collidedWall = collidedWall,
-					collidedWall.type == TyleType.wall,
-					collidedWall.isDestroyable,
-					isAngry else { return false }
-
-		collidedWall.explode()
-		collidedWall.type = TyleType.explodedWall
-		isAngry = false
-		return true
 	}
 }

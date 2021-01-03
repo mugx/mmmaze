@@ -116,6 +116,20 @@ class GameSession {
 		checkCollisionPlayerVsEnemies()
 		checkGoalHit()
 		checkItemsCollisions()
+		checkWallsCollisions()
+	}
+
+	func checkWallsCollisions() {
+		guard player.power > 0 else { return }
+
+		for tile in wallsDictionary.values {
+			guard tile.isDestroyable else { continue }
+
+			if player.frame.isNeighbour(of: tile.frame) {
+				tile.explode()
+				tile.type = TyleType.explodedWall
+			}
+		}
 	}
 
 	func gameOver() {
@@ -151,7 +165,7 @@ class GameSession {
 			guard !collided else { return }
 			collided = true
 			
-			if player.isAngry {
+			if player.power > 0 {
 				playerHits(enemy)
 			} else {
 				playerGetsHit(from: enemy)
@@ -163,7 +177,6 @@ class GameSession {
 		guard !enemy.isBlinking else { return }
 		play(sound: .hitPlayer)
 
-		player.isAngry = false
 		enemy.isBlinking = true
 		enemy.explode {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

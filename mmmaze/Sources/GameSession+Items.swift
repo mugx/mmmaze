@@ -28,7 +28,7 @@ extension GameSession {
 			item.type = TyleType.whirlwind
 			item.image = TyleType.whirlwind.image
 			item.spin()
-		case 80 ... 100:
+		case 85 ... 100:
 			item.type = TyleType.bomb
 			item.image = TyleType.bomb.image
 		case 50 ... 100:
@@ -99,24 +99,10 @@ extension GameSession {
 			return true
 		} else if item.type == TyleType.bomb {
 			play(sound: .hitBomb)
-			player.isAngry = true
-
-			let player_x = Double(player.frame.origin.x)
-			let player_y = Double(player.frame.origin.y)
-
-			for tile in wallsDictionary.values {
-				if !tile.isDestroyable { continue }
-
-				if tile.frame.intersects(CGRect(x: player_x + TILE_SIZE, y: player_y, width: TILE_SIZE, height: TILE_SIZE)) ||
-					tile.frame.intersects(CGRect(x: player_x - TILE_SIZE, y: player_y, width: TILE_SIZE, height: TILE_SIZE)) ||
-						tile.frame.intersects(CGRect(x: player_x, y: player_y + TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE)) ||
-				tile.frame.intersects(CGRect(x: player_x, y: player_y - TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE)) {
-					tile.explode()
-					tile.type = TyleType.explodedWall
-				} else if tile.frame.intersects(CGRect(x: player_x - TILE_SIZE, y: player_y, width: TILE_SIZE, height: TILE_SIZE)) {
-					tile.explode()
-					tile.type = TyleType.explodedWall
-				}
+			player.power += 1
+			
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				self.player.power -= self.player.power > 0 ? 1 : 0
 			}
 			return true
 		}

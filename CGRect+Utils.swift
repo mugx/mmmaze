@@ -17,10 +17,17 @@ extension CGRect {
 	}
 
 	func translate(x: CGFloat = 0, y: CGFloat = 0) -> CGRect {
-		applying(CGAffineTransform(translationX: x, y: y))
+		return CGRect(origin: CGPoint(x: origin.x + x, y: origin.y + y), size: size)
 	}
 
 	func distance(from rect: CGRect) -> CGFloat {
 		return abs(origin.x - rect.origin.x) + abs(origin.y - rect.origin.y)
+	}
+
+	func isNeighbour(of frame: CGRect) -> Bool {
+		return translate(x: CGFloat(TILE_SIZE)).intersects(frame) ||
+			translate(x: CGFloat(-TILE_SIZE)).intersects(frame) ||
+			translate(y: CGFloat(TILE_SIZE)).intersects(frame) ||
+			translate(y: CGFloat(-TILE_SIZE)).intersects(frame)
 	}
 }

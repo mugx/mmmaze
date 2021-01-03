@@ -9,7 +9,7 @@
 import UIKit
 
 class Player: Tile {
-	open override var isAngry: Bool { didSet { setupAnimations() } }
+	open override var power: UInt { didSet { setupAnimations() } }
 	private static let SPEED = 3.0
 	
 	init(gameSession: GameSession) {
@@ -28,7 +28,7 @@ class Player: Tile {
 
 	private func setupAnimations() {
 		animationDuration = 0.4
-		animationImages = (isAngry ? TyleType.player_angry.image : TyleType.player.image)?.sprites(with: TILE_SIZE)
+		animationImages = (power > 0 ? TyleType.player_angry.image : TyleType.player.image)?.sprites(with: TILE_SIZE)
 		startAnimating()
 	}
 }

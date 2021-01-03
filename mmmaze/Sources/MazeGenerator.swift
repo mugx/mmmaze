@@ -68,7 +68,6 @@ class MazeGenerator {
 				possibleDirections.append("s")
 			}
 
-
 			if (currentCol + 2 < cols) && maze[currentRow, currentCol + 2] == .wall {
 				possibleDirections.append("e")
 			}

@@ -28,69 +28,6 @@ extension Tile {
 		return bestDirection
 	}
 
-	func search(_ target: CGRect) -> [CGRect] {
-		let originalFrame = CGRect(
-			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
-			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
-			width: TILE_SIZE,
-			height: TILE_SIZE
-		)
-		var currentFrame = originalFrame
-		let currentSpeed = TILE_SIZE
-		let currentSize = TILE_SIZE
-		
-		var path = [currentFrame]
-		var targetFound = false
-
-		while (!targetFound) {
-			targetFound = collides(target: target, path: path)
-
-			if targetFound, let index = path.firstIndex(of: originalFrame) {
-				path.remove(at: index)
-				break
-			}
-
-			let upFrame = CGRect(x: Double(currentFrame.origin.x), y: Double(currentFrame.origin.y) - currentSpeed, width: currentSize, height: currentSize)
-			let downFrame = CGRect(x: Double(currentFrame.origin.x), y: Double(currentFrame.origin.y) + currentSpeed, width: currentSize, height: currentSize)
-			let leftFrame = CGRect(x: Double(currentFrame.origin.x) - currentSpeed, y: Double(currentFrame.origin.y), width: currentSize, height: currentSize)
-			let rightFrame = CGRect(x: Double(currentFrame.origin.x) + currentSpeed, y: Double(currentFrame.origin.y), width: currentSize, height: currentSize)
-
-			let collidesUp = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.up) || path.contains(upFrame)
-			let collidesDown = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.down) || path.contains(downFrame)
-			let collidesLeft = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.left) || path.contains(leftFrame)
-			let collidesRight = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.right) || path.contains(rightFrame)
-
-			var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
-			if !collidesUp {
-				possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
-			}
-
-			if !collidesDown {
-				possibleDirections.append((UISwipeGestureRecognizer.Direction.down, downFrame))
-			}
-
-			if !collidesLeft {
-				possibleDirections.append((UISwipeGestureRecognizer.Direction.left, leftFrame))
-			}
-
-			if !collidesRight {
-				possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
-			}
-
-			if !possibleDirections.isEmpty {
-				let direction = getBestDirection(possibleDirections, targetFrame: target)
-				currentFrame = direction.1
-				path.append(currentFrame)
-			} else {
-				// backtracking
-				if let currentIndex = path.firstIndex(of: currentFrame) {
-					currentFrame = path[currentIndex - 1]
-				}
-			}
-		}
-		return path
-	}
-
 	// MARK: - Private
 
 	private func euclideanDistance(rect1: CGRect, rect2: CGRect) -> CGFloat {
