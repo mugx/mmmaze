@@ -11,13 +11,11 @@ import UIKit
 class Enemy: Tile {
 	var wantSpawn: Bool = false
 	var visible: Bool { alpha == 1 && !isHidden }
-	var path: NSMutableArray
+	var path: Path = Path()
 	var timeAccumulator: TimeInterval = 0.0
 	private static let SPEED = 1.5
 
 	init(gameSession: GameSession) {
-		path = NSMutableArray()
-
 		super.init(frame: .zero)
 
 		self.gameSession = gameSession
@@ -46,7 +44,7 @@ class Enemy: Tile {
 
 		let spawnedEnemy = Enemy(gameSession: gameSession!)
 		spawnedEnemy.frame = frame
-		spawnedEnemy.show(after: 0)
+		spawnedEnemy.show(after: 0.5)
 		return spawnedEnemy
 	}
 	
@@ -54,11 +52,7 @@ class Enemy: Tile {
 		timeAccumulator += delta
 
 		calculatePath()
-
-		if path.count > 0 {
-			refinesPath()
-			decideNextMove(delta)
-		}
+		decideNextMove(delta)
 
 		super.update(delta)
 	}

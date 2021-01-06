@@ -8,33 +8,85 @@
 
 import UIKit
 
-extension Enemy {
-	func calculatePath() {
-		guard timeAccumulator > 1 || path.count == 0 else { return }
-		timeAccumulator = 0
+class Path {
+	struct Step {
+		let frame: CGRect
+		var visited: Bool
+	}
 
-		let currentPosition = self.currentPosition()
-		let newPath = search(gameSession!.player.frame)
-		let firstPathFrame = path.firstObject as? CGRect ?? CGRect.zero
-		let firstNewPathFrame = newPath.first ?? CGRect.zero
-		
-		let currentSteps = path.count
-		let newSteps = newPath.count
+	var steps: [Step] = []
+	var isEmpty: Bool { steps.isEmpty }
+	var count: Int { steps.count }
+	var target: CGRect
 
-		let d1 = currentPosition.distance(from: firstPathFrame)
-		let d2 = currentPosition.distance(from: firstNewPathFrame)
+	init(origin: CGRect = .zero, target: CGRect = .zero) {
+		steps = [Step(frame: origin, visited: false)]
+		self.target = target
+	}
 
-		let hasToUpdatePath =
-			currentSteps == 0 ||
-			currentSteps > newSteps ||
-			d1 > d2
+	func addStep(_ frame: CGRect) {
+		steps.append(Step(frame: frame, visited: false))
+	}
 
-		if hasToUpdatePath {
-			path = NSMutableArray(array: newPath)
+	func collides(_ frame: CGRect) -> Bool {
+		return steps.contains { (step) -> Bool in
+			step.frame.intersects(frame)
 		}
 	}
 
-	func search(_ target: CGRect) -> [CGRect] {
+	func cleanupVisited() {
+		steps = steps.filter { !$0.visited }
+	}
+
+	func nextFrameToFollow(from frame: CGRect) -> CGRect {
+		var nextFrame = steps.first?.frame ?? CGRect.zero
+		if nextFrame.intersects(frame) {
+			steps.removeFirst()
+			nextFrame = steps.first?.frame ?? target
+		}
+		return nextFrame
+	}
+
+	func backtrack(from frame: CGRect) -> CGRect {
+		if let index = steps.firstIndex(where: { $0.frame.intersects(frame) }) {
+			steps[index].visited = true
+			return steps[index - 1].frame
+		}
+		return frame
+	}
+
+	func hasSameTarget(of other: Path) -> Bool {
+		return steps.last?.frame.intersects(other.steps.last?.frame ?? .zero) ?? false
+	}
+}
+
+extension Enemy {
+	func calculatePath() {
+		guard timeAccumulator > 1.0 || path.isEmpty else { return }
+		timeAccumulator = 0
+
+		let newPath = search(gameSession!.player.frame)
+		let currentPosition = self.currentPosition()
+		let currentPathFirstFrame = path.steps.first?.frame ?? .zero
+		let newPathFirstFrame = newPath.steps.first?.frame ?? .zero
+		let currentSteps = path.isEmpty ? Int.max : path.count
+		let newSteps = newPath.count
+
+		let d1 = currentPosition.distance(from: currentPathFirstFrame)
+		let d2 = currentPosition.distance(from: newPathFirstFrame)
+
+		// TODO: to migrate bunch of logic from here into the Path class
+		let hasToUpdatePath = (currentSteps > newSteps || d1 > d2) && !path.hasSameTarget(of: newPath)
+		if hasToUpdatePath {
+			path = newPath
+
+			if !path.collides(gameSession!.player.frame) {
+				print("BUG: the path doesn't contain the player frame")
+			}
+		}
+	}
+
+	func search(_ target: CGRect) -> Path {
 		let originalFrame = CGRect(
 			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
 			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
@@ -42,29 +94,31 @@ extension Enemy {
 			height: TILE_SIZE
 		)
 		var currentFrame = originalFrame
-		let currentSpeed = TILE_SIZE
-		let currentSize = TILE_SIZE
+		let currentSpeed = CGFloat(TILE_SIZE)
 
-		var path = [currentFrame]
+		let path = Path(origin: currentFrame, target: target)
 		var targetFound = false
 
-		while (!targetFound) {
-			targetFound = collides(target: target, path: path)
+		while !targetFound {
+			targetFound = path.collides(target)
 
-			if targetFound, let index = path.firstIndex(of: originalFrame) {
-				path.remove(at: index)
+			if targetFound,
+				 let index = path.steps.map({$0.frame}).firstIndex(of: originalFrame),
+				 !path.steps[index].frame.intersects(target) {
+				path.steps.remove(at: index)
+				path.cleanupVisited()
 				break
 			}
 
-			let upFrame = CGRect(x: Double(currentFrame.origin.x), y: Double(currentFrame.origin.y) - currentSpeed, width: currentSize, height: currentSize)
-			let downFrame = CGRect(x: Double(currentFrame.origin.x), y: Double(currentFrame.origin.y) + currentSpeed, width: currentSize, height: currentSize)
-			let leftFrame = CGRect(x: Double(currentFrame.origin.x) - currentSpeed, y: Double(currentFrame.origin.y), width: currentSize, height: currentSize)
-			let rightFrame = CGRect(x: Double(currentFrame.origin.x) + currentSpeed, y: Double(currentFrame.origin.y), width: currentSize, height: currentSize)
+			let upFrame = currentFrame.translate(y: -currentSpeed)
+			let downFrame = currentFrame.translate(y: currentSpeed)
+			let leftFrame = currentFrame.translate(x: -currentSpeed)
+			let rightFrame = currentFrame.translate(x: currentSpeed)
 
-			let collidesUp = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.up) || path.contains(upFrame)
-			let collidesDown = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.down) || path.contains(downFrame)
-			let collidesLeft = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.left) || path.contains(leftFrame)
-			let collidesRight = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.right) || path.contains(rightFrame)
+			let collidesUp = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.up) || path.collides(upFrame)
+			let collidesDown = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.down) || path.collides(downFrame)
+			let collidesLeft = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.left) || path.collides(leftFrame)
+			let collidesRight = isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.right) || path.collides(rightFrame)
 
 			var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
 			if !collidesUp {
@@ -86,23 +140,36 @@ extension Enemy {
 			if !possibleDirections.isEmpty {
 				let direction = getBestDirection(possibleDirections, targetFrame: target)
 				currentFrame = direction.1
-				path.append(currentFrame)
+				path.addStep(currentFrame)
 			} else {
-				// backtracking
-				if let currentIndex = path.firstIndex(of: currentFrame) {
-					currentFrame = path[currentIndex - 1]
-				}
+				currentFrame = path.backtrack(from: currentFrame)
 			}
 		}
 		return path
 	}
-	
-	func refinesPath() {
-		let currentPosition = self.currentPosition()
-		let enrolledPath: [CGRect] = path.compactMap { ($0 as? NSValue)?.cgRectValue }
-		if collides(target: currentPosition, path: enrolledPath) {
-			path.remove(currentPosition)
+
+	func getBestDirection(_ directions: [(UISwipeGestureRecognizer.Direction, CGRect)], targetFrame: CGRect) -> (UISwipeGestureRecognizer.Direction, CGRect) {
+		var bestManhattan = CGFloat(Float.greatestFiniteMagnitude)
+		var bestDirection: (UISwipeGestureRecognizer.Direction, CGRect)!
+
+		for direction in directions {
+			let manhattan = euclideanDistance(rect1: direction.1, rect2: targetFrame)
+			if manhattan < bestManhattan {
+				bestManhattan = manhattan
+				bestDirection = direction
+			}
 		}
+
+		return bestDirection
+	}
+
+	func euclideanDistance(rect1: CGRect, rect2: CGRect) -> CGFloat {
+		let center1 = CGPoint(x: rect1.midX, y: rect1.midY)
+		let center2 = CGPoint(x: rect2.midX, y: rect2.midY)
+		let horizontalDistance = center2.x - center1.x
+		let verticalDistance = center2.y - center1.y
+		let distance = sqrt(pow(horizontalDistance, 2) + pow(verticalDistance, 2))
+		return distance
 	}
 
 	func decideNextMove(_ delta: TimeInterval) {
@@ -133,7 +200,7 @@ extension Enemy {
 			possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
 		}
 
-		let nextFrame = (path.firstObject as? NSValue)?.cgRectValue ?? CGRect.zero
+		let nextFrame = path.nextFrameToFollow(from: frame)
 		let bestDirection = getBestDirection(possibleDirections, targetFrame: nextFrame)
 		didSwipe(bestDirection.0)
 	}

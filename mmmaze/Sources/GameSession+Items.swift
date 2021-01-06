@@ -53,7 +53,7 @@ extension GameSession {
 	func checkItemsCollisions() {
 		var itemsToRemove = [Tile]()
 		for item in items {
-			if checkPlayerCollision(with: item) || checkEnemyCollision(with: item){
+			if checkPlayerCollision(with: item) || checkEnemyCollision(with: item) {
 				item.isHidden = true
 				itemsToRemove.append(item)
 			}
@@ -77,7 +77,7 @@ extension GameSession {
 			play(sound: .hitWhirlwind)
 
 			if DEBUG { return true }
-			
+
 			UIView.animate(withDuration: 0.2) {
 				self.mazeRotation += .pi / 2
 				self.gameView.transform = self.gameView.transform.rotated(by: .pi / 2)
@@ -90,6 +90,9 @@ extension GameSession {
 			return true
 		} else if item.type == TyleType.key {
 			play(sound: .hitHearth)
+
+			if DEBUG { return true }
+			
 			mazeGoalTile.type = TyleType.goal_open
 			mazeGoalTile.image = TyleType.goal_open.image
 			wallsDictionary.removeValue(forKey: NSValue(cgPoint: CGPoint(x: mazeGoalTile.x, y: mazeGoalTile.y)))
@@ -119,8 +122,7 @@ extension GameSession {
 
 		var collide = false
 		enemyCollaborator.collide(with: item) { enemy in
-			item.isHidden = true
-			enemy.wantSpawn = true
+			enemy.wantSpawn = !DEBUG
 			play(sound: .enemySpawn)
 			collide = true
 		}

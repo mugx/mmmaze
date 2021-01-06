@@ -20,7 +20,7 @@ enum ScreenType {
 
 let TILE_SIZE = 32.0
 var APP_VERSION: String { "v\(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!)" }
-let DEBUG = true
+let DEBUG = false
 
 class Constants {
 //	static let TILE_SIDE = 32.0

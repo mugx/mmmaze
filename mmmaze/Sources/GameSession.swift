@@ -20,7 +20,7 @@ protocol GameSessionDelegate {
 class GameSession {
 	static let MAX_TIME: TimeInterval = 60
 	static let MAX_LIVES: UInt = 3
-	static let BASE_MAZE_DIMENSION: Int = DEBUG ? 15 : 7
+	static let BASE_MAZE_DIMENSION: Int = 9
 	var delegate: GameSessionDelegate?
 	var currentLives: UInt = 0
 	var currentTime: TimeInterval = 0
