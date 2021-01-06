@@ -144,6 +144,12 @@ class GameSession {
 
 	// MARK: - Private
 
+	func makePlayer() {
+		player?.removeFromSuperview()
+		player = Player(gameSession: self)
+		mazeView.addSubview(player)
+	}
+	
 	private func updateTime(_ delta: TimeInterval) {
 		if DEBUG { return }
 		currentTime = currentTime - delta > 0 ? currentTime - delta : 0

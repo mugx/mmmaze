@@ -67,8 +67,8 @@ extension GameSession {
 		items.append(keyItem)
 	}
 
-	func checkWallCollision(_ frame: CGRect) -> Tile? {
-		return wallsDictionary.values.first(where: {
+	func checkWallCollision(_ frame: CGRect) -> Bool {
+		return wallsDictionary.values.contains(where: {
 			$0.type != TyleType.explodedWall && $0.frame.intersects(frame)
 		})
 	}

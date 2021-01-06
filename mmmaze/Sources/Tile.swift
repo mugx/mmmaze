@@ -98,12 +98,10 @@ class Tile: UIImageView {
 
 	private func manageWallCollision(_ velx: CGFloat, _ vely: CGFloat) {
 		var frame = self.frame
-		var collidedWall: Tile?
 
 		// check vertical collision
 		var frameOnMove = frame.translate(y: vely)
-		collidedWall = gameSession?.checkWallCollision(frameOnMove)
-		if collidedWall == nil {
+		if !gameSession!.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
 			if velx != 0 && lastSwipe?.isVertical ?? false {
@@ -113,8 +111,7 @@ class Tile: UIImageView {
 
 		// check horizontal collision
 		frameOnMove = frame.translate(x: velx)
-		collidedWall = gameSession?.checkWallCollision(frameOnMove)
-		if collidedWall == nil {
+		if !gameSession!.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
 			if vely != 0 && lastSwipe?.isHorizontal ?? false {

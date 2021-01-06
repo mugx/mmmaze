@@ -174,29 +174,25 @@ extension Enemy {
 
 	func decideNextMove(_ delta: TimeInterval) {
 		let speed = CGFloat(self.speed + self.speed * Float(delta))
-		let upFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y - speed), width: frame.size.width, height: frame.size.height)
-		let downFrame = CGRect(x: frame.origin.x, y: CGFloat(frame.origin.y + speed), width: frame.size.width, height: frame.size.height)
-		let leftFrame = CGRect(x: CGFloat(frame.origin.x - speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
-		let rightFrame = CGRect(x: CGFloat(frame.origin.x + speed), y: frame.origin.y, width: frame.size.width, height: frame.size.height)
-		let collidesUp = gameSession?.checkWallCollision(upFrame) != nil
-		let collidesDown = gameSession?.checkWallCollision(downFrame) != nil
-		let collidesLeft = gameSession?.checkWallCollision(leftFrame) != nil
-		let collidesRight = gameSession?.checkWallCollision(rightFrame) != nil
-
+		let upFrame = frame.translate(y: -speed)
+		let downFrame = frame.translate(y: speed)
+		let leftFrame = frame.translate(x: -speed)
+		let rightFrame = frame.translate(x: speed)
+		
 		var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
-		if !collidesUp {
+		if !gameSession!.checkWallCollision(upFrame) {
 			possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
 		}
 
-		if !collidesDown {
+		if !gameSession!.checkWallCollision(downFrame) {
 			possibleDirections.append((UISwipeGestureRecognizer.Direction.down, downFrame))
 		}
 
-		if !collidesLeft {
+		if !gameSession!.checkWallCollision(leftFrame) {
 			possibleDirections.append((UISwipeGestureRecognizer.Direction.left, leftFrame))
 		}
 
-		if !collidesRight {
+		if !gameSession!.checkWallCollision(rightFrame) {
 			possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
 		}
 
