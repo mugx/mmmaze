@@ -34,26 +34,36 @@ class Tile: UIImageView {
 	// MARK: - Public
 
 	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
-		lastSwipe = direction
-		
-		switch direction {
-		case .right:
-			velocity = CGPoint(x: CGFloat(speed), y: velocity.y)
-		case .left:
-			velocity = CGPoint(x: CGFloat(-speed), y: velocity.y)
-		case .up:
-			velocity = CGPoint(x: velocity.x, y: CGFloat(-speed))
-		case .down:
-			velocity = CGPoint(x: velocity.x, y: CGFloat(speed))
-		default:
-			break
-		}
 	}
 
 	func update(_ delta: TimeInterval) {
-		let velx = velocity.x// + velocity.x * CGFloat(delta)
-		let vely = velocity.y// + velocity.y * CGFloat(delta)
-		manageWallCollision(velx, vely)
+		var frame = self.frame
+
+		// check vertical collision
+		var frameOnMove = frame.translate(y: velocity.y)
+		if !gameSession!.checkWallCollision(frameOnMove) {
+			frame = frameOnMove
+
+			if velocity.x != 0 && lastSwipe?.isVertical ?? false {
+				velocity = CGPoint(x: 0, y: velocity.y)
+			}
+		}
+
+		// check horizontal collision
+		frameOnMove = frame.translate(x: velocity.x)
+		if !gameSession!.checkWallCollision(frameOnMove) {
+			frame = frameOnMove
+
+			if velocity.y != 0 && lastSwipe?.isHorizontal ?? false {
+				velocity = CGPoint(x: velocity.x, y: 0)
+			}
+		}
+
+		if self.frame != frame {
+			self.frame = frame
+		} else {
+			velocity = .zero
+		}
 	}
 
 	func isWall(at frame: CGRect, direction: UISwipeGestureRecognizer.Direction) -> Bool {
@@ -92,37 +102,5 @@ class Tile: UIImageView {
 			width: TILE_SIZE - Double(speed),
 			height: TILE_SIZE - Double(speed)
 		)
-	}
-
-	// MARK: - Private
-
-	private func manageWallCollision(_ velx: CGFloat, _ vely: CGFloat) {
-		var frame = self.frame
-
-		// check vertical collision
-		var frameOnMove = frame.translate(y: vely)
-		if !gameSession!.checkWallCollision(frameOnMove) {
-			frame = frameOnMove
-
-			if velx != 0 && lastSwipe?.isVertical ?? false {
-				velocity = CGPoint(x: 0, y: velocity.y)
-			}
-		}
-
-		// check horizontal collision
-		frameOnMove = frame.translate(x: velx)
-		if !gameSession!.checkWallCollision(frameOnMove) {
-			frame = frameOnMove
-
-			if vely != 0 && lastSwipe?.isHorizontal ?? false {
-				velocity = CGPoint(x: velocity.x, y: 0)
-			}
-		}
-
-		if self.frame != frame {
-			self.frame = frame
-		} else {
-			velocity = .zero
-		}
 	}
 }

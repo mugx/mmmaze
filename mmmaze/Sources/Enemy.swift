@@ -65,6 +65,23 @@ class Enemy: Tile {
 		super.respawnAtInitialFrame()
 	}
 
+	override func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
+		lastSwipe = direction
+
+		switch direction {
+		case .right:
+			velocity = CGPoint(x: CGFloat(speed), y: 0)
+		case .left:
+			velocity = CGPoint(x: CGFloat(-speed), y: 0)
+		case .up:
+			velocity = CGPoint(x: 0, y: CGFloat(-speed))
+		case .down:
+			velocity = CGPoint(x: 0, y: CGFloat(speed))
+		default:
+			break
+		}
+	}
+
 	// MARK: - Private
 
 	private func assignSpeed() {

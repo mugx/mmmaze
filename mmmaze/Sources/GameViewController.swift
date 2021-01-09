@@ -81,13 +81,13 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 	}
 
 	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-			return true
+		return true
 	}
 
 	// MARK: - Actions
 
 	@IBAction func pauseAction() {
-		displayLink.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
+		displayLink.remove(from: .main, forMode: .common)
 		AppDelegate.shared.selectScreen(ScreenType.STMenu)
 	}
 
@@ -99,7 +99,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
 
 		// setup timer
 		displayLink = CADisplayLink(target: self, selector: #selector(update))
-		displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
+		displayLink.add(to: .main, forMode: .common)
 	}
 
 	// MARK: - Gesture Recognizer Stuff
@@ -153,29 +153,29 @@ extension GameViewController: GameSessionDelegate {
 	}
 
 	public func didHurryUp() {
-		if hurryUpLabel.isHidden {
-			hurryUpLabel.isHidden = false
-			hurryUpLabel.alpha = 0
+		guard hurryUpLabel.isHidden else { return }
+		
+		hurryUpLabel.isHidden = false
+		hurryUpLabel.alpha = 0
 
-			UIView.animate(withDuration: 0.1, animations: {
-				self.hurryUpLabel.alpha = 1
-			}) { (success) in
-				playSound(SoundType.timeOver)
+		UIView.animate(withDuration: 0.1, animations: {
+			self.hurryUpLabel.alpha = 1
+		}) { (success) in
+			playSound(SoundType.timeOver)
 
-				// Add the animation
-				let animation = CABasicAnimation(keyPath: "opacity")
-				animation.fromValue = 1.0
-				animation.toValue = 0.5
-				animation.autoreverses = true
-				animation.repeatCount = HUGE
-				animation.duration = 0.15
-				self.hurryUpLabel.layer.add(animation, forKey: "opacity")
-			}
+			// Add the animation
+			let animation = CABasicAnimation(keyPath: "opacity")
+			animation.fromValue = 1.0
+			animation.toValue = 0.5
+			animation.autoreverses = true
+			animation.repeatCount = HUGE
+			animation.duration = 0.15
+			self.hurryUpLabel.layer.add(animation, forKey: "opacity")
 		}
 	}
 
 	func didGameOver(_ gameSession: GameSession) {
-		displayLink.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
+		displayLink.remove(from: .main, forMode: .common)
 		gameOverView.isHidden = false
 		view.bringSubviewToFront(gameOverView)
 		gameOverView.alpha = 0

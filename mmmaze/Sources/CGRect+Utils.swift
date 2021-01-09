@@ -23,8 +23,17 @@ extension CGRect {
 		return CGRect(origin: CGPoint(x: origin.x + x, y: origin.y + y), size: size)
 	}
 
+//	func distance(to rect: CGRect) -> CGFloat {
+//		return abs(origin.x - rect.origin.x) + abs(origin.y - rect.origin.y)
+//	}
+
 	func distance(to rect: CGRect) -> CGFloat {
-		return abs(origin.x - rect.origin.x) + abs(origin.y - rect.origin.y)
+		let center1 = CGPoint(x: midX, y: midY)
+		let center2 = CGPoint(x: rect.midX, y: rect.midY)
+		let horizontalDistance = center2.x - center1.x
+		let verticalDistance = center2.y - center1.y
+		let distance = sqrt(pow(horizontalDistance, 2) + pow(verticalDistance, 2))
+		return distance
 	}
 
 	func isNeighbour(of frame: CGRect) -> Bool {

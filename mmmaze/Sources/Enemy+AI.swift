@@ -94,7 +94,7 @@ extension Enemy {
 	}
 
 	func decideNextMove(_ delta: TimeInterval) {
-		let speed = CGFloat(self.speed)//CGFloat(self.speed + self.speed * Float(delta))
+		let speed = CGFloat(self.speed)
 		let upFrame = frame.translate(y: -speed)
 		let downFrame = frame.translate(y: speed)
 		let leftFrame = frame.translate(x: -speed)

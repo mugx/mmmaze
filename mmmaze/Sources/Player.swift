@@ -26,6 +26,25 @@ class Player: Tile {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	override func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
+		lastSwipe = direction
+
+		switch direction {
+		case .right:
+			velocity = CGPoint(x: CGFloat(speed), y: velocity.y)
+		case .left:
+			velocity = CGPoint(x: CGFloat(-speed), y: velocity.y)
+		case .up:
+			velocity = CGPoint(x: velocity.x, y: CGFloat(-speed))
+		case .down:
+			velocity = CGPoint(x: velocity.x, y: CGFloat(speed))
+		default:
+			break
+		}
+	}
+
+	// MARK: - Private
+
 	private func setupAnimations() {
 		animationDuration = 0.4
 		animationImages = (power > 0 ? TyleType.player_angry.image : TyleType.player.image)?.sprites(with: TILE_SIZE)
