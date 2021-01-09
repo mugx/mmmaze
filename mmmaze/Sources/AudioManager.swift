@@ -36,7 +36,7 @@ class AudioManager {
 	private var sounds = [SoundType: AVAudioPlayer]()
 
 	func play(sound: SoundType) {
-		guard soundEnabled, !UIDevice.current.isSimulator else { return }
+		guard !DEBUG, soundEnabled, !UIDevice.current.isSimulator else { return }
 
 		try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
 		try? AVAudioSession.sharedInstance().setActive(true)

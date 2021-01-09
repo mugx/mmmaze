@@ -33,6 +33,8 @@
 		1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */; };
 		1D184C69259E9CD8007DECA0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C68259E9CD8007DECA0 /* Player.swift */; };
 		1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */; };
+		1D87F61925A6EAE100C14690 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D87F61825A6EAE100C14690 /* TODO.md */; };
+		1D87F61B25A6EBF500C14690 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D87F61A25A6EBF500C14690 /* Path.swift */; };
 		1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* whirlwind.png */; };
 		1DA4C713259BA0B300E4DE1E /* goal_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* goal_open.png */; };
 		1DA4C714259BA0B300E4DE1E /* goal_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* goal_close.png */; };
@@ -91,7 +93,7 @@
 
 /* Begin PBXFileReference section */
 		1D07BEE81CCD36E80062EFE6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		1D0AC4E825A1D445004A5AF1 /* Sequence+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Utils.swift"; sourceTree = "<group>"; };
+		1D0AC4E825A1D445004A5AF1 /* Sequence+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Sequence+Utils.swift"; path = "mmmaze/Sources/Sequence+Utils.swift"; sourceTree = "<group>"; };
 		1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BestScoresViewController.xib; path = mmmaze/Sources/BestScoresViewController.xib; sourceTree = "<group>"; };
 		1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = mmmaze/Sources/GameViewController.swift; sourceTree = "<group>"; };
 		1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = mmmaze/Sources/Constants.swift; sourceTree = "<group>"; };
@@ -119,6 +121,8 @@
 		1D184C68259E9CD8007DECA0 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = mmmaze/Sources/Player.swift; sourceTree = "<group>"; };
 		1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MazeGenerator.swift; path = mmmaze/Sources/MazeGenerator.swift; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D87F61825A6EAE100C14690 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		1D87F61A25A6EBF500C14690 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Path.swift; path = mmmaze/Sources/Path.swift; sourceTree = "<group>"; };
 		1DA4C703259BA0B300E4DE1E /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = mmmaze/Resources/whirlwind.png; sourceTree = "<group>"; };
 		1DA4C704259BA0B300E4DE1E /* goal_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_open.png; path = mmmaze/Resources/goal_open.png; sourceTree = "<group>"; };
 		1DA4C705259BA0B300E4DE1E /* goal_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_close.png; path = mmmaze/Resources/goal_close.png; sourceTree = "<group>"; };
@@ -157,10 +161,10 @@
 		1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Utils.swift"; path = "mmmaze/Sources/UIView+Utils.swift"; sourceTree = "<group>"; };
 		1DA4C759259BA29800E4DE1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionLabel.swift; sourceTree = "<group>"; };
-		1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Utils.swift"; sourceTree = "<group>"; };
-		1DEC3DEA25A0FF8B000A863D /* TyleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyleType.swift; sourceTree = "<group>"; };
-		1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwipeGestureRecognizer+Utils.swift"; sourceTree = "<group>"; };
+		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VersionLabel.swift; path = mmmaze/Sources/VersionLabel.swift; sourceTree = "<group>"; };
+		1DE262F025A0E20500BAC78A /* CGRect+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CGRect+Utils.swift"; path = "mmmaze/Sources/CGRect+Utils.swift"; sourceTree = "<group>"; };
+		1DEC3DEA25A0FF8B000A863D /* TyleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TyleType.swift; path = mmmaze/Sources/TyleType.swift; sourceTree = "<group>"; };
+		1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UISwipeGestureRecognizer+Utils.swift"; path = "mmmaze/Sources/UISwipeGestureRecognizer+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +353,7 @@
 				1D184C62259E9CB8007DECA0 /* EnemyCollaborator.swift */,
 				1D184C61259E9CB8007DECA0 /* Enemy.swift */,
 				1D184C60259E9CB8007DECA0 /* Enemy+AI.swift */,
+				1D87F61A25A6EBF500C14690 /* Path.swift */,
 			);
 			name = Enemy;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 		1D7670251C7B5B050065F110 = {
 			isa = PBXGroup;
 			children = (
+				1D87F61825A6EAE100C14690 /* TODO.md */,
 				1DA4C759259BA29800E4DE1E /* README.md */,
 				1D0BCB11259A1DE80035BAA8 /* Sources */,
 				1D0BCB12259A1DEE0035BAA8 /* Resources */,
@@ -504,6 +510,7 @@
 				1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */,
 				1D0BCB4E259A1ECA0035BAA8 /* CreditsViewController.xib in Resources */,
 				1DA4C75A259BA29800E4DE1E /* README.md in Resources */,
+				1D87F61925A6EAE100C14690 /* TODO.md in Resources */,
 				1DA4C716259BA0B300E4DE1E /* key.png in Resources */,
 				1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */,
 				1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */,
@@ -559,6 +566,7 @@
 				1DA4C742259BA11700E4DE1E /* AudioManager.swift in Sources */,
 				1D184C69259E9CD8007DECA0 /* Player.swift in Sources */,
 				1D0BCB4A259A1ECA0035BAA8 /* CreditsViewController.swift in Sources */,
+				1D87F61B25A6EBF500C14690 /* Path.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

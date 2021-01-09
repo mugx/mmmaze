@@ -76,7 +76,7 @@ extension GameSession {
 		} else if item.type == TyleType.whirlwind {
 			play(sound: .hitWhirlwind)
 
-			if DEBUG { return true }
+			//if DEBUG { return true }
 
 			UIView.animate(withDuration: 0.2) {
 				self.mazeRotation += .pi / 2
@@ -91,7 +91,7 @@ extension GameSession {
 		} else if item.type == TyleType.key {
 			play(sound: .hitHearth)
 
-			if DEBUG { return true }
+			//if DEBUG { return true }
 			
 			mazeGoalTile.type = TyleType.goal_open
 			mazeGoalTile.image = TyleType.goal_open.image
@@ -104,7 +104,7 @@ extension GameSession {
 			return true
 		} else if item.type == TyleType.bomb {
 			play(sound: .hitBomb)
-			if DEBUG { return true }
+			//if DEBUG { return true }
 
 			player.power += 1
 			
@@ -122,7 +122,8 @@ extension GameSession {
 
 		var collide = false
 		enemyCollaborator.collide(with: item) { enemy in
-			enemy.wantSpawn = !DEBUG
+			//enemy.wantSpawn = !DEBUG
+			enemy.wantSpawn = false
 			play(sound: .enemySpawn)
 			collide = true
 		}

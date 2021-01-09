@@ -51,8 +51,8 @@ class Tile: UIImageView {
 	}
 
 	func update(_ delta: TimeInterval) {
-		let velx = velocity.x + velocity.x * CGFloat(delta)
-		let vely = velocity.y + velocity.y * CGFloat(delta)
+		let velx = velocity.x// + velocity.x * CGFloat(delta)
+		let vely = velocity.y// + velocity.y * CGFloat(delta)
 		manageWallCollision(velx, vely)
 	}
 

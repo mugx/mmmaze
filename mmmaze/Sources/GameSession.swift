@@ -152,6 +152,7 @@ class GameSession {
 	
 	private func updateTime(_ delta: TimeInterval) {
 		if DEBUG { return }
+		
 		currentTime = currentTime - delta > 0 ? currentTime - delta : 0
 		delegate?.didUpdateTime(currentTime)
 
@@ -200,7 +201,7 @@ class GameSession {
 
 		if DEBUG { return }
 		
-		enemy.wantSpawn = true
+		enemy.wantSpawn = CAN_SPAWN
 		currentLives -= 1
 		delegate?.didUpdateLives(currentLives)
 		currentLives > 0 ? respawnPlayer() : gameOver()
