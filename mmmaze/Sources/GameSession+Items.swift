@@ -13,7 +13,7 @@ extension GameSession {
 	// MARK: - Public
 
 	func makeItem(col: Int, row: Int) -> Tile? {
-		let item = Tile(frame: CGRect(row: row, col: col))
+		let item = Tile(type: .none, row: row, col: col)
 
 		switch Int.random(in: 0 ..< 100) {
 		case 99 ... 100:
@@ -40,8 +40,6 @@ extension GameSession {
 		}
 
 		if item.type != .none {
-			item.x = Int(col)
-			item.y = Int(row)
 			mazeView.addSubview(item)
 			items.append(item)
 			return item
@@ -90,7 +88,9 @@ extension GameSession {
 			play(sound: .hitHearth)
 			mazeGoalTile.type = TyleType.goal_open
 			mazeGoalTile.image = TyleType.goal_open.image
-			wallsDictionary.removeValue(forKey: NSValue(cgPoint: CGPoint(x: mazeGoalTile.x, y: mazeGoalTile.y)))
+			if let index = walls.firstIndex(of: mazeGoalTile) {
+				walls.remove(at: index)
+			}
 			return true
 		} else if item.type == TyleType.hearth {
 			play(sound: .hitHearth)

@@ -28,7 +28,7 @@ extension UIImageView {
 		}
 	}
 
-	func explode(_ completion:(() -> ())? = nil) {
+	@objc func explode(_ completion:(() -> ())? = nil) {
 		guard let image = self.image ?? self.animationImages?.first else { return }
 		self.animationImages = nil
 		self.image = nil

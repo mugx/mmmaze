@@ -31,7 +31,7 @@ class GameSession {
 	var player: Player!
 	var currentLevel: UInt = 0
 	var currentScore: UInt = 0
-	var wallsDictionary: [NSValue: Tile] = [:]
+	var walls: [Tile] = []
 	var items: [Tile] = []
 	var mazeView: UIView!
 	var gameView: UIView!
@@ -122,13 +122,10 @@ class GameSession {
 	func checkWallsCollisions() {
 		guard player.power > 0 else { return }
 
-		for tile in wallsDictionary.values {
-			guard tile.isDestroyable else { continue }
+		for tile in walls {
+			guard tile.isDestroyable, player.frame.isNeighbour(of: tile.frame) else { continue }
 
-			if player.frame.isNeighbour(of: tile.frame) {
-				tile.explode()
-				tile.type = TyleType.explodedWall
-			}
+			tile.explode()
 		}
 	}
 

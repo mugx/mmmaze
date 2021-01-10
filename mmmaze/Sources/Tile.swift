@@ -12,14 +12,22 @@ class Tile: UIImageView {
 	var type: TyleType = .none
 	var velocity: CGPoint = .zero
 	var speed: Float = 0
-	var x: Int = 0
-	var y: Int = 0
 	var isDestroyable: Bool = false
 	var isBlinking: Bool = false
 	var power: UInt = 0
 	var gameSession: GameSession?
 	var lastSwipe: UISwipeGestureRecognizer.Direction?
 	var animations: [String: CABasicAnimation] = [:]
+	private var col: Int = 0
+	private var row: Int = 0
+
+	init(type: TyleType = .none, row: Int, col: Int) {
+		super.init(frame: CGRect(row: row, col: col))
+
+		self.type = type
+		self.col = col
+		self.row = row
+	}
 
 	init(type: TyleType = .none, frame: CGRect = .zero) {
 		super.init(frame: frame)
@@ -32,6 +40,11 @@ class Tile: UIImageView {
 	}
 
 	// MARK: - Public
+
+	override func explode(_ completion: (() -> ())? = nil) {
+		super.explode(completion)
+		type = type == .wall ? TyleType.explodedWall : type
+	}
 
 	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 	}
@@ -69,12 +82,9 @@ class Tile: UIImageView {
 	func isWall(at frame: CGRect, direction: UISwipeGestureRecognizer.Direction) -> Bool {
 		let col = Int(round(Double(frame.origin.x) / TILE_SIZE))
 		let row = Int(round(Double(frame.origin.y) / TILE_SIZE))
-		let col_offset = direction == .left ? col - 1 : direction == .right ? col + 1 : col
-		let row_offset = direction == .up ? row - 1 : direction == .down ? row + 1 : row
-		let wallPosition = NSValue(cgPoint: CGPoint(x: row_offset, y: col_offset))
-
-		guard let tile = gameSession?.wallsDictionary[wallPosition] else { return false }
-		return tile.type != TyleType.explodedWall
+		let new_col = direction == .left ? col - 1 : direction == .right ? col + 1 : col
+		let new_row = direction == .up ? row - 1 : direction == .down ? row + 1 : row
+		return gameSession!.checkWallCollision(CGRect(row: new_row, col: new_col))
 	}
 
 	func spin() {
