@@ -36,6 +36,7 @@
 		1D87F61925A6EAE100C14690 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D87F61825A6EAE100C14690 /* TODO.md */; };
 		1D87F61B25A6EBF500C14690 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D87F61A25A6EBF500C14690 /* Path.swift */; };
 		1D9D51DD25AAE7CE000B3216 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D51DC25AAE7CE000B3216 /* Frame.swift */; };
+		1D9D51DF25AB7983000B3216 /* GameSession+Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D51DE25AB7983000B3216 /* GameSession+Collision.swift */; };
 		1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* whirlwind.png */; };
 		1DA4C713259BA0B300E4DE1E /* goal_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* goal_open.png */; };
 		1DA4C714259BA0B300E4DE1E /* goal_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* goal_close.png */; };
@@ -124,7 +125,8 @@
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D87F61825A6EAE100C14690 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		1D87F61A25A6EBF500C14690 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Path.swift; path = mmmaze/Sources/Path.swift; sourceTree = "<group>"; };
-		1D9D51DC25AAE7CE000B3216 /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
+		1D9D51DC25AAE7CE000B3216 /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Frame.swift; path = mmmaze/Sources/Frame.swift; sourceTree = "<group>"; };
+		1D9D51DE25AB7983000B3216 /* GameSession+Collision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GameSession+Collision.swift"; path = "mmmaze/Sources/GameSession+Collision.swift"; sourceTree = "<group>"; };
 		1DA4C703259BA0B300E4DE1E /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = mmmaze/Resources/whirlwind.png; sourceTree = "<group>"; };
 		1DA4C704259BA0B300E4DE1E /* goal_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_open.png; path = mmmaze/Resources/goal_open.png; sourceTree = "<group>"; };
 		1DA4C705259BA0B300E4DE1E /* goal_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_close.png; path = mmmaze/Resources/goal_close.png; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				1DA4C73F259BA10900E4DE1E /* GameSession.swift */,
 				1D184C56259E9C87007DECA0 /* GameSession+Maze.swift */,
 				1D184C54259E9C87007DECA0 /* GameSession+Items.swift */,
+				1D9D51DE25AB7983000B3216 /* GameSession+Collision.swift */,
 				1D451C77259E0F89001A291C /* Tile */,
 				1D451C79259E0FB0001A291C /* Enemy */,
 				1D451C78259E0F9A001A291C /* Player */,
@@ -574,6 +577,7 @@
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
 				1DA4C744259BA12200E4DE1E /* UIDevice+Utils.swift in Sources */,
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,
+				1D9D51DF25AB7983000B3216 /* GameSession+Collision.swift in Sources */,
 				1DA4C754259BA1B200E4DE1E /* UIImage+Utils.swift in Sources */,
 				1DA4C742259BA11700E4DE1E /* AudioManager.swift in Sources */,
 				1D184C69259E9CD8007DECA0 /* Player.swift in Sources */,

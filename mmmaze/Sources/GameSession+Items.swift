@@ -12,7 +12,7 @@ extension GameSession {
 
 	// MARK: - Public
 
-	func makeItem(col: Int, row: Int) -> Tile? {
+	func makeItem(for maze: Maze, col: Int, row: Int) {
 		let item = Tile(type: .none, row: row, col: col)
 
 		switch Int.random(in: 0 ..< 100) {
@@ -36,89 +36,104 @@ extension GameSession {
 			item.image = TyleType.coin.image
 			item.spin()
 		default:
-			break
+			maze.markFree(item)
+			return
 		}
 
-		if item.type != .none {
-			mazeView.addSubview(item)
-			items.append(item)
-			return item
-		} else {
-			return nil
-		}
+		mazeView.addSubview(item)
+		items.insert(item)
 	}
 
-	func checkItemsCollisions() {
-		var itemsToRemove = [Tile]()
+	func itemsCollisions() {
 		for item in items {
-			if checkPlayerCollision(with: item) || checkEnemyCollision(with: item) {
-				item.isHidden = true
-				itemsToRemove.append(item)
-			}
-
-			item.transform = CGAffineTransform(rotationAngle: CGFloat(-mazeRotation))
+			playerCollision(with: item)
+			enemyCollision(with: item)
 		}
-		items.removeAll { itemsToRemove.contains($0) }
 	}
 
 	// MARK: - Private
 
-	private func checkPlayerCollision(with item: Tile) -> Bool {
-		guard item.frame.intersects(player.frame) else { return false }
+	private func playerCollision(with item: Tile) {
+		guard item.frame.intersects(player.frame) else { return }
 
-		if item.type == TyleType.coin {
-			play(sound: .hitCoin)
-			currentScore += 15
-			delegate?.didUpdateScore(currentScore)
-			return true
-		} else if item.type == TyleType.whirlwind {
-			play(sound: .hitWhirlwind)
-
-			UIView.animate(withDuration: 0.2) {
-				self.mazeRotation += .pi / 2
-				self.gameView.transform = self.gameView.transform.rotated(by: .pi / 2)
-				self.player.transform = CGAffineTransform(rotationAngle: -CGFloat(self.mazeRotation))
-			}
-			return true
-		} else if item.type == TyleType.time {
-			play(sound: .hitTimeBonus)
-			currentTime += 5
-			return true
-		} else if item.type == TyleType.key {
-			play(sound: .hitHearth)
-			mazeGoalTile.type = TyleType.goal_open
-			mazeGoalTile.image = TyleType.goal_open.image
-			if let index = walls.firstIndex(of: mazeGoalTile) {
-				walls.remove(at: index)
-			}
-			return true
-		} else if item.type == TyleType.hearth {
-			play(sound: .hitHearth)
-			currentLives += 1
-			delegate?.didUpdateLives(currentLives)
-			return true
-		} else if item.type == TyleType.bomb {
-			play(sound: .hitBomb)
-			player.power += 1
-			
-			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-				self.player.power -= self.player.power > 0 ? 1 : 0
-			}
-			return true
+		switch item.type {
+		case .coin:
+			hitCoin()
+		case .whirlwind:
+			hitWhirlwind()
+		case .time:
+			hitTimeBonus()
+		case .key:
+			hitKey()
+		case .hearth:
+			hitHearth()
+		case .bomb:
+			hitBomb()
+		default:
+			return
 		}
 
-		return false
+		item.isHidden = true
+		items.remove(item)
 	}
 
-	private func checkEnemyCollision(with item: Tile) -> Bool {
-		guard item.type == TyleType.bomb else { return false }
 
-		var collide = false
+	private func enemyCollision(with item: Tile) {
+		guard !item.isHidden, item.type == TyleType.bomb else { return }
+
 		enemyCollaborator.collide(with: item) { enemy in
-			enemy.wantSpawn = true
 			play(sound: .enemySpawn)
-			collide = true
+			enemy.wantSpawn = true
+			item.isHidden = true
+			items.remove(item)
 		}
-		return collide
+	}
+
+	// MARK: - Hits
+
+	private func hitWhirlwind() {
+		play(sound: .hitWhirlwind)
+		mazeRotation += .pi / 2
+
+		UIView.animate(withDuration: 0.2) {
+			self.gameView.transform = self.gameView.transform.rotated(by: .pi / 2)
+			self.player.transform = CGAffineTransform(rotationAngle: -self.mazeRotation)
+			self.items.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.mazeRotation) }
+			self.walls.forEach { $0.transform = .identity }
+			self.enemyCollaborator.enemies.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.mazeRotation) }
+		}
+	}
+
+	private func hitCoin() {
+		play(sound: .hitCoin)
+		currentScore += 15
+		delegate?.didUpdateScore(currentScore)
+	}
+
+	private func hitTimeBonus() {
+		play(sound: .hitTimeBonus)
+		currentTime += 5
+	}
+
+	private func hitKey() {
+		play(sound: .hitHearth)
+		mazeGoalTile.type = TyleType.goal_open
+		mazeGoalTile.image = TyleType.goal_open.image
+		walls.remove(mazeGoalTile)
+	}
+
+	private func hitHearth() {
+		play(sound: .hitHearth)
+		currentLives += 1
+		delegate?.didUpdateLives(currentLives)
+	}
+
+	private func hitBomb(){
+		play(sound: .hitBomb)
+		player.power += 1
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			self.player.power -= self.player.power > 0 ? 1 : 0
+		}
 	}
 }

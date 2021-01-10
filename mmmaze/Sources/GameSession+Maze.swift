@@ -10,58 +10,66 @@ import UIKit
 
 extension GameSession {
 	func makeMaze() {
-		items = [Tile]()
 		mazeView = UIView(frame: gameView.frame)
 		gameView.addSubview(mazeView)
 		mazeRotation = 0
-		isGameOver = false
 
-		// generating the maze 
-		let startRow: Int = Int(Constants.STARTING_CELL.x)
-		let startCol: Int = Int(Constants.STARTING_CELL.y)
-		let maze = MazeGenerator.calculateMaze(startRow: startRow, startCol: startCol, rows: numRow, cols: numCol)
+		items = []
 		walls = []
 
-		for r in 0 ..< numRow {
-			for c in 0 ..< numCol {
-				if maze[r, c] == .wall {
-					let tile = Tile(type: .wall, row: r, col: c)
-					tile.image = TyleType.wall.image
-					tile.isDestroyable = !(r == 0 || c == 0 || r == self.numRow - 1 || c == self.numCol - 1)
-					mazeView.addSubview(tile)
-					walls.append(tile)
-				} else if maze[r, c] == .start {
-					let tile = Tile(type: .start, row: r, col: c)
-					tile.isDestroyable = false
-					mazeView.addSubview(tile)
-					items.append(tile)
-				} else if maze[r, c] == .goal {
-					let tile = Tile(type: .goal_close, row: r, col: c)
-					tile.isDestroyable = false
-					tile.image = TyleType.goal_close.image
-					mazeView.addSubview(tile)
-					walls.append(tile)
-					mazeGoalTile = tile
-					items.append(tile)
-				} else {
-					if makeItem(col: c, row: r) == nil {
-						maze.markFree(row: r, col: c)
-					}
+		// generating the maze 
+		let startRow = Int(Constants.STARTING_CELL.x)
+		let startCol = Int(Constants.STARTING_CELL.y)
+		let maze = MazeGenerator.calculateMaze(startRow: startRow, startCol: startCol, rows: numRow, cols: numCol)
+
+		for row in 0 ..< numRow {
+			for col in 0 ..< numCol {
+				switch maze[row, col] {
+				case .wall:
+					makeWall(for: maze, row: row, col: col)
+				case .start:
+					makeStart(for: maze, row: row, col: col)
+				case .goal:
+					makeGoal(for: maze, row: row, col: col)
+				default:
+					makeItem(for: maze, col: col, row: row)
 				}
 			}
 		}
 
-		// make key 
-		let freeTile = maze.randFreeTile()
-		let keyItem = Tile(type: .key, frame: CGRect(x: Double(freeTile.x) * TILE_SIZE, y: Double(freeTile.y) * TILE_SIZE, width: TILE_SIZE, height: TILE_SIZE))
-		keyItem.image = TyleType.key.image
-		mazeView.addSubview(keyItem)
-		items.append(keyItem)
+		makeKey(for: maze)
+	}
+	
+	// MARK: - Private
+
+	private func makeWall(for maze: Maze, row: Int, col: Int) {
+		let tile = Tile(type: .wall, row: row, col: col)
+		tile.image = TyleType.wall.image
+		tile.isDestroyable = !(row == 0 || col == 0 || row == self.numRow - 1 || col == self.numCol - 1)
+		mazeView.addSubview(tile)
+		walls.insert(tile)
 	}
 
-	func checkWallCollision(_ frame: CGRect) -> Bool {
-		return walls.contains(where: {
-			$0.type != TyleType.explodedWall && $0.frame.intersects(frame)
-		})
+	private func makeStart(for maze: Maze, row: Int, col: Int) {
+		let tile = Tile(type: .start, row: row, col: col)
+		mazeView.addSubview(tile)
+		items.insert(tile)
+	}
+
+	private func makeGoal(for maze: Maze, row: Int, col: Int) {
+		let tile = Tile(type: .goal_close, row: row, col: col)
+		tile.image = TyleType.goal_close.image
+		mazeGoalTile = tile
+		mazeView.addSubview(tile)
+		items.insert(tile)
+	}
+
+	private func makeKey(for maze: Maze) {
+		let tile = maze.randFreeTile()
+		tile.type = .key
+		tile.image = TyleType.key.image
+		mazeView.addSubview(tile)
+		items.insert(tile)
+		maze.freeTiles.removeAll()
 	}
 }

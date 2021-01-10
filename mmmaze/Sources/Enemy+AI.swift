@@ -28,10 +28,8 @@ extension Enemy {
 			width: TILE_SIZE,
 			height: TILE_SIZE
 		)
-		var currentFrame = originalFrame
-		let currentSpeed = CGFloat(TILE_SIZE)
-
 		let path = Path(origin: originalFrame, target: target)
+		let currentSpeed = CGFloat(TILE_SIZE)
 		var targetFound = false
 
 		while !targetFound {
@@ -45,34 +43,33 @@ extension Enemy {
 				break
 			}
 
-			let upFrame = currentFrame.translate(y: -currentSpeed)
-			let downFrame = currentFrame.translate(y: currentSpeed)
-			let leftFrame = currentFrame.translate(x: -currentSpeed)
-			let rightFrame = currentFrame.translate(x: currentSpeed)
+			let upFrame = path.currentFrame.translate(y: -currentSpeed)
+			let downFrame = path.currentFrame.translate(y: currentSpeed)
+			let leftFrame = path.currentFrame.translate(x: -currentSpeed)
+			let rightFrame = path.currentFrame.translate(x: currentSpeed)
 
 			var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
-			if !isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.up) && !path.collides(upFrame) {
+			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.up) && !path.collides(upFrame) {
 				possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
 			}
 
-			if !isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.down) && !path.collides(downFrame) {
+			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.down) && !path.collides(downFrame) {
 				possibleDirections.append((UISwipeGestureRecognizer.Direction.down, downFrame))
 			}
 
-			if !isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.left) && !path.collides(leftFrame) {
+			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.left) && !path.collides(leftFrame) {
 				possibleDirections.append((UISwipeGestureRecognizer.Direction.left, leftFrame))
 			}
 
-			if !isWall(at: currentFrame, direction: UISwipeGestureRecognizer.Direction.right) && !path.collides(rightFrame) {
+			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.right) && !path.collides(rightFrame) {
 				possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
 			}
 
 			if !possibleDirections.isEmpty {
 				let direction = getBestDirection(possibleDirections, targetFrame: target)
-				currentFrame = direction.1
-				path.addStep(currentFrame)
+				path.addStep(direction.1)
 			} else {
-				currentFrame = path.backtrack(from: currentFrame)
+				path.backtrack()
 			}
 		}
 		return path

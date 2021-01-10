@@ -18,14 +18,17 @@ class Path {
 	var isEmpty: Bool { steps.isEmpty }
 	var count: Int { steps.count }
 	var target: CGRect
+	var currentFrame: CGRect
 
 	init(origin: CGRect = .zero, target: CGRect = .zero) {
 		steps = [Step(frame: origin, visited: false)]
+		self.currentFrame = origin
 		self.target = target
 	}
 
 	func addStep(_ frame: CGRect) {
 		steps.append(Step(frame: frame, visited: false))
+		currentFrame = frame
 	}
 
 	func collides(_ frame: CGRect) -> Bool {
@@ -47,12 +50,19 @@ class Path {
 		return nextFrame
 	}
 
-	func backtrack(from frame: CGRect) -> CGRect {
-		if let index = steps.firstIndex(where: { $0.frame.intersects(frame) }) {
-			steps[index].visited = true
-			return steps[index - 1].frame
+	func backtrack() {
+		if let index = steps.firstIndex(where: { $0.frame.intersects(currentFrame) }) {
+			if index > 0 {
+				steps[index].visited = true
+				currentFrame = steps[index - 1].frame
+			} else {
+				// snake-tail: couldn't find the target
+				let newOrigin = steps[index]
+				steps.removeAll()
+				addStep(newOrigin.frame)
+				print("snake tail")
+			}
 		}
-		return frame
 	}
 
 	func hasSameTarget(of other: Path) -> Bool {

@@ -24,7 +24,7 @@ struct MazeTile {
 class Maze {
 	let rows: Int, columns: Int
 	var grid: [MazeTyleType]
-	var freeTiles: [(Int,Int)] = []
+	var freeTiles: [Tile] = []
 
 	init(rows: Int, columns: Int) {
 		self.rows = rows
@@ -37,13 +37,12 @@ class Maze {
 		set { grid[(row * columns) + column] = newValue }
 	}
 
-	func markFree(row: Int, col: Int) {
-		freeTiles.append((row, col))
+	func markFree(_ tile: Tile) {
+		freeTiles.append(tile)
 	}
 
-	func randFreeTile() -> CGPoint {
-		let tile = freeTiles[Int(arc4random()) % freeTiles.count]
-		return CGPoint(x: tile.1, y: tile.0)
+	func randFreeTile() -> Tile {
+		return freeTiles[Int(arc4random()) % freeTiles.count]
 	}
 }
 

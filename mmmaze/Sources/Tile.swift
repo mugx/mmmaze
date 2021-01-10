@@ -41,11 +41,6 @@ class Tile: UIImageView {
 
 	// MARK: - Public
 
-	override func explode(_ completion: (() -> ())? = nil) {
-		super.explode(completion)
-		type = type == .wall ? TyleType.explodedWall : type
-	}
-
 	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
 	}
 

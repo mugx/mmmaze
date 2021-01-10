@@ -39,8 +39,8 @@ extension UIImageView {
 		let rows = Int(floor(image.size.height / originalH))
 
 		// preparing sub tiles 
-		for y in 0 ... cols {
-			for x in 0 ... rows {
+		for x in 0 ... cols {
+			for y in 0 ... rows {
 				let frame = CGRect(
 					x: CGFloat(x) * originalW,
 					y: CGFloat(y) * originalH,

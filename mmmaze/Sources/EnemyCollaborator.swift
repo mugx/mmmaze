@@ -10,7 +10,7 @@ import UIKit
 
 class EnemyCollaborator {
 	private let gameSession: GameSession!
-	private var enemies: [Enemy] = []
+	private(set) var enemies: [Enemy] = []
 	private var enemyTimeAccumulator: TimeInterval = 0
 
 	public init(gameSession: GameSession) {

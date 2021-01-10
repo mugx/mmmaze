@@ -12,7 +12,6 @@ enum TyleType: String {
 	case none
 	case start
 	case wall
-	case explodedWall
 	case coin
 	case whirlwind
 	case bomb
@@ -56,7 +55,7 @@ enum TyleType: String {
 			color = .white
 		case .whirlwind:
 			color = .white
-		case .none, .start, .explodedWall:
+		case .none, .start:
 			break
 		}
 

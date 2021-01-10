@@ -23,9 +23,9 @@ extension CGRect {
 		return CGRect(origin: CGPoint(x: origin.x + x, y: origin.y + y), size: size)
 	}
 
-//	func distance(to rect: CGRect) -> CGFloat {
-//		return abs(origin.x - rect.origin.x) + abs(origin.y - rect.origin.y)
-//	}
+	func manhattan(to rect: CGRect) -> CGFloat {
+		return abs(origin.x - rect.origin.x) + abs(origin.y - rect.origin.y)
+	}
 
 	func distance(to rect: CGRect) -> CGFloat {
 		let center1 = CGPoint(x: midX, y: midY)

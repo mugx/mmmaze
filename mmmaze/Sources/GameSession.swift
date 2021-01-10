@@ -31,12 +31,12 @@ class GameSession {
 	var player: Player!
 	var currentLevel: UInt = 0
 	var currentScore: UInt = 0
-	var walls: [Tile] = []
-	var items: [Tile] = []
+	var walls: Set<Tile> = []
+	var items: Set<Tile> = []
 	var mazeView: UIView!
 	var gameView: UIView!
 	var mazeGoalTile: Tile!
-	var mazeRotation: Float = 0
+	var mazeRotation: CGFloat = 0
 	var isGameStarted: Bool = false
 
 	init(view: UIView) {
@@ -114,22 +114,12 @@ class GameSession {
 		player.update(delta)
 		mazeView.follow(player)
 
-		checkCollisionPlayerVsEnemies()
-		checkGoalHit()
-		checkItemsCollisions()
-		checkWallsCollisions()
+		playerGoalCollision()
+		playerVsEnemiesCollision()
+		playerWallsCollision()
+		itemsCollisions()
 	}
-
-	func checkWallsCollisions() {
-		guard player.power > 0 else { return }
-
-		for tile in walls {
-			guard tile.isDestroyable, player.frame.isNeighbour(of: tile.frame) else { continue }
-
-			tile.explode()
-		}
-	}
-
+	
 	func gameOver() {
 		guard !isGameOver else { return }
 
@@ -142,12 +132,6 @@ class GameSession {
 
 	// MARK: - Private
 
-	func makePlayer() {
-		player?.removeFromSuperview()
-		player = Player(gameSession: self)
-		mazeView.addSubview(player)
-	}
-	
 	private func updateTime(_ delta: TimeInterval) {
 		currentTime = currentTime - delta > 0 ? currentTime - delta : 0
 		delegate?.didUpdateTime(currentTime)
@@ -161,66 +145,20 @@ class GameSession {
 		}
 	}
 
-	private func checkCollisionPlayerVsEnemies() {
-		guard !player.isBlinking else { return }
-
-		var collided = false
-		enemyCollaborator.collide(with: player) { (enemy) in
-			guard !collided else { return }
-			collided = true
-			
-			if player.power > 0 {
-				playerHits(enemy)
-			} else {
-				playerGetsHit(from: enemy)
-			}
-		}
+	private func makePlayer() {
+		player?.removeFromSuperview()
+		player = Player(gameSession: self)
+		mazeView.addSubview(player)
 	}
 
-	func playerHits(_ enemy: Enemy) {
-		guard !enemy.isBlinking else { return }
-		play(sound: .hitPlayer)
+	func playerWallsCollision() {
+		guard player.power > 0 else { return }
 
-		enemy.isBlinking = true
-		enemy.explode {
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-				enemy.respawnAtInitialFrame()
-				enemy.isBlinking = false
-				enemy.show(after: 1)
-			}
+		for wall in walls {
+			guard wall.isDestroyable, player.frame.isNeighbour(of: wall.frame) else { continue }
+
+			wall.explode()
+			walls.remove(wall)
 		}
-	}
-
-	func playerGetsHit(from enemy: Enemy) {
-		guard !enemy.isBlinking else { return }
-		play(sound: .hitPlayer)
-		
-		enemy.wantSpawn = true
-		currentLives -= 1
-		delegate?.didUpdateLives(currentLives)
-		currentLives > 0 ? respawnPlayer() : gameOver()
-	}
-
-	private func respawnPlayer() {
-		player.isBlinking = true
-		UIView.animate(withDuration: 0.4) {
-			self.player.respawnAtInitialFrame()
-			self.mazeView.follow(self.player)
-		} completion: { _ in
-			self.player.blink(2) {
-				self.player.isBlinking = false
-			}
-		}
-	}
-
-	private func checkGoalHit() {
-		guard
-			mazeGoalTile.type == TyleType.goal_open &&
-				player.frame.intersects(mazeGoalTile.frame) else {
-			return
-		}
-
-		currentScore += 100
-		startLevel(currentLevel + 1)
 	}
 }
