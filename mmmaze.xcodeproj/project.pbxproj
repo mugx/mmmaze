@@ -35,6 +35,7 @@
 		1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */; };
 		1D87F61925A6EAE100C14690 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D87F61825A6EAE100C14690 /* TODO.md */; };
 		1D87F61B25A6EBF500C14690 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D87F61A25A6EBF500C14690 /* Path.swift */; };
+		1D9D51DD25AAE7CE000B3216 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D51DC25AAE7CE000B3216 /* Frame.swift */; };
 		1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* whirlwind.png */; };
 		1DA4C713259BA0B300E4DE1E /* goal_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* goal_open.png */; };
 		1DA4C714259BA0B300E4DE1E /* goal_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* goal_close.png */; };
@@ -123,6 +124,7 @@
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D87F61825A6EAE100C14690 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		1D87F61A25A6EBF500C14690 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Path.swift; path = mmmaze/Sources/Path.swift; sourceTree = "<group>"; };
+		1D9D51DC25AAE7CE000B3216 /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 		1DA4C703259BA0B300E4DE1E /* whirlwind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whirlwind.png; path = mmmaze/Resources/whirlwind.png; sourceTree = "<group>"; };
 		1DA4C704259BA0B300E4DE1E /* goal_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_open.png; path = mmmaze/Resources/goal_open.png; sourceTree = "<group>"; };
 		1DA4C705259BA0B300E4DE1E /* goal_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_close.png; path = mmmaze/Resources/goal_close.png; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */,
 				1D0BCB91259A21050035BAA8 /* Screens */,
 				1D9ADB46259B1743003CC8C2 /* Maze */,
+				1D9D51DB25AAE7B3000B3216 /* Toolkit */,
 				1D0BCBCB259A25330035BAA8 /* Utils */,
 			);
 			name = Sources;
@@ -409,6 +412,14 @@
 			name = Generator;
 			sourceTree = "<group>";
 		};
+		1D9D51DB25AAE7B3000B3216 /* Toolkit */ = {
+			isa = PBXGroup;
+			children = (
+				1D9D51DC25AAE7CE000B3216 /* Frame.swift */,
+			);
+			name = Toolkit;
+			sourceTree = "<group>";
+		};
 		1DE262EB25A0A5EE00BAC78A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +564,7 @@
 				1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */,
 				1DEC3DED25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
+				1D9D51DD25AAE7CE000B3216 /* Frame.swift in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
 				1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */,
 				1DEC3DEB25A0FF8B000A863D /* TyleType.swift in Sources */,
