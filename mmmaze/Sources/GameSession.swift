@@ -60,6 +60,7 @@ class GameSession {
 		currentLevel = levelNumber
 		currentTime = Self.MAX_TIME
 		isGameStarted = false
+		isGameOver = false
 
 		if levelNumber == 1 {
 			play(sound: .startGame)
