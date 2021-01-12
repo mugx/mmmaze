@@ -1,5 +1,5 @@
 //
-//  EnemyCollaborator.swift
+//  EnemyInteractor.swift
 //  mmmaze
 //
 //  Created by mugx on 29/12/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnemyCollaborator {
+class EnemyInteractor {
 	private let gameSession: GameSession!
 	private(set) var enemies: [Enemy] = []
 	private var enemyTimeAccumulator: TimeInterval = 0

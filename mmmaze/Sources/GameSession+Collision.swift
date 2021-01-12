@@ -17,7 +17,7 @@ extension GameSession {
 		guard !player.isBlinking else { return }
 
 		var collided = false
-		enemyCollaborator.collide(with: player) { (enemy) in
+		enemyInteractor.collide(with: player) { (enemy) in
 			guard !collided else { return }
 			collided = true
 

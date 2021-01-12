@@ -81,7 +81,7 @@ extension GameSession {
 	private func enemyCollision(with item: Tile) {
 		guard !item.isHidden, item.type == TyleType.bomb else { return }
 
-		enemyCollaborator.collide(with: item) { enemy in
+		enemyInteractor.collide(with: item) { enemy in
 			play(sound: .enemySpawn)
 			enemy.wantSpawn = true
 			item.isHidden = true
@@ -100,7 +100,7 @@ extension GameSession {
 			self.player.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation)
 			self.items.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
 			self.walls.forEach { $0.transform = .identity }
-			self.enemyCollaborator.enemies.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
+			self.enemyInteractor.enemies.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
 		}
 	}
 

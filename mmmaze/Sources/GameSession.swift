@@ -20,17 +20,17 @@ protocol GameSessionDelegate {
 class GameSession {
 	static let BASE_MAZE_DIMENSION: Int = 9
 	var delegate: GameSessionDelegate?
+	var enemyInteractor: EnemyInteractor!
+	var stats = GameStats()
 	var started: Bool = false
 	var numRow: Int = 0
 	var numCol: Int = 0
-	var enemyCollaborator: EnemyCollaborator!
 	var player: Player!
 	var walls: Set<Tile> = []
 	var items: Set<Tile> = []
 	var gameView: UIView!
 	var mazeView: UIView!
 	var mazeGoalTile: Tile!
-	var stats = GameStats()
 
 	func attach(to gameView: UIView, with delegate: GameSessionDelegate) {
 		self.gameView = gameView
@@ -67,8 +67,8 @@ class GameSession {
 		makePlayer()
 		mazeView.follow(player)
 
-		// setup collaborator
-		enemyCollaborator = EnemyCollaborator(gameSession: self)
+		// setup interactor
+		enemyInteractor = EnemyInteractor(gameSession: self)
 
 		// update external delegate
 		delegate?.didUpdate(score: stats.currentScore)
@@ -144,7 +144,7 @@ extension GameSession: DisplayLinkDelegate {
 
 		guard stats.isGameStarted else { return }
 
-		enemyCollaborator.update(delta)
+		enemyInteractor.update(delta)
 		player.update(delta)
 		mazeView.follow(player)
 
