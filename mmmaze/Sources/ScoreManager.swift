@@ -20,7 +20,7 @@ class ScoreManager {
 		UserDefaults.standard.object(forKey: SAVE_KEY_HIGH_SCORES) as? [UInt] ?? []
 	}
 
-	static func save(score: UInt) {
+	static func save(_ score: UInt) {
 		var highScores = Self.highScores
 		highScores.append(score)
 		highScores.sort(by: { (a, b) -> Bool in

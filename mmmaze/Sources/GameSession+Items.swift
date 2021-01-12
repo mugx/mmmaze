@@ -93,26 +93,26 @@ extension GameSession {
 
 	private func hitWhirlwind() {
 		play(sound: .hitWhirlwind)
-		mazeRotation += .pi / 2
+		stats.mazeRotation += .pi / 2
 
 		UIView.animate(withDuration: 0.2) {
 			self.gameView.transform = self.gameView.transform.rotated(by: .pi / 2)
-			self.player.transform = CGAffineTransform(rotationAngle: -self.mazeRotation)
-			self.items.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.mazeRotation) }
+			self.player.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation)
+			self.items.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
 			self.walls.forEach { $0.transform = .identity }
-			self.enemyCollaborator.enemies.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.mazeRotation) }
+			self.enemyCollaborator.enemies.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
 		}
 	}
 
 	private func hitCoin() {
 		play(sound: .hitCoin)
-		currentScore += 15
-		delegate?.didUpdateScore(currentScore)
+		stats.currentScore += 15
+		delegate?.didUpdate(score: stats.currentScore)
 	}
 
 	private func hitTimeBonus() {
 		play(sound: .hitTimeBonus)
-		currentTime += 5
+		stats.currentTime += 5
 	}
 
 	private func hitKey() {
@@ -124,8 +124,8 @@ extension GameSession {
 
 	private func hitHearth() {
 		play(sound: .hitHearth)
-		currentLives += 1
-		delegate?.didUpdateLives(currentLives)
+		stats.currentLives += 1
+		delegate?.didUpdate(lives: stats.currentLives)
 	}
 
 	private func hitBomb(){

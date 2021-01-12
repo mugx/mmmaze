@@ -12,7 +12,7 @@ extension GameSession {
 	func makeMaze() {
 		mazeView = UIView(frame: gameView.frame)
 		gameView.addSubview(mazeView)
-		mazeRotation = 0
+		stats.mazeRotation = 0
 
 		items = []
 		walls = []

@@ -86,7 +86,7 @@ class Enemy: Tile {
 
 	private func assignSpeed() {
 		speed = Float(Double.random(in: Self.SPEED - 0.2 ... Self.SPEED + 0.2))
-		speed = speed + 0.1 * Float((gameSession!.currentLevel - 1))
+		speed = speed + 0.1 * Float((gameSession!.stats.currentLevel - 1))
 		if speed > gameSession!.player.speed {
 			speed = gameSession!.player.speed - 0.2
 		}

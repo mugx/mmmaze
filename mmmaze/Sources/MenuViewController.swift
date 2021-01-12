@@ -25,7 +25,7 @@ class MenuViewController: UIViewController {
 	// MARK: - Actions
 
 	@IBAction func newGameTouched() {
-		playSound(SoundType.selectItem)
+		play(sound: .selectItem)
 		if AppDelegate.shared.gameVc == nil {
 			AppDelegate.shared.selectScreen(ScreenType.STTutorial)
 		} else {
@@ -34,17 +34,17 @@ class MenuViewController: UIViewController {
 	}
 
 	@IBAction func highScoresTouched() {
-		playSound(SoundType.selectItem)
+		play(sound: .selectItem)
 		AppDelegate.shared.selectScreen(ScreenType.STHighScores)
 	}
 
 	@IBAction func settingsTouched() {
-		playSound(SoundType.selectItem)
+		play(sound: .selectItem)
 		AppDelegate.shared.selectScreen(ScreenType.STSettings)
 	}
 
 	@IBAction func aboutTouched() {
-		playSound(SoundType.selectItem)
+		play(sound: .selectItem)
 		AppDelegate.shared.selectScreen(ScreenType.STCredits)
 	}
 }

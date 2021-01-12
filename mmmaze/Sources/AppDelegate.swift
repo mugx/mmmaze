@@ -25,30 +25,32 @@ import UIKit
 	func selectScreen(_ screenType:ScreenType ) {
 		switch (screenType) {
 		case .STMenu:
-			transitionToViewController(MenuViewController())
+			transitionTo(viewController: MenuViewController())
 		case .STTutorial:
-			transitionToViewController(TutorialViewController())
+			transitionTo(viewController: TutorialViewController())
 		case .STNewGame:
 			gameVc = GameViewController()
-			transitionToViewController(gameVc!)
+			transitionTo(viewController: gameVc!)
 		case .STResumeGame:
-			transitionToViewController(gameVc!)
+			transitionTo(viewController: gameVc!)
 		case .STHighScores:
-			transitionToViewController(BestScoresViewController())
+			transitionTo(viewController: BestScoresViewController())
 		case .STSettings:
-			transitionToViewController(SettingsViewController())
+			transitionTo(viewController: SettingsViewController())
 		case .STCredits:
-			transitionToViewController(CreditsViewController())
+			transitionTo(viewController: CreditsViewController())
 		}
 	}
 
-	func transitionToViewController(_ viewController: UIViewController) {
+	func transitionTo(viewController: UIViewController) {
+		guard let window = UIApplication.shared.windows.first else { return }
+
 		UIView.animate(withDuration: 0.5, animations: {
-			self.window?.rootViewController?.view.alpha = 0
+			window.rootViewController?.view.alpha = 0
 		}) { (success) in
-			self.window?.rootViewController = viewController
+			window.rootViewController = viewController
 			UIView.animate(withDuration: 1) {
-				self.window?.rootViewController?.view.alpha = 1
+				window.rootViewController?.view.alpha = 1
 			}
 		}
 	}

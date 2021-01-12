@@ -66,18 +66,18 @@ class SettingsViewController: UIViewController {
 		case .high:
 			AudioManager.shared.volume = Float(VolumeType.mute.rawValue) / 10.0
 		}
-		playSound(SoundType.selectItem)
+		play(sound: .selectItem)
 		refresh()
 	}
 
 	@IBAction func soundEnabledTouched() {
 		AudioManager.shared.soundEnabled = !AudioManager.shared.soundEnabled
-		playSound(SoundType.selectItem)
+		play(sound: .selectItem)
 		refresh()
 	}
 
 	@IBAction func backTouched() {
-		playSound(SoundType.selectItem)
+		play(sound: .selectItem)
 		AppDelegate.shared.selectScreen(ScreenType.STMenu)
 	}
 }

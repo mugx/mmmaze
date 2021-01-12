@@ -9,64 +9,42 @@
 import UIKit
 
 protocol GameSessionDelegate {
-	func didUpdateScore(_ score: UInt)
-	func didUpdateTime(_ time: TimeInterval)
-	func didUpdateLives(_ livesCount: UInt)
-	func didUpdateLevel(_ levelCount: UInt)
+	func didUpdate(score: UInt)
+	func didUpdate(time: TimeInterval)
+	func didUpdate(lives: UInt)
+	func didUpdate(level: UInt)
 	func didHurryUp()
-	func didGameOver(_ gameSession: GameSession)
+	func didGameOver(_ gameSession: GameSession, with score: UInt)
 }
 
 class GameSession {
-	static let MAX_TIME: TimeInterval = 60
-	static let MAX_LIVES: UInt = 3
 	static let BASE_MAZE_DIMENSION: Int = 9
 	var delegate: GameSessionDelegate?
-	var currentLives: UInt = 0
-	var currentTime: TimeInterval = 0
-	var isGameOver: Bool = false
+	var started: Bool = false
 	var numRow: Int = 0
 	var numCol: Int = 0
 	var enemyCollaborator: EnemyCollaborator!
 	var player: Player!
-	var currentLevel: UInt = 0
-	var currentScore: UInt = 0
 	var walls: Set<Tile> = []
 	var items: Set<Tile> = []
-	var mazeView: UIView!
 	var gameView: UIView!
+	var mazeView: UIView!
 	var mazeGoalTile: Tile!
-	var mazeRotation: CGFloat = 0
-	var isGameStarted: Bool = false
+	var stats = GameStats()
 
-	init(view: UIView) {
-		self.gameView = view
+	func attach(to gameView: UIView, with delegate: GameSessionDelegate) {
+		self.gameView = gameView
+		self.delegate = delegate
 	}
 
-	func play(sound: SoundType) {
-		playSound(sound)
-	}
-
-	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
-		isGameStarted = true
-		player.didSwipe(direction)
-		play(sound: .selectItem)
-	}
-
-	func startLevel(_ levelNumber: UInt) {
+	func startLevel(_ levelNumber: UInt = 1) {
 		gameView.alpha = 0
 
 		// setup gameplay varables
-		currentLevel = levelNumber
-		currentTime = Self.MAX_TIME
-		isGameStarted = false
-		isGameOver = false
+		stats.startLevel(levelNumber)
 
 		if levelNumber == 1 {
 			play(sound: .startGame)
-			currentScore = 0
-			currentLives = Self.MAX_LIVES
-			
 			numCol = Self.BASE_MAZE_DIMENSION
 			numRow = Self.BASE_MAZE_DIMENSION
 		} else {
@@ -93,54 +71,37 @@ class GameSession {
 		enemyCollaborator = EnemyCollaborator(gameSession: self)
 
 		// update external delegate
-		delegate?.didUpdateScore(currentScore)
-		delegate?.didUpdateLives(currentLives)
+		delegate?.didUpdate(score: stats.currentScore)
+		delegate?.didUpdate(lives: stats.currentLives)
 
 		UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveEaseOut) {
 			self.gameView.alpha = 1
 		} completion: { _ in
-			self.delegate?.didUpdateLevel(self.currentLevel)
+			self.delegate?.didUpdate(level: self.stats.currentLevel)
 		}
 	}
 
-	func update(_ delta: TimeInterval) {
-		guard !isGameOver else { return }
-
-		updateTime(delta)
-
-		guard isGameStarted else { return }
-
-		enemyCollaborator.update(delta)
-		player.update(delta)
-		mazeView.follow(player)
-
-		playerGoalCollision()
-		playerVsEnemiesCollision()
-		playerWallsCollision()
-		itemsCollisions()
-	}
-	
 	func gameOver() {
-		guard !isGameOver else { return }
+		guard !stats.isGameOver else { return }
 
-		isGameOver = true
+		stats.isGameOver = true
 		play(sound: .gameOver)
 		player.explode {
-			self.delegate?.didGameOver(self)
+			self.delegate?.didGameOver(self, with: self.stats.currentScore)
 		}
 	}
 
 	// MARK: - Private
 
 	private func updateTime(_ delta: TimeInterval) {
-		currentTime = currentTime - delta > 0 ? currentTime - delta : 0
-		delegate?.didUpdateTime(currentTime)
+		stats.currentTime = stats.currentTime - delta > 0 ? stats.currentTime - delta : 0
+		delegate?.didUpdate(time: stats.currentTime)
 
-		if currentTime <= 10 {
+		if stats.currentTime <= 50 {
 			delegate?.didHurryUp()
 		}
 
-		if currentTime <= 0 {
+		if stats.currentTime <= 0 {
 			gameOver()
 		}
 	}
@@ -160,5 +121,46 @@ class GameSession {
 			wall.explode()
 			walls.remove(wall)
 		}
+	}
+}
+
+// MARK: - DisplayLinkDelegate
+
+extension GameSession: DisplayLinkDelegate {
+	func start() {
+
+		if !started {
+			started = true
+			startLevel()
+		}
+
+		items.forEach { $0.restoreAnimations() }
+	}
+
+	func update(delta: TimeInterval) {
+		guard !stats.isGameOver else { return }
+
+		updateTime(delta)
+
+		guard stats.isGameStarted else { return }
+
+		enemyCollaborator.update(delta)
+		player.update(delta)
+		mazeView.follow(player)
+
+		playerGoalCollision()
+		playerVsEnemiesCollision()
+		playerWallsCollision()
+		itemsCollisions()
+	}
+}
+
+// MARK: - GestureRecognizerDelegate
+
+extension GameSession: GestureRecognizerDelegate {
+	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
+		stats.isGameStarted = true
+		player.didSwipe(direction)
+		play(sound: .selectItem)
 	}
 }

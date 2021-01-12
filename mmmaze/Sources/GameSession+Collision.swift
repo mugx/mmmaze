@@ -36,8 +36,8 @@ extension GameSession {
 			return
 		}
 
-		currentScore += 100
-		startLevel(currentLevel + 1)
+		stats.currentScore += 100
+		startLevel(stats.currentLevel + 1)
 	}
 
 	// MARK: - Private
@@ -61,9 +61,9 @@ extension GameSession {
 		play(sound: .hitPlayer)
 
 		enemy.wantSpawn = true
-		currentLives -= 1
-		delegate?.didUpdateLives(currentLives)
-		currentLives > 0 ? respawnPlayer() : gameOver()
+		stats.currentLives -= 1
+		delegate?.didUpdate(lives: stats.currentLives)
+		stats.currentLives > 0 ? respawnPlayer() : gameOver()
 	}
 
 	private func respawnPlayer() {

@@ -25,7 +25,7 @@ enum SoundType: UInt {
 		case hitPlayer
 }
 
-func playSound(_ sound: SoundType) {
+func play(sound: SoundType) {
 	AudioManager.shared.play(sound: sound)
 }
 

@@ -9,18 +9,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
             <connections>
-                <outlet property="currentLevelLabel" destination="U4a-5j-lL8" id="H65-Hs-DRI"/>
-                <outlet property="currentLevelPanel" destination="T9n-IL-8HW" id="ewZ-Kb-wNB"/>
+                <outlet property="currentLevelView" destination="T9n-IL-8HW" id="D01-cJ-0TU"/>
                 <outlet property="currentLivesLabel" destination="KV0-Kr-d01" id="m11-eQ-Igk"/>
-                <outlet property="gameOverPanel" destination="9w3-7q-5iu" id="TLQ-E1-eUt"/>
                 <outlet property="gameOverView" destination="ymd-dG-TYh" id="dvE-2X-wao"/>
                 <outlet property="gameView" destination="d4y-KC-tNG" id="Esu-50-xwX"/>
-                <outlet property="headerView" destination="1KW-Gi-fUg" id="wFA-cA-h5Z"/>
-                <outlet property="highScoreValueLabel_inGameOver" destination="Zdd-tw-BnB" id="dTe-ta-mKX"/>
-                <outlet property="hurryUpLabel" destination="5DU-kK-RYr" id="JEY-mQ-QO8"/>
-                <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="zKB-bV-18l"/>
-                <outlet property="scoreValueLabel_inGameOver" destination="HOG-OG-2dq" id="hGT-dd-PVf"/>
-                <outlet property="timeLabel" destination="u2o-2h-dwV" id="3nl-zu-grV"/>
+                <outlet property="headerView" destination="1KW-Gi-fUg" id="GDh-aA-cQg"/>
+                <outlet property="hurryUpView" destination="5DU-kK-RYr" id="V2r-fS-2Ox"/>
                 <outlet property="view" destination="iN0-l3-epB" id="tHD-d3-Hnh"/>
             </connections>
         </placeholder>
@@ -29,11 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4y-KC-tNG">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4y-KC-tNG" userLabel="Game view">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KW-Gi-fUg" userLabel="header">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KW-Gi-fUg" userLabel="Header view" customClass="HeaderView" customModule="mmmaze" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2o-2h-dwV">
@@ -102,8 +96,12 @@
                             <exclude reference="O3X-sy-UbA"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <outlet property="scoreLabel" destination="fSb-Cf-DVA" id="QHQ-ZC-OTe"/>
+                        <outlet property="timeLabel" destination="u2o-2h-dwV" id="0ye-AK-CGU"/>
+                    </connections>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DU-kK-RYr">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DU-kK-RYr" userLabel="HurryUp view" customClass="HurryUpView" customModule="mmmaze" customModuleProvider="target">
                     <rect key="frame" x="171" y="60" width="72" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -115,7 +113,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <view hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9n-IL-8HW" userLabel="current level panel">
+                <view hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9n-IL-8HW" userLabel="Current level view" customClass="CurrentLevelView" customModule="mmmaze" customModuleProvider="target">
                     <rect key="frame" x="107" y="60" width="200" height="50"/>
                     <subviews>
                         <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U4a-5j-lL8" userLabel="Current Level label">
@@ -138,8 +136,11 @@
                             <integer key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="levelLabel" destination="U4a-5j-lL8" id="Vyv-c0-0Bo"/>
+                    </connections>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VI1-hW-CsO" userLabel="Footer">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VI1-hW-CsO" userLabel="Footer view">
                     <rect key="frame" x="0.0" y="696" width="414" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGV-vI-g6I">
@@ -177,10 +178,10 @@
                         <constraint firstAttribute="height" constant="40" id="iO7-Lw-2qe"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymd-dG-TYh" userLabel="Game over view">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymd-dG-TYh" userLabel="Game over view" customClass="GameOverView" customModule="mmmaze" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9w3-7q-5iu" userLabel="game over">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9w3-7q-5iu" userLabel="game over inner view">
                             <rect key="frame" x="82" y="308" width="250" height="120"/>
                             <subviews>
                                 <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-zn-YNu" userLabel="Game Over label">
@@ -269,7 +270,8 @@
                         <constraint firstItem="9w3-7q-5iu" firstAttribute="centerX" secondItem="ymd-dG-TYh" secondAttribute="centerX" id="fST-sY-cdd"/>
                     </constraints>
                     <connections>
-                        <outletCollection property="gestureRecognizers" destination="ryT-mK-y1L" appends="YES" id="bbb-UY-gay"/>
+                        <outlet property="highScoreValueLabel" destination="Zdd-tw-BnB" id="3Jh-Io-LqR"/>
+                        <outlet property="scoreValueLabel" destination="HOG-OG-2dq" id="AMd-nE-wXG"/>
                     </connections>
                 </view>
             </subviews>
