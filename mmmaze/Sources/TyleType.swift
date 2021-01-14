@@ -29,34 +29,16 @@ enum TyleType: String {
 		var color: UIColor!
 
 		switch self {
-		case .bomb:
+		case .bomb, .hearth:
 			color = .red
 		case .coin:
 			color = .yellow
-		case .enemy:
-			color = .white
-		case .goal_close:
-			color = .white
-		case .goal_open:
-			color = .white
-		case .hearth:
-			color = .red
 		case .key:
 			color = .green
-		case .minion:
-			color = .white
-		case .player_angry:
-			color = .white
-		case .player:
-			color = .white
 		case .time:
 			color = .magenta
-		case .wall:
+		default:
 			color = .white
-		case .whirlwind:
-			color = .white
-		case .none, .start:
-			break
 		}
 
 		return UIImage(named: "\(rawValue)")?.withTintColor(color)
