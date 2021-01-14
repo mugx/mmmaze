@@ -11,12 +11,12 @@ import UIKit
 class Enemy: Tile {
 	var wantSpawn: Bool = false
 	var visible: Bool { alpha == 1 && !isHidden }
-	var path: Path = Path()
+	var path = Path()
 	var timeAccumulator: TimeInterval = 0.0
 	private static let SPEED = 1.5
 
 	init(gameSession: GameSession) {
-		super.init(frame: .zero)
+		super.init(rect: .zero)
 
 		self.gameSession = gameSession
 
@@ -43,7 +43,7 @@ class Enemy: Tile {
 		wantSpawn = false
 
 		let spawnedEnemy = Enemy(gameSession: gameSession!)
-		spawnedEnemy.frame = frame
+		spawnedEnemy.theFrame = theFrame
 		spawnedEnemy.show(after: 0.5)
 		return spawnedEnemy
 	}

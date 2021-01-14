@@ -25,7 +25,7 @@ class EnemyInteractor {
 
 	func collide(with tile: Tile, completion: (Enemy) -> ()){
 		enemies.forEach { enemy in
-			if enemy.visible && enemy.frame.intersects(tile.frame) {
+			if enemy.visible && enemy.theFrame.collides(tile.theFrame) {
 				completion(enemy)
 			}
 		}

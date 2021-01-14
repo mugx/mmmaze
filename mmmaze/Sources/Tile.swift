@@ -18,20 +18,32 @@ class Tile: UIImageView {
 	var gameSession: GameSession?
 	var lastSwipe: UISwipeGestureRecognizer.Direction?
 	var animations: [String: CABasicAnimation] = [:]
-	private var col: Int = 0
-	private var row: Int = 0
 
-	init(type: TyleType = .none, row: Int, col: Int) {
-		super.init(frame: CGRect(row: row, col: col))
+	var theFrame: Frame {
+		get { _frame }
 
+		set {
+			_frame = newValue
+			frame = newValue.rect
+		}
+	}
+	var _frame: Frame = .init(rect: .zero)
+
+	convenience init(type: TyleType = .none, row: Int, col: Int) {
+		let frame = Frame(row: row, col: col)
+
+		self.init(type: type, rect: frame.rect)
+
+		theFrame = frame
 		self.type = type
-		self.col = col
-		self.row = row
 	}
 
-	init(type: TyleType = .none, frame: CGRect = .zero) {
-		super.init(frame: frame)
+	init(type: TyleType = .none, rect: CGRect = .zero) {
+		let frame = Frame(rect: rect)
 
+		super.init(frame: frame.rect)
+
+		theFrame = frame
 		self.type = type
 	}
 
@@ -45,7 +57,7 @@ class Tile: UIImageView {
 	}
 
 	func update(_ delta: TimeInterval) {
-		var frame = self.frame
+		var frame = self.theFrame
 
 		// check vertical collision
 		var frameOnMove = frame.translate(y: velocity.y)
@@ -67,19 +79,19 @@ class Tile: UIImageView {
 			}
 		}
 
-		if self.frame != frame {
-			self.frame = frame
+		if self.theFrame != frame {
+			self.theFrame = frame
 		} else {
 			velocity = .zero
 		}
 	}
 
-	func isWall(at frame: CGRect, direction: UISwipeGestureRecognizer.Direction) -> Bool {
-		let col = Int(round(Double(frame.origin.x) / TILE_SIZE))
-		let row = Int(round(Double(frame.origin.y) / TILE_SIZE))
+	func isWall(at frame: Frame, direction: UISwipeGestureRecognizer.Direction) -> Bool {
+		let col = frame.col
+		let row = frame.row
 		let new_col = direction == .left ? col - 1 : direction == .right ? col + 1 : col
 		let new_row = direction == .up ? row - 1 : direction == .down ? row + 1 : row
-		return gameSession!.checkWallCollision(CGRect(row: new_row, col: new_col))
+		return gameSession!.checkWallCollision(Frame(row: new_row, col: new_col))
 	}
 
 	func spin() {
@@ -101,11 +113,12 @@ class Tile: UIImageView {
 
 		let initialTile_x = Double(Constants.STARTING_CELL.x * CGFloat(TILE_SIZE))
 		let initialTile_y = Double(Constants.STARTING_CELL.y * CGFloat(TILE_SIZE))
-		frame = CGRect(
+		let rect = CGRect(
 			x: initialTile_x + Double(speed) / 2.0,
 			y: initialTile_y + Double(speed) / 2.0,
 			width: TILE_SIZE - Double(speed),
 			height: TILE_SIZE - Double(speed)
 		)
+		theFrame = Frame(rect: rect)
 	}
 }

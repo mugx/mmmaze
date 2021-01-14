@@ -54,7 +54,7 @@ extension GameSession {
 	// MARK: - Private
 
 	private func playerCollision(with item: Tile) {
-		guard item.frame.intersects(player.frame) else { return }
+		guard item.theFrame.collides(player.theFrame) else { return }
 
 		switch item.type {
 		case .coin:

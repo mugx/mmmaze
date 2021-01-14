@@ -13,7 +13,7 @@ class Player: Tile {
 	private static let SPEED = 3.0
 	
 	init(gameSession: GameSession) {
-		super.init(frame: .zero)
+		super.init(rect: .zero)
 
 		self.gameSession = gameSession
 		self.speed = Float(Self.SPEED)

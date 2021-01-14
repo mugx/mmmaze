@@ -116,7 +116,7 @@ class GameSession {
 		guard player.power > 0 else { return }
 
 		for wall in walls {
-			guard wall.isDestroyable, player.frame.isNeighbour(of: wall.frame) else { continue }
+			guard wall.isDestroyable, player.theFrame.isNeighbour(of: wall.theFrame) else { continue }
 
 			wall.explode()
 			walls.remove(wall)

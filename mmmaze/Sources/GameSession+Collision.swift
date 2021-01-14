@@ -9,8 +9,8 @@
 import UIKit
 
 extension GameSession {
-	func checkWallCollision(_ frame: CGRect) -> Bool {
-		return walls.contains { $0.frame.intersects(frame) }
+	func checkWallCollision(_ frame: Frame) -> Bool {
+		return walls.contains { $0.theFrame.collides(frame) }
 	}
 
 	func playerVsEnemiesCollision() {
@@ -32,7 +32,7 @@ extension GameSession {
 	func playerGoalCollision() {
 		guard
 			mazeGoalTile.type == TyleType.goal_open &&
-				player.frame.intersects(mazeGoalTile.frame) else {
+				player.theFrame.collides(mazeGoalTile.theFrame) else {
 			return
 		}
 

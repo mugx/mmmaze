@@ -13,7 +13,7 @@ extension Enemy {
 		guard timeAccumulator > 1.0 || path.isEmpty else { return }
 		timeAccumulator = 0
 
-		let target = gameSession!.player.frame
+		let target = gameSession!.player.theFrame
 		let newPath = search(target)
 
 		if path.steps.isEmpty || !path.hasSameTarget(of: newPath) || newPath.steps.count < path.steps.count {
@@ -21,14 +21,9 @@ extension Enemy {
 		}
 	}
 
-	func search(_ target: CGRect) -> Path {
-		let originalFrame = CGRect(
-			x: round(Double(Float(frame.origin.x) / Float(TILE_SIZE))) * TILE_SIZE,
-			y: round(Double(Float(frame.origin.y) / Float(TILE_SIZE))) * TILE_SIZE,
-			width: TILE_SIZE,
-			height: TILE_SIZE
-		)
-		let path = Path(origin: originalFrame, target: target)
+	func search(_ target: Frame) -> Path {
+		let startingFrame = theFrame.tiled()
+		let path = Path(origin: startingFrame, target: target)
 		let currentSpeed = CGFloat(TILE_SIZE)
 		var targetFound = false
 
@@ -36,8 +31,8 @@ extension Enemy {
 			targetFound = path.collides(target)
 
 			if targetFound,
-				 let index = path.steps.map({$0.frame}).firstIndex(of: originalFrame),
-				 !path.steps[index].frame.intersects(target) {
+				 let index = path.steps.map({$0.frame}).firstIndex(of: startingFrame),
+				 !path.steps[index].frame.collides(target) {
 				path.steps.remove(at: index)
 				path.cleanupVisited()
 				break
@@ -48,8 +43,9 @@ extension Enemy {
 			let leftFrame = path.currentFrame.translate(x: -currentSpeed)
 			let rightFrame = path.currentFrame.translate(x: currentSpeed)
 
-			var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
-			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.up) && !path.collides(upFrame) {
+			var possibleDirections = [(UISwipeGestureRecognizer.Direction, Frame)]()
+			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.up) &&
+					!path.collides(upFrame) {
 				possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
 			}
 
@@ -75,9 +71,9 @@ extension Enemy {
 		return path
 	}
 
-	func getBestDirection(_ directions: [(UISwipeGestureRecognizer.Direction, CGRect)], targetFrame: CGRect) -> (UISwipeGestureRecognizer.Direction, CGRect) {
+	func getBestDirection(_ directions: [(UISwipeGestureRecognizer.Direction, Frame)], targetFrame: Frame) -> (UISwipeGestureRecognizer.Direction, Frame) {
 		var shortestDistance = CGFloat(Float.greatestFiniteMagnitude)
-		var bestDirection: (UISwipeGestureRecognizer.Direction, CGRect)!
+		var bestDirection: (UISwipeGestureRecognizer.Direction, Frame)!
 
 		for direction in directions {
 			let distance = direction.1.distance(to: targetFrame)
@@ -92,12 +88,12 @@ extension Enemy {
 
 	func decideNextMove(_ delta: TimeInterval) {
 		let speed = CGFloat(self.speed)
-		let upFrame = frame.translate(y: -speed)
-		let downFrame = frame.translate(y: speed)
-		let leftFrame = frame.translate(x: -speed)
-		let rightFrame = frame.translate(x: speed)
+		let upFrame = theFrame.translate(y: -speed)
+		let downFrame = theFrame.translate(y: speed)
+		let leftFrame = theFrame.translate(x: -speed)
+		let rightFrame = theFrame.translate(x: speed)
 		
-		var possibleDirections = [(UISwipeGestureRecognizer.Direction, CGRect)]()
+		var possibleDirections = [(UISwipeGestureRecognizer.Direction, Frame)]()
 		if !gameSession!.checkWallCollision(upFrame) {
 			possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
 		}
@@ -114,7 +110,7 @@ extension Enemy {
 			possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
 		}
 
-		let nextFrame = path.nextFrameToFollow(from: frame)
+		let nextFrame = path.nextFrameToFollow(from: theFrame)
 		let bestDirection = getBestDirection(possibleDirections, targetFrame: nextFrame)
 		didSwipe(bestDirection.0)
 	}

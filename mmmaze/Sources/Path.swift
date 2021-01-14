@@ -10,30 +10,30 @@ import UIKit
 
 class Path {
 	struct Step {
-		let frame: CGRect
+		let frame: Frame
 		var visited: Bool
 	}
 
 	var steps: [Step] = []
 	var isEmpty: Bool { steps.isEmpty }
 	var count: Int { steps.count }
-	var target: CGRect
-	var currentFrame: CGRect
+	var target: Frame
+	var currentFrame: Frame
 
-	init(origin: CGRect = .zero, target: CGRect = .zero) {
+	init(origin: Frame = .zero, target: Frame = .zero) {
 		steps = [Step(frame: origin, visited: false)]
 		self.currentFrame = origin
 		self.target = target
 	}
 
-	func addStep(_ frame: CGRect) {
+	func addStep(_ frame: Frame) {
 		steps.append(Step(frame: frame, visited: false))
 		currentFrame = frame
 	}
 
-	func collides(_ frame: CGRect) -> Bool {
+	func collides(_ frame: Frame) -> Bool {
 		return steps.contains { (step) -> Bool in
-			step.frame.intersects(frame)
+			step.frame.collides(frame)
 		}
 	}
 
@@ -41,9 +41,9 @@ class Path {
 		steps = steps.filter { !$0.visited }
 	}
 
-	func nextFrameToFollow(from frame: CGRect) -> CGRect {
-		var nextFrame = steps.first?.frame ?? CGRect.zero
-		if nextFrame.intersects(frame) {
+	func nextFrameToFollow(from frame: Frame) -> Frame {
+		var nextFrame = steps.first?.frame ?? Frame.zero
+		if nextFrame.collides(frame) {
 			steps.removeFirst()
 			nextFrame = steps.first?.frame ?? target
 		}
@@ -51,7 +51,7 @@ class Path {
 	}
 
 	func backtrack() {
-		if let index = steps.firstIndex(where: { $0.frame.intersects(currentFrame) }) {
+		if let index = steps.firstIndex(where: { $0.frame.collides(currentFrame) }) {
 			if index > 0 {
 				steps[index].visited = true
 				currentFrame = steps[index - 1].frame
@@ -66,6 +66,6 @@ class Path {
 	}
 
 	func hasSameTarget(of other: Path) -> Bool {
-		return target.intersects(other.target)
+		return target.collides(other.target)
 	}
 }
