@@ -27,24 +27,24 @@ class MenuViewController: UIViewController {
 	@IBAction func newGameTouched() {
 		play(sound: .selectItem)
 		if AppDelegate.shared.gameVc == nil {
-			AppDelegate.shared.selectScreen(ScreenType.STTutorial)
+			AppDelegate.shared.selectScreen(.tutorial)
 		} else {
-			AppDelegate.shared.selectScreen(ScreenType.STResumeGame)
+			AppDelegate.shared.selectScreen(.resumeGame)
 		}
 	}
 
 	@IBAction func highScoresTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(ScreenType.STHighScores)
+		AppDelegate.shared.selectScreen(.highScores)
 	}
 
 	@IBAction func settingsTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(ScreenType.STSettings)
+		AppDelegate.shared.selectScreen(.settings)
 	}
 
 	@IBAction func aboutTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(ScreenType.STCredits)
+		AppDelegate.shared.selectScreen(.credits)
 	}
 }

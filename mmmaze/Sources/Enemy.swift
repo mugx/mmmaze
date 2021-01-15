@@ -16,7 +16,7 @@ class Enemy: Tile {
 	private static let SPEED = 1.5
 
 	init(gameSession: GameSession) {
-		super.init(rect: .zero)
+		super.init(type: .enemy, rect: .zero)
 
 		self.gameSession = gameSession
 
@@ -34,8 +34,6 @@ class Enemy: Tile {
 		UIView.animate(withDuration: 0.5, delay: time) {
 			self.isHidden = false
 			self.alpha = 1.0
-		} completion: { _ in
-			self.speed = Float(self.speed)
 		}
 	}
 	
@@ -93,8 +91,8 @@ class Enemy: Tile {
 	}
 
 	private func setupAnimations() {
-		animationDuration = Double.random(in: 0.3 ... 0.6)
-		animationImages = TyleType.enemy.image?.sprites(with: TILE_SIZE)
+		animationDuration = 0.4
+		animationImages = type.images
 		startAnimating()
 	}
 }

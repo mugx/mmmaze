@@ -18,8 +18,8 @@ extension GameSession {
 		walls = []
 
 		// generating the maze 
-		let startRow = Int(Constants.STARTING_CELL.x)
-		let startCol = Int(Constants.STARTING_CELL.y)
+		let startRow = Constants.STARTING_CELL.x
+		let startCol = Constants.STARTING_CELL.y
 		let maze = MazeGenerator.calculateMaze(startRow: startRow, startCol: startCol, rows: numRow, cols: numCol)
 
 		for row in 0 ..< numRow {
@@ -44,7 +44,7 @@ extension GameSession {
 
 	private func makeWall(for maze: Maze, row: Int, col: Int) {
 		let tile = Tile(type: .wall, row: row, col: col)
-		tile.image = TyleType.wall.image
+		tile.image = TileType.wall.image
 		tile.isDestroyable = !(row == 0 || col == 0 || row == self.numRow - 1 || col == self.numCol - 1)
 		mazeView.addSubview(tile)
 		walls.insert(tile)
@@ -58,7 +58,7 @@ extension GameSession {
 
 	private func makeGoal(for maze: Maze, row: Int, col: Int) {
 		let tile = Tile(type: .goal_close, row: row, col: col)
-		tile.image = TyleType.goal_close.image
+		tile.image = TileType.goal_close.image
 		mazeGoalTile = tile
 		mazeView.addSubview(tile)
 		items.insert(tile)
@@ -67,7 +67,7 @@ extension GameSession {
 	private func makeKey(for maze: Maze) {
 		let tile = maze.randFreeTile()
 		tile.type = .key
-		tile.image = TyleType.key.image
+		tile.image = TileType.key.image
 		mazeView.addSubview(tile)
 		items.insert(tile)
 		maze.freeTiles.removeAll()

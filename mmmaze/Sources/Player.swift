@@ -9,14 +9,35 @@
 import UIKit
 
 class Player: Tile {
-	open override var power: UInt { didSet { setupAnimations() } }
+	enum State {
+		case normal
+		case angry
+
+		var color: UIColor {
+			self == .normal ? .white : .red
+		}
+	}
+
+	open override var power: UInt {
+		didSet {
+			state = power > 0 ? .angry : .normal
+		}
+	}
+
+	var state: State = .normal {
+		didSet {
+			setupAnimations()
+		}
+	}
+
 	private static let SPEED = 3.0
-	
+
 	init(gameSession: GameSession) {
-		super.init(rect: .zero)
+		super.init(type: .player, rect: .zero)
 
 		self.gameSession = gameSession
 		self.speed = Float(Self.SPEED)
+		self.state = .normal
 
 		setupAnimations()
 		respawnAtInitialFrame()
@@ -46,8 +67,8 @@ class Player: Tile {
 	// MARK: - Private
 
 	private func setupAnimations() {
+		animationImages = type.image?.sprites(color: state.color)
 		animationDuration = 0.4
-		animationImages = (power > 0 ? TyleType.player_angry.image : TyleType.player.image)?.sprites(with: TILE_SIZE)
 		startAnimating()
 	}
 }

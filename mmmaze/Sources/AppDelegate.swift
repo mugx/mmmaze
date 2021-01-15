@@ -8,6 +8,16 @@
 
 import UIKit
 
+enum ScreenType {
+	case menu
+	case tutorial
+	case newGame
+	case resumeGame
+	case settings
+	case highScores
+	case credits
+}
+
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
 	static var shared: AppDelegate! { return (UIApplication.shared.delegate as! AppDelegate) }
 	var window: UIWindow?
@@ -23,21 +33,21 @@ import UIKit
 	// MARK: - Select Screen
 
 	func selectScreen(_ screenType:ScreenType ) {
-		switch (screenType) {
-		case .STMenu:
+		switch screenType {
+		case .menu:
 			transitionTo(viewController: MenuViewController())
-		case .STTutorial:
+		case .tutorial:
 			transitionTo(viewController: TutorialViewController())
-		case .STNewGame:
+		case .newGame:
 			gameVc = GameViewController()
 			transitionTo(viewController: gameVc!)
-		case .STResumeGame:
+		case .resumeGame:
 			transitionTo(viewController: gameVc!)
-		case .STHighScores:
+		case .highScores:
 			transitionTo(viewController: BestScoresViewController())
-		case .STSettings:
+		case .settings:
 			transitionTo(viewController: SettingsViewController())
-		case .STCredits:
+		case .credits:
 			transitionTo(viewController: CreditsViewController())
 		}
 	}

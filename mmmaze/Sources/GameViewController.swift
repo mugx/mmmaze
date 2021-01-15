@@ -33,7 +33,7 @@ class GameViewController: UIViewController {
 
 	@IBAction func pauseAction() {
 		displayLink.stop()
-		AppDelegate.shared.selectScreen(ScreenType.STMenu)
+		AppDelegate.shared.selectScreen(.menu)
 	}
 
 	// MARK: - Private

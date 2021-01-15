@@ -24,7 +24,7 @@ extension Enemy {
 	func search(_ target: Frame) -> Path {
 		let startingFrame = theFrame.tiled()
 		let path = Path(origin: startingFrame, target: target)
-		let currentSpeed = CGFloat(TILE_SIZE)
+		let currentSpeed = CGFloat(Frame.SIZE)
 		var targetFound = false
 
 		while !targetFound {

@@ -97,7 +97,7 @@ class GameSession {
 		stats.currentTime = stats.currentTime - delta > 0 ? stats.currentTime - delta : 0
 		delegate?.didUpdate(time: stats.currentTime)
 
-		if stats.currentTime <= 50 {
+		if stats.currentTime <= 10 {
 			delegate?.didHurryUp()
 		}
 

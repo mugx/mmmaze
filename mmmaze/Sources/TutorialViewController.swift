@@ -20,19 +20,19 @@ class TutorialViewController: UIViewController {
 		super.viewDidLoad()
 
 		// enemyImage stuff
-		enemyImage.animationImages = TyleType.enemy.image?.sprites(with: TILE_SIZE)
+		enemyImage.animationImages = TileType.enemy.images
 		enemyImage.animationDuration = 0.4
 		enemyImage.animationRepeatCount = 0
 		enemyImage.startAnimating()
 
 		// playerImage stuff
-		playerImage.animationImages = TyleType.player.image?.sprites(with: TILE_SIZE)
+		playerImage.animationImages = TileType.player.images
 		playerImage.animationDuration = 0.4
 		playerImage.animationRepeatCount = 0
 		playerImage.startAnimating()
 
 		// goalImage stuff
-		goalImage.animationImages = [TyleType.goal_close.image!, TyleType.goal_open.image!]
+		goalImage.animationImages = [TileType.goal_close.image!, TileType.goal_open.image!]
 		goalImage.animationDuration = 0.4
 		goalImage.animationRepeatCount = 0
 		goalImage.startAnimating()
@@ -66,6 +66,6 @@ class TutorialViewController: UIViewController {
 	// MARK: - Actions
 
 	@IBAction func newGame() {
-		AppDelegate.shared.selectScreen(.STNewGame)
+		AppDelegate.shared.selectScreen(.newGame)
 	}
 }

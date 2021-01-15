@@ -78,6 +78,6 @@ class SettingsViewController: UIViewController {
 
 	@IBAction func backTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(ScreenType.STMenu)
+		AppDelegate.shared.selectScreen(.menu)
 	}
 }

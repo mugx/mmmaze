@@ -17,23 +17,16 @@ extension GameSession {
 
 		switch Int.random(in: 0 ..< 100) {
 		case 99 ... 100:
-			item.type = TyleType.hearth
-			item.image = TyleType.hearth.image
+			item.type = .hearth
 		case 98 ... 100:
-			item.type = TyleType.time
-			item.animationImages = TyleType.time.image?.sprites(with: TILE_SIZE)
-			item.animationDuration = 1
-			item.startAnimating()
+			item.type = .time
 		case 90 ... 100:
-			item.type = TyleType.whirlwind
-			item.image = TyleType.whirlwind.image
+			item.type = .whirlwind
 			item.spin()
 		case 85 ... 100:
-			item.type = TyleType.bomb
-			item.image = TyleType.bomb.image
+			item.type = .bomb
 		case 50 ... 100:
-			item.type = TyleType.coin
-			item.image = TyleType.coin.image
+			item.type = .coin
 			item.spin()
 		default:
 			maze.markFree(item)
@@ -79,7 +72,7 @@ extension GameSession {
 
 
 	private func enemyCollision(with item: Tile) {
-		guard !item.isHidden, item.type == TyleType.bomb else { return }
+		guard !item.isHidden, item.type == TileType.bomb else { return }
 
 		enemyInteractor.collide(with: item) { enemy in
 			play(sound: .enemySpawn)
@@ -117,8 +110,8 @@ extension GameSession {
 
 	private func hitKey() {
 		play(sound: .hitHearth)
-		mazeGoalTile.type = TyleType.goal_open
-		mazeGoalTile.image = TyleType.goal_open.image
+		mazeGoalTile.type = TileType.goal_open
+		mazeGoalTile.image = TileType.goal_open.image
 		walls.remove(mazeGoalTile)
 	}
 

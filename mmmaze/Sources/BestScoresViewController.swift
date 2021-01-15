@@ -14,7 +14,7 @@ class BestScoresViewController: UIViewController {
 
 	@IBAction func backTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(.STMenu)
+		AppDelegate.shared.selectScreen(.menu)
 	}
 }
 

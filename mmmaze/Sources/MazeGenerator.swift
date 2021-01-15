@@ -12,7 +12,7 @@ class MazeGenerator {
 	static func calculateMaze(startRow: Int, startCol: Int, rows: Int, cols: Int) -> Maze {
 		let maze = Maze(rows: rows, columns: cols)
 		let startTile = MazeTile(row: startRow, col: startCol, steps: 0)
-		maze[startRow, startCol] = MazeTyleType.start
+		maze[startRow, startCol] = MazeTileType.start
 
 		var visitedTiles = [MazeTile]()
 		var currentPath = [startTile]
