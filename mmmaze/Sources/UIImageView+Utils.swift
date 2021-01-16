@@ -12,6 +12,13 @@ extension UIImageView {
 	static let ANIM_DURATION = 1.0
 	static let SUB_TILE_DIVIDER_SIZE: CGFloat = 5.0
 
+	func set(images: [UIImage]) {
+		animationImages = images
+		animationDuration = 0.4
+		animationRepeatCount = 0
+		startAnimating()
+	}
+
 	func blink(_ duration: CFTimeInterval, completion: @escaping ()->()) {
 		let repeatCount: Float = 10
 		let flash = CABasicAnimation(keyPath: "opacity")

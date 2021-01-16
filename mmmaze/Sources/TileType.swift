@@ -28,8 +28,8 @@ enum TileType: String {
 		UIImage(named: rawValue)?.withTintColor(color)
 	}
 
-	var images: [UIImage]? {
-		image?.sprites(color: color)
+	var images: [UIImage] {
+		image?.sprites(color: color) ?? []
 	}
 
 	// MARK: - Private

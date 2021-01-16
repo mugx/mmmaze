@@ -22,6 +22,7 @@ class Enemy: Tile {
 
 		assignSpeed()
 		respawnAtInitialFrame()
+		set(images: type.images)
 	}
 
 	required init?(coder: NSCoder) {
@@ -59,7 +60,6 @@ class Enemy: Tile {
 		isHidden = true
 		alpha = 0.0
 
-		setupAnimations()
 		super.respawnAtInitialFrame()
 	}
 
@@ -86,11 +86,5 @@ class Enemy: Tile {
 		if speed > gameSession!.player.speed {
 			speed = gameSession!.player.speed - 0.2
 		}
-	}
-
-	private func setupAnimations() {
-		animationDuration = 0.4
-		animationImages = type.images
-		startAnimating()
 	}
 }

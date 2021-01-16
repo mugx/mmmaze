@@ -19,36 +19,12 @@ class TutorialViewController: BaseViewController {
 	override open func viewDidLoad() {
 		super.viewDidLoad()
 
-		// enemyImage stuff
-		enemyImage.animationImages = TileType.enemy.images
-		enemyImage.animationDuration = 0.4
-		enemyImage.animationRepeatCount = 0
-		enemyImage.startAnimating()
+		enemyImage.set(images: TileType.enemy.images)
+		playerImage.set(images: TileType.player.images)
+		goalImage.set(images: [TileType.goal_close.image!, TileType.goal_open.image!])
 
-		// playerImage stuff
-		playerImage.animationImages = TileType.player.images
-		playerImage.animationDuration = 0.4
-		playerImage.animationRepeatCount = 0
-		playerImage.startAnimating()
-
-		// goalImage stuff
-		goalImage.animationImages = [TileType.goal_close.image!, TileType.goal_open.image!]
-		goalImage.animationDuration = 0.4
-		goalImage.animationRepeatCount = 0
-		goalImage.startAnimating()
-
-		// arrows stuff
-		firstArrow.image = firstArrow.image?.withRenderingMode(.alwaysTemplate)
-		firstArrow.tintColor = .cyan
 		firstArrow.flash()
-
-		secondArrow.image = secondArrow.image?.withRenderingMode(.alwaysTemplate)
-		secondArrow.tintColor = .cyan
 		secondArrow.flash()
-	}
-
-	override open func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
 		hurryupLabel.flash()
 	}
 

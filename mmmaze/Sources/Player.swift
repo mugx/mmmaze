@@ -26,7 +26,7 @@ class Player: Tile {
 
 	var state: State = .normal {
 		didSet {
-			setupAnimations()
+			refresh()
 		}
 	}
 
@@ -39,8 +39,8 @@ class Player: Tile {
 		self.speed = Float(Self.SPEED)
 		self.state = .normal
 
-		setupAnimations()
 		respawnAtInitialFrame()
+		refresh()
 	}
 
 	required init?(coder: NSCoder) {
@@ -64,9 +64,7 @@ class Player: Tile {
 
 	// MARK: - Private
 
-	private func setupAnimations() {
-		animationImages = type.image?.sprites(color: state.color)
-		animationDuration = 0.4
-		startAnimating()
+	private func refresh() {
+		set(images: type.image?.sprites(color: state.color) ?? [])
 	}
 }
