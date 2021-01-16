@@ -158,7 +158,7 @@ extension GameSession: DisplayLinkDelegate {
 // MARK: - GestureRecognizerDelegate
 
 extension GameSession: GestureRecognizerDelegate {
-	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
+	func didSwipe(_ direction: Direction) {
 		stats.isGameStarted = true
 		player.didSwipe(direction)
 		play(sound: .selectItem)

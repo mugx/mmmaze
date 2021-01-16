@@ -43,22 +43,21 @@ extension Enemy {
 			let leftFrame = path.currentFrame.translate(x: -currentSpeed)
 			let rightFrame = path.currentFrame.translate(x: currentSpeed)
 
-			var possibleDirections = [(UISwipeGestureRecognizer.Direction, Frame)]()
-			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.up) &&
-					!path.collides(upFrame) {
-				possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
+			var possibleDirections = [(Direction, Frame)]()
+			if !isWall(at: path.currentFrame, direction: Direction.up) && !path.collides(upFrame) {
+				possibleDirections.append((Direction.up, upFrame))
 			}
 
-			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.down) && !path.collides(downFrame) {
-				possibleDirections.append((UISwipeGestureRecognizer.Direction.down, downFrame))
+			if !isWall(at: path.currentFrame, direction: Direction.down) && !path.collides(downFrame) {
+				possibleDirections.append((Direction.down, downFrame))
 			}
 
-			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.left) && !path.collides(leftFrame) {
-				possibleDirections.append((UISwipeGestureRecognizer.Direction.left, leftFrame))
+			if !isWall(at: path.currentFrame, direction: Direction.left) && !path.collides(leftFrame) {
+				possibleDirections.append((Direction.left, leftFrame))
 			}
 
-			if !isWall(at: path.currentFrame, direction: UISwipeGestureRecognizer.Direction.right) && !path.collides(rightFrame) {
-				possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
+			if !isWall(at: path.currentFrame, direction: Direction.right) && !path.collides(rightFrame) {
+				possibleDirections.append((Direction.right, rightFrame))
 			}
 
 			if !possibleDirections.isEmpty {
@@ -71,9 +70,9 @@ extension Enemy {
 		return path
 	}
 
-	func getBestDirection(_ directions: [(UISwipeGestureRecognizer.Direction, Frame)], targetFrame: Frame) -> (UISwipeGestureRecognizer.Direction, Frame) {
+	func getBestDirection(_ directions: [(Direction, Frame)], targetFrame: Frame) -> (Direction, Frame) {
 		var shortestDistance = CGFloat(Float.greatestFiniteMagnitude)
-		var bestDirection: (UISwipeGestureRecognizer.Direction, Frame)!
+		var bestDirection: (Direction, Frame)!
 
 		for direction in directions {
 			let distance = direction.1.distance(to: targetFrame)
@@ -93,21 +92,21 @@ extension Enemy {
 		let leftFrame = theFrame.translate(x: -speed)
 		let rightFrame = theFrame.translate(x: speed)
 		
-		var possibleDirections = [(UISwipeGestureRecognizer.Direction, Frame)]()
+		var possibleDirections = [(Direction, Frame)]()
 		if !gameSession!.checkWallCollision(upFrame) {
-			possibleDirections.append((UISwipeGestureRecognizer.Direction.up, upFrame))
+			possibleDirections.append((Direction.up, upFrame))
 		}
 
 		if !gameSession!.checkWallCollision(downFrame) {
-			possibleDirections.append((UISwipeGestureRecognizer.Direction.down, downFrame))
+			possibleDirections.append((Direction.down, downFrame))
 		}
 
 		if !gameSession!.checkWallCollision(leftFrame) {
-			possibleDirections.append((UISwipeGestureRecognizer.Direction.left, leftFrame))
+			possibleDirections.append((Direction.left, leftFrame))
 		}
 
 		if !gameSession!.checkWallCollision(rightFrame) {
-			possibleDirections.append((UISwipeGestureRecognizer.Direction.right, rightFrame))
+			possibleDirections.append((Direction.right, rightFrame))
 		}
 
 		let nextFrame = path.nextFrameToFollow(from: theFrame)

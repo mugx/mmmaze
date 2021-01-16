@@ -82,9 +82,9 @@
 		1DA4C75A259BA29800E4DE1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C759259BA29800E4DE1E /* README.md */; };
 		1DB7746B25AD832400FC1A26 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB7746A25AD832400FC1A26 /* DisplayLink.swift */; };
 		1DB7746D25AD88DE00FC1A26 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB7746C25AD88DE00FC1A26 /* GameOverView.swift */; };
+		1DCF94AF25B3688C00AF2CB5 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94AE25B3688C00AF2CB5 /* Direction.swift */; };
 		1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262EC25A0A60200BAC78A /* VersionLabel.swift */; };
 		1DEC3DEB25A0FF8B000A863D /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC3DEA25A0FF8B000A863D /* TileType.swift */; };
-		1DEC3DED25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -178,9 +178,9 @@
 		1DA4C759259BA29800E4DE1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DB7746A25AD832400FC1A26 /* DisplayLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayLink.swift; path = mmmaze/Sources/DisplayLink.swift; sourceTree = "<group>"; };
 		1DB7746C25AD88DE00FC1A26 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverView.swift; path = mmmaze/Sources/GameOverView.swift; sourceTree = "<group>"; };
+		1DCF94AE25B3688C00AF2CB5 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Direction.swift; path = mmmaze/Sources/Direction.swift; sourceTree = "<group>"; };
 		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VersionLabel.swift; path = mmmaze/Sources/VersionLabel.swift; sourceTree = "<group>"; };
 		1DEC3DEA25A0FF8B000A863D /* TileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TileType.swift; path = mmmaze/Sources/TileType.swift; sourceTree = "<group>"; };
-		1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UISwipeGestureRecognizer+Utils.swift"; path = "mmmaze/Sources/UISwipeGestureRecognizer+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +200,7 @@
 				1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */,
 				1D0BCB91259A21050035BAA8 /* Screens */,
 				1D9ADB46259B1743003CC8C2 /* Maze */,
+				1DCF94B025B3741600AF2CB5 /* Models */,
 				1D9D51DB25AAE7B3000B3216 /* Toolkit */,
 				1D0BCBCB259A25330035BAA8 /* Utils */,
 			);
@@ -266,7 +267,6 @@
 				1DA4C74D259BA1B200E4DE1E /* UIImage+Utils.swift */,
 				1DA4C74F259BA1B200E4DE1E /* UIImageView+Utils.swift */,
 				1D184C66259E9CC5007DECA0 /* CABasicAnimation+Utils.swift */,
-				1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -448,6 +448,14 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
+		1DCF94B025B3741600AF2CB5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1DCF94AE25B3688C00AF2CB5 /* Direction.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		1DE262EB25A0A5EE00BAC78A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,7 +599,6 @@
 				1D3CD31325AE21D300F59B8A /* GestureRecognizer.swift in Sources */,
 				1D184C58259E9C87007DECA0 /* GameSession+Items.swift in Sources */,
 				1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */,
-				1DEC3DED25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift in Sources */,
 				1DA4C746259BA14200E4DE1E /* String+Utils.swift in Sources */,
 				1D9D51DD25AAE7CE000B3216 /* Frame.swift in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
@@ -609,6 +616,7 @@
 				1DB7746B25AD832400FC1A26 /* DisplayLink.swift in Sources */,
 				1D3CD31925AE2B7300F59B8A /* HeaderView.swift in Sources */,
 				1D9D51DF25AB7983000B3216 /* GameSession+Collision.swift in Sources */,
+				1DCF94AF25B3688C00AF2CB5 /* Direction.swift in Sources */,
 				1DA4C754259BA1B200E4DE1E /* UIImage+Utils.swift in Sources */,
 				1DA4C742259BA11700E4DE1E /* AudioManager.swift in Sources */,
 				1D184C69259E9CD8007DECA0 /* Player.swift in Sources */,

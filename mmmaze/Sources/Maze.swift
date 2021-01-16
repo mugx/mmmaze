@@ -29,7 +29,7 @@ class Maze {
 	init(rows: Int, columns: Int) {
 		self.rows = rows
 		self.columns = columns
-		grid = Array(repeating: MazeTileType.wall, count: rows * columns)
+		grid = Array(repeating: .wall, count: rows * columns)
 	}
 
 	subscript(row: Int, column: Int) -> MazeTileType {

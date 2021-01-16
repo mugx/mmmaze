@@ -20,44 +20,42 @@ class MazeGenerator {
 		var currentCol = startCol
 
 		while !currentPath.isEmpty {
-			var possibleDirections = [String]()
+			var possibleDirections = [Direction]()
 			if (currentRow - 2 >= 0) && maze[currentRow - 2, currentCol] == .wall {
-				possibleDirections.append("n")
+				possibleDirections.append(Direction.up)
 			}
 
 			if (currentRow + 2 < rows) && maze[currentRow + 2, currentCol] == .wall {
-				possibleDirections.append("s")
+				possibleDirections.append(Direction.down)
 			}
 
 			if (currentCol + 2 < cols) && maze[currentRow, currentCol + 2] == .wall {
-				possibleDirections.append("e")
+				possibleDirections.append(Direction.right)
 			}
 
 			if (currentCol - 2 >= 0) && maze[currentRow, currentCol - 2] == .wall {
-				possibleDirections.append("w")
+				possibleDirections.append(Direction.left)
 			}
 
 			if !possibleDirections.isEmpty {  // forward
 				let dir = possibleDirections[Int(arc4random()) % possibleDirections.count]
 				switch dir {
-				case "n":
+				case .up:
 					maze[currentRow - 2, currentCol] = .path
 					maze[currentRow - 1, currentCol] = .path
 					currentRow -= 2
-				case "s":
+				case .down:
 					maze[currentRow + 2, currentCol] = .path
 					maze[currentRow + 1, currentCol] = .path
 					currentRow += 2
-				case "w":
+				case .left:
 					maze[currentRow, currentCol - 2] = .path
 					maze[currentRow, currentCol - 1] = .path
 					currentCol -= 2
-				case "e":
+				case .right:
 					maze[currentRow, currentCol + 2] = .path
 					maze[currentRow, currentCol + 1] = .path
 					currentCol += 2
-				default:
-					break
 				}
 
 				let tile = MazeTile(row: currentRow, col: currentCol, steps: currentPath.count * 2)

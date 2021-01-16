@@ -47,8 +47,8 @@ class Player: Tile {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
-		lastSwipe = direction
+	override func didSwipe(_ direction: Direction) {
+		lastDirection = direction
 
 		switch direction {
 		case .right:
@@ -59,8 +59,6 @@ class Player: Tile {
 			velocity = CGPoint(x: velocity.x, y: CGFloat(-speed))
 		case .down:
 			velocity = CGPoint(x: velocity.x, y: CGFloat(speed))
-		default:
-			break
 		}
 	}
 

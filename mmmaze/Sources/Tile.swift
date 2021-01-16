@@ -16,7 +16,7 @@ class Tile: UIImageView {
 	var isBlinking: Bool = false
 	var power: UInt = 0
 	var gameSession: GameSession?
-	var lastSwipe: UISwipeGestureRecognizer.Direction?
+	var lastDirection: Direction?
 	var animations: [String: CABasicAnimation] = [:]
 
 	var theFrame: Frame {
@@ -47,7 +47,7 @@ class Tile: UIImageView {
 
 	// MARK: - Public
 
-	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction) {
+	func didSwipe(_ direction: Direction) {
 	}
 
 	func update(_ delta: TimeInterval) {
@@ -58,7 +58,7 @@ class Tile: UIImageView {
 		if !gameSession!.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
-			if velocity.x != 0 && lastSwipe?.isVertical ?? false {
+			if velocity.x != 0 && lastDirection?.isVertical ?? false {
 				velocity = CGPoint(x: 0, y: velocity.y)
 			}
 		}
@@ -68,7 +68,7 @@ class Tile: UIImageView {
 		if !gameSession!.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
-			if velocity.y != 0 && lastSwipe?.isHorizontal ?? false {
+			if velocity.y != 0 && lastDirection?.isHorizontal ?? false {
 				velocity = CGPoint(x: velocity.x, y: 0)
 			}
 		}
@@ -80,7 +80,7 @@ class Tile: UIImageView {
 		}
 	}
 
-	func isWall(at frame: Frame, direction: UISwipeGestureRecognizer.Direction) -> Bool {
+	func isWall(at frame: Frame, direction: Direction) -> Bool {
 		let col = frame.col
 		let row = frame.row
 		let new_col = direction == .left ? col - 1 : direction == .right ? col + 1 : col

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol GestureRecognizerDelegate {
-	func didSwipe(_ direction: UISwipeGestureRecognizer.Direction)
+	func didSwipe(_ direction: Direction)
 }
 
 class GestureRecognizer: NSObject {
@@ -36,6 +36,10 @@ class GestureRecognizer: NSObject {
 	}
 
 	@objc func didSwipe(sender: UISwipeGestureRecognizer) {
-		delegate?.didSwipe(sender.direction)
+		guard let direction = Direction(sender.direction) else {
+			return
+		}
+
+		delegate?.didSwipe(direction)
 	}
 }
