@@ -9,7 +9,7 @@
 import UIKit
 
 class Tile: UIImageView {
-	var type: TyleType = .none
+	var type: TileType { didSet { image = type.image } }
 	var velocity: CGPoint = .zero
 	var speed: Float = 0
 	var isDestroyable: Bool = false
@@ -29,22 +29,16 @@ class Tile: UIImageView {
 	}
 	var _frame: Frame = .init(rect: .zero)
 
-	convenience init(type: TyleType = .none, row: Int, col: Int) {
-		let frame = Frame(row: row, col: col)
-
-		self.init(type: type, rect: frame.rect)
-
-		theFrame = frame
-		self.type = type
+	convenience init(type: TileType = .none, row: Int, col: Int) {
+		self.init(type: type, rect: Frame(row: row, col: col).rect)
 	}
 
-	init(type: TyleType = .none, rect: CGRect = .zero) {
-		let frame = Frame(rect: rect)
-
-		super.init(frame: frame.rect)
-
-		theFrame = frame
+	init(type: TileType = .none, rect: Rect = .zero) {
 		self.type = type
+
+		let frame = Frame(rect: rect)
+		super.init(frame: frame.rect)
+		theFrame = frame
 	}
 
 	required init?(coder: NSCoder) {
@@ -108,16 +102,26 @@ class Tile: UIImageView {
 	
 	// A moving tile can't match the TILE_SIZE or it collides with the borders, hence it doesn't move.
 	// Instead we consider its frame as centered and resized of a speed factor so it has margin to move.
+//	func respawnAtInitialFrame() {
+//		let row = Constants.STARTING_CELL.y
+//		let col = Constants.STARTING_CELL.x
+//		theFrame = Frame(row: row, col: col)
+//
+//		let size = Float(Frame.SIZE) - Float(speed)
+//		theFrame.resize(width: size, height: size)
+//		theFrame = theFrame.tiled()
+//	}
+
 	func respawnAtInitialFrame() {
 		velocity = .zero
 
-		let initialTile_x = Double(Constants.STARTING_CELL.x * CGFloat(TILE_SIZE))
-		let initialTile_y = Double(Constants.STARTING_CELL.y * CGFloat(TILE_SIZE))
+		let initialTile_x = Double(CGFloat(Constants.STARTING_CELL.x) * CGFloat(Frame.SIZE))
+		let initialTile_y = Double(CGFloat(Constants.STARTING_CELL.y) * CGFloat(Frame.SIZE))
 		let rect = CGRect(
 			x: initialTile_x + Double(speed) / 2.0,
 			y: initialTile_y + Double(speed) / 2.0,
-			width: TILE_SIZE - Double(speed),
-			height: TILE_SIZE - Double(speed)
+			width: Double(Frame.SIZE) - Double(speed),
+			height: Double(Frame.SIZE) - Double(speed)
 		)
 		theFrame = Frame(rect: rect)
 	}

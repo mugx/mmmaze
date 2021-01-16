@@ -26,7 +26,7 @@ class Frame: Equatable {
 
 	static var zero: Frame { Frame(rect: .zero) }
 	private(set) var rect: Rect = .zero
-	private static let SIZE: Int = 32
+	static let SIZE: Int = 32
 
 	static func == (lhs: Frame, rhs: Frame) -> Bool {
 		lhs.rect == rhs.rect
@@ -39,6 +39,18 @@ class Frame: Equatable {
 	init(rect: Rect) {
 		self.rect = rect
 	}
+
+	func resize(width: Float, height: Float) {
+		rect.size = CGSize(width: CGFloat(width), height: CGFloat(height))
+	}
+
+//	func tiled() -> Frame {
+//		let width = CGFloat(rect.size.width)
+//		let height = CGFloat(rect.size.height)
+//		let x = Int(round(rect.origin.x / width) * width)
+//		let y = Int(round(rect.origin.y / height) * height)
+//		return Frame(rect: Rect(x: x, y: y, width: Int(width), height: Int(height)))
+//	}
 
 	func tiled() -> Frame {
 		let size = CGFloat(Self.SIZE)
@@ -93,9 +105,9 @@ class Frame: Equatable {
 
 	func isNeighbour(of other: Frame) -> Bool {
 		return
-			translate(x: CGFloat(TILE_SIZE)).collides(other) ||
-			translate(x: CGFloat(-TILE_SIZE)).collides(other) ||
-			translate(y: CGFloat(TILE_SIZE)).collides(other) ||
-			translate(y: CGFloat(-TILE_SIZE)).collides(other)
+			translate(x: CGFloat(Self.SIZE)).collides(other) ||
+			translate(x: CGFloat(-Self.SIZE)).collides(other) ||
+			translate(y: CGFloat(Self.SIZE)).collides(other) ||
+			translate(y: CGFloat(-Self.SIZE)).collides(other)
 	}
 }
