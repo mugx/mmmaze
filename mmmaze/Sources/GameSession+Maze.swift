@@ -18,8 +18,8 @@ extension GameSession {
 		walls = []
 
 		// generating the maze 
-		let startRow = Constants.STARTING_CELL.x
-		let startCol = Constants.STARTING_CELL.y
+		let startRow = Constants.STARTING_CELL.row
+		let startCol = Constants.STARTING_CELL.col
 		let maze = MazeGenerator.calculateMaze(startRow: startRow, startCol: startCol, rows: numRow, cols: numCol)
 
 		for row in 0 ..< numRow {

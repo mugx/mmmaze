@@ -102,27 +102,10 @@ class Tile: UIImageView {
 	
 	// A moving tile can't match the TILE_SIZE or it collides with the borders, hence it doesn't move.
 	// Instead we consider its frame as centered and resized of a speed factor so it has margin to move.
-//	func respawnAtInitialFrame() {
-//		let row = Constants.STARTING_CELL.y
-//		let col = Constants.STARTING_CELL.x
-//		theFrame = Frame(row: row, col: col)
-//
-//		let size = Float(Frame.SIZE) - Float(speed)
-//		theFrame.resize(width: size, height: size)
-//		theFrame = theFrame.tiled()
-//	}
-
 	func respawnAtInitialFrame() {
 		velocity = .zero
-
-		let initialTile_x = Double(CGFloat(Constants.STARTING_CELL.x) * CGFloat(Frame.SIZE))
-		let initialTile_y = Double(CGFloat(Constants.STARTING_CELL.y) * CGFloat(Frame.SIZE))
-		let rect = CGRect(
-			x: initialTile_x + Double(speed) / 2.0,
-			y: initialTile_y + Double(speed) / 2.0,
-			width: Double(Frame.SIZE) - Double(speed),
-			height: Double(Frame.SIZE) - Double(speed)
-		)
-		theFrame = Frame(rect: rect)
+		theFrame = Frame(row: Constants.STARTING_CELL.row, col: Constants.STARTING_CELL.col)
+		theFrame = theFrame.resize(with: Float(Frame.SIZE) - Float(speed))
+		theFrame = theFrame.centered()
 	}
 }

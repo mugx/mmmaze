@@ -125,7 +125,7 @@ extension GameSession {
 		play(sound: .hitBomb)
 		player.power += 1
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
 			self.player.power -= self.player.power > 0 ? 1 : 0
 		}
 	}

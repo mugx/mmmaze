@@ -11,6 +11,6 @@ import UIKit
 var APP_VERSION: String { "v\(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!)" }
 
 class Constants {
-	static let STARTING_CELL = (x: 1, y: 1)
+	static let STARTING_CELL = (row: 1, col: 1)
 	static let FONT_FAMILY = "Joystix"
 }

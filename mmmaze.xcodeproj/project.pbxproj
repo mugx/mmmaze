@@ -100,7 +100,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D07BEE81CCD36E80062EFE6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		1D0AC4E825A1D445004A5AF1 /* Sequence+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Sequence+Utils.swift"; path = "mmmaze/Sources/Sequence+Utils.swift"; sourceTree = "<group>"; };
 		1D0BCB15259A1ECA0035BAA8 /* BestScoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BestScoresViewController.xib; path = mmmaze/Sources/BestScoresViewController.xib; sourceTree = "<group>"; };
 		1D0BCB1B259A1ECA0035BAA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = mmmaze/Sources/GameViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +176,6 @@
 		1DA4C759259BA29800E4DE1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DB7746A25AD832400FC1A26 /* DisplayLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayLink.swift; path = mmmaze/Sources/DisplayLink.swift; sourceTree = "<group>"; };
 		1DB7746C25AD88DE00FC1A26 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverView.swift; path = mmmaze/Sources/GameOverView.swift; sourceTree = "<group>"; };
-		1DDB93422337F35C00CF02AF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VersionLabel.swift; path = mmmaze/Sources/VersionLabel.swift; sourceTree = "<group>"; };
 		1DEC3DEA25A0FF8B000A863D /* TileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TileType.swift; path = mmmaze/Sources/TileType.swift; sourceTree = "<group>"; };
 		1DEC3DEC25A11278000A863D /* UISwipeGestureRecognizer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UISwipeGestureRecognizer+Utils.swift"; path = "mmmaze/Sources/UISwipeGestureRecognizer+Utils.swift"; sourceTree = "<group>"; };
@@ -397,8 +395,6 @@
 		1D98C7CE1C9AD67A00161EB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DDB93422337F35C00CF02AF /* MessageUI.framework */,
-				1D07BEE81CCD36E80062EFE6 /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

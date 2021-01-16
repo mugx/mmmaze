@@ -40,19 +40,21 @@ class Frame: Equatable {
 		self.rect = rect
 	}
 
-	func resize(width: Float, height: Float) {
-		rect.size = CGSize(width: CGFloat(width), height: CGFloat(height))
+	func resize(with size: Float) -> Frame {
+		let frame = Frame(rect: rect)
+		frame.rect.size = CGSize(width: CGFloat(size), height: CGFloat(size))
+		return frame
 	}
 
-//	func tiled() -> Frame {
-//		let width = CGFloat(rect.size.width)
-//		let height = CGFloat(rect.size.height)
-//		let x = Int(round(rect.origin.x / width) * width)
-//		let y = Int(round(rect.origin.y / height) * height)
-//		return Frame(rect: Rect(x: x, y: y, width: Int(width), height: Int(height)))
-//	}
-
-	func tiled() -> Frame {
+	func centered() -> Frame {
+		let speed_x = (CGFloat(Self.SIZE) - CGFloat(rect.size.width)) / 2.0
+		let speed_y = (CGFloat(Self.SIZE) - CGFloat(rect.size.height)) / 2.0
+		let x = rect.origin.x + speed_x
+		let y = rect.origin.y + speed_y
+		return Frame(rect: Rect(origin: CGPoint(x: x, y: y), size: rect.size))
+	}
+	
+	func boundingTile() -> Frame {
 		let size = CGFloat(Self.SIZE)
 		let x = Int(round(rect.origin.x / size) * size)
 		let y = Int(round(rect.origin.y / size) * size)
