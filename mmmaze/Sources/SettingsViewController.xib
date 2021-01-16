@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -7,14 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="mmmaze" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="4ih-mO-2VD" id="ySA-el-vJD"/>
-                <outlet property="settingsTitleLabel" destination="mDK-bj-Mvg" id="Xaw-AM-W7P"/>
-                <outlet property="soundEnabledTitleLabel" destination="hJU-g3-k5w" id="Xw7-L6-GZA"/>
-                <outlet property="soundEnabledValueLabel" destination="wwu-sf-YRK" id="c7n-5g-6vF"/>
-                <outlet property="soundEnabledView" destination="WZn-6e-KAg" id="ZeC-UT-pji"/>
-                <outlet property="soundVolumeTitleLabel" destination="uOO-Wa-LzI" id="s3R-C6-MG1"/>
-                <outlet property="soundVolumeValueLabel" destination="jwZ-rf-Hkk" id="vIF-pf-1so"/>
-                <outlet property="soundVolumeView" destination="a7Y-WK-j5b" id="ikY-ah-YCK"/>
+                <outlet property="soundEnabledLabel" destination="jwZ-rf-Hkk" id="p6k-Ey-orh"/>
+                <outlet property="soundVolumeLabel" destination="wwu-sf-YRK" id="5IX-oP-Tbh"/>
                 <outlet property="view" destination="QE5-o0-JBF" id="VFa-B6-Ezh"/>
             </connections>
         </placeholder>
@@ -47,6 +42,9 @@
                                     <nil key="highlightedColor"/>
                                     <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localization" value="settings.volume"/>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jwZ-rf-Hkk">
                                     <rect key="frame" x="122.5" y="28" width="55" height="18"/>
@@ -84,6 +82,9 @@
                                     <nil key="highlightedColor"/>
                                     <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localization" value="settings.sound"/>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="enabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wwu-sf-YRK">
                                     <rect key="frame" x="122.5" y="28" width="55" height="18"/>
@@ -130,6 +131,7 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localization" value="menu.back"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="backTouched" destination="-1" eventType="touchUpInside" id="oFM-Kw-zQx"/>

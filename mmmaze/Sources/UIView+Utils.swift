@@ -54,4 +54,12 @@ extension UIView {
 			height: frame.size.height
 		)
 	}
+
+	func flash() {
+		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse], animations: {
+			self.alpha = 0.4
+		}) { (finished) in
+			self.alpha = 1.0
+		}
+	}
 }

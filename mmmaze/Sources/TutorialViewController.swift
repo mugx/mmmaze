@@ -40,32 +40,22 @@ class TutorialViewController: BaseViewController {
 		// arrows stuff
 		firstArrow.image = firstArrow.image?.withRenderingMode(.alwaysTemplate)
 		firstArrow.tintColor = .cyan
-		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse], animations: {
-			self.firstArrow.alpha = 0.4
-		}) { (finished) in
-			self.firstArrow.alpha = 1.0
-		}
+		firstArrow.flash()
 
 		secondArrow.image = secondArrow.image?.withRenderingMode(.alwaysTemplate)
 		secondArrow.tintColor = .cyan
-		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse], animations: {
-			self.secondArrow.alpha = 0.4
-		}) { (finished) in
-			self.secondArrow.alpha = 1.0
-		}
+		secondArrow.flash()
 	}
 
 	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-
-		UIView.animate(withDuration: 0.15, delay: 0, options: [.repeat, .autoreverse]) {
-			self.hurryupLabel.alpha = 0.4
-		}
+		hurryupLabel.flash()
 	}
 
 	// MARK: - Actions
 
 	@IBAction func newGame() {
+		play(sound: .game)
 		coordinator.show(screen: .game)
 	}
 }

@@ -11,11 +11,10 @@ import UIKit
 class MenuViewController: BaseViewController {
 	@IBOutlet var versionLabel: UILabel!
 	@IBOutlet var gameButton: UIButton!
-	var hasGameInit: Bool = false
 
-	init(coordinator: ScreenCoordinator, hasGameInit: Bool) {
-		self.hasGameInit = hasGameInit
+	init(coordinator: ScreenCoordinator, hasGame: Bool) {
 		super.init(coordinator: coordinator)
+		title = (hasGame ? "menu.resume_game" : "menu.new_game").localized
 	}
 
 	required init?(coder: NSCoder) {
@@ -26,8 +25,6 @@ class MenuViewController: BaseViewController {
 		super.viewDidLoad()
 
 		versionLabel.text = APP_VERSION
-
-		let title = (hasGameInit ? "menu.resume_game" : "menu.new_game").localized
 		gameButton.titleLabel?.text = title
 		gameButton.setTitle(title, for: .normal)
 	}

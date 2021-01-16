@@ -9,20 +9,32 @@
 import AVFoundation
 import UIKit
 
-enum SoundType: UInt {
-		case hitCoin
-		case hitWhirlwind
-		case hitBomb
-		case hitHearth
-		case hitTimeBonus
-		case startGame
-		case game
-		case selectItem
-		case timeOver
-		case gameOver
-		case levelChange
-		case enemySpawn
-		case hitPlayer
+enum SoundType: String {
+	case hitCoin
+	case hitWhirlwind
+	case hitBomb
+	case hitHearth
+	case hitTimeBonus
+	case startGame
+	case game
+	case selectItem
+	case timeOver
+	case gameOver
+	case levelChange
+	case enemySpawn
+	case hitPlayer
+}
+
+enum VolumeType: Float, CaseIterable {
+	case mute = 0
+	case low = 0.1
+	case mid = 0.5
+	case high = 1
+
+	mutating func next() {
+		let allCases = Self.allCases
+		self = allCases[(allCases.firstIndex(of: self)! + 1) % allCases.count]
+	}
 }
 
 func play(sound: SoundType) {
@@ -32,7 +44,7 @@ func play(sound: SoundType) {
 class AudioManager {
 	static let shared = AudioManager()
 	var soundEnabled: Bool = true
-	var volume: Float = 0.5
+	var volume: VolumeType = .mid
 	private var sounds = [SoundType: AVAudioPlayer]()
 
 	func play(sound: SoundType) {
@@ -41,42 +53,12 @@ class AudioManager {
 		try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
 		try? AVAudioSession.sharedInstance().setActive(true)
 
-		var fileName = ""
-		switch sound {
-		case .hitCoin:
-			fileName = "soundHitCoin"
-		case .selectItem:
-			fileName = "soundSelectItem"
-		case .hitWhirlwind:
-			fileName = "soundSelectItem"
-		case .hitBomb:
-			fileName = "soundHitBomb"
-		case .hitHearth:
-			fileName = "soundHitHearth"
-		case .hitTimeBonus:
-			fileName = "soundHitTimeBonus"
-		case .startGame:
-			fileName = "soundStartGame"
-		case .game:
-			fileName = "soundGame"
-		case .timeOver:
-			fileName = "soundTimeOver"
-		case .gameOver:
-			fileName = "soundGameOver"
-		case .levelChange:
-			fileName = "soundLevelChange"
-		case .enemySpawn:
-			fileName = "soundEnemySpawn"
-		case .hitPlayer:
-			fileName = "soundHitPlayer"
-		}
-
-		if sounds[sound] == nil, let url = Bundle.main.url(forResource: fileName, withExtension: "caf") {
+		if sounds[sound] == nil, let url = Bundle.main.url(forResource: sound.rawValue, withExtension: "caf") {
 			let player = try? AVAudioPlayer(contentsOf: url)
 			player?.prepareToPlay()
 			sounds[sound] = player
 		}
-		sounds[sound]?.volume = volume
+		sounds[sound]?.volume = volume.rawValue
 		sounds[sound]?.play()
 	}
 }

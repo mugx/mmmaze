@@ -35,12 +35,11 @@ class ScreenCoordinator {
 	func show(screen type:ScreenType) {
 		switch type {
 		case .menu:
-			show(MenuViewController(coordinator: self, hasGameInit: gameVc != nil))
+			show(MenuViewController(coordinator: self, hasGame: gameVc != nil))
 		case .tutorial:
 			show(TutorialViewController(coordinator: self))
 		case .game:
-			gameVc = gameVc == nil ? GameViewController(coordinator: self) : gameVc
-			show(gameVc!)
+			showGame()
 		case .highScores:
 			show(BestScoresViewController(coordinator: self))
 		case .settings:
@@ -51,6 +50,15 @@ class ScreenCoordinator {
 	}
 
 	// MARK: - Private
+
+	func showGame() {
+		if gameVc == nil {
+			show(screen: .tutorial)
+			gameVc = GameViewController(coordinator: self)
+		} else {
+			show(gameVc!)
+		}
+	}
 
 	private func show(_ viewController: UIViewController) {
 		UIView.animate(withDuration: 0.5, animations: {

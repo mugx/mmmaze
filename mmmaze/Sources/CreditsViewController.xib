@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ff8-xk-xAH">
-                    <rect key="frame" x="109" y="208" width="157" height="151.5"/>
+                    <rect key="frame" x="109" y="158" width="157" height="151.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mmmaze" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cF-lO-mHz" userLabel="mmmaze">
                             <rect key="frame" x="0.0" y="0.0" width="157" height="48"/>
@@ -79,7 +80,7 @@
             <constraints>
                 <constraint firstItem="Kn6-Nk-4xk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9Ja-hz-2U6"/>
                 <constraint firstItem="Ff8-xk-xAH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TP6-U0-i6F"/>
-                <constraint firstItem="Ff8-xk-xAH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-50" id="lAw-HY-iuq"/>
+                <constraint firstItem="Ff8-xk-xAH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-100" id="lAw-HY-iuq"/>
                 <constraint firstAttribute="bottom" secondItem="Kn6-Nk-4xk" secondAttribute="bottom" constant="20" id="tXL-9f-n8K"/>
             </constraints>
             <point key="canvasLocation" x="461" y="386"/>

@@ -56,19 +56,19 @@
 		1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C70C259BA0B300E4DE1E /* bomb.png */; };
 		1DA4C71F259BA0B300E4DE1E /* minion.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C710259BA0B300E4DE1E /* minion.png */; };
 		1DA4C720259BA0B300E4DE1E /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C711259BA0B300E4DE1E /* enemy.png */; };
-		1DA4C72E259BA0C200E4DE1E /* soundStartGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C721259BA0C200E4DE1E /* soundStartGame.caf */; };
-		1DA4C72F259BA0C200E4DE1E /* soundLevelChange.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C722259BA0C200E4DE1E /* soundLevelChange.caf */; };
-		1DA4C730259BA0C200E4DE1E /* soundHitWhirlwind.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C723259BA0C200E4DE1E /* soundHitWhirlwind.caf */; };
-		1DA4C731259BA0C200E4DE1E /* soundEnemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C724259BA0C200E4DE1E /* soundEnemySpawn.caf */; };
-		1DA4C732259BA0C200E4DE1E /* soundSelectItem.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C725259BA0C200E4DE1E /* soundSelectItem.caf */; };
-		1DA4C733259BA0C200E4DE1E /* soundGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C726259BA0C200E4DE1E /* soundGame.caf */; };
-		1DA4C734259BA0C200E4DE1E /* soundHitCoin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C727259BA0C200E4DE1E /* soundHitCoin.caf */; };
-		1DA4C735259BA0C200E4DE1E /* soundHitHearth.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C728259BA0C200E4DE1E /* soundHitHearth.caf */; };
-		1DA4C736259BA0C200E4DE1E /* soundHitPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C729259BA0C200E4DE1E /* soundHitPlayer.caf */; };
-		1DA4C737259BA0C200E4DE1E /* soundTimeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72A259BA0C200E4DE1E /* soundTimeOver.caf */; };
-		1DA4C738259BA0C200E4DE1E /* soundGameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72B259BA0C200E4DE1E /* soundGameOver.caf */; };
-		1DA4C739259BA0C200E4DE1E /* soundHitBomb.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72C259BA0C200E4DE1E /* soundHitBomb.caf */; };
-		1DA4C73A259BA0C200E4DE1E /* soundHitTimeBonus.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72D259BA0C200E4DE1E /* soundHitTimeBonus.caf */; };
+		1DA4C72E259BA0C200E4DE1E /* startGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C721259BA0C200E4DE1E /* startGame.caf */; };
+		1DA4C72F259BA0C200E4DE1E /* levelChange.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C722259BA0C200E4DE1E /* levelChange.caf */; };
+		1DA4C730259BA0C200E4DE1E /* hitWhirlwind.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C723259BA0C200E4DE1E /* hitWhirlwind.caf */; };
+		1DA4C731259BA0C200E4DE1E /* enemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C724259BA0C200E4DE1E /* enemySpawn.caf */; };
+		1DA4C732259BA0C200E4DE1E /* selectItem.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C725259BA0C200E4DE1E /* selectItem.caf */; };
+		1DA4C733259BA0C200E4DE1E /* game.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C726259BA0C200E4DE1E /* game.caf */; };
+		1DA4C734259BA0C200E4DE1E /* hitCoin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C727259BA0C200E4DE1E /* hitCoin.caf */; };
+		1DA4C735259BA0C200E4DE1E /* hitHearth.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C728259BA0C200E4DE1E /* hitHearth.caf */; };
+		1DA4C736259BA0C200E4DE1E /* hitPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C729259BA0C200E4DE1E /* hitPlayer.caf */; };
+		1DA4C737259BA0C200E4DE1E /* timeOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72A259BA0C200E4DE1E /* timeOver.caf */; };
+		1DA4C738259BA0C200E4DE1E /* gameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72B259BA0C200E4DE1E /* gameOver.caf */; };
+		1DA4C739259BA0C200E4DE1E /* hitBomb.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72C259BA0C200E4DE1E /* hitBomb.caf */; };
+		1DA4C73A259BA0C200E4DE1E /* hitTimeBonus.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C72D259BA0C200E4DE1E /* hitTimeBonus.caf */; };
 		1DA4C73C259BA0EC00E4DE1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C73B259BA0EC00E4DE1E /* Localizable.strings */; };
 		1DA4C73E259BA0F800E4DE1E /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C73D259BA0F400E4DE1E /* Joystix.ttf */; };
 		1DA4C740259BA10900E4DE1E /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4C73F259BA10900E4DE1E /* GameSession.swift */; };
@@ -152,19 +152,19 @@
 		1DA4C70C259BA0B300E4DE1E /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb.png; path = mmmaze/Resources/bomb.png; sourceTree = "<group>"; };
 		1DA4C710259BA0B300E4DE1E /* minion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minion.png; path = mmmaze/Resources/minion.png; sourceTree = "<group>"; };
 		1DA4C711259BA0B300E4DE1E /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = mmmaze/Resources/enemy.png; sourceTree = "<group>"; };
-		1DA4C721259BA0C200E4DE1E /* soundStartGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundStartGame.caf; path = mmmaze/Resources/soundStartGame.caf; sourceTree = "<group>"; };
-		1DA4C722259BA0C200E4DE1E /* soundLevelChange.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundLevelChange.caf; path = mmmaze/Resources/soundLevelChange.caf; sourceTree = "<group>"; };
-		1DA4C723259BA0C200E4DE1E /* soundHitWhirlwind.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitWhirlwind.caf; path = mmmaze/Resources/soundHitWhirlwind.caf; sourceTree = "<group>"; };
-		1DA4C724259BA0C200E4DE1E /* soundEnemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundEnemySpawn.caf; path = mmmaze/Resources/soundEnemySpawn.caf; sourceTree = "<group>"; };
-		1DA4C725259BA0C200E4DE1E /* soundSelectItem.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundSelectItem.caf; path = mmmaze/Resources/soundSelectItem.caf; sourceTree = "<group>"; };
-		1DA4C726259BA0C200E4DE1E /* soundGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGame.caf; path = mmmaze/Resources/soundGame.caf; sourceTree = "<group>"; };
-		1DA4C727259BA0C200E4DE1E /* soundHitCoin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitCoin.caf; path = mmmaze/Resources/soundHitCoin.caf; sourceTree = "<group>"; };
-		1DA4C728259BA0C200E4DE1E /* soundHitHearth.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitHearth.caf; path = mmmaze/Resources/soundHitHearth.caf; sourceTree = "<group>"; };
-		1DA4C729259BA0C200E4DE1E /* soundHitPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitPlayer.caf; path = mmmaze/Resources/soundHitPlayer.caf; sourceTree = "<group>"; };
-		1DA4C72A259BA0C200E4DE1E /* soundTimeOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundTimeOver.caf; path = mmmaze/Resources/soundTimeOver.caf; sourceTree = "<group>"; };
-		1DA4C72B259BA0C200E4DE1E /* soundGameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundGameOver.caf; path = mmmaze/Resources/soundGameOver.caf; sourceTree = "<group>"; };
-		1DA4C72C259BA0C200E4DE1E /* soundHitBomb.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitBomb.caf; path = mmmaze/Resources/soundHitBomb.caf; sourceTree = "<group>"; };
-		1DA4C72D259BA0C200E4DE1E /* soundHitTimeBonus.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundHitTimeBonus.caf; path = mmmaze/Resources/soundHitTimeBonus.caf; sourceTree = "<group>"; };
+		1DA4C721259BA0C200E4DE1E /* startGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = startGame.caf; path = mmmaze/Resources/startGame.caf; sourceTree = "<group>"; };
+		1DA4C722259BA0C200E4DE1E /* levelChange.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = levelChange.caf; path = mmmaze/Resources/levelChange.caf; sourceTree = "<group>"; };
+		1DA4C723259BA0C200E4DE1E /* hitWhirlwind.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hitWhirlwind.caf; path = mmmaze/Resources/hitWhirlwind.caf; sourceTree = "<group>"; };
+		1DA4C724259BA0C200E4DE1E /* enemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = enemySpawn.caf; path = mmmaze/Resources/enemySpawn.caf; sourceTree = "<group>"; };
+		1DA4C725259BA0C200E4DE1E /* selectItem.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = selectItem.caf; path = mmmaze/Resources/selectItem.caf; sourceTree = "<group>"; };
+		1DA4C726259BA0C200E4DE1E /* game.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = game.caf; path = mmmaze/Resources/game.caf; sourceTree = "<group>"; };
+		1DA4C727259BA0C200E4DE1E /* hitCoin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hitCoin.caf; path = mmmaze/Resources/hitCoin.caf; sourceTree = "<group>"; };
+		1DA4C728259BA0C200E4DE1E /* hitHearth.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hitHearth.caf; path = mmmaze/Resources/hitHearth.caf; sourceTree = "<group>"; };
+		1DA4C729259BA0C200E4DE1E /* hitPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hitPlayer.caf; path = mmmaze/Resources/hitPlayer.caf; sourceTree = "<group>"; };
+		1DA4C72A259BA0C200E4DE1E /* timeOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = timeOver.caf; path = mmmaze/Resources/timeOver.caf; sourceTree = "<group>"; };
+		1DA4C72B259BA0C200E4DE1E /* gameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gameOver.caf; path = mmmaze/Resources/gameOver.caf; sourceTree = "<group>"; };
+		1DA4C72C259BA0C200E4DE1E /* hitBomb.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hitBomb.caf; path = mmmaze/Resources/hitBomb.caf; sourceTree = "<group>"; };
+		1DA4C72D259BA0C200E4DE1E /* hitTimeBonus.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hitTimeBonus.caf; path = mmmaze/Resources/hitTimeBonus.caf; sourceTree = "<group>"; };
 		1DA4C73B259BA0EC00E4DE1E /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = mmmaze/Resources/Localizable.strings; sourceTree = "<group>"; };
 		1DA4C73D259BA0F400E4DE1E /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Joystix.ttf; path = mmmaze/Resources/Joystix.ttf; sourceTree = "<group>"; };
 		1DA4C73F259BA10900E4DE1E /* GameSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSession.swift; path = mmmaze/Sources/GameSession.swift; sourceTree = "<group>"; };
@@ -260,7 +260,6 @@
 			children = (
 				1D0BCB1F259A1ECA0035BAA8 /* Constants.swift */,
 				1DA4C74A259BA17D00E4DE1E /* ScoreManager.swift */,
-				1DA4C741259BA11700E4DE1E /* AudioManager.swift */,
 				1DA4C745259BA14200E4DE1E /* String+Utils.swift */,
 				1DA4C743259BA12200E4DE1E /* UIDevice+Utils.swift */,
 				1DA4C751259BA1B200E4DE1E /* UIView+Utils.swift */,
@@ -330,19 +329,19 @@
 		1D1BDDE0259A4F8D000145A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				1DA4C724259BA0C200E4DE1E /* soundEnemySpawn.caf */,
-				1DA4C726259BA0C200E4DE1E /* soundGame.caf */,
-				1DA4C72B259BA0C200E4DE1E /* soundGameOver.caf */,
-				1DA4C72C259BA0C200E4DE1E /* soundHitBomb.caf */,
-				1DA4C727259BA0C200E4DE1E /* soundHitCoin.caf */,
-				1DA4C728259BA0C200E4DE1E /* soundHitHearth.caf */,
-				1DA4C729259BA0C200E4DE1E /* soundHitPlayer.caf */,
-				1DA4C72D259BA0C200E4DE1E /* soundHitTimeBonus.caf */,
-				1DA4C723259BA0C200E4DE1E /* soundHitWhirlwind.caf */,
-				1DA4C722259BA0C200E4DE1E /* soundLevelChange.caf */,
-				1DA4C725259BA0C200E4DE1E /* soundSelectItem.caf */,
-				1DA4C721259BA0C200E4DE1E /* soundStartGame.caf */,
-				1DA4C72A259BA0C200E4DE1E /* soundTimeOver.caf */,
+				1DA4C724259BA0C200E4DE1E /* enemySpawn.caf */,
+				1DA4C726259BA0C200E4DE1E /* game.caf */,
+				1DA4C72B259BA0C200E4DE1E /* gameOver.caf */,
+				1DA4C72C259BA0C200E4DE1E /* hitBomb.caf */,
+				1DA4C727259BA0C200E4DE1E /* hitCoin.caf */,
+				1DA4C728259BA0C200E4DE1E /* hitHearth.caf */,
+				1DA4C729259BA0C200E4DE1E /* hitPlayer.caf */,
+				1DA4C72D259BA0C200E4DE1E /* hitTimeBonus.caf */,
+				1DA4C723259BA0C200E4DE1E /* hitWhirlwind.caf */,
+				1DA4C722259BA0C200E4DE1E /* levelChange.caf */,
+				1DA4C725259BA0C200E4DE1E /* selectItem.caf */,
+				1DA4C721259BA0C200E4DE1E /* startGame.caf */,
+				1DA4C72A259BA0C200E4DE1E /* timeOver.caf */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -433,6 +432,7 @@
 				1D9D51DC25AAE7CE000B3216 /* Frame.swift */,
 				1DB7746A25AD832400FC1A26 /* DisplayLink.swift */,
 				1D3CD31225AE21D300F59B8A /* GestureRecognizer.swift */,
+				1DA4C741259BA11700E4DE1E /* AudioManager.swift */,
 			);
 			name = Toolkit;
 			sourceTree = "<group>";
@@ -530,19 +530,19 @@
 				1DA4C720259BA0B300E4DE1E /* enemy.png in Resources */,
 				1DA4C73E259BA0F800E4DE1E /* Joystix.ttf in Resources */,
 				1D0BCB61259A1ED30035BAA8 /* LaunchScreen.storyboard in Resources */,
-				1DA4C736259BA0C200E4DE1E /* soundHitPlayer.caf in Resources */,
-				1DA4C73A259BA0C200E4DE1E /* soundHitTimeBonus.caf in Resources */,
-				1DA4C733259BA0C200E4DE1E /* soundGame.caf in Resources */,
+				1DA4C736259BA0C200E4DE1E /* hitPlayer.caf in Resources */,
+				1DA4C73A259BA0C200E4DE1E /* hitTimeBonus.caf in Resources */,
+				1DA4C733259BA0C200E4DE1E /* game.caf in Resources */,
 				1DA4C719259BA0B300E4DE1E /* time.png in Resources */,
-				1DA4C739259BA0C200E4DE1E /* soundHitBomb.caf in Resources */,
-				1DA4C737259BA0C200E4DE1E /* soundTimeOver.caf in Resources */,
-				1DA4C72F259BA0C200E4DE1E /* soundLevelChange.caf in Resources */,
-				1DA4C732259BA0C200E4DE1E /* soundSelectItem.caf in Resources */,
-				1DA4C738259BA0C200E4DE1E /* soundGameOver.caf in Resources */,
+				1DA4C739259BA0C200E4DE1E /* hitBomb.caf in Resources */,
+				1DA4C737259BA0C200E4DE1E /* timeOver.caf in Resources */,
+				1DA4C72F259BA0C200E4DE1E /* levelChange.caf in Resources */,
+				1DA4C732259BA0C200E4DE1E /* selectItem.caf in Resources */,
+				1DA4C738259BA0C200E4DE1E /* gameOver.caf in Resources */,
 				1DA4C715259BA0B300E4DE1E /* player.png in Resources */,
 				1D0BCB47259A1ECA0035BAA8 /* GameViewController.xib in Resources */,
-				1DA4C735259BA0C200E4DE1E /* soundHitHearth.caf in Resources */,
-				1DA4C734259BA0C200E4DE1E /* soundHitCoin.caf in Resources */,
+				1DA4C735259BA0C200E4DE1E /* hitHearth.caf in Resources */,
+				1DA4C734259BA0C200E4DE1E /* hitCoin.caf in Resources */,
 				1DA4C718259BA0B300E4DE1E /* coin.png in Resources */,
 				1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */,
 				1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */,
@@ -553,14 +553,14 @@
 				1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */,
 				1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */,
 				1DA4C712259BA0B300E4DE1E /* whirlwind.png in Resources */,
-				1DA4C730259BA0C200E4DE1E /* soundHitWhirlwind.caf in Resources */,
-				1DA4C72E259BA0C200E4DE1E /* soundStartGame.caf in Resources */,
+				1DA4C730259BA0C200E4DE1E /* hitWhirlwind.caf in Resources */,
+				1DA4C72E259BA0C200E4DE1E /* startGame.caf in Resources */,
 				1DA4C73C259BA0EC00E4DE1E /* Localizable.strings in Resources */,
 				1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */,
 				1DA4C713259BA0B300E4DE1E /* goal_open.png in Resources */,
 				1DA4C714259BA0B300E4DE1E /* goal_close.png in Resources */,
 				1D0BCB60259A1ED30035BAA8 /* Assets.xcassets in Resources */,
-				1DA4C731259BA0C200E4DE1E /* soundEnemySpawn.caf in Resources */,
+				1DA4C731259BA0C200E4DE1E /* enemySpawn.caf in Resources */,
 				1DA4C717259BA0B300E4DE1E /* hearth.png in Resources */,
 				1DA4C71F259BA0B300E4DE1E /* minion.png in Resources */,
 				1D0BCB49259A1ECA0035BAA8 /* MenuViewController.xib in Resources */,
