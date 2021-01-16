@@ -60,7 +60,6 @@ class Path {
 				let newOrigin = steps[index]
 				steps.removeAll()
 				addStep(newOrigin.frame)
-				print("snake tail")
 			}
 		}
 	}

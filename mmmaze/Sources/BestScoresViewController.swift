@@ -9,6 +9,7 @@
 import UIKit
 
 class BestScoresViewController: BaseViewController {
+	private var maxResults = 10
 
 	// MARK: - Actions
 
@@ -18,10 +19,11 @@ class BestScoresViewController: BaseViewController {
 	}
 }
 
+// MARK: - UITableViewDataSource
+
 extension BestScoresViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		let count = ScoreManager.highScores.count
-		return count < 10 ? 10 : count
+		return maxResults
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,17 +33,14 @@ extension BestScoresViewController: UITableViewDataSource {
 		cell.textLabel?.font = UIFont(name: Constants.FONT_FAMILY, size: 16)
 		cell.detailTextLabel?.textColor = UIColor.black
 		cell.detailTextLabel?.font = UIFont(name: Constants.FONT_FAMILY, size: 16)
+		cell.textLabel?.text = "game.score".localized
+		cell.detailTextLabel?.text = "xxx"
 
-		let highScores = ScoreManager.highScores
-		if indexPath.row <= highScores.count - 1 {
-			let score = highScores[indexPath.row]
-			cell.textLabel?.text = "game.score".localized
-			cell.detailTextLabel?.text = "\(score)"
+		let bestScores = ScoreManager.bestScores
+		if indexPath.item <= bestScores.count - 1 {
+			cell.detailTextLabel?.text = "\(bestScores[indexPath.item])"
 		}
-		else {
-			cell.textLabel?.text = "game.score".localized
-			cell.detailTextLabel?.text = "xxx"
-		}
+
 		return cell
 	}
 }

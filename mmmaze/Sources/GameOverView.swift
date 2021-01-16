@@ -31,7 +31,7 @@ class GameOverView: UIView {
 		alpha = 0
 
 		scoreValueLabel.text = "\(score)"
-		highScoreValueLabel.text = String(describing: ScoreManager.highScore)
+		highScoreValueLabel.text = String(describing: ScoreManager.bestScore)
 
 		UIView.animate(withDuration: 0.5) {
 			self.alpha = 1.0

@@ -200,7 +200,6 @@
 				1D0BCB32259A1ECA0035BAA8 /* AppDelegate.swift */,
 				1D0BCB91259A21050035BAA8 /* Screens */,
 				1D9ADB46259B1743003CC8C2 /* Maze */,
-				1DCF94B025B3741600AF2CB5 /* Models */,
 				1D9D51DB25AAE7B3000B3216 /* Toolkit */,
 				1D0BCBCB259A25330035BAA8 /* Utils */,
 			);
@@ -409,6 +408,7 @@
 				1D184C54259E9C87007DECA0 /* GameSession+Items.swift */,
 				1D9D51DE25AB7983000B3216 /* GameSession+Collision.swift */,
 				1D33BEC725AC2D3900CC0EFE /* GameStats.swift */,
+				1DCF94AE25B3688C00AF2CB5 /* Direction.swift */,
 				1D451C77259E0F89001A291C /* Tile */,
 				1D451C79259E0FB0001A291C /* Enemy */,
 				1D451C78259E0F9A001A291C /* Player */,
@@ -446,14 +446,6 @@
 				1D3CD31825AE2B7300F59B8A /* HeaderView.swift */,
 			);
 			name = Components;
-			sourceTree = "<group>";
-		};
-		1DCF94B025B3741600AF2CB5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				1DCF94AE25B3688C00AF2CB5 /* Direction.swift */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 		1DE262EB25A0A5EE00BAC78A /* Utils */ = {

@@ -12,16 +12,16 @@ class ScoreManager {
 	private static let SAVE_KEY_HIGH_SCORES = "highScores"
 	private static let MAX_HIGH_SCORES_COUNT = 10
 
-	static var highScore: UInt {
-		highScores.first ?? 0
+	static var bestScore: UInt {
+		bestScores.first ?? 0
 	}
 	
-	static var highScores: [UInt] {
+	static var bestScores: [UInt] {
 		UserDefaults.standard.object(forKey: SAVE_KEY_HIGH_SCORES) as? [UInt] ?? []
 	}
 
 	static func save(_ score: UInt) {
-		var highScores = Self.highScores
+		var highScores = Self.bestScores
 		highScores.append(score)
 		highScores.sort(by: { (a, b) -> Bool in
 			a > b
