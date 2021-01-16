@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +49,7 @@
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="mmmaze.menu.new_game"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="menu.new_game"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="newGameTouched" destination="-1" eventType="touchUpInside" id="uBa-rX-W5Q"/>
@@ -68,7 +67,7 @@
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="mmmaze.menu.settings"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="menu.settings"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="settingsTouched" destination="-1" eventType="touchUpInside" id="OD1-QY-hec"/>
@@ -86,7 +85,7 @@
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="mmmaze.menu.best_scores"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="menu.best_scores"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="highScoresTouched" destination="-1" eventType="touchUpInside" id="c57-gz-5yL"/>
@@ -104,7 +103,7 @@
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="mmmaze.menu.credits"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localization" value="menu.credits"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="aboutTouched" destination="-1" eventType="touchUpInside" id="Ir3-UB-XVz"/>

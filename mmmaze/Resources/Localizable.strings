@@ -3,33 +3,27 @@
  mmmaze
  
  Created by mugx on 25/03/16.
- Copyright © 2016 mugx. All rights reserved.
+ Copyright © 2016-2021 mugx. All rights reserved.
  */
 
-"mmmaze.menu.back" = "Back";
-"mmmaze.menu.new_game"="New Game!";
-"mmmaze.menu.resume_game"="Resume Game";
-"mmmaze.menu.settings"="Settings";
-"mmmaze.menu.best_scores"="Best Scores";
-"mmmaze.menu.achievements"="Achievements";
-"mmmaze.menu.game_center"="Game Center";
-"mmmaze.menu.credits"="Credits";
-"mmmaze.menu.send_a_feedback"="Send a feedback";
+"menu.back" = "Back";
+"menu.new_game"="New Game!";
+"menu.resume_game"="Resume Game";
+"menu.settings"="Settings";
+"menu.best_scores"="Best Scores";
+"menu.credits"="Credits";
 
-"mmmaze.settings.language" = "Language";
-"mmmaze.settings.sound" = "Sound";
-"mmmaze.settings.enabled" = "Enabled";
-"mmmaze.settings.disabled" = "Disabled";
-"mmmaze.settings.volume"= "Volume";
-"mmmaze.settings.volume_high"= "High";
-"mmmaze.settings.volume_mid"= "Medium";
-"mmmaze.settings.volume_low"= "Low";
-"mmmaze.settings.volume_mute"= "Mute";
+"settings.sound" = "Sound";
+"settings.enabled" = "Enabled";
+"settings.disabled" = "Disabled";
+"settings.volume"= "Volume";
+"settings.volume_high"= "High";
+"settings.volume_mid"= "Medium";
+"settings.volume_low"= "Low";
+"settings.volume_mute"= "Mute";
 
-"mmmaze.game.time"="Time";
-"mmmaze.game.score"="Score";
-"mmmaze.game.best_score"="Best Score";
-"mmmaze.game.game_over"="Game Over";
-"mmmaze.game.level"="Level";
-"mmmaze.game.enable_game_center"="Please enable the Game Center";
-"mmmaze.game.continue"="Continue?";
+"game.time"="Time";
+"game.score"="Score";
+"game.best_score"="Best Score";
+"game.game_over"="Game Over";
+"game.level"="Level";

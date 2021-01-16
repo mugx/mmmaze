@@ -19,7 +19,7 @@ class CurrentLevelView: UIView {
 	public func didUpdate(_ level: UInt) {
 		isHidden = false
 		alpha = 0
-		levelLabel.text = "\("mmmaze.game.level".localized) \(level)"
+		levelLabel.text = "\("game.level".localized) \(level)"
 
 		UIView.animate(withDuration: 0.2, animations: {
 			self.alpha = 1

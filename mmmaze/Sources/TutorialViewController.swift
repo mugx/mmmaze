@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialViewController: UIViewController {
+class TutorialViewController: BaseViewController {
 	@IBOutlet var hurryupLabel: UILabel!
 	@IBOutlet var enemyImage: UIImageView!
 	@IBOutlet var playerImage: UIImageView!
@@ -66,6 +66,6 @@ class TutorialViewController: UIViewController {
 	// MARK: - Actions
 
 	@IBAction func newGame() {
-		AppDelegate.shared.selectScreen(.newGame)
+		coordinator.show(screen: .game)
 	}
 }

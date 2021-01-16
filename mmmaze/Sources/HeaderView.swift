@@ -22,10 +22,10 @@ class HeaderView: UIView {
 	}
 
 	func didUpdate(score: UInt) {
-		scoreLabel.text = "\("mmmaze.game.score".localized)\n\(score)"
+		scoreLabel.text = "\("game.score".localized)\n\(score)"
 	}
 
 	func didUpdate(time: TimeInterval) {
-		timeLabel.text = "\("mmmaze.game.time".localized)\n\(Int(time))"
+		timeLabel.text = "\("game.time".localized)\n\(Int(time))"
 	}
 }

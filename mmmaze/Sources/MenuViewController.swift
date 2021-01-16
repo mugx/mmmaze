@@ -8,16 +8,26 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: BaseViewController {
 	@IBOutlet var versionLabel: UILabel!
 	@IBOutlet var gameButton: UIButton!
+	var hasGameInit: Bool = false
+
+	init(coordinator: ScreenCoordinator, hasGameInit: Bool) {
+		self.hasGameInit = hasGameInit
+		super.init(coordinator: coordinator)
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		versionLabel.text = APP_VERSION
 
-		let title = AppDelegate.shared.gameVc == nil ? "mmmaze.menu.new_game".localized : "mmmaze.menu.resume_game".localized
+		let title = (hasGameInit ? "menu.resume_game" : "menu.new_game").localized
 		gameButton.titleLabel?.text = title
 		gameButton.setTitle(title, for: .normal)
 	}
@@ -26,25 +36,21 @@ class MenuViewController: UIViewController {
 
 	@IBAction func newGameTouched() {
 		play(sound: .selectItem)
-		if AppDelegate.shared.gameVc == nil {
-			AppDelegate.shared.selectScreen(.tutorial)
-		} else {
-			AppDelegate.shared.selectScreen(.resumeGame)
-		}
+		coordinator.show(screen: .game)
 	}
 
 	@IBAction func highScoresTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(.highScores)
+		coordinator.show(screen: .highScores)
 	}
 
 	@IBAction func settingsTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(.settings)
+		coordinator.show(screen: .settings)
 	}
 
 	@IBAction func aboutTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(.credits)
+		coordinator.show(screen: .credits)
 	}
 }

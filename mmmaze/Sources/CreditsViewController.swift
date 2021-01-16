@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreditsViewController: UIViewController {
+class CreditsViewController: BaseViewController {
 	@IBOutlet var versionLabel: UILabel!
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -20,6 +20,6 @@ class CreditsViewController: UIViewController {
 
 	@IBAction func backTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(.menu)
+		coordinator.show(screen: .menu)
 	}
 }

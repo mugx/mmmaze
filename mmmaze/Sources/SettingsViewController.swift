@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: BaseViewController {
 	@IBOutlet var settingsTitleLabel: UILabel!
 	@IBOutlet var soundEnabledView: UIView!
 	@IBOutlet var soundEnabledTitleLabel: UILabel!
@@ -33,23 +33,23 @@ class SettingsViewController: UIViewController {
 	// MARK: - Refresh
 
 	func refresh() {
-		soundEnabledTitleLabel.text = "mmmaze.settings.sound".localized
-		soundEnabledValueLabel.text = AudioManager.shared.soundEnabled ? "mmmaze.settings.enabled".localized : "mmmaze.settings.disabled".localized
-		soundVolumeTitleLabel.text = "mmmaze.settings.volume".localized
-		backButton.setTitle("mmmaze.menu.back".localized, for: .normal)
+		soundEnabledTitleLabel.text = "settings.sound".localized
+		soundEnabledValueLabel.text = AudioManager.shared.soundEnabled ? "settings.enabled".localized : "settings.disabled".localized
+		soundVolumeTitleLabel.text = "settings.volume".localized
+		backButton.setTitle("menu.back".localized, for: .normal)
 		refreshSoundVolume()
 	}
 
 	func refreshSoundVolume() {
 		switch VolumeType(rawValue: Int(AudioManager.shared.volume * 10))! {
 		case .mute:
-			soundVolumeValueLabel.text = "mmmaze.settings.volume_mute".localized
+			soundVolumeValueLabel.text = "settings.volume_mute".localized
 		case .low:
-			soundVolumeValueLabel.text = "mmmaze.settings.volume_low".localized
+			soundVolumeValueLabel.text = "settings.volume_low".localized
 		case .mid:
-			soundVolumeValueLabel.text = "mmmaze.settings.volume_mid".localized
+			soundVolumeValueLabel.text = "settings.volume_mid".localized
 		case .high:
-			soundVolumeValueLabel.text = "mmmaze.settings.volume_high".localized
+			soundVolumeValueLabel.text = "settings.volume_high".localized
 		}
 	}
 
@@ -78,6 +78,6 @@ class SettingsViewController: UIViewController {
 
 	@IBAction func backTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(.menu)
+		coordinator.show(screen: .menu)
 	}
 }

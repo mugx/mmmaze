@@ -8,13 +8,13 @@
 
 import UIKit
 
-class BestScoresViewController: UIViewController {
+class BestScoresViewController: BaseViewController {
 
 	// MARK: - Actions
 
 	@IBAction func backTouched() {
 		play(sound: .selectItem)
-		AppDelegate.shared.selectScreen(.menu)
+		coordinator.show(screen: .menu)
 	}
 }
 
@@ -35,11 +35,11 @@ extension BestScoresViewController: UITableViewDataSource {
 		let highScores = ScoreManager.highScores
 		if indexPath.row <= highScores.count - 1 {
 			let score = highScores[indexPath.row]
-			cell.textLabel?.text = "mmmaze.game.score".localized
+			cell.textLabel?.text = "game.score".localized
 			cell.detailTextLabel?.text = "\(score)"
 		}
 		else {
-			cell.textLabel?.text = "mmmaze.game.score".localized
+			cell.textLabel?.text = "game.score".localized
 			cell.detailTextLabel?.text = "xxx"
 		}
 		return cell

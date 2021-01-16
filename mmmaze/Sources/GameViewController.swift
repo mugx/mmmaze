@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: BaseViewController {
 	@IBOutlet var gameOverView: GameOverView!
 	@IBOutlet var currentLevelView: CurrentLevelView!
 	@IBOutlet var hurryUpView: HurryUpView!
@@ -33,7 +33,7 @@ class GameViewController: UIViewController {
 
 	@IBAction func pauseAction() {
 		displayLink.stop()
-		AppDelegate.shared.selectScreen(.menu)
+		coordinator.show(screen: .menu)
 	}
 
 	// MARK: - Private
