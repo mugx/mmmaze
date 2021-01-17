@@ -65,7 +65,7 @@ class GameSession {
 		numRow = (numRow + 2) < 30 ? numRow + 2 : numRow
 		makeMaze()
 		makePlayer()
-		mazeView.follow(player.theFrame.rect)
+		mazeView.follow(player.frame.rect)
 
 		// setup interactor
 		enemyInteractor = EnemyInteractor(gameSession: self)
@@ -116,7 +116,7 @@ class GameSession {
 		guard player.power > 0 else { return }
 
 		for wall in walls {
-			guard wall.isDestroyable, player.theFrame.isNeighbour(of: wall.theFrame) else { continue }
+			guard wall.isDestroyable, player.frame.isNeighbour(of: wall.frame) else { continue }
 
 			wall.explode()
 			walls.remove(wall)
@@ -146,7 +146,7 @@ extension GameSession: DisplayLinkDelegate {
 
 		enemyInteractor.update(delta)
 		player.update(delta)
-		mazeView.follow(player.theFrame.rect)
+		mazeView.follow(player.frame.rect)
 
 		playerGoalCollision()
 		playerVsEnemiesCollision()

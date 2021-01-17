@@ -9,8 +9,8 @@
 import UIKit
 
 class Entity: Hashable {
-	var imageView: UIImageView?
-	var animations: [String: CABasicAnimation] = [:]
+	private var imageView: UIImageView?
+	private var animations: [String: CABasicAnimation] = [:]
 
 	var visible: Bool {
 		get { imageView?.alpha == 1 && !(imageView?.isHidden ?? false)}
@@ -22,9 +22,9 @@ class Entity: Hashable {
 		set { imageView?.transform = newValue }
 	}
 
-	var theFrame: Frame = .init(rect: .zero) {
+	var frame: Frame = .init(rect: .zero) {
 		didSet {
-			imageView?.frame = theFrame.rect
+			imageView?.frame = frame.rect
 		}
 	}
 
@@ -33,8 +33,8 @@ class Entity: Hashable {
 	}
 
 	init(frame: Frame) {
-		theFrame = frame
-		imageView = UIImageView(frame: frame.rect)
+		self.frame = frame
+		self.imageView = UIImageView(frame: frame.rect)
 	}
 	
 	func hash(into hasher: inout Hasher) {
@@ -58,7 +58,11 @@ class Entity: Hashable {
 			self.imageView?.alpha = 1.0
 		}
 	}
-	
+
+	func set(image: UIImage) {
+		imageView?.image = image
+	}
+
 	func set(images: [UIImage]) {
 		imageView?.set(images: images)
 	}

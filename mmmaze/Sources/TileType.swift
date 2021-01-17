@@ -9,8 +9,6 @@
 import UIKit
 
 enum TileType: String {
-	case none
-	case start
 	case wall
 	case coin
 	case whirlwind
@@ -24,12 +22,23 @@ enum TileType: String {
 	case minion
 	case player
 
-	var image: UIImage? {
-		UIImage(named: rawValue)?.withTintColor(color)
+	static func rand() -> TileType? {
+		switch Float.random(in: 0 ..< 1) {
+		case 0.99 ... 1: return .hearth
+		case 0.98 ... 1: return .time
+		case 0.9 ... 1: return .whirlwind
+		case 0.85 ... 1: return .bomb
+		case 0.5 ... 1: return .coin
+		default: return nil
+		}
+	}
+
+	var image: UIImage {
+		UIImage(named: rawValue)!.withTintColor(color)
 	}
 
 	var images: [UIImage] {
-		image?.sprites(color: color) ?? []
+		image.sprites(color: color) ?? []
 	}
 
 	// MARK: - Private

@@ -10,7 +10,7 @@ import UIKit
 
 extension GameSession {
 	func checkWallCollision(_ frame: Frame) -> Bool {
-		return walls.contains { $0.theFrame.collides(frame) }
+		return walls.contains { $0.frame.collides(frame) }
 	}
 
 	func playerVsEnemiesCollision() {
@@ -32,7 +32,7 @@ extension GameSession {
 	func playerGoalCollision() {
 		guard
 			mazeGoalTile.type == TileType.goal_open &&
-				player.theFrame.collides(mazeGoalTile.theFrame) else {
+				player.frame.collides(mazeGoalTile.frame) else {
 			return
 		}
 
@@ -70,7 +70,7 @@ extension GameSession {
 		player.isBlinking = true
 		UIView.animate(withDuration: 0.4) {
 			self.player.respawnAtInitialFrame()
-			self.mazeView.follow(self.player.theFrame.rect)
+			self.mazeView.follow(self.player.frame.rect)
 		} completion: { _ in
 			self.player.blink(2) {
 				self.player.isBlinking = false

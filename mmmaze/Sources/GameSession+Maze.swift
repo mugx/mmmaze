@@ -28,7 +28,7 @@ extension GameSession {
 				case .wall:
 					makeWall(for: maze, row: row, col: col)
 				case .start:
-					makeStart(for: maze, row: row, col: col)
+					break
 				case .goal:
 					makeGoal(for: maze, row: row, col: col)
 				default:
@@ -38,6 +38,7 @@ extension GameSession {
 		}
 
 		makeKey(for: maze)
+		maze.removeFreePositions()
 	}
 	
 	// MARK: - Private
@@ -49,24 +50,16 @@ extension GameSession {
 		walls.insert(tile)
 	}
 
-	private func makeStart(for maze: Maze, row: Int, col: Int) {
-		let tile = Tile(type: .start, row: row, col: col)
-		tile.add(to: mazeView)
-		items.insert(tile)
-	}
-
 	private func makeGoal(for maze: Maze, row: Int, col: Int) {
 		let tile = Tile(type: .goal_close, row: row, col: col)
-		mazeGoalTile = tile
 		tile.add(to: mazeView)
 		items.insert(tile)
+		mazeGoalTile = tile
 	}
 
 	private func makeKey(for maze: Maze) {
-		let tile = maze.randFreeTile()
-		tile.type = .key
+		let tile = Tile(type: .key, position: maze.getFreePosition())
 		tile.add(to: mazeView)
 		items.insert(tile)
-		maze.freeTiles.removeAll()
 	}
 }

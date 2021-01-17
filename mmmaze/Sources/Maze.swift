@@ -22,9 +22,9 @@ struct MazeTile {
 }
 
 class Maze {
-	let rows: Int, columns: Int
-	var grid: [MazeTileType]
-	var freeTiles: [Tile] = []
+	private let rows: Int, columns: Int
+	private var grid: [MazeTileType]
+	private var freePositions: [Position] = []
 
 	init(rows: Int, columns: Int) {
 		self.rows = rows
@@ -37,11 +37,15 @@ class Maze {
 		set { grid[(row * columns) + column] = newValue }
 	}
 
-	func markFree(_ tile: Tile) {
-		freeTiles.append(tile)
+	func markFree(position: Position) {
+		freePositions.append(position)
 	}
 
-	func randFreeTile() -> Tile {
-		return freeTiles[Int(arc4random()) % freeTiles.count]
+	func getFreePosition() -> (Position) {
+		return freePositions[Int(arc4random()) % freePositions.count]
+	}
+
+	func removeFreePositions() {
+		freePositions.removeAll()
 	}
 }

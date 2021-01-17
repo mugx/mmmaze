@@ -13,7 +13,7 @@ extension Enemy {
 		guard timeAccumulator > 1.0 || path.isEmpty else { return }
 		timeAccumulator = 0
 
-		let target = gameSession!.player.theFrame
+		let target = gameSession!.player.frame
 		let newPath = search(target)
 
 		if path.steps.isEmpty || !path.hasSameTarget(of: newPath) || newPath.steps.count < path.steps.count {
@@ -22,7 +22,7 @@ extension Enemy {
 	}
 
 	func search(_ target: Frame) -> Path {
-		let startingFrame = theFrame.boundingTile()
+		let startingFrame = frame.boundingTile()
 		let path = Path(origin: startingFrame, target: target)
 		let currentSpeed = CGFloat(Frame.SIZE)
 		var targetFound = false
@@ -87,10 +87,10 @@ extension Enemy {
 
 	func decideNextMove(_ delta: TimeInterval) {
 		let speed = CGFloat(self.speed)
-		let upFrame = theFrame.translate(y: -speed)
-		let downFrame = theFrame.translate(y: speed)
-		let leftFrame = theFrame.translate(x: -speed)
-		let rightFrame = theFrame.translate(x: speed)
+		let upFrame = frame.translate(y: -speed)
+		let downFrame = frame.translate(y: speed)
+		let leftFrame = frame.translate(x: -speed)
+		let rightFrame = frame.translate(x: speed)
 		
 		var possibleDirections = [(Direction, Frame)]()
 		if !gameSession!.checkWallCollision(upFrame) {
@@ -109,7 +109,7 @@ extension Enemy {
 			possibleDirections.append((Direction.right, rightFrame))
 		}
 
-		let nextFrame = path.nextFrameToFollow(from: theFrame)
+		let nextFrame = path.nextFrameToFollow(from: frame)
 		let bestDirection = getBestDirection(possibleDirections, targetFrame: nextFrame)
 		didSwipe(bestDirection.0)
 	}

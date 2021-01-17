@@ -63,6 +63,6 @@ class Player: Tile {
 	}
 
 	internal override func refresh() {
-		set(images: type.image?.sprites(color: state.color) ?? [])
+		set(images: type.image.sprites(color: state.color) ?? [])
 	}
 }

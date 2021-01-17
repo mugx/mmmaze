@@ -85,6 +85,7 @@
 		1DCF94AF25B3688C00AF2CB5 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94AE25B3688C00AF2CB5 /* Direction.swift */; };
 		1DCF94B225B42C8B00AF2CB5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94B125B42C8B00AF2CB5 /* Entity.swift */; };
 		1DCF94B425B4345C00AF2CB5 /* MazeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94B325B4345C00AF2CB5 /* MazeInteractor.swift */; };
+		1DCF94B625B44C1500AF2CB5 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94B525B44C1500AF2CB5 /* Position.swift */; };
 		1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262EC25A0A60200BAC78A /* VersionLabel.swift */; };
 		1DEC3DEB25A0FF8B000A863D /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC3DEA25A0FF8B000A863D /* TileType.swift */; };
 /* End PBXBuildFile section */
@@ -183,6 +184,7 @@
 		1DCF94AE25B3688C00AF2CB5 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Direction.swift; path = mmmaze/Sources/Direction.swift; sourceTree = "<group>"; };
 		1DCF94B125B42C8B00AF2CB5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = mmmaze/Sources/Entity.swift; sourceTree = "<group>"; };
 		1DCF94B325B4345C00AF2CB5 /* MazeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MazeInteractor.swift; path = mmmaze/Sources/MazeInteractor.swift; sourceTree = "<group>"; };
+		1DCF94B525B44C1500AF2CB5 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Position.swift; path = mmmaze/Sources/Position.swift; sourceTree = "<group>"; };
 		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VersionLabel.swift; path = mmmaze/Sources/VersionLabel.swift; sourceTree = "<group>"; };
 		1DEC3DEA25A0FF8B000A863D /* TileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TileType.swift; path = mmmaze/Sources/TileType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -415,6 +417,7 @@
 				1D33BEC725AC2D3900CC0EFE /* GameStats.swift */,
 				1DCF94B325B4345C00AF2CB5 /* MazeInteractor.swift */,
 				1DCF94AE25B3688C00AF2CB5 /* Direction.swift */,
+				1DCF94B525B44C1500AF2CB5 /* Position.swift */,
 				1D451C77259E0F89001A291C /* Tile */,
 				1D451C79259E0FB0001A291C /* Enemy */,
 				1D451C78259E0F9A001A291C /* Player */,
@@ -602,6 +605,7 @@
 				1D9D51DD25AAE7CE000B3216 /* Frame.swift in Sources */,
 				1DA4C758259BA1B200E4DE1E /* UIView+Utils.swift in Sources */,
 				1DB7746D25AD88DE00FC1A26 /* GameOverView.swift in Sources */,
+				1DCF94B625B44C1500AF2CB5 /* Position.swift in Sources */,
 				1D33BEC825AC2D3900CC0EFE /* GameStats.swift in Sources */,
 				1D3CD31525AE249800F59B8A /* CurrentLevelView.swift in Sources */,
 				1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */,

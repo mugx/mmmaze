@@ -34,7 +34,7 @@ class Enemy: Tile {
 		wantSpawn = false
 
 		let spawnedEnemy = Enemy(gameSession: gameSession!)
-		spawnedEnemy.theFrame = theFrame
+		spawnedEnemy.frame = frame
 		spawnedEnemy.show(after: 0.5)
 		return spawnedEnemy
 	}

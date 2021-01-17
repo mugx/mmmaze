@@ -13,28 +13,14 @@ extension GameSession {
 	// MARK: - Public
 
 	func makeItem(for maze: Maze, col: Int, row: Int) {
-		let item = Tile(type: .none, row: row, col: col)
-
-		switch Int.random(in: 0 ..< 100) {
-		case 99 ... 100:
-			item.type = .hearth
-		case 98 ... 100:
-			item.type = .time
-		case 90 ... 100:
-			item.type = .whirlwind
-			item.spin()
-		case 85 ... 100:
-			item.type = .bomb
-		case 50 ... 100:
-			item.type = .coin
-			item.spin()
-		default:
-			maze.markFree(item)
-			return
+		let position = Position(row: row, col: col)
+		if let type = TileType.rand() {
+			let tile = Tile(type: type, position: position)
+			tile.add(to: mazeView)
+			items.insert(tile)
+		} else {
+			maze.markFree(position: position)
 		}
-
-		item.add(to: mazeView)
-		items.insert(item)
 	}
 
 	func itemsCollisions() {
@@ -47,7 +33,7 @@ extension GameSession {
 	// MARK: - Private
 
 	private func playerCollision(with item: Tile) {
-		guard item.theFrame.collides(player.theFrame) else { return }
+		guard item.frame.collides(player.frame) else { return }
 
 		switch item.type {
 		case .coin:

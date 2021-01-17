@@ -18,11 +18,15 @@ class Tile: Entity {
 	var gameSession: GameSession?
 	var lastDirection: Direction?
 
-	convenience init(type: TileType = .none, row: Int, col: Int) {
+	convenience init(type: TileType, position: Position) {
+		self.init(type: type, rect: Frame(row: position.row, col: position.col).rect)
+	}
+
+	convenience init(type: TileType, row: Int, col: Int) {
 		self.init(type: type, rect: Frame(row: row, col: col).rect)
 	}
 
-	init(type: TileType = .none, rect: Rect = .zero) {
+	init(type: TileType, rect: Rect = .zero) {
 		self.type = type
 		super.init(frame: Frame(rect: rect))
 		refresh()
@@ -38,7 +42,7 @@ class Tile: Entity {
 	}
 
 	func update(_ delta: TimeInterval) {
-		var frame = self.theFrame
+		var frame = self.frame
 
 		// check vertical collision
 		var frameOnMove = frame.translate(y: velocity.y)
@@ -60,8 +64,8 @@ class Tile: Entity {
 			}
 		}
 
-		if self.theFrame != frame {
-			self.theFrame = frame
+		if self.frame != frame {
+			self.frame = frame
 		} else {
 			velocity = .zero
 		}
@@ -79,12 +83,12 @@ class Tile: Entity {
 	// Instead we consider its frame as centered and resized of a speed factor so it has margin to move.
 	func respawnAtInitialFrame() {
 		velocity = .zero
-		theFrame = Frame(row: Constants.STARTING_CELL.row, col: Constants.STARTING_CELL.col)
-		theFrame = theFrame.resize(with: Float(Frame.SIZE) - Float(speed))
-		theFrame = theFrame.centered()
+		frame = Frame(row: Constants.STARTING_CELL.row, col: Constants.STARTING_CELL.col)
+		frame = frame.resize(with: Float(Frame.SIZE) - Float(speed))
+		frame = frame.centered()
 	}
 
 	func refresh() {
-		imageView?.image = type.image
+		set(image: type.image)
 	}
 }
