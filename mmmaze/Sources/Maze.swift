@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MazeTileType: Int {
+enum MazeBaseEntityType: Int {
 	case wall
 	case path
 	case start
@@ -23,7 +23,7 @@ struct MazeTile {
 
 class Maze {
 	private let rows: Int, columns: Int
-	private var grid: [MazeTileType]
+	private var grid: [MazeBaseEntityType]
 	private var freePositions: [Position] = []
 
 	init(rows: Int, columns: Int) {
@@ -32,7 +32,7 @@ class Maze {
 		grid = Array(repeating: .wall, count: rows * columns)
 	}
 
-	subscript(row: Int, column: Int) -> MazeTileType {
+	subscript(row: Int, column: Int) -> MazeBaseEntityType {
 		get { grid[(row * columns) + column] }
 		set { grid[(row * columns) + column] = newValue }
 	}

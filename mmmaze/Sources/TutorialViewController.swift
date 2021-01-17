@@ -19,9 +19,9 @@ class TutorialViewController: BaseViewController {
 	override open func viewDidLoad() {
 		super.viewDidLoad()
 
-		enemyImage.set(images: TileType.enemy.images)
-		playerImage.set(images: TileType.player.images)
-		goalImage.set(images: [TileType.goal_close.image, TileType.goal_open.image])
+		enemyImage.setImages(for: .enemy)
+		playerImage.setImages(for: .player)
+		goalImage.setImages(for: .goal_open)
 
 		firstArrow.flash()
 		secondArrow.flash()

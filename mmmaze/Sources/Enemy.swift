@@ -15,13 +15,12 @@ class Enemy: Tile {
 	private static let SPEED = 1.5
 
 	init(gameSession: GameSession) {
-		super.init(type: .enemy, rect: .zero)
+		super.init(type: .enemy)
 
 		self.gameSession = gameSession
 
 		assignSpeed()
 		respawnAtInitialFrame()
-		set(images: type.images)
 	}
 
 	required init?(coder: NSCoder) {

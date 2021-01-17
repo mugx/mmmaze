@@ -31,7 +31,7 @@ extension GameSession {
 
 	func playerGoalCollision() {
 		guard
-			mazeGoalTile.type == TileType.goal_open &&
+			mazeGoalTile.type == BaseEntityType.goal_open &&
 				player.frame.collides(mazeGoalTile.frame) else {
 			return
 		}

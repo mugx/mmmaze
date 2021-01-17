@@ -9,22 +9,20 @@
 import UIKit
 
 extension UIImage {
-	func sprites(color: UIColor = .white, size: Double = Double(Frame.SIZE)) -> [UIImage]? {
-		guard let cgImage = self.cgImage else { return [] }
-
+	func sprites(size: Double = Double(Frame.SIZE)) -> [UIImage] {
 		var images = [UIImage]()
-		let width = cgImage.width
+		let width = cgImage!.width
 
 		stride(from: 0, to: width, by: Int(size)).forEach { i in
 			let rect = CGRect(origin: CGPoint(x: i, y: 0), size: CGSize(width: size, height: size))
-			if let sprite = cgImage.cropping(to: rect) {
-				images.append(UIImage(cgImage: sprite).maskWithColor(color: color)!)
+			if let sprite = cgImage!.cropping(to: rect) {
+				images.append(UIImage(cgImage: sprite))
 			}
 		}
 		return images
 	}
 
-	func maskWithColor(color: UIColor) -> UIImage? {
+	func mask(with color: UIColor) -> UIImage? {
 		let maskImage = cgImage!
 
 		let width = size.width

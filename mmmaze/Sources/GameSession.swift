@@ -21,11 +21,13 @@ class GameSession {
 	static let BASE_MAZE_DIMENSION: Int = 9
 	var delegate: GameSessionDelegate?
 	var enemyInteractor: EnemyInteractor!
+	var mazeInteractor = MazeInteractor()
+	var collisionInteractor = CollisionInteractor()
+	var player: Player!
 	var stats = GameStats()
 	var started: Bool = false
 	var numRow: Int = 0
 	var numCol: Int = 0
-	var player: Player!
 	var walls: Set<Tile> = []
 	var items: Set<Tile> = []
 	var gameView: UIView!

@@ -9,13 +9,35 @@
 import UIKit
 
 extension GameSession {
+	private var collisionActions: [BaseEntityType: ()->()] {
+		[
+			.coin: hitCoin,
+			.whirlwind: hitWhirlwind,
+			.time: hitTimeBonus,
+			.key: hitKey,
+			.hearth: hitHearth,
+			.bomb: hitBomb
+		]
+	}
+
+	private var itemProbabilities: [Float: BaseEntityType] {
+		[
+			0.99: .hearth,
+			0.98: .time,
+			0.9: .whirlwind,
+			0.85: .bomb,
+			0.5: .coin
+		]
+	}
 
 	// MARK: - Public
 
 	func makeItem(for maze: Maze, col: Int, row: Int) {
 		let position = Position(row: row, col: col)
-		if let type = TileType.rand() {
-			let tile = Tile(type: type, position: position)
+		let rand = Float.random(in: 0 ..< 1)
+
+		if let type = itemProbabilities.filter({ $0.0 < rand }).last {
+			let tile = Tile(type: type.value, position: position)
 			tile.add(to: mazeView)
 			items.insert(tile)
 		} else {
@@ -33,35 +55,16 @@ extension GameSession {
 	// MARK: - Private
 
 	private func playerCollision(with item: Tile) {
-		guard item.frame.collides(player.frame) else { return }
-
-		switch item.type {
-		case .coin:
-			hitCoin()
-		case .whirlwind:
-			hitWhirlwind()
-		case .time:
-			hitTimeBonus()
-		case .key:
-			hitKey()
-		case .hearth:
-			hitHearth()
-		case .bomb:
-			hitBomb()
-		default:
-			return
-		}
-
+		guard item.type != .goal_close, item.frame.collides(player.frame) else { return }
+		collisionActions[item.type]?()
 		item.visible = false
 		items.remove(item)
 	}
 
-
 	private func enemyCollision(with item: Tile) {
-		guard item.visible, item.type == TileType.bomb else { return }
+		guard item.visible, item.type == BaseEntityType.bomb else { return }
 
 		enemyInteractor.collide(with: item) { enemy in
-			play(sound: .enemySpawn)
 			enemy.wantSpawn = true
 			item.visible = true
 			items.remove(item)
@@ -96,7 +99,7 @@ extension GameSession {
 
 	private func hitKey() {
 		play(sound: .hitHearth)
-		mazeGoalTile.type = TileType.goal_open
+		mazeGoalTile.type = BaseEntityType.goal_open
 		walls.remove(mazeGoalTile)
 	}
 

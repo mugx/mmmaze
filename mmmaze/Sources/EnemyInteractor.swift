@@ -53,6 +53,7 @@ class EnemyInteractor {
 	}
 
 	private func show(_ enemy: Enemy) {
+		play(sound: .enemySpawn)
 		enemies.append(enemy)
 		enemy.add(to: gameSession.mazeView)
 		enemy.show(after: 1)

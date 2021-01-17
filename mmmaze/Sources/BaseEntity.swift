@@ -1,5 +1,5 @@
 //
-//  Entity.swift
+//  BaseEntity.swift
 //  mmmaze
 //
 //  Created by mugx on 17/01/21.
@@ -8,9 +8,20 @@
 
 import UIKit
 
-class Entity: Hashable {
-	private var imageView: UIImageView?
+class BaseEntity: Hashable {
+	var color: UIColor {
+		switch type {
+		case .bomb, .hearth: return .red
+		case .coin: return .yellow
+		case .key: return .green
+		case .time: return .magenta
+		default: return .white
+		}
+	}
+
+	private(set) var imageView: UIImageView?
 	private var animations: [String: CABasicAnimation] = [:]
+	var type: BaseEntityType { didSet { refresh() } }
 
 	var visible: Bool {
 		get { imageView?.alpha == 1 && !(imageView?.isHidden ?? false)}
@@ -28,12 +39,13 @@ class Entity: Hashable {
 		}
 	}
 
-	static func == (lhs: Entity, rhs: Entity) -> Bool {
+	static func == (lhs: BaseEntity, rhs: BaseEntity) -> Bool {
 		lhs.imageView == rhs.imageView
 	}
 
-	init(frame: Frame) {
+	init(frame: Frame, type: BaseEntityType) {
 		self.frame = frame
+		self.type = type
 		self.imageView = UIImageView(frame: frame.rect)
 	}
 	
@@ -59,14 +71,6 @@ class Entity: Hashable {
 		}
 	}
 
-	func set(image: UIImage) {
-		imageView?.image = image
-	}
-
-	func set(images: [UIImage]) {
-		imageView?.set(images: images)
-	}
-
 	func explode(_ completion:(() -> ())? = nil) {
 		imageView?.explode(completion)
 	}
@@ -85,5 +89,9 @@ class Entity: Hashable {
 		animations.forEach({ (arg0) in
 			imageView?.layer.add(arg0.value, forKey: arg0.key)
 		})
+	}
+
+	func refresh() {
+		imageView?.setImages(for: type, with: color)
 	}
 }

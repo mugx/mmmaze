@@ -8,27 +8,24 @@
 
 import UIKit
 
-class Tile: Entity {
-	var type: TileType { didSet { refresh() } }
+class Tile: BaseEntity {
 	var velocity: CGPoint = .zero
 	var speed: Float = 0
 	var isDestroyable: Bool = false
 	var isBlinking: Bool = false
-	var power: UInt = 0
 	var gameSession: GameSession?
 	var lastDirection: Direction?
 
-	convenience init(type: TileType, position: Position) {
-		self.init(type: type, rect: Frame(row: position.row, col: position.col).rect)
+	convenience init(type: BaseEntityType, position: Position) {
+		self.init(type: type, frame: Frame(row: position.row, col: position.col))
 	}
 
-	convenience init(type: TileType, row: Int, col: Int) {
-		self.init(type: type, rect: Frame(row: row, col: col).rect)
+	convenience init(type: BaseEntityType, row: Int, col: Int) {
+		self.init(type: type, frame: Frame(row: row, col: col))
 	}
 
-	init(type: TileType, rect: Rect = .zero) {
-		self.type = type
-		super.init(frame: Frame(rect: rect))
+	init(type: BaseEntityType, frame: Frame = .zero) {
+		super.init(frame: frame, type: type)
 		refresh()
 	}
 
@@ -86,9 +83,5 @@ class Tile: Entity {
 		frame = Frame(row: Constants.STARTING_CELL.row, col: Constants.STARTING_CELL.col)
 		frame = frame.resize(with: Float(Frame.SIZE) - Float(speed))
 		frame = frame.centered()
-	}
-
-	func refresh() {
-		set(image: type.image)
 	}
 }

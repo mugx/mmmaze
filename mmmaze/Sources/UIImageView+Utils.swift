@@ -12,8 +12,9 @@ extension UIImageView {
 	static let ANIM_DURATION = 1.0
 	static let SUB_TILE_DIVIDER_SIZE: CGFloat = 5.0
 
-	func set(images: [UIImage]) {
-		animationImages = images
+	func setImages(for type: BaseEntityType, with color: UIColor = .white) {
+		let images = UIImage(named: type.rawValue)!.sprites()
+		animationImages = images.map { $0.mask(with: color)! }
 		animationDuration = 0.4
 		animationRepeatCount = 0
 		startAnimating()
