@@ -9,9 +9,8 @@
 import UIKit
 
 class Enemy: Tile {
-	var wantSpawn: Bool = false
-	var visible: Bool { alpha == 1 && !isHidden }
 	var path = Path()
+	var wantSpawn: Bool = false
 	var timeAccumulator: TimeInterval = 0.0
 	private static let SPEED = 1.5
 
@@ -30,13 +29,6 @@ class Enemy: Tile {
 	}
 
 	// MARK: - Public
-
-	func show(after time: TimeInterval = 1.0) {
-		UIView.animate(withDuration: 0.5, delay: time) {
-			self.isHidden = false
-			self.alpha = 1.0
-		}
-	}
 	
 	func spawn() -> Enemy {
 		wantSpawn = false
@@ -57,9 +49,7 @@ class Enemy: Tile {
 	}
 
 	override func respawnAtInitialFrame() {
-		isHidden = true
-		alpha = 0.0
-
+		visible = false
 		super.respawnAtInitialFrame()
 	}
 
@@ -83,6 +73,7 @@ class Enemy: Tile {
 	private func assignSpeed() {
 		speed = Float(Double.random(in: Self.SPEED - 0.2 ... Self.SPEED + 0.2))
 		speed = speed + 0.1 * Float((gameSession!.stats.currentLevel - 1))
+
 		if speed > gameSession!.player.speed {
 			speed = gameSession!.player.speed - 0.2
 		}

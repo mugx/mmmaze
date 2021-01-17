@@ -44,8 +44,8 @@ extension GameSession {
 
 	private func playerHits(_ enemy: Enemy) {
 		guard !enemy.isBlinking else { return }
-		play(sound: .hitPlayer)
 
+		play(sound: .hitPlayer)
 		enemy.isBlinking = true
 		enemy.explode {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -70,7 +70,7 @@ extension GameSession {
 		player.isBlinking = true
 		UIView.animate(withDuration: 0.4) {
 			self.player.respawnAtInitialFrame()
-			self.mazeView.follow(self.player)
+			self.mazeView.follow(self.player.theFrame.rect)
 		} completion: { _ in
 			self.player.blink(2) {
 				self.player.isBlinking = false

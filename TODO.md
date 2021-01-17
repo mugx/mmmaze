@@ -11,3 +11,5 @@ Todos:
 [ ] check rotation of spawned enemy
 [ ] tiled should be based on real size not hardcoded one
 [ ] unify cropping functions
+[ ] unify blinking and flash functions
+[ ] possible bug after the enemy is destroyed, it respawns hidden  

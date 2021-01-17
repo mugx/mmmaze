@@ -65,7 +65,7 @@ class GameSession {
 		numRow = (numRow + 2) < 30 ? numRow + 2 : numRow
 		makeMaze()
 		makePlayer()
-		mazeView.follow(player)
+		mazeView.follow(player.theFrame.rect)
 
 		// setup interactor
 		enemyInteractor = EnemyInteractor(gameSession: self)
@@ -107,9 +107,9 @@ class GameSession {
 	}
 
 	private func makePlayer() {
-		player?.removeFromSuperview()
+		player?.remove()
 		player = Player(gameSession: self)
-		mazeView.addSubview(player)
+		player.add(to: mazeView)
 	}
 
 	func playerWallsCollision() {
@@ -146,7 +146,7 @@ extension GameSession: DisplayLinkDelegate {
 
 		enemyInteractor.update(delta)
 		player.update(delta)
-		mazeView.follow(player)
+		mazeView.follow(player.theFrame.rect)
 
 		playerGoalCollision()
 		playerVsEnemiesCollision()

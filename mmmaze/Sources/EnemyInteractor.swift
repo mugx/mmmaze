@@ -18,7 +18,7 @@ class EnemyInteractor {
 	}
 
 	deinit {
-		enemies.forEach { $0.removeFromSuperview() }
+		enemies.forEach { $0.remove() }
 	}
 
 	// MARK: - Public
@@ -54,7 +54,7 @@ class EnemyInteractor {
 
 	private func show(_ enemy: Enemy) {
 		enemies.append(enemy)
-		gameSession.mazeView.addSubview(enemy)
+		enemy.add(to: gameSession.mazeView)
 		enemy.show(after: 1)
 	}
 

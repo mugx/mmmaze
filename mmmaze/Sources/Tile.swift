@@ -8,8 +8,8 @@
 
 import UIKit
 
-class Tile: UIImageView {
-	var type: TileType { didSet { image = type.image } }
+class Tile: Entity {
+	var type: TileType { didSet { refresh() } }
 	var velocity: CGPoint = .zero
 	var speed: Float = 0
 	var isDestroyable: Bool = false
@@ -17,17 +17,6 @@ class Tile: UIImageView {
 	var power: UInt = 0
 	var gameSession: GameSession?
 	var lastDirection: Direction?
-	var animations: [String: CABasicAnimation] = [:]
-
-	var theFrame: Frame {
-		get { _frame }
-
-		set {
-			_frame = newValue
-			frame = newValue.rect
-		}
-	}
-	var _frame: Frame = .init(rect: .zero)
 
 	convenience init(type: TileType = .none, row: Int, col: Int) {
 		self.init(type: type, rect: Frame(row: row, col: col).rect)
@@ -35,10 +24,8 @@ class Tile: UIImageView {
 
 	init(type: TileType = .none, rect: Rect = .zero) {
 		self.type = type
-
-		let frame = Frame(rect: rect)
-		super.init(frame: frame.rect)
-		theFrame = frame
+		super.init(frame: Frame(rect: rect))
+		refresh()
 	}
 
 	required init?(coder: NSCoder) {
@@ -87,18 +74,6 @@ class Tile: UIImageView {
 		let new_row = direction == .up ? row - 1 : direction == .down ? row + 1 : row
 		return gameSession!.checkWallCollision(Frame(row: new_row, col: new_col))
 	}
-
-	func spin() {
-		let anim = CABasicAnimation.spinAnimation()
-		layer.add(anim, forKey: "spin")
-		animations["spin"] = anim
-	}
-	
-	func restoreAnimations() {
-		animations.forEach({ (arg0) in
-			layer.add(arg0.value, forKey: arg0.key)
-		})
-	}
 	
 	// A moving tile can't match the TILE_SIZE or it collides with the borders, hence it doesn't move.
 	// Instead we consider its frame as centered and resized of a speed factor so it has margin to move.
@@ -107,5 +82,9 @@ class Tile: UIImageView {
 		theFrame = Frame(row: Constants.STARTING_CELL.row, col: Constants.STARTING_CELL.col)
 		theFrame = theFrame.resize(with: Float(Frame.SIZE) - Float(speed))
 		theFrame = theFrame.centered()
+	}
+
+	func refresh() {
+		imageView?.image = type.image
 	}
 }

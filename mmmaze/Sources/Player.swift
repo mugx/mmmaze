@@ -62,9 +62,7 @@ class Player: Tile {
 		}
 	}
 
-	// MARK: - Private
-
-	private func refresh() {
+	internal override func refresh() {
 		set(images: type.image?.sprites(color: state.color) ?? [])
 	}
 }

@@ -33,7 +33,7 @@ extension GameSession {
 			return
 		}
 
-		mazeView.addSubview(item)
+		item.add(to: mazeView)
 		items.insert(item)
 	}
 
@@ -66,18 +66,18 @@ extension GameSession {
 			return
 		}
 
-		item.isHidden = true
+		item.visible = false
 		items.remove(item)
 	}
 
 
 	private func enemyCollision(with item: Tile) {
-		guard !item.isHidden, item.type == TileType.bomb else { return }
+		guard item.visible, item.type == TileType.bomb else { return }
 
 		enemyInteractor.collide(with: item) { enemy in
 			play(sound: .enemySpawn)
 			enemy.wantSpawn = true
-			item.isHidden = true
+			item.visible = true
 			items.remove(item)
 		}
 	}
@@ -111,7 +111,6 @@ extension GameSession {
 	private func hitKey() {
 		play(sound: .hitHearth)
 		mazeGoalTile.type = TileType.goal_open
-		mazeGoalTile.image = TileType.goal_open.image
 		walls.remove(mazeGoalTile)
 	}
 
