@@ -41,4 +41,26 @@ class Player: Tile {
 			velocity = CGPoint(x: velocity.x, y: CGFloat(speed))
 		}
 	}
+
+	func hitted(from enemy: Enemy) {
+		guard !enemy.isBlinking, let gameSession = gameSession else { return }
+		play(sound: .hitPlayer)
+
+		enemy.wantSpawn = true
+		gameSession.stats.currentLives -= 1
+		gameSession.delegate?.didUpdate(lives: gameSession.stats.currentLives)
+		gameSession.stats.currentLives > 0 ? respawnPlayer() : gameSession.gameOver()
+	}
+
+	private func respawnPlayer() {
+		isBlinking = true
+		UIView.animate(withDuration: 0.4) {
+			self.respawnAtInitialFrame()
+			self.gameSession?.mazeView.follow(self)
+		} completion: { _ in
+			self.blink(2) {
+				self.isBlinking = false
+			}
+		}
+	}
 }

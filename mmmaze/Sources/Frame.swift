@@ -79,10 +79,10 @@ class Frame: Equatable {
 		return Frame(rect: Rect(x: new_x, y: new_y, width: rect.width, height: rect.height))
 	}
 
-	func follow(_ other: UIView) {
+	func follow(_ other: Frame) {
 		rect = Rect(
-			x: rect.size.width / 2.0 - other.frame.origin.x,
-			y: rect.size.height / 2.0 - other.frame.origin.y,
+			x: rect.size.width / 2.0 - other.rect.origin.x,
+			y: rect.size.height / 2.0 - other.rect.origin.y,
 			width: rect.size.width,
 			height: rect.size.height
 		)

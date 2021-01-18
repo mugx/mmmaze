@@ -67,6 +67,20 @@ class Enemy: Tile {
 		}
 	}
 
+	func hitted() {
+		guard !isBlinking else { return }
+
+		play(sound: .hitPlayer)
+		isBlinking = true
+		explode {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				self.respawnAtInitialFrame()
+				self.isBlinking = false
+				self.show(after: 1)
+			}
+		}
+	}
+
 	// MARK: - Private
 
 	private func assignSpeed() {

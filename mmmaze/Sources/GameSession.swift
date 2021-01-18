@@ -22,7 +22,7 @@ class GameSession {
 	var delegate: GameSessionDelegate?
 	var enemyInteractor: EnemyInteractor!
 	var mazeInteractor = MazeInteractor()
-	var collisionInteractor = CollisionInteractor()
+	var collisionInteractor: CollisionInteractor?
 	var player: Player!
 	var stats = GameStats()
 	var started: Bool = false
@@ -33,6 +33,10 @@ class GameSession {
 	var gameView: UIView!
 	var mazeView: UIView!
 	var mazeGoalTile: Tile!
+
+	init() {
+		collisionInteractor = CollisionInteractor(self)
+	}
 
 	func attach(to gameView: UIView, with delegate: GameSessionDelegate) {
 		self.gameView = gameView
@@ -67,7 +71,7 @@ class GameSession {
 		numRow = (numRow + 2) < 30 ? numRow + 2 : numRow
 		makeMaze()
 		makePlayer()
-		mazeView.follow(player.frame.rect)
+		mazeView.follow(player)
 
 		// setup interactor
 		enemyInteractor = EnemyInteractor(gameSession: self)
@@ -81,6 +85,10 @@ class GameSession {
 		} completion: { _ in
 			self.delegate?.didUpdate(level: self.stats.currentLevel)
 		}
+	}
+
+	func checkWallCollision(_ frame: Frame) -> Bool {
+		return walls.contains { $0.frame.collides(frame) }
 	}
 
 	func gameOver() {
@@ -148,12 +156,8 @@ extension GameSession: DisplayLinkDelegate {
 
 		enemyInteractor.update(delta)
 		player.update(delta)
-		mazeView.follow(player.frame.rect)
-
-		playerGoalCollision()
-		playerVsEnemiesCollision()
-		playerWallsCollision()
-		itemsCollisions()
+		mazeView.follow(player)
+		collisionInteractor?.update()
 	}
 }
 

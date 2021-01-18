@@ -9,7 +9,7 @@
 import UIKit
 
 extension GameSession {
-	private var collisionActions: [BaseEntityType: ()->()] {
+	var collisionActions: [BaseEntityType: ()->()] {
 		[
 			.coin: hitCoin,
 			.whirlwind: hitWhirlwind,
