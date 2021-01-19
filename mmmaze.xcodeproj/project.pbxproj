@@ -88,6 +88,7 @@
 		1DCF94B825B45EB500AF2CB5 /* CollisionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94B725B45EB500AF2CB5 /* CollisionInteractor.swift */; };
 		1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262EC25A0A60200BAC78A /* VersionLabel.swift */; };
 		1DEC3DEB25A0FF8B000A863D /* BaseEntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC3DEA25A0FF8B000A863D /* BaseEntityType.swift */; };
+		1DF1ADBC25B57A18008E4D68 /* PlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1ADBB25B57A18008E4D68 /* PlayerInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -187,6 +188,7 @@
 		1DCF94B725B45EB500AF2CB5 /* CollisionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollisionInteractor.swift; path = mmmaze/Sources/CollisionInteractor.swift; sourceTree = "<group>"; };
 		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VersionLabel.swift; path = mmmaze/Sources/VersionLabel.swift; sourceTree = "<group>"; };
 		1DEC3DEA25A0FF8B000A863D /* BaseEntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseEntityType.swift; path = mmmaze/Sources/BaseEntityType.swift; sourceTree = "<group>"; };
+		1DF1ADBB25B57A18008E4D68 /* PlayerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerInteractor.swift; path = mmmaze/Sources/PlayerInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +364,7 @@
 		1D451C78259E0F9A001A291C /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				1DF1ADBB25B57A18008E4D68 /* PlayerInteractor.swift */,
 				1D184C68259E9CD8007DECA0 /* Player.swift */,
 			);
 			name = Player;
@@ -607,6 +610,7 @@
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */,
 				1D184C5F259E9CA6007DECA0 /* Tile.swift in Sources */,
+				1DF1ADBC25B57A18008E4D68 /* PlayerInteractor.swift in Sources */,
 				1D3CD31325AE21D300F59B8A /* GestureRecognizer.swift in Sources */,
 				1D184C58259E9C87007DECA0 /* GameSession+Items.swift in Sources */,
 				1D184C6F25A0890A007DECA0 /* MazeGenerator.swift in Sources */,

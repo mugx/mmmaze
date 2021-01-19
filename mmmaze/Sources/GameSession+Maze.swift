@@ -54,7 +54,7 @@ extension GameSession {
 		let tile = Tile(type: .goal_close, row: row, col: col)
 		tile.add(to: mazeView)
 		items.insert(tile)
-		mazeGoalTile = tile
+		goal = tile
 	}
 
 	private func makeKey(for maze: Maze) {

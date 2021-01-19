@@ -9,9 +9,14 @@
 import UIKit
 
 class Player: Tile {
-	override var color: UIColor { power > 0 ? .red : .white }
+	override var color: UIColor { isInvulnerable ? .red : .white }
+	var isInvulnerable: Bool { power > 0 }
 	var power: UInt = 0 { didSet { refresh() } }
 	private static let SPEED = 3.0
+
+	deinit {
+		remove()
+	}
 
 	init(gameSession: GameSession) {
 		super.init(type: .player)
@@ -50,6 +55,13 @@ class Player: Tile {
 		gameSession.stats.currentLives -= 1
 		gameSession.delegate?.didUpdate(lives: gameSession.stats.currentLives)
 		gameSession.stats.currentLives > 0 ? respawnPlayer() : gameSession.gameOver()
+	}
+
+	func addPower() {
+		power += 1
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
+			self.power -= self.isInvulnerable ? 1 : 0
+		}
 	}
 
 	private func respawnPlayer() {

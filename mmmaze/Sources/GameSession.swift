@@ -21,18 +21,18 @@ class GameSession {
 	static let BASE_MAZE_DIMENSION: Int = 9
 	var delegate: GameSessionDelegate?
 	var enemyInteractor: EnemyInteractor!
+	var playerInteractor: PlayerInteractor!
 	var mazeInteractor = MazeInteractor()
 	var collisionInteractor: CollisionInteractor?
-	var player: Player!
+	var player: Player { playerInteractor.player }
 	var stats = GameStats()
-	var started: Bool = false
 	var numRow: Int = 0
 	var numCol: Int = 0
 	var walls: Set<Tile> = []
 	var items: Set<Tile> = []
 	var gameView: UIView!
 	var mazeView: UIView!
-	var mazeGoalTile: Tile!
+	var goal: Tile!
 
 	init() {
 		collisionInteractor = CollisionInteractor(self)
@@ -70,11 +70,11 @@ class GameSession {
 		numCol = (numCol + 2) < 30 ? numCol + 2 : numCol
 		numRow = (numRow + 2) < 30 ? numRow + 2 : numRow
 		makeMaze()
-		makePlayer()
-		mazeView.follow(player)
 
 		// setup interactor
 		enemyInteractor = EnemyInteractor(gameSession: self)
+		playerInteractor = PlayerInteractor(gameSession: self)
+		mazeView.follow(player)
 
 		// update external delegate
 		delegate?.didUpdate(score: stats.currentScore)
@@ -115,32 +115,14 @@ class GameSession {
 			gameOver()
 		}
 	}
-
-	private func makePlayer() {
-		player?.remove()
-		player = Player(gameSession: self)
-		player.add(to: mazeView)
-	}
-
-	func playerWallsCollision() {
-		guard player.power > 0 else { return }
-
-		for wall in walls {
-			guard wall.isDestroyable, player.frame.isNeighbour(of: wall.frame) else { continue }
-
-			wall.explode()
-			walls.remove(wall)
-		}
-	}
 }
 
 // MARK: - DisplayLinkDelegate
 
 extension GameSession: DisplayLinkDelegate {
 	func start() {
-
-		if !started {
-			started = true
+		if !stats.isGameStarted {
+			stats.isGameStarted = true
 			startLevel()
 		}
 
@@ -168,5 +150,14 @@ extension GameSession: GestureRecognizerDelegate {
 		stats.isGameStarted = true
 		player.didSwipe(direction)
 		play(sound: .selectItem)
+	}
+}
+
+// MARK: - CollisionInteractorDelegate
+
+extension GameSession: CollisionInteractorDelegate {
+	func didCollideGoal() {
+		stats.currentScore += 100
+		startLevel(stats.currentLevel + 1)
 	}
 }

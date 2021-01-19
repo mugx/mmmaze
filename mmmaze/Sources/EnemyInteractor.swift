@@ -9,6 +9,13 @@
 import UIKit
 
 class EnemyInteractor {
+	var collisionActions: [BaseEntityType: (Enemy, BaseEntity)->()] {
+		[
+			.bomb: hitBomb,
+			.player: hitPlayer
+		]
+	}
+
 	private let gameSession: GameSession!
 	private(set) var enemies: [Enemy] = []
 	private var enemyTimeAccumulator: TimeInterval = 0
@@ -17,18 +24,13 @@ class EnemyInteractor {
 		self.gameSession = gameSession
 	}
 
-	deinit {
-		enemies.forEach { $0.remove() }
-	}
-
 	// MARK: - Public
 
-	func collide(with tile: Tile, completion: (Enemy) -> ()){
-		enemies.forEach { enemy in
-			if enemy.visible && enemy.frame.collides(tile.frame) {
-				completion(enemy)
-			}
-		}
+	func collide(with entity: Tile) {
+		guard [.bomb, .player].contains(entity.type) else { return }
+		guard let enemy = enemies.first(where: { $0.collides(entity) }) else { return }
+
+		collisionActions[entity.type]?(enemy, entity)
 	}
 
 	func update(_ delta: TimeInterval) {
@@ -64,6 +66,27 @@ class EnemyInteractor {
 			if $0.visible {
 				$0.update(delta)
 			}
+		}
+	}
+
+	// MARK: - Hits
+
+	private func hitBomb(_ enemy: Enemy, entity: BaseEntity) {
+		guard let item = entity as? Tile else { return }
+
+		enemy.wantSpawn = true
+		item.visible = false
+		gameSession.items.remove(item)
+	}
+
+	private func hitPlayer(_ enemy: Enemy, entity: BaseEntity) {
+		guard let player = entity as? Player else { return }
+		guard !player.isBlinking else { return }
+
+		if player.isInvulnerable {
+			enemy.hitted()
+		} else {
+			player.hitted(from: enemy)
 		}
 	}
 }

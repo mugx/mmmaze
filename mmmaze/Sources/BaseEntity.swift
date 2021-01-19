@@ -57,7 +57,11 @@ class BaseEntity: Hashable {
 		guard let imageView = imageView else { return }
 		view.addSubview(imageView)
 	}
-	
+
+	func collides(_ other: BaseEntity) -> Bool {
+		return visible && frame.collides(other.frame)
+	}
+
 	func remove() {
 		imageView?.removeFromSuperview()
 	}
