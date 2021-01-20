@@ -17,7 +17,7 @@ class GameViewController: BaseViewController {
 	@IBOutlet var currentLivesLabel: UILabel!
 	private let displayLink = DisplayLink()
 	private let gestureRecognizer = GestureRecognizer()
-	private let gameSession = GameSession()
+	private let gameInteractor = GameInteractor()
 
 	override open func viewDidLoad() {
 		super.viewDidLoad()
@@ -40,9 +40,9 @@ class GameViewController: BaseViewController {
 
 	func setup() {
 		gameOverView.delegate = self
-		displayLink.delegate = gameSession
-		gestureRecognizer.attach(to: gameView, with: gameSession)
-		gameSession.attach(to: gameView, with: self)
+		displayLink.delegate = gameInteractor
+		gestureRecognizer.attach(to: gameView, with: gameInteractor)
+		gameInteractor.attach(to: gameView, with: self)
 		headerView.show()
 	}
 }
@@ -51,14 +51,14 @@ class GameViewController: BaseViewController {
 
 extension GameViewController: GameOverViewDelegate {
 	func didTap() {
-		gameSession.startLevel()
+		gameInteractor.startLevel()
 		displayLink.start()
 	}
 }
 
-// MARK: - GameSessionDelegate
+// MARK: - GameInteractorDelegate
 
-extension GameViewController: GameSessionDelegate {
+extension GameViewController: GameInteractorDelegate {
 	public func didUpdate(score: UInt) {
 		headerView.didUpdate(score: score)
 	}
@@ -80,7 +80,7 @@ extension GameViewController: GameSessionDelegate {
 		hurryUpView.didHurryUp()
 	}
 
-	func didGameOver(_ gameSession: GameSession, with score: UInt) {
+	func didGameOver(_ GameInteractor: GameInteractor, with score: UInt) {
 		displayLink.stop()
 		ScoreManager.save(score)
 		gameOverView.didGameOver(with: score)

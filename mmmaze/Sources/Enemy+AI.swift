@@ -13,7 +13,7 @@ extension Enemy {
 		guard timeAccumulator > 1.0 || path.isEmpty else { return }
 		timeAccumulator = 0
 
-		let target = gameSession!.playerInteractor.player.frame
+		let target = gameInteractor!.playerInteractor.player.frame
 		let newPath = search(target)
 
 		if path.steps.isEmpty || !path.hasSameTarget(of: newPath) || newPath.steps.count < path.steps.count {
@@ -93,19 +93,19 @@ extension Enemy {
 		let rightFrame = frame.translate(x: speed)
 		
 		var possibleDirections = [(Direction, Frame)]()
-		if !gameSession!.checkWallCollision(upFrame) {
+		if !gameInteractor!.checkWallCollision(upFrame) {
 			possibleDirections.append((Direction.up, upFrame))
 		}
 
-		if !gameSession!.checkWallCollision(downFrame) {
+		if !gameInteractor!.checkWallCollision(downFrame) {
 			possibleDirections.append((Direction.down, downFrame))
 		}
 
-		if !gameSession!.checkWallCollision(leftFrame) {
+		if !gameInteractor!.checkWallCollision(leftFrame) {
 			possibleDirections.append((Direction.left, leftFrame))
 		}
 
-		if !gameSession!.checkWallCollision(rightFrame) {
+		if !gameInteractor!.checkWallCollision(rightFrame) {
 			possibleDirections.append((Direction.right, rightFrame))
 		}
 
@@ -119,6 +119,6 @@ extension Enemy {
 		let row = frame.row
 		let new_col = direction == .left ? col - 1 : direction == .right ? col + 1 : col
 		let new_row = direction == .up ? row - 1 : direction == .down ? row + 1 : row
-		return gameSession!.checkWallCollision(Frame(row: new_row, col: new_col))
+		return gameInteractor!.checkWallCollision(Frame(row: new_row, col: new_col))
 	}
 }

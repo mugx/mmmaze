@@ -9,7 +9,7 @@
 import UIKit
 
 class Enemy: BaseEntity {
-	var gameSession: GameSession? { return interactor.gameSession }
+	var gameInteractor: GameInteractor? { return interactor.gameInteractor }
 	var path = Path()
 	var wantSpawn: Bool = false
 	var timeAccumulator: TimeInterval = 0.0
@@ -50,7 +50,7 @@ class Enemy: BaseEntity {
 
 		// check vertical collision
 		var frameOnMove = frame.translate(y: velocity.y)
-		if !gameSession!.checkWallCollision(frameOnMove) {
+		if !gameInteractor!.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
 			if velocity.x != 0 && lastDirection?.isVertical ?? false {
@@ -60,7 +60,7 @@ class Enemy: BaseEntity {
 
 		// check horizontal collision
 		frameOnMove = frame.translate(x: velocity.x)
-		if !gameSession!.checkWallCollision(frameOnMove) {
+		if !gameInteractor!.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
 			if velocity.y != 0 && lastDirection?.isHorizontal ?? false {
@@ -95,26 +95,12 @@ class Enemy: BaseEntity {
 		}
 	}
 
-	func hitted() {
-		guard !isBlinking else { return }
-
-		play(sound: .hitPlayer)
-		isBlinking = true
-		explode {
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-				self.respawnAtInitialFrame()
-				self.isBlinking = false
-				self.show(after: 1)
-			}
-		}
-	}
-
 	// MARK: - Private
 
 	private func assignSpeed() {
-		let maxSpeed = gameSession!.playerInteractor.player.speed
+		let maxSpeed = gameInteractor!.playerInteractor.player.speed
 		speed = Float(Double.random(in: Self.SPEED - 0.2 ... Self.SPEED + 0.2))
-		speed = speed + 0.1 * Float((gameSession!.stats.currentLevel - 1))
+		speed = speed + 0.1 * Float((gameInteractor!.stats.currentLevel - 1))
 
 		if speed > maxSpeed {
 			speed = maxSpeed - 0.2

@@ -16,12 +16,12 @@ class EnemyInteractor {
 		]
 	}
 
-	let gameSession: GameSession!
+	let gameInteractor: GameInteractor!
 	private(set) var enemies: [Enemy] = []
 	private var enemyTimeAccumulator: TimeInterval = 0
 
-	public init(gameSession: GameSession) {
-		self.gameSession = gameSession
+	public init(gameInteractor: GameInteractor) {
+		self.gameInteractor = gameInteractor
 	}
 
 	// MARK: - Public
@@ -57,8 +57,7 @@ class EnemyInteractor {
 	private func show(_ enemy: Enemy) {
 		play(sound: .enemySpawn)
 		enemies.append(enemy)
-		//enemy.speed = enemySpeed()
-		enemy.add(to: gameSession.mazeView)
+		enemy.add(to: gameInteractor.mazeView)
 		enemy.show(after: 1)
 	}
 
@@ -70,32 +69,34 @@ class EnemyInteractor {
 		}
 	}
 
-//	private func enemySpeed() -> Float {
-//		var speed = Float(Double.random(in: Self.ENEMY_SPEED - 0.2 ... Self.ENEMY_SPEED + 0.2))
-//		speed = speed + 0.1 * Float((gameSession!.stats.currentLevel - 1))
-//
-//		if speed > gameSession.playerInteractor.player.speed {
-//			speed = gameSession.playerInteractor.player.speed - 0.2
-//		}
-//		return speed
-//	}
-
 	// MARK: - Hits
 
 	private func hitBomb(_ enemy: Enemy, entity: BaseEntity) {
 		enemy.wantSpawn = true
 		entity.visible = false
-		gameSession.items.remove(entity)
+		gameInteractor.items.remove(entity)
 	}
 
 	private func hitPlayer(_ enemy: Enemy, entity: BaseEntity) {
 		guard let player = entity as? Player else { return }
-		guard !player.isBlinking else { return }
+		guard !player.isBlinking, !enemy.isBlinking else { return }
+
+		play(sound: .hitPlayer)
 
 		if player.isInvulnerable {
-			enemy.hitted()
+			enemy.isBlinking = true
+			enemy.explode {
+				DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+					enemy.respawnAtInitialFrame()
+					enemy.isBlinking = false
+					enemy.show(after: 1)
+				}
+			}
 		} else {
-			player.hitted(from: enemy)
+			enemy.wantSpawn = true
+			gameInteractor.stats.currentLives -= 1
+			gameInteractor.delegate?.didUpdate(lives: gameInteractor.stats.currentLives)
+			gameInteractor.stats.currentLives > 0 ? player.respawnPlayer() : gameInteractor.gameOver()
 		}
 	}
 }

@@ -1,5 +1,5 @@
 //
-//  GameSession.swift
+//  GameInteractor.swift
 //  mmmaze
 //
 //  Created by mugx on 29/12/20.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol GameSessionDelegate {
+protocol GameInteractorDelegate {
 	func didUpdate(score: UInt)
 	func didUpdate(time: TimeInterval)
 	func didUpdate(lives: UInt)
 	func didUpdate(level: UInt)
 	func didHurryUp()
-	func didGameOver(_ gameSession: GameSession, with score: UInt)
+	func didGameOver(_ GameInteractor: GameInteractor, with score: UInt)
 }
 
-class GameSession {
+class GameInteractor {
 	static let BASE_MAZE_DIMENSION: Int = 9
-	var delegate: GameSessionDelegate?
+	var delegate: GameInteractorDelegate?
 	var enemyInteractor: EnemyInteractor!
 	var playerInteractor: PlayerInteractor!
 	var mazeInteractor: MazeInteractor!
@@ -42,7 +42,7 @@ class GameSession {
 		set { mazeInteractor.goal = newValue }
 	}
 
-	func attach(to gameView: UIView, with delegate: GameSessionDelegate) {
+	func attach(to gameView: UIView, with delegate: GameInteractorDelegate) {
 		self.gameView = gameView
 		self.delegate = delegate
 	}
@@ -64,7 +64,6 @@ class GameSession {
 		}
 
 		// init scene elements
-		//makeMaze()
 		mazeView = UIView(frame: gameView.frame)
 		gameView.addSubview(mazeView)
 		stats.mazeRotation = 0
@@ -74,8 +73,8 @@ class GameSession {
 		)
 
 		// setup interactor
-		enemyInteractor = EnemyInteractor(gameSession: self)
-		playerInteractor = PlayerInteractor(gameSession: self)
+		enemyInteractor = EnemyInteractor(gameInteractor: self)
+		playerInteractor = PlayerInteractor(gameInteractor: self)
 		mazeView.follow(playerInteractor.player)
 
 		// update external delegate
@@ -121,7 +120,7 @@ class GameSession {
 
 // MARK: - DisplayLinkDelegate
 
-extension GameSession: DisplayLinkDelegate {
+extension GameInteractor: DisplayLinkDelegate {
 	func start() {
 		if !stats.isGameStarted {
 			stats.isGameStarted = true
@@ -151,7 +150,7 @@ extension GameSession: DisplayLinkDelegate {
 
 // MARK: - GestureRecognizerDelegate
 
-extension GameSession: GestureRecognizerDelegate {
+extension GameInteractor: GestureRecognizerDelegate {
 	func didSwipe(_ direction: Direction) {
 		stats.isGameStarted = true
 		playerInteractor.didSwipe(direction)
@@ -160,7 +159,7 @@ extension GameSession: GestureRecognizerDelegate {
 
 // MARK: - CollisionInteractorDelegate
 
-extension GameSession: PlayerInteractorDelegate {
+extension GameInteractor: PlayerInteractorDelegate {
 	func didCollideGoal() {
 		stats.currentScore += 100
 		startLevel(stats.currentLevel + 1)

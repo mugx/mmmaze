@@ -26,15 +26,15 @@ class PlayerInteractor {
 		]
 	}
 
-	let gameSession: GameSession!
+	let gameInteractor: GameInteractor!
 	private(set) var player: Player!
 
-	public init(gameSession: GameSession) {
-		self.gameSession = gameSession
+	public init(gameInteractor: GameInteractor) {
+		self.gameInteractor = gameInteractor
 
 		defer {
 			self.player = Player(interactor: self)
-			player.add(to: gameSession.mazeView)
+			player.add(to: gameInteractor.mazeView)
 		}
 	}
 
@@ -43,7 +43,7 @@ class PlayerInteractor {
 	func update(_ delta: TimeInterval) {
 		player.update(delta)
 
-		gameSession.enemyInteractor.collide(with: player)
+		gameInteractor.enemyInteractor.collide(with: player)
 	}
 
 	func collide(with entity: BaseEntity) {
@@ -61,34 +61,34 @@ class PlayerInteractor {
 
 	private func hitWhirlwind(entity: BaseEntity) {
 		play(sound: .hitWhirlwind)
-		gameSession.didHitWhirlwind()
+		gameInteractor.didHitWhirlwind()
 		remove(entity: entity)
 	}
 
 	private func hitCoin(entity: BaseEntity) {
 		play(sound: .hitCoin)
-		gameSession.stats.currentScore += 15
-		gameSession.delegate?.didUpdate(score: gameSession.stats.currentScore)
+		gameInteractor.stats.currentScore += 15
+		gameInteractor.delegate?.didUpdate(score: gameInteractor.stats.currentScore)
 		remove(entity: entity)
 	}
 
 	private func hitTimeBonus(entity: BaseEntity) {
 		play(sound: .hitTimeBonus)
-		gameSession.stats.currentTime += 5
+		gameInteractor.stats.currentTime += 5
 		remove(entity: entity)
 	}
 
 	private func hitKey(entity: BaseEntity) {
 		play(sound: .hitHearth)
-		gameSession.goal.type = .goal_open
-		gameSession.walls.remove(gameSession.goal)
+		gameInteractor.goal.type = .goal_open
+		gameInteractor.walls.remove(gameInteractor.goal)
 		remove(entity: entity)
 	}
 
 	private func hitHearth(entity: BaseEntity) {
 		play(sound: .hitHearth)
-		gameSession.stats.currentLives += 1
-		gameSession.delegate?.didUpdate(lives: gameSession.stats.currentLives)
+		gameInteractor.stats.currentLives += 1
+		gameInteractor.delegate?.didUpdate(lives: gameInteractor.stats.currentLives)
 		remove(entity: entity)
 	}
 
@@ -100,20 +100,20 @@ class PlayerInteractor {
 	}
 
 	private func hitGoal(entity: BaseEntity) {
-		gameSession.didCollideGoal()
+		gameInteractor.didCollideGoal()
 	}
 
 	private func destroyWalls() {
-		for wall in gameSession.walls {
+		for wall in gameInteractor.walls {
 			guard wall.isDestroyable, player.frame.isNeighbour(of: wall.frame) else { return }
 
 			wall.explode()
-			gameSession.walls.remove(wall)
+			gameInteractor.walls.remove(wall)
 		}
 	}
 
 	private func remove(entity: BaseEntity) {
 		entity.visible = false
-		gameSession.items.remove(entity)
+		gameInteractor.items.remove(entity)
 	}
 }
