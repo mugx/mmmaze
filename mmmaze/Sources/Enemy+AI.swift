@@ -13,7 +13,7 @@ extension Enemy {
 		guard timeAccumulator > 1.0 || path.isEmpty else { return }
 		timeAccumulator = 0
 
-		let target = gameSession!.player.frame
+		let target = gameSession!.playerInteractor.player.frame
 		let newPath = search(target)
 
 		if path.steps.isEmpty || !path.hasSameTarget(of: newPath) || newPath.steps.count < path.steps.count {
