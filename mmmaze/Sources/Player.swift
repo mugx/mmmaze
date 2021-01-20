@@ -8,20 +8,22 @@
 
 import UIKit
 
-class Player: Tile {
+class Player: BaseEntity {
+	var gameSession: GameSession { return interactor.gameSession }
 	override var color: UIColor { isInvulnerable ? .red : .white }
 	var isInvulnerable: Bool { power > 0 }
 	var power: UInt = 0 { didSet { refresh() } }
+	private let interactor: PlayerInteractor
 	private static let SPEED = 3.0
 
 	deinit {
 		remove()
 	}
 
-	init(gameSession: GameSession) {
+	init(interactor: PlayerInteractor) {
+		self.interactor = interactor
 		super.init(type: .player)
 
-		self.gameSession = gameSession
 		self.speed = Float(Self.SPEED)
 
 		respawnAtInitialFrame()
@@ -32,7 +34,7 @@ class Player: Tile {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func didSwipe(_ direction: Direction) {
+	func didSwipe(_ direction: Direction) {
 		lastDirection = direction
 
 		switch direction {
@@ -47,8 +49,40 @@ class Player: Tile {
 		}
 	}
 
+	func update(_ delta: TimeInterval) {
+		var frame = self.frame
+
+		// check vertical collision
+		var frameOnMove = frame.translate(y: velocity.y)
+		if !gameSession.checkWallCollision(frameOnMove) {
+			frame = frameOnMove
+
+			if velocity.x != 0 && lastDirection?.isVertical ?? false {
+				velocity = CGPoint(x: 0, y: velocity.y)
+			}
+		}
+
+		// check horizontal collision
+		frameOnMove = frame.translate(x: velocity.x)
+		if !gameSession.checkWallCollision(frameOnMove) {
+			frame = frameOnMove
+
+			if velocity.y != 0 && lastDirection?.isHorizontal ?? false {
+				velocity = CGPoint(x: velocity.x, y: 0)
+			}
+		}
+
+		if self.frame != frame {
+			self.frame = frame
+		} else {
+			velocity = .zero
+		}
+	}
+
 	func hitted(from enemy: Enemy) {
-		guard !enemy.isBlinking, let gameSession = gameSession else { return }
+		// TO MOVE THIS CODE AWAY FROM HERE:
+		
+		guard !enemy.isBlinking else { return }
 		play(sound: .hitPlayer)
 
 		enemy.wantSpawn = true
@@ -68,7 +102,7 @@ class Player: Tile {
 		isBlinking = true
 		UIView.animate(withDuration: 0.4) {
 			self.respawnAtInitialFrame()
-			self.gameSession?.mazeView.follow(self)
+			self.gameSession.mazeView.follow(self)
 		} completion: { _ in
 			self.blink(2) {
 				self.isBlinking = false

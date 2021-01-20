@@ -22,20 +22,24 @@ class GameSession {
 	var delegate: GameSessionDelegate?
 	var enemyInteractor: EnemyInteractor!
 	var playerInteractor: PlayerInteractor!
-	var mazeInteractor = MazeInteractor()
-	var collisionInteractor: CollisionInteractor?
-	var player: Player { playerInteractor.player }
+	var mazeInteractor: MazeInteractor!
 	var stats = GameStats()
-	var numRow: Int = 0
-	var numCol: Int = 0
-	var walls: Set<Tile> = []
-	var items: Set<Tile> = []
 	var gameView: UIView!
 	var mazeView: UIView!
-	var goal: Tile!
 
-	init() {
-		collisionInteractor = CollisionInteractor(self)
+	var walls: Set<BaseEntity> {
+		get { mazeInteractor.walls }
+		set { mazeInteractor.walls = newValue}
+	}
+
+	var items: Set<BaseEntity> {
+		get { mazeInteractor.items }
+		set { mazeInteractor.items = newValue}
+	}
+
+	var goal: BaseEntity! {
+		get { mazeInteractor.goal }
+		set { mazeInteractor.goal = newValue }
 	}
 
 	func attach(to gameView: UIView, with delegate: GameSessionDelegate) {
@@ -48,14 +52,7 @@ class GameSession {
 
 		// setup gameplay varables
 		stats.startLevel(levelNumber)
-
-		if levelNumber == 1 {
-			play(sound: .startGame)
-			numCol = Self.BASE_MAZE_DIMENSION
-			numRow = Self.BASE_MAZE_DIMENSION
-		} else {
-			play(sound: .levelChange)
-		}
+		play(sound: levelNumber == 1 ? .startGame : .levelChange)
 
 		// reset random rotation
 		gameView.transform = CGAffineTransform(rotationAngle: 0)
@@ -67,14 +64,19 @@ class GameSession {
 		}
 
 		// init scene elements
-		numCol = (numCol + 2) < 30 ? numCol + 2 : numCol
-		numRow = (numRow + 2) < 30 ? numRow + 2 : numRow
-		makeMaze()
+		//makeMaze()
+		mazeView = UIView(frame: gameView.frame)
+		gameView.addSubview(mazeView)
+		stats.mazeRotation = 0
+		mazeInteractor = MazeInteractor(
+			mazeView: mazeView,
+			dimension: (Self.BASE_MAZE_DIMENSION + Int(levelNumber) * 2) % 30
+		)
 
 		// setup interactor
 		enemyInteractor = EnemyInteractor(gameSession: self)
 		playerInteractor = PlayerInteractor(gameSession: self)
-		mazeView.follow(player)
+		mazeView.follow(playerInteractor.player)
 
 		// update external delegate
 		delegate?.didUpdate(score: stats.currentScore)
@@ -96,7 +98,7 @@ class GameSession {
 
 		stats.isGameOver = true
 		play(sound: .gameOver)
-		player.explode {
+		playerInteractor.player.explode {
 			self.delegate?.didGameOver(self, with: self.stats.currentScore)
 		}
 	}
@@ -137,9 +139,13 @@ extension GameSession: DisplayLinkDelegate {
 		guard stats.isGameStarted else { return }
 
 		enemyInteractor.update(delta)
-		player.update(delta)
-		mazeView.follow(player)
-		collisionInteractor?.update()
+		playerInteractor.update(delta)
+
+		for item in items {
+			playerInteractor.collide(with: item)
+			enemyInteractor.collide(with: item)
+		}
+		mazeView.follow(playerInteractor.player)
 	}
 }
 
@@ -148,16 +154,27 @@ extension GameSession: DisplayLinkDelegate {
 extension GameSession: GestureRecognizerDelegate {
 	func didSwipe(_ direction: Direction) {
 		stats.isGameStarted = true
-		player.didSwipe(direction)
-		play(sound: .selectItem)
+		playerInteractor.didSwipe(direction)
 	}
 }
 
 // MARK: - CollisionInteractorDelegate
 
-extension GameSession: CollisionInteractorDelegate {
+extension GameSession: PlayerInteractorDelegate {
 	func didCollideGoal() {
 		stats.currentScore += 100
 		startLevel(stats.currentLevel + 1)
+	}
+
+	func didHitWhirlwind() {
+		stats.mazeRotation += .pi / 2
+		
+		UIView.animate(withDuration: 0.2) {
+			self.gameView.transform = self.gameView.transform.rotated(by: .pi / 2)
+			self.playerInteractor.player.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation)
+			self.items.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
+			self.walls.forEach { $0.transform = .identity }
+			self.enemyInteractor.enemies.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
+		}
 	}
 }

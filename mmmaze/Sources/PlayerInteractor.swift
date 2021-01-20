@@ -8,75 +8,112 @@
 
 import UIKit
 
+protocol PlayerInteractorDelegate {
+	func didCollideGoal()
+	func didHitWhirlwind()
+}
+
 class PlayerInteractor {
-	var collisionActions: [BaseEntityType: ()->()] {
+	var collisionActions: [BaseEntityType: (BaseEntity)->()] {
 		[
 			.coin: hitCoin,
 			.whirlwind: hitWhirlwind,
 			.time: hitTimeBonus,
 			.key: hitKey,
 			.hearth: hitHearth,
-			.bomb: hitBomb
+			.bomb: hitBomb,
+			.goal_open: hitGoal,
 		]
 	}
 
-	private let gameSession: GameSession!
-	private(set) var player: Player
+	let gameSession: GameSession!
+	private(set) var player: Player!
 
 	public init(gameSession: GameSession) {
 		self.gameSession = gameSession
-		self.player = Player(gameSession: gameSession)
-		player.add(to: gameSession.mazeView)
-	}
 
-	func collide(with item: Tile) {
-		guard item.type != .goal_close, item.collides(player) else { return }
-
-		collisionActions[item.type]?()
-		item.visible = false
-		gameSession.items.remove(item)
-	}
-
-	// MARK: - Hits
-
-	private func hitWhirlwind() {
-		play(sound: .hitWhirlwind)
-		gameSession.stats.mazeRotation += .pi / 2
-
-		UIView.animate(withDuration: 0.2) {
-			self.gameSession.gameView.transform = self.gameSession.gameView.transform.rotated(by: .pi / 2)
-			self.player.transform = CGAffineTransform(rotationAngle: -self.gameSession.stats.mazeRotation)
-			self.gameSession.items.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.gameSession.stats.mazeRotation) }
-			self.gameSession.walls.forEach { $0.transform = .identity }
-			self.gameSession.enemyInteractor.enemies.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.gameSession.stats.mazeRotation) }
+		defer {
+			self.player = Player(interactor: self)
+			player.add(to: gameSession.mazeView)
 		}
 	}
 
-	private func hitCoin() {
+	// MARK: - Public
+
+	func update(_ delta: TimeInterval) {
+		player.update(delta)
+
+		gameSession.enemyInteractor.collide(with: player)
+	}
+
+	func collide(with entity: BaseEntity) {
+		guard entity.collides(player) else { return }
+
+		collisionActions[entity.type]?(entity)
+	}
+
+	func didSwipe(_ direction: Direction) {
+		player.didSwipe(direction)
+		play(sound: .selectItem)
+	}
+
+	// MARK: - Private
+
+	private func hitWhirlwind(entity: BaseEntity) {
+		play(sound: .hitWhirlwind)
+		gameSession.didHitWhirlwind()
+		remove(entity: entity)
+	}
+
+	private func hitCoin(entity: BaseEntity) {
 		play(sound: .hitCoin)
 		gameSession.stats.currentScore += 15
 		gameSession.delegate?.didUpdate(score: gameSession.stats.currentScore)
+		remove(entity: entity)
 	}
 
-	private func hitTimeBonus() {
+	private func hitTimeBonus(entity: BaseEntity) {
 		play(sound: .hitTimeBonus)
 		gameSession.stats.currentTime += 5
+		remove(entity: entity)
 	}
 
-	private func hitKey() {
+	private func hitKey(entity: BaseEntity) {
 		play(sound: .hitHearth)
 		gameSession.goal.type = .goal_open
 		gameSession.walls.remove(gameSession.goal)
+		remove(entity: entity)
 	}
 
-	private func hitHearth() {
+	private func hitHearth(entity: BaseEntity) {
 		play(sound: .hitHearth)
 		gameSession.stats.currentLives += 1
 		gameSession.delegate?.didUpdate(lives: gameSession.stats.currentLives)
+		remove(entity: entity)
 	}
 
-	private func hitBomb(){
+	private func hitBomb(entity: BaseEntity) {
 		play(sound: .hitBomb)
 		player.addPower()
+		destroyWalls()
+		remove(entity: entity)
+	}
+
+	private func hitGoal(entity: BaseEntity) {
+		gameSession.didCollideGoal()
+	}
+
+	private func destroyWalls() {
+		for wall in gameSession.walls {
+			guard wall.isDestroyable, player.frame.isNeighbour(of: wall.frame) else { return }
+
+			wall.explode()
+			gameSession.walls.remove(wall)
+		}
+	}
+
+	private func remove(entity: BaseEntity) {
+		entity.visible = false
+		gameSession.items.remove(entity)
 	}
 }

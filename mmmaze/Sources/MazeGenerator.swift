@@ -9,8 +9,8 @@
 import UIKit
 
 class MazeGenerator {
-	static func calculateMaze(startRow: Int, startCol: Int, rows: Int, cols: Int) -> Maze {
-		let maze = Maze(rows: rows, columns: cols)
+	static func calculateMaze(startRow: Int, startCol: Int, dimension: Int) -> Maze {
+		let maze = Maze(dimension: dimension)
 		let startTile = MazeTile(row: startRow, col: startCol, steps: 0)
 		maze[startRow, startCol] = .start
 
@@ -25,11 +25,11 @@ class MazeGenerator {
 				possibleDirections.append(Direction.up)
 			}
 
-			if (currentRow + 2 < rows) && maze[currentRow + 2, currentCol] == .wall {
+			if (currentRow + 2 < dimension) && maze[currentRow + 2, currentCol] == .wall {
 				possibleDirections.append(Direction.down)
 			}
 
-			if (currentCol + 2 < cols) && maze[currentRow, currentCol + 2] == .wall {
+			if (currentCol + 2 < dimension) && maze[currentRow, currentCol + 2] == .wall {
 				possibleDirections.append(Direction.right)
 			}
 

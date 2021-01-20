@@ -16,7 +16,7 @@ class EnemyInteractor {
 		]
 	}
 
-	private let gameSession: GameSession!
+	let gameSession: GameSession!
 	private(set) var enemies: [Enemy] = []
 	private var enemyTimeAccumulator: TimeInterval = 0
 
@@ -26,7 +26,7 @@ class EnemyInteractor {
 
 	// MARK: - Public
 
-	func collide(with entity: Tile) {
+	func collide(with entity: BaseEntity) {
 		guard [.bomb, .player].contains(entity.type) else { return }
 		guard let enemy = enemies.first(where: { $0.collides(entity) }) else { return }
 
@@ -48,7 +48,7 @@ class EnemyInteractor {
 
 	private func spawnEnemy() {
 		if enemies.isEmpty {
-			show(Enemy(gameSession: gameSession))
+			show(Enemy(interactor: self))
 		} else if let enemy = enemies.first(where: { $0.wantSpawn }) {
 			show(enemy.spawn())
 		}
@@ -57,6 +57,7 @@ class EnemyInteractor {
 	private func show(_ enemy: Enemy) {
 		play(sound: .enemySpawn)
 		enemies.append(enemy)
+		//enemy.speed = enemySpeed()
 		enemy.add(to: gameSession.mazeView)
 		enemy.show(after: 1)
 	}
@@ -69,14 +70,22 @@ class EnemyInteractor {
 		}
 	}
 
+//	private func enemySpeed() -> Float {
+//		var speed = Float(Double.random(in: Self.ENEMY_SPEED - 0.2 ... Self.ENEMY_SPEED + 0.2))
+//		speed = speed + 0.1 * Float((gameSession!.stats.currentLevel - 1))
+//
+//		if speed > gameSession.playerInteractor.player.speed {
+//			speed = gameSession.playerInteractor.player.speed - 0.2
+//		}
+//		return speed
+//	}
+
 	// MARK: - Hits
 
 	private func hitBomb(_ enemy: Enemy, entity: BaseEntity) {
-		guard let item = entity as? Tile else { return }
-
 		enemy.wantSpawn = true
-		item.visible = false
-		gameSession.items.remove(item)
+		entity.visible = false
+		gameSession.items.remove(entity)
 	}
 
 	private func hitPlayer(_ enemy: Enemy, entity: BaseEntity) {

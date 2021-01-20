@@ -8,16 +8,18 @@
 
 import UIKit
 
-class Enemy: Tile {
+class Enemy: BaseEntity {
+	var gameSession: GameSession? { return interactor.gameSession }
 	var path = Path()
 	var wantSpawn: Bool = false
 	var timeAccumulator: TimeInterval = 0.0
+	private let interactor: EnemyInteractor
 	private static let SPEED = 1.5
 
-	init(gameSession: GameSession) {
-		super.init(type: .enemy)
+	init(interactor: EnemyInteractor) {
+		self.interactor = interactor
 
-		self.gameSession = gameSession
+		super.init(type: .enemy)
 
 		assignSpeed()
 		respawnAtInitialFrame()
@@ -32,19 +34,45 @@ class Enemy: Tile {
 	func spawn() -> Enemy {
 		wantSpawn = false
 
-		let spawnedEnemy = Enemy(gameSession: gameSession!)
+		let spawnedEnemy = Enemy(interactor: interactor)
 		spawnedEnemy.frame = frame
 		spawnedEnemy.show(after: 0.5)
 		return spawnedEnemy
 	}
 	
-	override func update(_ delta: TimeInterval) {
+	func update(_ delta: TimeInterval) {
 		timeAccumulator += delta
 
 		calculatePath()
 		decideNextMove(delta)
 
-		super.update(delta)
+		var frame = self.frame
+
+		// check vertical collision
+		var frameOnMove = frame.translate(y: velocity.y)
+		if !gameSession!.checkWallCollision(frameOnMove) {
+			frame = frameOnMove
+
+			if velocity.x != 0 && lastDirection?.isVertical ?? false {
+				velocity = CGPoint(x: 0, y: velocity.y)
+			}
+		}
+
+		// check horizontal collision
+		frameOnMove = frame.translate(x: velocity.x)
+		if !gameSession!.checkWallCollision(frameOnMove) {
+			frame = frameOnMove
+
+			if velocity.y != 0 && lastDirection?.isHorizontal ?? false {
+				velocity = CGPoint(x: velocity.x, y: 0)
+			}
+		}
+
+		if self.frame != frame {
+			self.frame = frame
+		} else {
+			velocity = .zero
+		}
 	}
 
 	override func respawnAtInitialFrame() {
@@ -52,7 +80,7 @@ class Enemy: Tile {
 		super.respawnAtInitialFrame()
 	}
 
-	override func didSwipe(_ direction: Direction) {
+	func didSwipe(_ direction: Direction) {
 		lastDirection = direction
 
 		switch direction {
@@ -84,11 +112,12 @@ class Enemy: Tile {
 	// MARK: - Private
 
 	private func assignSpeed() {
+		let maxSpeed = gameSession!.playerInteractor.player.speed
 		speed = Float(Double.random(in: Self.SPEED - 0.2 ... Self.SPEED + 0.2))
 		speed = speed + 0.1 * Float((gameSession!.stats.currentLevel - 1))
 
-		if speed > gameSession!.player.speed {
-			speed = gameSession!.player.speed - 0.2
+		if speed > maxSpeed {
+			speed = maxSpeed - 0.2
 		}
 	}
 }

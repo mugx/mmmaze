@@ -22,19 +22,18 @@ struct MazeTile {
 }
 
 class Maze {
-	private let rows: Int, columns: Int
+	private let dimension: Int
 	private var grid: [MazeBaseEntityType]
 	private var freePositions: [Position] = []
 
-	init(rows: Int, columns: Int) {
-		self.rows = rows
-		self.columns = columns
-		grid = Array(repeating: .wall, count: rows * columns)
+	init(dimension: Int) {
+		self.dimension = dimension
+		grid = Array(repeating: .wall, count: dimension * dimension)
 	}
 
 	subscript(row: Int, column: Int) -> MazeBaseEntityType {
-		get { grid[(row * columns) + column] }
-		set { grid[(row * columns) + column] = newValue }
+		get { grid[(row * dimension) + column] }
+		set { grid[(row * dimension) + column] = newValue }
 	}
 
 	func markFree(position: Position) {

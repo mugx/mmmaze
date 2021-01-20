@@ -113,4 +113,12 @@ extension Enemy {
 		let bestDirection = getBestDirection(possibleDirections, targetFrame: nextFrame)
 		didSwipe(bestDirection.0)
 	}
+
+	func isWall(at frame: Frame, direction: Direction) -> Bool {
+		let col = frame.col
+		let row = frame.row
+		let new_col = direction == .left ? col - 1 : direction == .right ? col + 1 : col
+		let new_row = direction == .up ? row - 1 : direction == .down ? row + 1 : row
+		return gameSession!.checkWallCollision(Frame(row: new_row, col: new_col))
+	}
 }
