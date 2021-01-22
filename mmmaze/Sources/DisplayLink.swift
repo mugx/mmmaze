@@ -8,15 +8,19 @@
 
 import UIKit
 
-protocol DisplayLinkDelegate {
+protocol DisplayLinkDelegate: class {
 	func start()
 	func update(delta: TimeInterval)
 }
 
 class DisplayLink {
-	var delegate: DisplayLinkDelegate?
+	private weak var delegate: DisplayLinkDelegate?
 	private var displayLink: CADisplayLink?
 	private var previousTimestamp: CFTimeInterval = 0.0
+
+	init(delegate: DisplayLinkDelegate?) {
+		self.delegate = delegate
+	}
 
 	// MARK: - Actions
 

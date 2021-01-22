@@ -8,31 +8,33 @@
 
 import UIKit
 
-protocol GestureRecognizerDelegate {
+protocol GestureRecognizerDelegate: class {
 	func didSwipe(_ direction: Direction)
 }
 
-class GestureRecognizer: NSObject {
-	var delegate: GestureRecognizerDelegate?
+class GestureRecognizer {
+	private weak var delegate: GestureRecognizerDelegate?
 
-	func attach(to view: UIView, with delegate: GestureRecognizerDelegate?) {
+	init(view: UIView, delegate: GestureRecognizerDelegate) {
 		self.delegate = delegate
 
-		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
-		swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-		view.addGestureRecognizer(swipeRight)
+		defer {
+			let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
+			swipeRight.direction = .right
+			view.addGestureRecognizer(swipeRight)
 
-		let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
-		swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-		view.addGestureRecognizer(swipeLeft)
+			let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
+			swipeLeft.direction = .left
+			view.addGestureRecognizer(swipeLeft)
 
-		let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
-		swipeUp.direction = UISwipeGestureRecognizer.Direction.up
-		view.addGestureRecognizer(swipeUp)
+			let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
+			swipeUp.direction = .up
+			view.addGestureRecognizer(swipeUp)
 
-		let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
-		swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-		view.addGestureRecognizer(swipeDown)
+			let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(sender:)))
+			swipeDown.direction = .down
+			view.addGestureRecognizer(swipeDown)
+		}
 	}
 
 	@objc func didSwipe(sender: UISwipeGestureRecognizer) {

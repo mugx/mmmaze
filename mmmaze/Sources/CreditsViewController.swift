@@ -13,7 +13,7 @@ class CreditsViewController: BaseViewController {
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		versionLabel.text = APP_VERSION
+		versionLabel.text = Constants.APP_VERSION
 	}
 
 	// MARK: - Actions

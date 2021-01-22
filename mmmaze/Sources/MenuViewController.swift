@@ -24,7 +24,7 @@ class MenuViewController: BaseViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		versionLabel.text = APP_VERSION
+		versionLabel.text = Constants.APP_VERSION
 		gameButton.titleLabel?.text = title
 		gameButton.setTitle(title, for: .normal)
 	}

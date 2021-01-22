@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol GameOverViewDelegate {
+@objc protocol GameOverViewDelegate {
 	func didTap()
 }
 
 class GameOverView: UIView {
-	var delegate: GameOverViewDelegate?
 	@IBOutlet var scoreValueLabel: UILabel!
 	@IBOutlet var highScoreValueLabel: UILabel!
+	@IBOutlet weak var delegate: GameOverViewDelegate?
 
 	override func awakeFromNib() {
 		super.awakeFromNib()

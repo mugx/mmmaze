@@ -14,7 +14,7 @@ protocol GameInteractorDelegate {
 	func didUpdate(lives: UInt)
 	func didUpdate(level: UInt)
 	func didHurryUp()
-	func didGameOver(_ GameInteractor: GameInteractor, with score: UInt)
+	func didGameOver(with score: UInt)
 }
 
 class GameInteractor {
@@ -98,7 +98,7 @@ class GameInteractor {
 		stats.isGameOver = true
 		play(sound: .gameOver)
 		playerInteractor.player.explode {
-			self.delegate?.didGameOver(self, with: self.stats.currentScore)
+			self.delegate?.didGameOver(with: self.stats.currentScore)
 		}
 	}
 
