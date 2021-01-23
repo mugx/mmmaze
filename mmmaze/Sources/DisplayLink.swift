@@ -33,8 +33,8 @@ class DisplayLink {
 	func stop() {
 		displayLink?.remove(from: .main, forMode: .common)
 	}
-	
-	@objc func update() {
+
+	@objc private func update() {
 		guard let displayLink = displayLink else { return }
 
 		let currentTime = displayLink.timestamp

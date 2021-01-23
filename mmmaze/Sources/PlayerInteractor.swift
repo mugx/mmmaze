@@ -8,16 +8,18 @@
 
 import UIKit
 
-protocol PlayerInteractorDelegate {
-	func didCollideGoal()
-	func didHitWhirlwind()
+protocol PlayerInteractorDelegate: class {
+	func didUpdate(lives: UInt)
+	func didHitGoal()
+	func didGetBonus(score: UInt)
+	func didGameOver(from interactor: PlayerInteractor)
 }
 
 class PlayerInteractor {
 	var collisionActions: [BaseEntityType: (BaseEntity)->()] {
 		[
 			.coin: hitCoin,
-			.whirlwind: hitWhirlwind,
+			.rotator: hitRotator,
 			.time: hitTimeBonus,
 			.key: hitKey,
 			.hearth: hitHearth,
@@ -26,24 +28,36 @@ class PlayerInteractor {
 		]
 	}
 
-	let gameInteractor: GameInteractor!
+	private unowned let delegate: PlayerInteractorDelegate
+	private unowned let mazeInteractor: MazeInteractor
+	private unowned let enemyInteractor: EnemyInteractor
 	private(set) var player: Player!
 
-	public init(gameInteractor: GameInteractor) {
-		self.gameInteractor = gameInteractor
-
+	public init(delegate: PlayerInteractorDelegate,
+							mazeInteractor: MazeInteractor,
+							enemyInteractor: EnemyInteractor) {
+		self.delegate = delegate
+		self.mazeInteractor = mazeInteractor
+		self.enemyInteractor = enemyInteractor
+		
 		defer {
-			self.player = Player(interactor: self)
-			player.add(to: gameInteractor.mazeView)
+			self.player = Player(interactor: self, mazeInteractor: mazeInteractor)
+			mazeInteractor.add(player)
 		}
 	}
 
 	// MARK: - Public
 
 	func update(_ delta: TimeInterval) {
-		player.update(delta)
+		guard player.currentLives > 0 else {
+			delegate.didGameOver(from: self)
+			return
+		}
 
-		gameInteractor.enemyInteractor.collide(with: player)
+		player.update(delta)
+		mazeInteractor.follow(player)
+		enemyInteractor.collide(with: player)
+		delegate.didUpdate(lives: player.currentLives)
 	}
 
 	func collide(with entity: BaseEntity) {
@@ -52,68 +66,53 @@ class PlayerInteractor {
 		collisionActions[entity.type]?(entity)
 	}
 
-	func didSwipe(_ direction: Direction) {
-		player.didSwipe(direction)
+	func move(to direction: Direction) {
 		play(sound: .selectItem)
+		player.move(to: direction)
 	}
 
 	// MARK: - Private
 
-	private func hitWhirlwind(entity: BaseEntity) {
-		play(sound: .hitWhirlwind)
-		gameInteractor.didHitWhirlwind()
-		remove(entity: entity)
+	private func hitRotator(entity: BaseEntity) {
+		play(sound: .hitRotator)
+		mazeInteractor.didHitRotator()
+		entity.visible = false
 	}
 
 	private func hitCoin(entity: BaseEntity) {
 		play(sound: .hitCoin)
-		gameInteractor.stats.currentScore += 15
-		gameInteractor.delegate?.didUpdate(score: gameInteractor.stats.currentScore)
-		remove(entity: entity)
+		delegate.didGetBonus(score: 15)
+		entity.visible = false
 	}
 
 	private func hitTimeBonus(entity: BaseEntity) {
 		play(sound: .hitTimeBonus)
-		gameInteractor.stats.currentTime += 5
-		remove(entity: entity)
+		delegate.didGetBonus(score: 5)
+		entity.visible = false
 	}
 
 	private func hitKey(entity: BaseEntity) {
 		play(sound: .hitHearth)
-		gameInteractor.goal.type = .goal_open
-		gameInteractor.walls.remove(gameInteractor.goal)
-		remove(entity: entity)
+		mazeInteractor.didHitKey(entity)
+		entity.visible = false
 	}
 
 	private func hitHearth(entity: BaseEntity) {
 		play(sound: .hitHearth)
-		gameInteractor.stats.currentLives += 1
-		gameInteractor.delegate?.didUpdate(lives: gameInteractor.stats.currentLives)
-		remove(entity: entity)
+		player.currentLives += 1
+		delegate.didUpdate(lives: player.currentLives)
+		delegate.didGetBonus(score: 5)
+		entity.visible = false
 	}
 
 	private func hitBomb(entity: BaseEntity) {
 		play(sound: .hitBomb)
-		player.addPower()
-		destroyWalls()
-		remove(entity: entity)
+		mazeInteractor.didHitBomb(entity)
+		delegate.didGetBonus(score: 5)
 	}
 
 	private func hitGoal(entity: BaseEntity) {
-		gameInteractor.didCollideGoal()
-	}
-
-	private func destroyWalls() {
-		for wall in gameInteractor.walls {
-			guard wall.isDestroyable, player.frame.isNeighbour(of: wall.frame) else { return }
-
-			wall.explode()
-			gameInteractor.walls.remove(wall)
-		}
-	}
-
-	private func remove(entity: BaseEntity) {
-		entity.visible = false
-		gameInteractor.items.remove(entity)
+		delegate.didHitGoal()
+		delegate.didGetBonus(score: 100)
 	}
 }

@@ -9,18 +9,6 @@
 import UIKit
 
 extension Enemy {
-	func calculatePath() {
-		guard timeAccumulator > 1.0 || path.isEmpty else { return }
-		timeAccumulator = 0
-
-		let target = gameInteractor!.playerInteractor.player.frame
-		let newPath = search(target)
-
-		if path.steps.isEmpty || !path.hasSameTarget(of: newPath) || newPath.steps.count < path.steps.count {
-			path = newPath
-		}
-	}
-
 	func search(_ target: Frame) -> Path {
 		let startingFrame = frame.boundingTile()
 		let path = Path(origin: startingFrame, target: target)
@@ -44,19 +32,19 @@ extension Enemy {
 			let rightFrame = path.currentFrame.translate(x: currentSpeed)
 
 			var possibleDirections = [(Direction, Frame)]()
-			if !isWall(at: path.currentFrame, direction: Direction.up) && !path.collides(upFrame) {
+			if !mazeInteractor.isWall(at: path.currentFrame, direction: Direction.up) && !path.collides(upFrame) {
 				possibleDirections.append((Direction.up, upFrame))
 			}
 
-			if !isWall(at: path.currentFrame, direction: Direction.down) && !path.collides(downFrame) {
+			if !mazeInteractor.isWall(at: path.currentFrame, direction: Direction.down) && !path.collides(downFrame) {
 				possibleDirections.append((Direction.down, downFrame))
 			}
 
-			if !isWall(at: path.currentFrame, direction: Direction.left) && !path.collides(leftFrame) {
+			if !mazeInteractor.isWall(at: path.currentFrame, direction: Direction.left) && !path.collides(leftFrame) {
 				possibleDirections.append((Direction.left, leftFrame))
 			}
 
-			if !isWall(at: path.currentFrame, direction: Direction.right) && !path.collides(rightFrame) {
+			if !mazeInteractor.isWall(at: path.currentFrame, direction: Direction.right) && !path.collides(rightFrame) {
 				possibleDirections.append((Direction.right, rightFrame))
 			}
 
@@ -93,32 +81,24 @@ extension Enemy {
 		let rightFrame = frame.translate(x: speed)
 		
 		var possibleDirections = [(Direction, Frame)]()
-		if !gameInteractor!.checkWallCollision(upFrame) {
+		if !mazeInteractor.checkWallCollision(upFrame) {
 			possibleDirections.append((Direction.up, upFrame))
 		}
 
-		if !gameInteractor!.checkWallCollision(downFrame) {
+		if !mazeInteractor.checkWallCollision(downFrame) {
 			possibleDirections.append((Direction.down, downFrame))
 		}
 
-		if !gameInteractor!.checkWallCollision(leftFrame) {
+		if !mazeInteractor.checkWallCollision(leftFrame) {
 			possibleDirections.append((Direction.left, leftFrame))
 		}
 
-		if !gameInteractor!.checkWallCollision(rightFrame) {
+		if !mazeInteractor.checkWallCollision(rightFrame) {
 			possibleDirections.append((Direction.right, rightFrame))
 		}
 
 		let nextFrame = path.nextFrameToFollow(from: frame)
 		let bestDirection = getBestDirection(possibleDirections, targetFrame: nextFrame)
-		didSwipe(bestDirection.0)
-	}
-
-	func isWall(at frame: Frame, direction: Direction) -> Bool {
-		let col = frame.col
-		let row = frame.row
-		let new_col = direction == .left ? col - 1 : direction == .right ? col + 1 : col
-		let new_row = direction == .up ? row - 1 : direction == .down ? row + 1 : row
-		return gameInteractor!.checkWallCollision(Frame(row: new_row, col: new_col))
+		move(to: bestDirection.0)
 	}
 }

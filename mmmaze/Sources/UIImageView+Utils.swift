@@ -14,7 +14,7 @@ extension UIImageView {
 
 	func setImages(for type: BaseEntityType, with color: UIColor = .white) {
 		let images = UIImage(named: type.rawValue)!.sprites()
-		animationImages = images.map { $0.mask(with: color)! }
+		animationImages = images.map { $0.withTintColor(color) }
 		animationDuration = 0.4
 		animationRepeatCount = 0
 		startAnimating()

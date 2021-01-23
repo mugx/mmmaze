@@ -18,37 +18,37 @@ class BaseEntity: Hashable {
 		default: return .white
 		}
 	}
-	
-	var velocity: CGPoint = .zero
-	var speed: Float = 0
-	var isDestroyable: Bool = false
-	var isBlinking: Bool = false
-	var lastDirection: Direction?
-	
-	private(set) var imageView: UIImageView?
-	private var animations: [String: CABasicAnimation] = [:]
-	var type: BaseEntityType { didSet { refresh() } }
-	
+
+	var type: BaseEntityType { didSet { refreshImage() } }
+
 	var visible: Bool {
 		get { imageView?.alpha == 1 && !(imageView?.isHidden ?? false)}
 		set { imageView?.alpha = newValue ? 1 : 0; imageView?.isHidden = newValue}
 	}
-	
+
 	var transform: CGAffineTransform {
 		get { imageView?.transform ?? .identity }
 		set { imageView?.transform = newValue }
 	}
-	
+
 	var frame: Frame = .init(rect: .zero) {
 		didSet {
 			imageView?.frame = frame.rect
 		}
 	}
 	
+	var velocity: CGPoint = .zero
+	var speed: Float = 0
+	var isDestroyable: Bool = false
+	var isBlinking: Bool = false
+	var lastDirection: Direction?
+	private(set) var imageView: UIImageView?
+	private var animations: [String: CABasicAnimation] = [:]
+
 	static func == (lhs: BaseEntity, rhs: BaseEntity) -> Bool {
 		lhs.imageView == rhs.imageView
 	}
-	
+
 	convenience init(type: BaseEntityType, position: Position) {
 		self.init(type: type, frame: Frame(row: position.row, col: position.col))
 	}
@@ -56,30 +56,26 @@ class BaseEntity: Hashable {
 	convenience init(type: BaseEntityType, row: Int, col: Int) {
 		self.init(type: type, frame: Frame(row: row, col: col))
 	}
-	
-	init(type: BaseEntityType, frame: Frame = .zero) {
-		self.frame = frame
+
+	deinit {
+		imageView?.removeFromSuperview()
+	}
+
+	init(type: BaseEntityType, frame: Frame = .zero, speed: Float = 0) {
 		self.type = type
+		self.frame = frame
+		self.speed = speed
 		self.imageView = UIImageView(frame: frame.rect)
-		
-		refresh()
+
+		refreshImage()
 	}
 	
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(imageView)
 	}
 	
-	func add(to view: UIView) {
-		guard let imageView = imageView else { return }
-		view.addSubview(imageView)
-	}
-	
 	func collides(_ other: BaseEntity) -> Bool {
 		return visible && frame.collides(other.frame)
-	}
-	
-	func remove() {
-		imageView?.removeFromSuperview()
 	}
 	
 	func show(after time: TimeInterval = 1.0) {
@@ -111,8 +107,24 @@ class BaseEntity: Hashable {
 		})
 	}
 	
-	func refresh() {
+	func refreshImage() {
 		imageView?.setImages(for: type, with: color)
+		if type == .coin {
+			//¤ *
+			imageView?.image = "¤".toImage()?.withTintColor(color)
+		}
+		//else if type == .player {
+//			imageView?.image = "@".toImage()?.withTintColor(color)
+////		} else if type == .wall {
+////			// █,▓
+////			imageView?.image = "█".toImage()?.withTintColor(color)
+////		}
+//		}else if type == .enemy {
+//			imageView?.image = "X".toImage()?.withTintColor(color)
+//		}
+//		else {
+//			imageView?.setImages(for: type, with: color)
+//		}
 	}
 	
 	// A moving tile can't match the TILE_SIZE or it collides with the borders, hence it doesn't move.

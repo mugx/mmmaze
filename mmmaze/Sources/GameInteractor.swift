@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol GameInteractorDelegate {
+protocol GameInteractorDelegate: class {
 	func didUpdate(score: UInt)
 	func didUpdate(time: TimeInterval)
 	func didUpdate(lives: UInt)
@@ -18,102 +18,59 @@ protocol GameInteractorDelegate {
 }
 
 class GameInteractor {
-	static let BASE_MAZE_DIMENSION: Int = 9
-	var delegate: GameInteractorDelegate?
-	var enemyInteractor: EnemyInteractor!
-	var playerInteractor: PlayerInteractor!
-	var mazeInteractor: MazeInteractor!
-	var stats = GameStats()
-	var gameView: UIView!
-	var mazeView: UIView!
-
-	var walls: Set<BaseEntity> {
-		get { mazeInteractor.walls }
-		set { mazeInteractor.walls = newValue}
+	enum State {
+		case idle
+		case gameOver
+		case started
+		case running
 	}
 
-	var items: Set<BaseEntity> {
-		get { mazeInteractor.items }
-		set { mazeInteractor.items = newValue}
-	}
+	private var currentScore: UInt = 0 { didSet { delegate?.didUpdate(score: currentScore) } }
+	private var currentLevel: UInt = 0 { didSet { delegate?.didUpdate(level: currentLevel) } }
+	private(set) var enemyInteractor: EnemyInteractor!
+	private(set) var mazeInteractor: MazeInteractor!
+	private var playerInteractor: PlayerInteractor!
+	private var timeInteractor: TimeInteractor!
+	private var state: State = .idle
+	private unowned let gameView: UIView
+	private weak var delegate: GameInteractorDelegate?
 
-	var goal: BaseEntity! {
-		get { mazeInteractor.goal }
-		set { mazeInteractor.goal = newValue }
-	}
-
-	func attach(to gameView: UIView, with delegate: GameInteractorDelegate) {
+	init(gameView: UIView, delegate: GameInteractorDelegate) {
 		self.gameView = gameView
 		self.delegate = delegate
 	}
 
-	func startLevel(_ levelNumber: UInt = 1) {
-		gameView.alpha = 0
+	// MARK: - Public
 
-		// setup gameplay varables
-		stats.startLevel(levelNumber)
-		play(sound: levelNumber == 1 ? .startGame : .levelChange)
+	func start(levelNumber: UInt) {
+		state = .started
 
-		// reset random rotation
-		gameView.transform = CGAffineTransform(rotationAngle: 0)
+		currentLevel = levelNumber
+		gameView.transform = .identity
 
-		// remove old views
-		for view in mazeView?.subviews ?? [] {
-			view.isHidden = true
-			view.removeFromSuperview()
-		}
-
-		// init scene elements
-		mazeView = UIView(frame: gameView.frame)
-		gameView.addSubview(mazeView)
-		stats.mazeRotation = 0
-		mazeInteractor = MazeInteractor(
-			mazeView: mazeView,
-			dimension: (Self.BASE_MAZE_DIMENSION + Int(levelNumber) * 2) % 30
+		timeInteractor = TimeInteractor(delegate: self)
+		mazeInteractor = MazeInteractor(gameView: gameView, levelNumber: levelNumber)
+		enemyInteractor = EnemyInteractor(mazeInteractor: mazeInteractor)
+		playerInteractor = PlayerInteractor(
+			delegate: self,
+			mazeInteractor: mazeInteractor,
+			enemyInteractor: enemyInteractor
 		)
 
-		// setup interactor
-		enemyInteractor = EnemyInteractor(gameInteractor: self)
-		playerInteractor = PlayerInteractor(gameInteractor: self)
-		mazeView.follow(playerInteractor.player)
-
-		// update external delegate
-		delegate?.didUpdate(score: stats.currentScore)
-		delegate?.didUpdate(lives: stats.currentLives)
-
-		UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveEaseOut) {
-			self.gameView.alpha = 1
-		} completion: { _ in
-			self.delegate?.didUpdate(level: self.stats.currentLevel)
-		}
-	}
-
-	func checkWallCollision(_ frame: Frame) -> Bool {
-		return walls.contains { $0.frame.collides(frame) }
-	}
-
-	func gameOver() {
-		guard !stats.isGameOver else { return }
-
-		stats.isGameOver = true
-		play(sound: .gameOver)
-		playerInteractor.player.explode {
-			self.delegate?.didGameOver(with: self.stats.currentScore)
-		}
+		gameView.fadeIn()
 	}
 
 	// MARK: - Private
 
-	private func updateTime(_ delta: TimeInterval) {
-		stats.currentTime = stats.currentTime - delta > 0 ? stats.currentTime - delta : 0
-		delegate?.didUpdate(time: stats.currentTime)
+	private func gameOver() {
+		guard state == .running else { return }
 
-		if stats.currentTime <= 10 {
-			delegate?.didHurryUp()
-		}
+		state = .gameOver
+		play(sound: .gameOver)
+		ScoreManager.save(currentScore)
 
-		if stats.currentTime <= 0 {
-			gameOver()
+		playerInteractor.player.explode {
+			self.delegate?.didGameOver(with: self.currentScore)
 		}
 	}
 }
@@ -122,29 +79,30 @@ class GameInteractor {
 
 extension GameInteractor: DisplayLinkDelegate {
 	func start() {
-		if !stats.isGameStarted {
-			stats.isGameStarted = true
-			startLevel()
+		switch state {
+		case .idle, .gameOver:
+			play(sound: .startGame)
+			currentScore = 0
+			start(levelNumber: 1)
+			fallthrough
+		default:
+			break
+			//mazeInteractor.items.forEach { $0.restoreAnimations() }
 		}
-
-		items.forEach { $0.restoreAnimations() }
 	}
 
 	func update(delta: TimeInterval) {
-		guard !stats.isGameOver else { return }
-
-		updateTime(delta)
-
-		guard stats.isGameStarted else { return }
-
-		enemyInteractor.update(delta)
-		playerInteractor.update(delta)
-
-		for item in items {
-			playerInteractor.collide(with: item)
-			enemyInteractor.collide(with: item)
+		switch state {
+		case .running:
+			enemyInteractor.update(delta: delta, target: playerInteractor.player.frame)
+			mazeInteractor.update(playerInteractor: playerInteractor, enemyInteractor: enemyInteractor)
+			fallthrough
+		case .started:
+			timeInteractor.update(delta)
+			playerInteractor.update(delta)
+		default:
+			break
 		}
-		mazeView.follow(playerInteractor.player)
 	}
 }
 
@@ -152,28 +110,43 @@ extension GameInteractor: DisplayLinkDelegate {
 
 extension GameInteractor: GestureRecognizerDelegate {
 	func didSwipe(_ direction: Direction) {
-		stats.isGameStarted = true
-		playerInteractor.didSwipe(direction)
+		state = .running
+		playerInteractor.move(to: direction)
 	}
 }
 
-// MARK: - CollisionInteractorDelegate
+// MARK: - PlayerInteractorDelegate
 
 extension GameInteractor: PlayerInteractorDelegate {
-	func didCollideGoal() {
-		stats.currentScore += 100
-		startLevel(stats.currentLevel + 1)
+	func didUpdate(lives: UInt) {
+		delegate?.didUpdate(lives: lives)
 	}
 
-	func didHitWhirlwind() {
-		stats.mazeRotation += .pi / 2
-		
-		UIView.animate(withDuration: 0.2) {
-			self.gameView.transform = self.gameView.transform.rotated(by: .pi / 2)
-			self.playerInteractor.player.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation)
-			self.items.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
-			self.walls.forEach { $0.transform = .identity }
-			self.enemyInteractor.enemies.forEach { $0.transform = CGAffineTransform(rotationAngle: -self.stats.mazeRotation) }
-		}
+	func didHitGoal() {
+		start(levelNumber: currentLevel + 1)
+	}
+
+	func didGetBonus(score: UInt) {
+		currentScore += score
+	}
+
+	func didGameOver(from interactor: PlayerInteractor) {
+		gameOver()
+	}
+}
+
+// MARK: - TimeInteractorDelegate
+
+extension GameInteractor: TimeInteractorDelegate {
+	func didUpdate(time: TimeInterval) {
+		delegate?.didUpdate(time: time)
+	}
+
+	func didHurryUp() {
+		delegate?.didHurryUp()
+	}
+
+	func didGameOver(from timeInteractor: TimeInteractor) {
+		gameOver()
 	}
 }

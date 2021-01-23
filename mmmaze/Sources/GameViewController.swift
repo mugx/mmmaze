@@ -46,7 +46,6 @@ class GameViewController: BaseViewController {
 
 extension GameViewController: GameOverViewDelegate {
 	func didTap() {
-		gameInteractor?.startLevel()
 		displayLink?.start()
 	}
 }
@@ -63,7 +62,7 @@ extension GameViewController: GameInteractorDelegate {
 	}
 
 	public func didUpdate(lives: UInt) {
-		currentLivesLabel.text = "\(lives)"
+		currentLivesLabel.text = String(describing: lives)
 	}
 
 	public func didUpdate(level: UInt) {
@@ -77,7 +76,6 @@ extension GameViewController: GameInteractorDelegate {
 
 	func didGameOver(with score: UInt) {
 		displayLink?.stop()
-		ScoreManager.save(score)
 		gameOverView.didGameOver(with: score)
 	}
 }

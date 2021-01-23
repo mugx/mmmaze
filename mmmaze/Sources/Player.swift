@@ -9,32 +9,27 @@
 import UIKit
 
 class Player: BaseEntity {
-	var gameInteractor: GameInteractor { return interactor.gameInteractor }
-	override var color: UIColor { isInvulnerable ? .red : .white }
-	var isInvulnerable: Bool { power > 0 }
-	var power: UInt = 0 { didSet { refresh() } }
-	private let interactor: PlayerInteractor
-	private static let SPEED = 3.0
+	var currentLives: UInt = 0
+	private unowned var mazeInteractor: MazeInteractor
+	private unowned let interactor: PlayerInteractor
+	private static let SPEED: Float = 3.0
+	private static let MAX_LIVES: UInt = 1
 
-	deinit {
-		remove()
-	}
-
-	init(interactor: PlayerInteractor) {
+	init(interactor: PlayerInteractor, mazeInteractor: MazeInteractor) {
 		self.interactor = interactor
-		super.init(type: .player)
+		self.currentLives = Self.MAX_LIVES
+		self.mazeInteractor = mazeInteractor
 
-		self.speed = Float(Self.SPEED)
+		super.init(type: .player, speed: Self.SPEED)
 
 		respawnAtInitialFrame()
-		refresh()
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	func didSwipe(_ direction: Direction) {
+	func move(to direction: Direction) {
 		lastDirection = direction
 
 		switch direction {
@@ -54,7 +49,7 @@ class Player: BaseEntity {
 
 		// check vertical collision
 		var frameOnMove = frame.translate(y: velocity.y)
-		if !gameInteractor.checkWallCollision(frameOnMove) {
+		if !mazeInteractor.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
 			if velocity.x != 0 && lastDirection?.isVertical ?? false {
@@ -64,7 +59,7 @@ class Player: BaseEntity {
 
 		// check horizontal collision
 		frameOnMove = frame.translate(x: velocity.x)
-		if !gameInteractor.checkWallCollision(frameOnMove) {
+		if !mazeInteractor.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
 			if velocity.y != 0 && lastDirection?.isHorizontal ?? false {
@@ -79,18 +74,18 @@ class Player: BaseEntity {
 		}
 	}
 
-	func addPower() {
-		power += 1
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
-			self.power -= self.isInvulnerable ? 1 : 0
-		}
+	func takeHit() {
+		currentLives -= 1
+		respawnPlayer()
 	}
 
 	func respawnPlayer() {
+		guard currentLives > 0 else { return }
+		
 		isBlinking = true
 		UIView.animate(withDuration: 0.4) {
 			self.respawnAtInitialFrame()
-			self.gameInteractor.mazeView.follow(self)
+			//self.mazeInteractor.follow(self)
 		} completion: { _ in
 			self.blink(2) {
 				self.isBlinking = false

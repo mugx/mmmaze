@@ -35,6 +35,7 @@ extension UIImage {
 
 		context.clip(to: bounds, mask: maskImage)
 		context.setFillColor(color.cgColor)
+		context.setBlendMode(.normal)
 		context.fill(bounds)
 
 		if let cgImage = context.makeImage() {

@@ -4,7 +4,6 @@ Todos:
 [x] convert TILE_SIZE to CGFloat
 [ ] cleanup delta speed
 [ ] simplify new path update
-[ ] mazeRotation brings walls collision bug?
 [X] refactor explode x/row , y/col
 [X] remove walls as dictionary
 [ ] refactor isWall / checkWalls

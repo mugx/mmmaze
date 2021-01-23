@@ -16,12 +16,12 @@ class EnemyInteractor {
 		]
 	}
 
-	let gameInteractor: GameInteractor!
-	private(set) var enemies: [Enemy] = []
-	private var enemyTimeAccumulator: TimeInterval = 0
+	private unowned let mazeInteractor: MazeInteractor
+	private var enemies: [Enemy] = []
+	private var timeAccumulator: TimeInterval = 0
 
-	public init(gameInteractor: GameInteractor) {
-		self.gameInteractor = gameInteractor
+	init(mazeInteractor: MazeInteractor) {
+		self.mazeInteractor = mazeInteractor
 	}
 
 	// MARK: - Public
@@ -33,40 +33,41 @@ class EnemyInteractor {
 		collisionActions[entity.type]?(enemy, entity)
 	}
 
-	func update(_ delta: TimeInterval) {
-		enemyTimeAccumulator += delta
-		if enemyTimeAccumulator > 1 {
-			enemyTimeAccumulator = 0
+	func update(delta: TimeInterval, target: Frame) {
+		timeAccumulator += delta
 
-			spawnEnemy()
+		switch timeAccumulator {
+		case 1...:
+			spawn()
+			timeAccumulator = 0
+			fallthrough
+		default:
+			enemies.forEach {
+				$0.update(delta: delta, target: target)
+			}
 		}
-
-		updateEnemies(delta)
 	}
 
 	// MARK: - Private
 
-	private func spawnEnemy() {
-		if enemies.isEmpty {
-			show(Enemy(interactor: self))
-		} else if let enemy = enemies.first(where: { $0.wantSpawn }) {
-			show(enemy.spawn())
+	private func spawn() {
+		switch (empty: enemies.isEmpty, spawnable: enemies.first(where: { $0.wantSpawn })) {
+		case (empty: true, _):
+			show(Enemy(interactor: self, mazeInteractor: mazeInteractor))
+		case (empty: false, spawnable: let enemy?):
+			let spawned = Enemy(interactor: self, mazeInteractor: mazeInteractor)
+			spawned.frame = enemy.frame
+			show(spawned)
+		default:
+			break
 		}
 	}
 
 	private func show(_ enemy: Enemy) {
 		play(sound: .enemySpawn)
 		enemies.append(enemy)
-		enemy.add(to: gameInteractor.mazeView)
+		mazeInteractor.add(enemy)
 		enemy.show(after: 1)
-	}
-
-	private func updateEnemies(_ delta: TimeInterval) {
-		enemies.forEach {
-			if $0.visible {
-				$0.update(delta)
-			}
-		}
 	}
 
 	// MARK: - Hits
@@ -74,7 +75,7 @@ class EnemyInteractor {
 	private func hitBomb(_ enemy: Enemy, entity: BaseEntity) {
 		enemy.wantSpawn = true
 		entity.visible = false
-		gameInteractor.items.remove(entity)
+		mazeInteractor.remove(entity)
 	}
 
 	private func hitPlayer(_ enemy: Enemy, entity: BaseEntity) {
@@ -82,21 +83,7 @@ class EnemyInteractor {
 		guard !player.isBlinking, !enemy.isBlinking else { return }
 
 		play(sound: .hitPlayer)
-
-		if player.isInvulnerable {
-			enemy.isBlinking = true
-			enemy.explode {
-				DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-					enemy.respawnAtInitialFrame()
-					enemy.isBlinking = false
-					enemy.show(after: 1)
-				}
-			}
-		} else {
-			enemy.wantSpawn = true
-			gameInteractor.stats.currentLives -= 1
-			gameInteractor.delegate?.didUpdate(lives: gameInteractor.stats.currentLives)
-			gameInteractor.stats.currentLives > 0 ? player.respawnPlayer() : gameInteractor.gameOver()
-		}
+		enemy.wantSpawn = true
+		player.takeHit()
 	}
 }

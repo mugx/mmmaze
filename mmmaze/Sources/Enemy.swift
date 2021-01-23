@@ -9,19 +9,21 @@
 import UIKit
 
 class Enemy: BaseEntity {
-	var gameInteractor: GameInteractor? { return interactor.gameInteractor }
 	var path = Path()
 	var wantSpawn: Bool = false
-	var timeAccumulator: TimeInterval = 0.0
-	private let interactor: EnemyInteractor
-	private static let SPEED = 1.5
+	private var timeAccumulator: TimeInterval = 0.0
+	private var target: Frame?
+	private unowned let interactor: EnemyInteractor
+	unowned let mazeInteractor: MazeInteractor
+	private static let SPEED: Float = 1.5
 
-	init(interactor: EnemyInteractor) {
+	init(interactor: EnemyInteractor, mazeInteractor: MazeInteractor) {
 		self.interactor = interactor
+		self.mazeInteractor = mazeInteractor
 
-		super.init(type: .enemy)
+		super.init(type: .enemy, speed: Self.SPEED)
 
-		assignSpeed()
+		visible = false
 		respawnAtInitialFrame()
 	}
 
@@ -31,17 +33,11 @@ class Enemy: BaseEntity {
 
 	// MARK: - Public
 	
-	func spawn() -> Enemy {
-		wantSpawn = false
-
-		let spawnedEnemy = Enemy(interactor: interactor)
-		spawnedEnemy.frame = frame
-		spawnedEnemy.show(after: 0.5)
-		return spawnedEnemy
-	}
-	
-	func update(_ delta: TimeInterval) {
+	func update(delta: TimeInterval, target: Frame) {
+		guard visible else { return }
+		
 		timeAccumulator += delta
+		self.target = target
 
 		calculatePath()
 		decideNextMove(delta)
@@ -50,7 +46,7 @@ class Enemy: BaseEntity {
 
 		// check vertical collision
 		var frameOnMove = frame.translate(y: velocity.y)
-		if !gameInteractor!.checkWallCollision(frameOnMove) {
+		if !mazeInteractor.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
 			if velocity.x != 0 && lastDirection?.isVertical ?? false {
@@ -60,7 +56,7 @@ class Enemy: BaseEntity {
 
 		// check horizontal collision
 		frameOnMove = frame.translate(x: velocity.x)
-		if !gameInteractor!.checkWallCollision(frameOnMove) {
+		if !mazeInteractor.checkWallCollision(frameOnMove) {
 			frame = frameOnMove
 
 			if velocity.y != 0 && lastDirection?.isHorizontal ?? false {
@@ -75,12 +71,7 @@ class Enemy: BaseEntity {
 		}
 	}
 
-	override func respawnAtInitialFrame() {
-		visible = false
-		super.respawnAtInitialFrame()
-	}
-
-	func didSwipe(_ direction: Direction) {
+	func move(to direction: Direction) {
 		lastDirection = direction
 
 		switch direction {
@@ -97,13 +88,14 @@ class Enemy: BaseEntity {
 
 	// MARK: - Private
 
-	private func assignSpeed() {
-		let maxSpeed = gameInteractor!.playerInteractor.player.speed
-		speed = Float(Double.random(in: Self.SPEED - 0.2 ... Self.SPEED + 0.2))
-		speed = speed + 0.1 * Float((gameInteractor!.stats.currentLevel - 1))
+	private func calculatePath() {
+		guard let target = target, timeAccumulator > 1.0 || path.isEmpty else { return }
+		timeAccumulator = 0
 
-		if speed > maxSpeed {
-			speed = maxSpeed - 0.2
+		let newPath = search(target)
+
+		if path.steps.isEmpty || !path.hasSameTarget(of: newPath) || newPath.steps.count < path.steps.count {
+			path = newPath
 		}
 	}
 }

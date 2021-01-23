@@ -11,7 +11,7 @@ import UIKit
 enum BaseEntityType: String {
 	case wall
 	case coin
-	case whirlwind
+	case rotator
 	case bomb
 	case time
 	case hearth

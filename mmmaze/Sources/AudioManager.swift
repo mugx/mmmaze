@@ -11,7 +11,7 @@ import UIKit
 
 enum SoundType: String {
 	case hitCoin
-	case hitWhirlwind
+	case hitRotator
 	case hitBomb
 	case hitHearth
 	case hitTimeBonus
