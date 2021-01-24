@@ -9,12 +9,18 @@
 import UIKit
 
 class MazeGenerator {
+	private struct Tile {
+		let row: Int
+		let col: Int
+		let steps: Int
+	}
+
 	static func calculateMaze(startRow: Int, startCol: Int, dimension: Int) -> Maze {
 		let maze = Maze(dimension: dimension)
-		let startTile = MazeTile(row: startRow, col: startCol, steps: 0)
+		let startTile = Tile(row: startRow, col: startCol, steps: 0)
 		maze[startRow, startCol] = .start
 
-		var visitedTiles = [MazeTile]()
+		var visitedTiles = [Tile]()
 		var currentPath = [startTile]
 		var currentRow = startRow
 		var currentCol = startCol
@@ -58,7 +64,7 @@ class MazeGenerator {
 					currentCol += 2
 				}
 
-				let tile = MazeTile(row: currentRow, col: currentCol, steps: currentPath.count * 2)
+				let tile = Tile(row: currentRow, col: currentCol, steps: currentPath.count * 2)
 				currentPath.append(tile)
 				visitedTiles.append(tile)
 			}

@@ -38,7 +38,7 @@
                         <constraint firstAttribute="height" constant="32" id="Nnn-J8-Wcu"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rotator.png" translatesAutoresizingMaskIntoConstraints="NO" id="KoU-fV-R6s" userLabel="First arrow Image">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="KoU-fV-R6s" userLabel="First arrow Image">
                     <rect key="frame" x="121.5" y="317.5" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="4Sb-wu-TrJ"/>
@@ -52,7 +52,7 @@
                         <constraint firstAttribute="height" constant="32" id="Vw8-nk-FSO"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rotator.png" translatesAutoresizingMaskIntoConstraints="NO" id="DlT-ev-XqM" userLabel="Second arrow Image">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="DlT-ev-XqM" userLabel="Second arrow Image">
                     <rect key="frame" x="221.5" y="317.5" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="VGA-17-xWF"/>
@@ -98,6 +98,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="rotator.png" width="32" height="32"/>
+        <image name="arrow.png" width="32" height="32"/>
     </resources>
 </document>

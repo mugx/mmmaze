@@ -9,6 +9,9 @@
 import UIKit
 
 extension Enemy {
+
+	// MARK: - Public
+	
 	func search(_ target: Frame) -> Path {
 		let startingFrame = frame.boundingTile()
 		let path = Path(origin: startingFrame, target: target)
@@ -58,21 +61,6 @@ extension Enemy {
 		return path
 	}
 
-	func getBestDirection(_ directions: [(Direction, Frame)], targetFrame: Frame) -> (Direction, Frame) {
-		var shortestDistance = CGFloat(Float.greatestFiniteMagnitude)
-		var bestDirection: (Direction, Frame)!
-
-		for direction in directions {
-			let distance = direction.1.distance(to: targetFrame)
-			if distance < shortestDistance {
-				shortestDistance = distance
-				bestDirection = direction
-			}
-		}
-
-		return bestDirection
-	}
-
 	func decideNextMove(_ delta: TimeInterval) {
 		let speed = CGFloat(self.speed)
 		let upFrame = frame.translate(y: -speed)
@@ -101,4 +89,22 @@ extension Enemy {
 		let bestDirection = getBestDirection(possibleDirections, targetFrame: nextFrame)
 		move(to: bestDirection.0)
 	}
+
+	// MARK: - Private
+
+	private func getBestDirection(_ directions: [(Direction, Frame)], targetFrame: Frame) -> (Direction, Frame) {
+		var shortestDistance = CGFloat(Float.greatestFiniteMagnitude)
+		var bestDirection: (Direction, Frame)!
+
+		for direction in directions {
+			let distance = direction.1.distance(to: targetFrame)
+			if distance < shortestDistance {
+				shortestDistance = distance
+				bestDirection = direction
+			}
+		}
+
+		return bestDirection
+	}
+
 }

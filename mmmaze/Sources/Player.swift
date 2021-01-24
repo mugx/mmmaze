@@ -8,21 +8,19 @@
 
 import UIKit
 
-class Player: BaseEntity {
+class Player: AIEntity {
 	var currentLives: UInt = 0
-	private unowned var mazeInteractor: MazeInteractor
-	private unowned let interactor: PlayerInteractor
+	private(set) var isBlinking: Bool = false
+	private unowned let mazeInteractor: MazeInteractor
+	private var lastDirection: Direction?
 	private static let SPEED: Float = 3.0
-	private static let MAX_LIVES: UInt = 1
+	private static let MAX_LIVES: UInt = 3
 
-	init(interactor: PlayerInteractor, mazeInteractor: MazeInteractor) {
-		self.interactor = interactor
+	init(mazeInteractor: MazeInteractor) {
 		self.currentLives = Self.MAX_LIVES
 		self.mazeInteractor = mazeInteractor
 
 		super.init(type: .player, speed: Self.SPEED)
-
-		respawnAtInitialFrame()
 	}
 
 	required init?(coder: NSCoder) {
@@ -79,13 +77,15 @@ class Player: BaseEntity {
 		respawnPlayer()
 	}
 
-	func respawnPlayer() {
+	// MARK: - Private
+
+	private func respawnPlayer() {
 		guard currentLives > 0 else { return }
 		
 		isBlinking = true
 		UIView.animate(withDuration: 0.4) {
 			self.respawnAtInitialFrame()
-			//self.mazeInteractor.follow(self)
+			self.mazeInteractor.follow(self)
 		} completion: { _ in
 			self.blink(2) {
 				self.isBlinking = false

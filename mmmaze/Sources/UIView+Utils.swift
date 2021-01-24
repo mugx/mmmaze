@@ -63,10 +63,15 @@ extension UIView {
 		}
 	}
 
-	func fadeIn() {
+	func fadeIn(_ completion: @escaping ()->()) {
 		alpha = 0
-		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
-			self.alpha = 1
+
+		DispatchQueue.main.async {
+			completion()
+
+			UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut) {
+				self.alpha = 1
+			}
 		}
 	}
 }

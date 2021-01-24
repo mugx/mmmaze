@@ -9,16 +9,6 @@
 import UIKit
 
 class BaseEntity: Hashable {
-	var color: UIColor {
-		switch type {
-		case .bomb, .hearth: return .red
-		case .coin: return .yellow
-		case .key: return .green
-		case .time: return .magenta
-		default: return .white
-		}
-	}
-
 	var type: BaseEntityType { didSet { refreshImage() } }
 
 	var visible: Bool {
@@ -37,13 +27,7 @@ class BaseEntity: Hashable {
 		}
 	}
 	
-	var velocity: CGPoint = .zero
-	var speed: Float = 0
-	var isDestroyable: Bool = false
-	var isBlinking: Bool = false
-	var lastDirection: Direction?
 	private(set) var imageView: UIImageView?
-	private var animations: [String: CABasicAnimation] = [:]
 
 	static func == (lhs: BaseEntity, rhs: BaseEntity) -> Bool {
 		lhs.imageView == rhs.imageView
@@ -61,78 +45,37 @@ class BaseEntity: Hashable {
 		imageView?.removeFromSuperview()
 	}
 
-	init(type: BaseEntityType, frame: Frame = .zero, speed: Float = 0) {
+	init(type: BaseEntityType, frame: Frame = .zero) {
 		self.type = type
 		self.frame = frame
-		self.speed = speed
 		self.imageView = UIImageView(frame: frame.rect)
 
-		refreshImage()
+		defer {
+			refreshImage()
+		}
 	}
 	
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(imageView)
 	}
-	
+
+	// MARK: - Public
+
 	func collides(_ other: BaseEntity) -> Bool {
 		return visible && frame.collides(other.frame)
-	}
-	
-	func show(after time: TimeInterval = 1.0) {
-		imageView?.isHidden = false
-		imageView?.alpha = 0
-		
-		UIView.animate(withDuration: 0.5, delay: time) {
-			self.imageView?.alpha = 1.0
-		}
 	}
 	
 	func explode(_ completion:(() -> ())? = nil) {
 		imageView?.explode(completion)
 	}
 	
-	func blink(_ duration: CFTimeInterval, completion: @escaping ()->()) {
-		imageView?.blink(duration, completion: completion)
-	}
-	
 	func spin() {
-		let anim = CABasicAnimation.spinAnimation()
-		imageView?.layer.add(anim, forKey: "spin")
-		animations["spin"] = anim
+		imageView?.layer.add(CABasicAnimation.spinAnimation(), forKey: "spin")
 	}
-	
-	func restoreAnimations() {
-		animations.forEach({ (arg0) in
-			imageView?.layer.add(arg0.value, forKey: arg0.key)
-		})
-	}
-	
-	func refreshImage() {
-		imageView?.setImages(for: type, with: color)
-		if type == .coin {
-			//¤ *
-			imageView?.image = "¤".toImage()?.withTintColor(color)
-		}
-		//else if type == .player {
-//			imageView?.image = "@".toImage()?.withTintColor(color)
-////		} else if type == .wall {
-////			// █,▓
-////			imageView?.image = "█".toImage()?.withTintColor(color)
-////		}
-//		}else if type == .enemy {
-//			imageView?.image = "X".toImage()?.withTintColor(color)
-//		}
-//		else {
-//			imageView?.setImages(for: type, with: color)
-//		}
-	}
-	
-	// A moving tile can't match the TILE_SIZE or it collides with the borders, hence it doesn't move.
-	// Instead we consider its frame as centered and resized of a speed factor so it has margin to move.
-	func respawnAtInitialFrame() {
-		velocity = .zero
-		frame = Frame(row: Constants.STARTING_CELL.row, col: Constants.STARTING_CELL.col)
-		frame = frame.resize(with: Float(Frame.SIZE) - Float(speed))
-		frame = frame.centered()
+
+	// MARK: - Private
+
+	private func refreshImage() {
+		imageView?.setImages(for: type, with: type.color)
 	}
 }

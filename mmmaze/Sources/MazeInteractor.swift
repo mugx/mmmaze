@@ -21,7 +21,6 @@ class MazeInteractor {
 
 	private var walls: Set<BaseEntity> = []
 	private var items: Set<BaseEntity> = []
-	private var goal: BaseEntity?
 	private var entities: Set<BaseEntity> = []
 	private var maze: Maze?
 	private var dimension: Int = 0
@@ -85,7 +84,11 @@ class MazeInteractor {
 
 	func didHitBomb(_ bomb: BaseEntity) {
 		for wall in walls {
-			guard wall.isDestroyable, bomb.frame.isNeighbour(of: wall.frame) else { continue }
+			let row = wall.frame.row
+			let col = wall.frame.col
+			let isEdge = row == 0 || col == 0 || row == dimension - 1 || col == dimension - 1
+
+			guard !isEdge, bomb.frame.isNeighbour(of: wall.frame) else { continue }
 
 			wall.explode {
 				self.walls.remove(wall)
@@ -96,8 +99,12 @@ class MazeInteractor {
 	}
 
 	func didHitKey(_ key: BaseEntity) {
-		goal!.type = .goal_open
-		walls.remove(goal!)
+		guard let goal = walls.first(where: { $0.type == .goal_close }) else {
+			return
+		}
+
+		goal.type = .goal_open
+		walls.remove(goal)
 	}
 
 	func didHitRotator() {
@@ -139,7 +146,6 @@ class MazeInteractor {
 
 	private func makeWall(for maze: Maze, row: Int, col: Int) {
 		let tile = BaseEntity(type: .wall, row: row, col: col)
-		tile.isDestroyable = !(row == 0 || col == 0 || row == dimension - 1 || col == dimension - 1)
 		add(tile)
 		walls.insert(tile)
 	}
@@ -148,7 +154,7 @@ class MazeInteractor {
 		let tile = BaseEntity(type: .goal_close, row: row, col: col)
 		add(tile)
 		items.insert(tile)
-		goal = tile
+		walls.insert(tile)
 	}
 
 	private func makeKey(for maze: Maze) {

@@ -8,22 +8,16 @@
 
 import Foundation
 
-enum MazeBaseEntityType: Int {
-	case wall
-	case path
-	case start
-	case goal
-}
-
-struct MazeTile {
-	let row: Int
-	let col: Int
-	let steps: Int
-}
-
 class Maze {
+	enum TileType: Int {
+		case wall
+		case path
+		case start
+		case goal
+	}
+
 	private let dimension: Int
-	private var grid: [MazeBaseEntityType]
+	private var grid: [TileType]
 	private var freePositions: [Position] = []
 
 	init(dimension: Int) {
@@ -31,7 +25,7 @@ class Maze {
 		grid = Array(repeating: .wall, count: dimension * dimension)
 	}
 
-	subscript(row: Int, column: Int) -> MazeBaseEntityType {
+	subscript(row: Int, column: Int) -> TileType {
 		get { grid[(row * dimension) + column] }
 		set { grid[(row * dimension) + column] = newValue }
 	}

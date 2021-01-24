@@ -18,7 +18,7 @@ protocol GameInteractorDelegate: class {
 }
 
 class GameInteractor {
-	enum State {
+	private enum State {
 		case idle
 		case gameOver
 		case started
@@ -27,8 +27,8 @@ class GameInteractor {
 
 	private var currentScore: UInt = 0 { didSet { delegate?.didUpdate(score: currentScore) } }
 	private var currentLevel: UInt = 0 { didSet { delegate?.didUpdate(level: currentLevel) } }
-	private(set) var enemyInteractor: EnemyInteractor!
-	private(set) var mazeInteractor: MazeInteractor!
+	private var enemyInteractor: EnemyInteractor!
+	private var mazeInteractor: MazeInteractor!
 	private var playerInteractor: PlayerInteractor!
 	private var timeInteractor: TimeInteractor!
 	private var state: State = .idle
@@ -42,22 +42,20 @@ class GameInteractor {
 
 	// MARK: - Public
 
-	func start(levelNumber: UInt) {
-		state = .started
+	func start(level: UInt) {
+		let completion = { [self] in
+			state = .started
+			currentLevel = level
+			gameView.transform = .identity
+			timeInteractor = TimeInteractor(delegate: self)
+			mazeInteractor = MazeInteractor(gameView: gameView, levelNumber: currentLevel)
+			enemyInteractor = EnemyInteractor(mazeInteractor: mazeInteractor)
+			playerInteractor = PlayerInteractor(delegate: self, mazeInteractor: mazeInteractor)
+		}
 
-		currentLevel = levelNumber
-		gameView.transform = .identity
-
-		timeInteractor = TimeInteractor(delegate: self)
-		mazeInteractor = MazeInteractor(gameView: gameView, levelNumber: levelNumber)
-		enemyInteractor = EnemyInteractor(mazeInteractor: mazeInteractor)
-		playerInteractor = PlayerInteractor(
-			delegate: self,
-			mazeInteractor: mazeInteractor,
-			enemyInteractor: enemyInteractor
-		)
-
-		gameView.fadeIn()
+		gameView.fadeIn {
+			completion()
+		}
 	}
 
 	// MARK: - Private
@@ -83,23 +81,21 @@ extension GameInteractor: DisplayLinkDelegate {
 		case .idle, .gameOver:
 			play(sound: .startGame)
 			currentScore = 0
-			start(levelNumber: 1)
-			fallthrough
+			start(level: 1)
 		default:
 			break
-			//mazeInteractor.items.forEach { $0.restoreAnimations() }
 		}
 	}
 
 	func update(delta: TimeInterval) {
 		switch state {
 		case .running:
-			enemyInteractor.update(delta: delta, target: playerInteractor.player.frame)
+			enemyInteractor.update(delta: delta, playerInteractor: playerInteractor)
 			mazeInteractor.update(playerInteractor: playerInteractor, enemyInteractor: enemyInteractor)
 			fallthrough
 		case .started:
 			timeInteractor.update(delta)
-			playerInteractor.update(delta)
+			playerInteractor.update(delta, enemyInteractor: enemyInteractor)
 		default:
 			break
 		}
@@ -123,7 +119,7 @@ extension GameInteractor: PlayerInteractorDelegate {
 	}
 
 	func didHitGoal() {
-		start(levelNumber: currentLevel + 1)
+		start(level: currentLevel + 1)
 	}
 
 	func didGetBonus(score: UInt) {

@@ -8,23 +8,27 @@
 
 import UIKit
 
-class Enemy: BaseEntity {
-	var path = Path()
+class Enemy: AIEntity {
 	var wantSpawn: Bool = false
+	private(set) var path = Path()
+	unowned let mazeInteractor: MazeInteractor
 	private var timeAccumulator: TimeInterval = 0.0
 	private var target: Frame?
-	private unowned let interactor: EnemyInteractor
-	unowned let mazeInteractor: MazeInteractor
+	private var lastDirection: Direction?
 	private static let SPEED: Float = 1.5
 
-	init(interactor: EnemyInteractor, mazeInteractor: MazeInteractor) {
-		self.interactor = interactor
+	convenience init(from spawnable: Enemy, mazeInteractor: MazeInteractor) {
+		self.init(mazeInteractor: mazeInteractor)
+		frame = spawnable.frame
+		spawnable.wantSpawn = false
+	}
+	
+	init(mazeInteractor: MazeInteractor) {
 		self.mazeInteractor = mazeInteractor
 
 		super.init(type: .enemy, speed: Self.SPEED)
 
 		visible = false
-		respawnAtInitialFrame()
 	}
 
 	required init?(coder: NSCoder) {

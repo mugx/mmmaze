@@ -16,9 +16,8 @@ class Path {
 
 	var steps: [Step] = []
 	var isEmpty: Bool { steps.isEmpty }
-	var count: Int { steps.count }
-	var target: Frame
-	var currentFrame: Frame
+	private(set) var currentFrame: Frame
+	private var target: Frame
 
 	init(origin: Frame = .zero, target: Frame = .zero) {
 		steps = [Step(frame: origin, visited: false)]

@@ -24,6 +24,8 @@ class TimeInteractor {
 		self.currentTime = Self.MAX_TIME
 	}
 
+	// MARK: - Public
+	
 	func update(_ delta: TimeInterval) {
 		currentTime -= delta
 

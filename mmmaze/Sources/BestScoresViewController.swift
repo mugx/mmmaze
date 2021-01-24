@@ -9,7 +9,7 @@
 import UIKit
 
 class BestScoresViewController: BaseViewController {
-	private var maxResults = 10
+	private static let maxResults = 10
 
 	// MARK: - Actions
 
@@ -23,7 +23,7 @@ class BestScoresViewController: BaseViewController {
 
 extension BestScoresViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return maxResults
+		return Self.maxResults
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

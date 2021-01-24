@@ -40,7 +40,6 @@
 		1D87F61925A6EAE100C14690 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D87F61825A6EAE100C14690 /* TODO.md */; };
 		1D87F61B25A6EBF500C14690 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D87F61A25A6EBF500C14690 /* Path.swift */; };
 		1D9D51DD25AAE7CE000B3216 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D51DC25AAE7CE000B3216 /* Frame.swift */; };
-		1DA4C712259BA0B300E4DE1E /* rotator.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C703259BA0B300E4DE1E /* rotator.png */; };
 		1DA4C713259BA0B300E4DE1E /* goal_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C704259BA0B300E4DE1E /* goal_open.png */; };
 		1DA4C714259BA0B300E4DE1E /* goal_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C705259BA0B300E4DE1E /* goal_close.png */; };
 		1DA4C715259BA0B300E4DE1E /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C706259BA0B300E4DE1E /* player.png */; };
@@ -82,6 +81,9 @@
 		1DCF94B225B42C8B00AF2CB5 /* BaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94B125B42C8B00AF2CB5 /* BaseEntity.swift */; };
 		1DCF94B425B4345C00AF2CB5 /* MazeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94B325B4345C00AF2CB5 /* MazeInteractor.swift */; };
 		1DCF94B625B44C1500AF2CB5 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF94B525B44C1500AF2CB5 /* Position.swift */; };
+		1DD09CC825BDDE1A00B1CBE5 /* rotator.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD09CC725BDDE1A00B1CBE5 /* rotator.png */; };
+		1DD09CCA25BDEA4B00B1CBE5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD09CC925BDEA4B00B1CBE5 /* arrow.png */; };
+		1DD09CCC25BDFE2B00B1CBE5 /* AIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD09CCB25BDFE2B00B1CBE5 /* AIEntity.swift */; };
 		1DE262ED25A0A60200BAC78A /* VersionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE262EC25A0A60200BAC78A /* VersionLabel.swift */; };
 		1DEC3DEB25A0FF8B000A863D /* BaseEntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC3DEA25A0FF8B000A863D /* BaseEntityType.swift */; };
 		1DF1ADBC25B57A18008E4D68 /* PlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1ADBB25B57A18008E4D68 /* PlayerInteractor.swift */; };
@@ -136,7 +138,6 @@
 		1D87F61825A6EAE100C14690 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		1D87F61A25A6EBF500C14690 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Path.swift; path = mmmaze/Sources/Path.swift; sourceTree = "<group>"; };
 		1D9D51DC25AAE7CE000B3216 /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Frame.swift; path = mmmaze/Sources/Frame.swift; sourceTree = "<group>"; };
-		1DA4C703259BA0B300E4DE1E /* rotator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rotator.png; path = mmmaze/Resources/rotator.png; sourceTree = "<group>"; };
 		1DA4C704259BA0B300E4DE1E /* goal_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_open.png; path = mmmaze/Resources/goal_open.png; sourceTree = "<group>"; };
 		1DA4C705259BA0B300E4DE1E /* goal_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goal_close.png; path = mmmaze/Resources/goal_close.png; sourceTree = "<group>"; };
 		1DA4C706259BA0B300E4DE1E /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = mmmaze/Resources/player.png; sourceTree = "<group>"; };
@@ -178,6 +179,9 @@
 		1DCF94B125B42C8B00AF2CB5 /* BaseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseEntity.swift; path = mmmaze/Sources/BaseEntity.swift; sourceTree = "<group>"; };
 		1DCF94B325B4345C00AF2CB5 /* MazeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MazeInteractor.swift; path = mmmaze/Sources/MazeInteractor.swift; sourceTree = "<group>"; };
 		1DCF94B525B44C1500AF2CB5 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Position.swift; path = mmmaze/Sources/Position.swift; sourceTree = "<group>"; };
+		1DD09CC725BDDE1A00B1CBE5 /* rotator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rotator.png; path = mmmaze/Resources/rotator.png; sourceTree = "<group>"; };
+		1DD09CC925BDEA4B00B1CBE5 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow.png; path = mmmaze/Resources/arrow.png; sourceTree = "<group>"; };
+		1DD09CCB25BDFE2B00B1CBE5 /* AIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIEntity.swift; path = mmmaze/Sources/AIEntity.swift; sourceTree = "<group>"; };
 		1DE262EC25A0A60200BAC78A /* VersionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VersionLabel.swift; path = mmmaze/Sources/VersionLabel.swift; sourceTree = "<group>"; };
 		1DEC3DEA25A0FF8B000A863D /* BaseEntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseEntityType.swift; path = mmmaze/Sources/BaseEntityType.swift; sourceTree = "<group>"; };
 		1DF1ADBB25B57A18008E4D68 /* PlayerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerInteractor.swift; path = mmmaze/Sources/PlayerInteractor.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				1DA4C70C259BA0B300E4DE1E /* bomb.png */,
+				1DD09CC925BDEA4B00B1CBE5 /* arrow.png */,
+				1DD09CC725BDDE1A00B1CBE5 /* rotator.png */,
 				1DA4C709259BA0B300E4DE1E /* coin.png */,
 				1DA4C711259BA0B300E4DE1E /* enemy.png */,
 				1DA4C705259BA0B300E4DE1E /* goal_close.png */,
@@ -250,7 +256,6 @@
 				1DA4C706259BA0B300E4DE1E /* player.png */,
 				1DA4C70B259BA0B300E4DE1E /* wall.png */,
 				1DA4C70A259BA0B300E4DE1E /* time.png */,
-				1DA4C703259BA0B300E4DE1E /* rotator.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 			children = (
 				1DEC3DEA25A0FF8B000A863D /* BaseEntityType.swift */,
 				1DCF94B125B42C8B00AF2CB5 /* BaseEntity.swift */,
+				1DD09CCB25BDFE2B00B1CBE5 /* AIEntity.swift */,
 				1DCF94AE25B3688C00AF2CB5 /* Direction.swift */,
 				1DCF94B525B44C1500AF2CB5 /* Position.swift */,
 			);
@@ -546,13 +552,13 @@
 				1DA4C718259BA0B300E4DE1E /* coin.png in Resources */,
 				1D0BCB3B259A1ECA0035BAA8 /* BestScoresViewController.xib in Resources */,
 				1DA4C71B259BA0B300E4DE1E /* bomb.png in Resources */,
+				1DD09CC825BDDE1A00B1CBE5 /* rotator.png in Resources */,
 				1D0BCB4E259A1ECA0035BAA8 /* CreditsViewController.xib in Resources */,
 				1DA4C75A259BA29800E4DE1E /* README.md in Resources */,
 				1D87F61925A6EAE100C14690 /* TODO.md in Resources */,
 				1DA4C716259BA0B300E4DE1E /* key.png in Resources */,
 				1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */,
 				1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */,
-				1DA4C712259BA0B300E4DE1E /* rotator.png in Resources */,
 				1DA4C730259BA0C200E4DE1E /* hitWhirlwind.caf in Resources */,
 				1DA4C72E259BA0C200E4DE1E /* startGame.caf in Resources */,
 				1DA4C73C259BA0EC00E4DE1E /* Localizable.strings in Resources */,
@@ -562,6 +568,7 @@
 				1D0BCB60259A1ED30035BAA8 /* Assets.xcassets in Resources */,
 				1DA4C731259BA0C200E4DE1E /* enemySpawn.caf in Resources */,
 				1DA4C717259BA0B300E4DE1E /* hearth.png in Resources */,
+				1DD09CCA25BDEA4B00B1CBE5 /* arrow.png in Resources */,
 				1DA4C71F259BA0B300E4DE1E /* minion.png in Resources */,
 				1D0BCB49259A1ECA0035BAA8 /* MenuViewController.xib in Resources */,
 			);
@@ -584,6 +591,7 @@
 				1D3F454A25B3033C004069B0 /* ScreenCoordinator.swift in Sources */,
 				1D184C65259E9CB8007DECA0 /* EnemyInteractor.swift in Sources */,
 				1D3F454C25B30877004069B0 /* BaseViewController.swift in Sources */,
+				1DD09CCC25BDFE2B00B1CBE5 /* AIEntity.swift in Sources */,
 				1D0BCB40259A1ECA0035BAA8 /* GameViewController.swift in Sources */,
 				1DA4C756259BA1B200E4DE1E /* UIImageView+Utils.swift in Sources */,
 				1D184C67259E9CC5007DECA0 /* CABasicAnimation+Utils.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 class EnemyInteractor {
-	var collisionActions: [BaseEntityType: (Enemy, BaseEntity)->()] {
+	private var collisionActions: [BaseEntityType: (Enemy, BaseEntity)->()] {
 		[
 			.bomb: hitBomb,
 			.player: hitPlayer
@@ -33,7 +33,7 @@ class EnemyInteractor {
 		collisionActions[entity.type]?(enemy, entity)
 	}
 
-	func update(delta: TimeInterval, target: Frame) {
+	func update(delta: TimeInterval, playerInteractor: PlayerInteractor) {
 		timeAccumulator += delta
 
 		switch timeAccumulator {
@@ -43,7 +43,7 @@ class EnemyInteractor {
 			fallthrough
 		default:
 			enemies.forEach {
-				$0.update(delta: delta, target: target)
+				$0.update(delta: delta, target: playerInteractor.player.frame)
 			}
 		}
 	}
@@ -51,13 +51,11 @@ class EnemyInteractor {
 	// MARK: - Private
 
 	private func spawn() {
-		switch (empty: enemies.isEmpty, spawnable: enemies.first(where: { $0.wantSpawn })) {
-		case (empty: true, _):
-			show(Enemy(interactor: self, mazeInteractor: mazeInteractor))
-		case (empty: false, spawnable: let enemy?):
-			let spawned = Enemy(interactor: self, mazeInteractor: mazeInteractor)
-			spawned.frame = enemy.frame
-			show(spawned)
+		switch (enemies.isEmpty, enemies.first(where: { $0.wantSpawn })) {
+		case (true, _):
+			show(Enemy(mazeInteractor: mazeInteractor))
+		case (false, let spawnable?):
+			show(Enemy(from: spawnable, mazeInteractor: mazeInteractor))
 		default:
 			break
 		}
@@ -79,8 +77,7 @@ class EnemyInteractor {
 	}
 
 	private func hitPlayer(_ enemy: Enemy, entity: BaseEntity) {
-		guard let player = entity as? Player else { return }
-		guard !player.isBlinking, !enemy.isBlinking else { return }
+		guard let player = entity as? Player, !player.isBlinking else { return }
 
 		play(sound: .hitPlayer)
 		enemy.wantSpawn = true

@@ -21,4 +21,14 @@ enum BaseEntityType: String {
 	case goal_open
 	case minion
 	case player
+
+	var color: UIColor {
+		switch self {
+		case .bomb, .hearth: return .red
+		case .coin: return .yellow
+		case .key: return .green
+		case .time: return .magenta
+		default: return .white
+		}
+	}
 }

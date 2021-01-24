@@ -8,16 +8,16 @@
 
 import UIKit
 
-enum ScreenType {
-	case menu
-	case tutorial
-	case game
-	case settings
-	case highScores
-	case credits
-}
-
 class ScreenCoordinator {
+	enum ScreenType {
+		case menu
+		case tutorial
+		case game
+		case settings
+		case highScores
+		case credits
+	}
+
 	private let window: UIWindow
 	private var gameVc: GameViewController?
 
@@ -27,12 +27,14 @@ class ScreenCoordinator {
 		window.makeKeyAndVisible()
 	}
 
+	// MARK: - Public
+
 	func start() {
 		window.rootViewController = UIViewController()
 		show(screen: .menu)
 	}
 
-	func show(screen type:ScreenType) {
+	func show(screen type: ScreenType) {
 		switch type {
 		case .menu:
 			show(MenuViewController(coordinator: self, hasGame: gameVc != nil))

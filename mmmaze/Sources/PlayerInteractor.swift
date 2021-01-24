@@ -16,7 +16,7 @@ protocol PlayerInteractorDelegate: class {
 }
 
 class PlayerInteractor {
-	var collisionActions: [BaseEntityType: (BaseEntity)->()] {
+	private var collisionActions: [BaseEntityType: (BaseEntity)->()] {
 		[
 			.coin: hitCoin,
 			.rotator: hitRotator,
@@ -30,25 +30,18 @@ class PlayerInteractor {
 
 	private unowned let delegate: PlayerInteractorDelegate
 	private unowned let mazeInteractor: MazeInteractor
-	private unowned let enemyInteractor: EnemyInteractor
 	private(set) var player: Player!
 
-	public init(delegate: PlayerInteractorDelegate,
-							mazeInteractor: MazeInteractor,
-							enemyInteractor: EnemyInteractor) {
+	init(delegate: PlayerInteractorDelegate, mazeInteractor: MazeInteractor) {
 		self.delegate = delegate
 		self.mazeInteractor = mazeInteractor
-		self.enemyInteractor = enemyInteractor
-		
-		defer {
-			self.player = Player(interactor: self, mazeInteractor: mazeInteractor)
-			mazeInteractor.add(player)
-		}
+		self.player = Player(mazeInteractor: mazeInteractor)
+		mazeInteractor.add(player)
 	}
 
 	// MARK: - Public
 
-	func update(_ delta: TimeInterval) {
+	func update(_ delta: TimeInterval, enemyInteractor: EnemyInteractor) {
 		guard player.currentLives > 0 else {
 			delegate.didGameOver(from: self)
 			return
