@@ -30,7 +30,7 @@ class TimeInteractor {
 		currentTime -= delta
 
 		switch currentTime {
-		case 0:
+		case ..<0:
 			currentTime = 0
 			delegate.didGameOver(from: self)
 		case 1..<10:
