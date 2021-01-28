@@ -9,80 +9,66 @@
 import UIKit
 
 class MazeGenerator {
-	private struct Tile {
-		let row: Int
-		let col: Int
-		let steps: Int
+	private typealias Visited = (pos: Position, stepsFromStart: Int)
+	private let maze: Maze
+	private let start: Position
+	private let dimension: Int
+	private var path = [Position]()
+	private var visited = [Visited]()
+
+	init(start: Position, dimension: Int) {
+		self.maze = Maze(dimension: dimension, start: start)
+		self.start = start
+		self.dimension = dimension
 	}
 
-	static func calculateMaze(startRow: Int, startCol: Int, dimension: Int) -> Maze {
-		let maze = Maze(dimension: dimension)
-		let startTile = Tile(row: startRow, col: startCol, steps: 0)
-		maze[startRow, startCol] = .start
+	func make() -> Maze {
+		path.append(start)
 
-		var visitedTiles = [Tile]()
-		var currentPath = [startTile]
-		var currentRow = startRow
-		var currentCol = startCol
-
-		while !currentPath.isEmpty {
-			var possibleDirections = [Direction]()
-			if (currentRow - 2 >= 0) && maze[currentRow - 2, currentCol] == .wall {
-				possibleDirections.append(Direction.up)
-			}
-
-			if (currentRow + 2 < dimension) && maze[currentRow + 2, currentCol] == .wall {
-				possibleDirections.append(Direction.down)
-			}
-
-			if (currentCol + 2 < dimension) && maze[currentRow, currentCol + 2] == .wall {
-				possibleDirections.append(Direction.right)
-			}
-
-			if (currentCol - 2 >= 0) && maze[currentRow, currentCol - 2] == .wall {
-				possibleDirections.append(Direction.left)
-			}
-
-			if !possibleDirections.isEmpty {  // forward
-				let dir = possibleDirections[Int(arc4random()) % possibleDirections.count]
-				switch dir {
-				case .up:
-					maze[currentRow - 2, currentCol] = .path
-					maze[currentRow - 1, currentCol] = .path
-					currentRow -= 2
-				case .down:
-					maze[currentRow + 2, currentCol] = .path
-					maze[currentRow + 1, currentCol] = .path
-					currentRow += 2
-				case .left:
-					maze[currentRow, currentCol - 2] = .path
-					maze[currentRow, currentCol - 1] = .path
-					currentCol -= 2
-				case .right:
-					maze[currentRow, currentCol + 2] = .path
-					maze[currentRow, currentCol + 1] = .path
-					currentCol += 2
-				}
-
-				let tile = Tile(row: currentRow, col: currentCol, steps: currentPath.count * 2)
-				currentPath.append(tile)
-				visitedTiles.append(tile)
-			}
-			else { //backtracking
-				let backTile = currentPath.removeLast()
-				currentRow = backTile.row
-				currentCol = backTile.col
+		while !path.isEmpty {
+			let currPos = path.last!
+			if let next = nextDirection(for: currPos) {
+				makePath(direction: next, pos: currPos)
+			} else {
+				path.removeLast()
 			}
 		}
 
-		// taking end tile 
-		var end = startTile
-		for tile in visitedTiles {
-			if tile.steps >= end.steps {
-				end = tile
-			}
-		}
-		maze[end.row, end.col] = .goal
+		makeGoal()
+		makeKey()
+
 		return maze
+	}
+
+	// MARK: - Private
+
+	private func nextDirection(for pos: Position) -> Direction? {
+		var directions = [Direction]()
+		maze.hasWall(at: pos.move(.up, 2)) ? directions.append(.up) : ()
+		maze.hasWall(at: pos.move(.down, 2)) ? directions.append(.down) : ()
+		maze.hasWall(at: pos.move(.left, 2)) ? directions.append(.left) : ()
+		maze.hasWall(at: pos.move(.right, 2)) ? directions.append(.right) : ()
+
+		if !directions.isEmpty {
+			return directions.randomElement()
+		} else {
+			return nil
+		}
+	}
+
+	private func makePath(direction: Direction, pos: Position) {
+		let currTile = maze.digPath(direction, at: pos)
+		path.append(currTile)
+		visited.append(Visited(currTile, path.count * 2))
+	}
+
+	private func makeGoal() {
+		let endPos = visited.max(by: { $0.stepsFromStart <= $1.stepsFromStart })!.pos
+		maze[endPos]?.type = .goal
+	}
+
+	private func makeKey() {
+		maze[maze.getFreePosition()]?.type = .key
+		maze.removeFreePositions()
 	}
 }

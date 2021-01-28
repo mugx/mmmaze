@@ -9,30 +9,53 @@
 import Foundation
 
 class Maze {
-	enum TileType: Int {
-		case wall
-		case path
-		case start
-		case goal
-	}
-
+	private(set) var currentTileIndex = 0
+	private(set) var grid: [MazeTile]
 	private let dimension: Int
-	private var grid: [TileType]
+	private let start: Position
 	private var freePositions: [Position] = []
 
-	init(dimension: Int) {
+	init(dimension: Int, start: Position) {
 		self.dimension = dimension
-		grid = Array(repeating: .wall, count: dimension * dimension)
+		self.start = start
+
+		grid = Array()
+		for row in 0 ..< dimension {
+			for col in 0 ..< dimension {
+				grid.append(MazeTile(.wall, row: row, col: col))
+			}
+		}
+
+		defer {
+			self[start]!.type = .start
+		}
 	}
 
-	subscript(row: Int, column: Int) -> TileType {
-		get { grid[(row * dimension) + column] }
-		set { grid[(row * dimension) + column] = newValue }
+	subscript(row: Int, col: Int) -> MazeTile? {
+		get {
+			guard row >= 0, col >= 0, row < dimension, col < dimension else { return nil}
+			return grid[(row * dimension) + col]
+		}
+		set {
+			guard let newValue = newValue else { return }
+			grid[(row * dimension) + col] = newValue
+
+			if newValue.type == .path {
+				freePositions.append(newValue.pos)
+			}
+		}
 	}
 
-	func markFree(position: Position) {
-		freePositions.append(position)
+	subscript(tile: Position) -> MazeTile? {
+		get {
+			return self[tile.row, tile.col]
+		}
+		set {
+			self[tile.row, tile.col] = newValue
+		}
 	}
+
+	// MARK: - Public
 
 	func getFreePosition() -> (Position) {
 		return freePositions[Int(arc4random()) % freePositions.count]
@@ -40,5 +63,33 @@ class Maze {
 
 	func removeFreePositions() {
 		freePositions.removeAll()
+	}
+
+	func hasWall(at pos: Position) -> Bool {
+		self[pos]?.type == .wall
+	}
+
+	func digPath(_ direction: Direction, at pos: Position) -> Position {
+		var pos = pos.move(direction, 1)
+		self[pos]?.type = .path
+
+		pos = pos.move(direction, 1)
+		self[pos]?.type = .path
+
+		return pos
+	}
+}
+
+// MARK: - Sequence, IteratorProtocol
+
+extension Maze: Sequence, IteratorProtocol {
+	func next() -> MazeTile? {
+		if currentTileIndex < grid.count {
+			let oldTileIndex = currentTileIndex
+			currentTileIndex += 1
+			return grid[oldTileIndex]
+		} else {
+			return nil
+		}
 	}
 }

@@ -10,7 +10,8 @@ import UIKit
 
 class BaseEntity: Hashable {
 	var type: BaseEntityType { didSet { refreshImage() } }
-
+	var frame: Frame = .init(rect: .zero) { didSet { imageView?.frame = frame.rect } }
+	
 	var visible: Bool {
 		get { imageView?.alpha == 1 && !(imageView?.isHidden ?? false)}
 		set { imageView?.alpha = newValue ? 1 : 0; imageView?.isHidden = newValue}
@@ -21,12 +22,6 @@ class BaseEntity: Hashable {
 		set { imageView?.transform = newValue }
 	}
 
-	var frame: Frame = .init(rect: .zero) {
-		didSet {
-			imageView?.frame = frame.rect
-		}
-	}
-	
 	private(set) var imageView: UIImageView?
 
 	static func == (lhs: BaseEntity, rhs: BaseEntity) -> Bool {

@@ -67,18 +67,6 @@ class Frame: Equatable {
 		return Frame(rect: Rect(x: new_x, y: new_y, width: rect.width, height: rect.height))
 	}
 
-	func translate(x: Float = 0, y: Float = 0) -> Frame {
-		let new_x = rect.origin.x + CGFloat(x)
-		let new_y = rect.origin.y + CGFloat(y)
-		return Frame(rect: Rect(x: new_x, y: new_y, width: rect.width, height: rect.height))
-	}
-
-	func translate(x: Int = 0, y: Int = 0) -> Frame {
-		let new_x = rect.origin.x + CGFloat(x)
-		let new_y = rect.origin.y + CGFloat(y)
-		return Frame(rect: Rect(x: new_x, y: new_y, width: rect.width, height: rect.height))
-	}
-
 	func follow(_ other: Frame) {
 		rect = Rect(
 			x: rect.size.width / 2.0 - other.rect.origin.x,
@@ -88,17 +76,11 @@ class Frame: Equatable {
 		)
 	}
 
-	func distance(to other: Frame) -> CGFloat {
-		let center1 = CGPoint(x: rect.midX, y: rect.midY)
-		let center2 = CGPoint(x: other.rect.midX, y: other.rect.midY)
-		let horizontalDistance = center2.x - center1.x
-		let verticalDistance = center2.y - center1.y
-		let distance = sqrt(pow(horizontalDistance, 2) + pow(verticalDistance, 2))
+	func distance(to other: Frame) -> Float {
+		let horizontalDistance = Float(other.rect.midX - rect.midX)
+		let verticalDistance = Float(other.rect.midY - rect.midY)
+		let distance = sqrtf(pow(horizontalDistance, 2) + pow(verticalDistance, 2))
 		return distance
-	}
-
-	func manhattan(to other: Frame) -> CGFloat {
-		return abs(rect.origin.x - other.rect.origin.x) + abs(rect.origin.y - other.rect.origin.y)
 	}
 
 	func collides(_ other: Frame) -> Bool {

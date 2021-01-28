@@ -68,7 +68,6 @@ class PlayerInteractor {
 
 	private func hitRotator(entity: BaseEntity) {
 		play(sound: .hitRotator)
-		mazeInteractor.didHitRotator()
 		entity.visible = false
 	}
 

@@ -19,12 +19,14 @@ class MazeInteractor {
 		]
 	}
 
+	var rotation: Int = 0
+	private let maze: Maze
 	private var walls: Set<BaseEntity> = []
 	private var items: Set<BaseEntity> = []
 	private var entities: Set<BaseEntity> = []
-	private var maze: Maze?
 	private var dimension: Int = 0
 	private unowned let mazeView: UIView
+	static let STARTING_CELL = Position(row: 1, col: 1)
 	private static let BASE_MAZE_DIMENSION: Int = 9
 
 	deinit {
@@ -37,8 +39,9 @@ class MazeInteractor {
 
 		self.mazeView = mazeView
 		self.dimension = (Self.BASE_MAZE_DIMENSION + Int(levelNumber) * 2) % 30
+		self.maze = MazeGenerator(start: Self.STARTING_CELL, dimension: dimension).make()
 
-		makeMaze()
+		populateMaze()
 	}
 
 	// MARK: - Public
@@ -66,11 +69,9 @@ class MazeInteractor {
 	}
 
 	func isWall(at frame: Frame, direction: Direction) -> Bool {
-		let col = frame.col
-		let row = frame.row
-		let new_col = direction == .left ? col - 1 : direction == .right ? col + 1 : col
-		let new_row = direction == .up ? row - 1 : direction == .down ? row + 1 : row
-		return checkWallCollision(Frame(row: new_row, col: new_col))
+		let pos = Position(row: frame.row, col: frame.col)
+		let new_pos = pos.move(direction)
+		return checkWallCollision(Frame(row: new_pos.row, col: new_pos.col))
 	}
 
 	func update(playerInteractor: PlayerInteractor, enemyInteractor: EnemyInteractor) {
@@ -99,7 +100,7 @@ class MazeInteractor {
 	}
 
 	func didHitKey(_ key: BaseEntity) {
-		guard let goal = walls.first(where: { $0.type == .goal_close }) else {
+		guard let goal = items.first(where: { $0.type == .goal_close }) else {
 			return
 		}
 
@@ -108,6 +109,7 @@ class MazeInteractor {
 	}
 
 	func didHitRotator() {
+		rotation += 1
 		let gameView = mazeView.superview!
 		let transform = gameView.transform.rotated(by: .pi / 2)
 
@@ -120,59 +122,36 @@ class MazeInteractor {
 
 	// MARK: - Private
 
-	private func makeMaze() {
-		let startRow = Constants.STARTING_CELL.row
-		let startCol = Constants.STARTING_CELL.col
-		let maze = MazeGenerator.calculateMaze(startRow: startRow, startCol: startCol, dimension: dimension)
-
-		for row in 0 ..< dimension {
-			for col in 0 ..< dimension {
-				switch maze[row, col] {
-				case .wall:
-					makeWall(for: maze, row: row, col: col)
-				case .start:
-					break
-				case .goal:
-					makeGoal(for: maze, row: row, col: col)
-				default:
-					makeItem(for: maze, col: col, row: row)
-				}
-			}
+	private func populateMaze() {
+		for cell in maze {
+			makeEntity(for: cell)
 		}
-
-		makeKey(for: maze)
-		maze.removeFreePositions()
 	}
 
-	private func makeWall(for maze: Maze, row: Int, col: Int) {
-		let tile = BaseEntity(type: .wall, row: row, col: col)
-		add(tile)
-		walls.insert(tile)
-	}
-
-	private func makeGoal(for maze: Maze, row: Int, col: Int) {
-		let tile = BaseEntity(type: .goal_close, row: row, col: col)
-		add(tile)
-		items.insert(tile)
-		walls.insert(tile)
-	}
-
-	private func makeKey(for maze: Maze) {
-		let tile = BaseEntity(type: .key, position: maze.getFreePosition())
-		add(tile)
-		items.insert(tile)
-	}
-
-	private func makeItem(for maze: Maze, col: Int, row: Int) {
-		let position = Position(row: row, col: col)
-		let rand = Float.random(in: 0 ..< 1)
-
-		if let type = itemWeights.filter({ $0.0 < rand }).last {
-			let tile = BaseEntity(type: type.value, position: position)
-			add(tile)
-			items.insert(tile)
-		} else {
-			maze.markFree(position: position)
+	private func makeEntity(for tile: MazeTile) {
+		switch tile.type {
+		case .wall:
+			let entity = BaseEntity(type: .wall, position: tile.pos)
+			add(entity)
+			walls.insert(entity)
+		case .path:
+			let rand = Float.random(in: 0 ..< 1)
+			if let type = itemWeights.filter({ $0.0 < rand }).last {
+				let entity = BaseEntity(type: type.value, position: tile.pos)
+				add(entity)
+				items.insert(entity)
+			}
+		case .key:
+			let entity = BaseEntity(type: .key, position: tile.pos)
+			add(entity)
+			items.insert(entity)
+		case .goal:
+			let entity = BaseEntity(type: .goal_close, position: tile.pos)
+			add(entity)
+			items.insert(entity)
+			walls.insert(entity)
+		case .start:
+			break
 		}
 	}
 }

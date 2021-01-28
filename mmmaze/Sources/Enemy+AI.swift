@@ -93,7 +93,7 @@ extension Enemy {
 	// MARK: - Private
 
 	private func getBestDirection(_ directions: [(Direction, Frame)], targetFrame: Frame) -> (Direction, Frame) {
-		var shortestDistance = CGFloat(Float.greatestFiniteMagnitude)
+		var shortestDistance = Float.greatestFiniteMagnitude
 		var bestDirection: (Direction, Frame)!
 
 		for direction in directions {
@@ -106,5 +106,4 @@ extension Enemy {
 
 		return bestDirection
 	}
-
 }

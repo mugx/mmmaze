@@ -41,7 +41,7 @@ class AIEntity: BaseEntity {
 		switch type {
 		case .player, .enemy:
 			velocity = .zero
-			frame = Frame(row: Constants.STARTING_CELL.row, col: Constants.STARTING_CELL.col)
+			frame = Frame(row: MazeInteractor.STARTING_CELL.row, col: MazeInteractor.STARTING_CELL.col)
 			frame = frame.resize(with: Float(Frame.SIZE) - Float(speed))
 			frame = frame.centered()
 		default: break

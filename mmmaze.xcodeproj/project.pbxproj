@@ -37,6 +37,7 @@
 		1D3CD31925AE2B7300F59B8A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3CD31825AE2B7300F59B8A /* HeaderView.swift */; };
 		1D3F454A25B3033C004069B0 /* ScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F454925B3033C004069B0 /* ScreenCoordinator.swift */; };
 		1D3F454C25B30877004069B0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F454B25B30877004069B0 /* BaseViewController.swift */; };
+		1D590FF525C6AEEF00D0B9EC /* MazeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D590FF425C6AEEF00D0B9EC /* MazeTile.swift */; };
 		1D87F61925A6EAE100C14690 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 1D87F61825A6EAE100C14690 /* TODO.md */; };
 		1D87F61B25A6EBF500C14690 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D87F61A25A6EBF500C14690 /* Path.swift */; };
 		1D9D51DD25AAE7CE000B3216 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D51DC25AAE7CE000B3216 /* Frame.swift */; };
@@ -134,6 +135,7 @@
 		1D3CD31825AE2B7300F59B8A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = mmmaze/Sources/HeaderView.swift; sourceTree = "<group>"; };
 		1D3F454925B3033C004069B0 /* ScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScreenCoordinator.swift; path = mmmaze/Sources/ScreenCoordinator.swift; sourceTree = "<group>"; };
 		1D3F454B25B30877004069B0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = mmmaze/Sources/BaseViewController.swift; sourceTree = "<group>"; };
+		1D590FF425C6AEEF00D0B9EC /* MazeTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MazeTile.swift; path = mmmaze/Sources/MazeTile.swift; sourceTree = "<group>"; };
 		1D76702E1C7B5B050065F110 /* mmmaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmmaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D87F61825A6EAE100C14690 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		1D87F61A25A6EBF500C14690 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Path.swift; path = mmmaze/Sources/Path.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				1DCF94B325B4345C00AF2CB5 /* MazeInteractor.swift */,
 				1D184C6E25A0890A007DECA0 /* MazeGenerator.swift */,
 				1D33BEC925AC2EDB00CC0EFE /* Maze.swift */,
+				1D590FF425C6AEEF00D0B9EC /* MazeTile.swift */,
 			);
 			name = Maze;
 			sourceTree = "<group>";
@@ -424,6 +427,8 @@
 			isa = PBXGroup;
 			children = (
 				1D9D51DC25AAE7CE000B3216 /* Frame.swift */,
+				1DCF94AE25B3688C00AF2CB5 /* Direction.swift */,
+				1DCF94B525B44C1500AF2CB5 /* Position.swift */,
 				1DB7746A25AD832400FC1A26 /* DisplayLink.swift */,
 				1D3CD31225AE21D300F59B8A /* GestureRecognizer.swift */,
 				1DA4C741259BA11700E4DE1E /* AudioManager.swift */,
@@ -456,8 +461,6 @@
 				1DEC3DEA25A0FF8B000A863D /* BaseEntityType.swift */,
 				1DCF94B125B42C8B00AF2CB5 /* BaseEntity.swift */,
 				1DD09CCB25BDFE2B00B1CBE5 /* AIEntity.swift */,
-				1DCF94AE25B3688C00AF2CB5 /* Direction.swift */,
-				1DCF94B525B44C1500AF2CB5 /* Position.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				1D184C63259E9CB8007DECA0 /* Enemy+AI.swift in Sources */,
 				1D0BCB4C259A1ECA0035BAA8 /* BestScoresViewController.swift in Sources */,
 				1DA4C744259BA12200E4DE1E /* UIDevice+Utils.swift in Sources */,
+				1D590FF525C6AEEF00D0B9EC /* MazeTile.swift in Sources */,
 				1D0BCB43259A1ECA0035BAA8 /* Constants.swift in Sources */,
 				1DB7746B25AD832400FC1A26 /* DisplayLink.swift in Sources */,
 				1D3CD31925AE2B7300F59B8A /* HeaderView.swift in Sources */,
