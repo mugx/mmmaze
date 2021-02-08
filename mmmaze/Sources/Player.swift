@@ -15,6 +15,7 @@ class Player: AIEntity {
 	private var lastDirection: Direction?
 	private static let SPEED: Float = 3.0
 	private static let MAX_LIVES: UInt = 3
+	private var faceRight: Bool = true
 
 	init(mazeInteractor: MazeInteractor) {
 		self.currentLives = Self.MAX_LIVES
@@ -29,6 +30,7 @@ class Player: AIEntity {
 
 	func move(to direction: Direction) {
 		lastDirection = direction
+		faceDirection()
 
 		switch direction {
 		case .right:
@@ -42,8 +44,51 @@ class Player: AIEntity {
 		}
 	}
 
+	func adjustFace() {
+		let rotation = mazeInteractor.rotation % 4
+		let x = CGFloat(transform.a)
+
+		if faceRight {
+			if rotation == 1 {
+				transform = transform.scaledBy(x: x < 0 ? -1 : 1, y: 1)
+			} else if rotation == 2 {
+				transform = transform.scaledBy(x: x < 0 ? 1 : -1, y: 1)
+			} else if rotation == 3 {
+				transform = transform.scaledBy(x: x < 0 ? 1 : -1, y: 1)
+			} else {
+				transform = transform.scaledBy(x: x < 0 ? -1 : 1, y: 1)
+			}
+		} else {
+			if rotation == 1 {
+				transform = transform.scaledBy(x: x < 0 ? 1 : -1, y: 1)
+			} else if rotation == 2 {
+				transform = transform.scaledBy(x: x < 0 ? -1 : 1, y: 1)
+			} else if rotation == 3 {
+				transform = transform.scaledBy(x: x < 0 ? -1 : 1, y: 1)
+			} else {
+				transform = transform.scaledBy(x: x < 0 ? 1 : -1, y: 1)
+			}
+		}
+	}
+
+	func faceDirection() {
+		guard let direction = lastDirection else { return }
+
+		let dirs: [Direction] = [.right, .up, .left, .down]
+		switch direction {
+		case dirs[mazeInteractor.rotation % 4]:
+			faceRight = true
+		case dirs[(2 + mazeInteractor.rotation) % 4]:
+			faceRight = false
+		default:
+			break
+		}
+	}
+
 	func update(_ delta: TimeInterval) {
 		var frame = self.frame
+
+		adjustFace()
 
 		// check vertical collision
 		var frameOnMove = frame.translate(y: velocity.y)
@@ -81,7 +126,7 @@ class Player: AIEntity {
 
 	private func respawnPlayer() {
 		guard currentLives > 0 else { return }
-		
+
 		isBlinking = true
 		UIView.animate(withDuration: 0.4) {
 			self.respawnAtInitialFrame()

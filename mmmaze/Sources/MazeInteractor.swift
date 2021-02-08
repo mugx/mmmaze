@@ -36,7 +36,6 @@ class MazeInteractor {
 	init(gameView: UIView, levelNumber: UInt) {
 		let mazeView = UIView(frame: gameView.frame)
 		gameView.addSubview(mazeView)
-
 		self.mazeView = mazeView
 		self.dimension = (Self.BASE_MAZE_DIMENSION + Int(levelNumber) * 2) % 30
 		self.maze = MazeGenerator(start: Self.STARTING_CELL, dimension: dimension).make()
@@ -110,13 +109,15 @@ class MazeInteractor {
 
 	func didHitRotator() {
 		rotation += 1
-		let gameView = mazeView.superview!
-		let transform = gameView.transform.rotated(by: .pi / 2)
+		let view = mazeView.superview!
+		let transform = view.layer.affineTransform().rotated(by: .pi / 2)
 
-		UIView.animate(withDuration: 0.3, delay: 0, options: [.transitionCrossDissolve, .allowUserInteraction]) {
-			gameView.transform = transform
-			self.items.forEach { $0.transform = transform.inverted() }
+		self.entities.forEach { $0.transform = .identity }
+
+		UIView.animate(withDuration: 0.25, delay: 0, options: [.allowUserInteraction]) {
+			view.layer.setAffineTransform(transform)
 			self.entities.forEach { $0.transform = transform.inverted() }
+			self.items.forEach { $0.transform = transform.inverted() }
 		}
 	}
 
