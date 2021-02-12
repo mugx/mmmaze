@@ -15,8 +15,8 @@ protocol TimeInteractorDelegate: class {
 }
 
 class TimeInteractor {
-	private let delegate: TimeInteractorDelegate
 	private var currentTime: TimeInterval = 0
+	private weak var delegate: TimeInteractorDelegate?
 	private static let MAX_TIME: TimeInterval = 60
 
 	init(delegate: TimeInteractorDelegate) {
@@ -32,12 +32,12 @@ class TimeInteractor {
 		switch currentTime {
 		case ..<0:
 			currentTime = 0
-			delegate.didGameOver(from: self)
+			delegate?.didGameOver(from: self)
 		case 1..<10:
-			delegate.didHurryUp()
+			delegate?.didHurryUp()
 			fallthrough
 		default:
-			delegate.didUpdate(time: currentTime)
+			delegate?.didUpdate(time: currentTime)
 		}
 	}
 }
