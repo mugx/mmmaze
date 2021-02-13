@@ -74,11 +74,11 @@ class Player: AIEntity {
 	func faceDirection() {
 		guard let direction = lastDirection else { return }
 
-		let dirs: [Direction] = [.right, .up, .left, .down]
+		let directions: [Direction] = [.right, .up, .left, .down]
 		switch direction {
-		case dirs[mazeInteractor.rotation % 4]:
+		case directions[mazeInteractor.rotation % 4]:
 			faceRight = true
-		case dirs[(2 + mazeInteractor.rotation) % 4]:
+		case directions[(2 + mazeInteractor.rotation) % 4]:
 			faceRight = false
 		default:
 			break

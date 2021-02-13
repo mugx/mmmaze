@@ -112,13 +112,12 @@ class MazeInteractor {
 		let view = mazeView.superview!
 		let transform = view.layer.affineTransform().rotated(by: .pi / 2)
 
-		self.entities.forEach { $0.transform = .identity }
-
 		UIView.animate(withDuration: 0.25, delay: 0, options: [.allowUserInteraction]) {
 			view.layer.setAffineTransform(transform)
-			self.entities.forEach { $0.transform = transform.inverted() }
 			self.items.forEach { $0.transform = transform.inverted() }
 		}
+
+		entities.forEach { $0.transform = transform.inverted() }
 	}
 
 	// MARK: - Private
