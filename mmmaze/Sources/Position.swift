@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Position {
+struct Position: Hashable {
 	var row: Int
 	var col: Int
 

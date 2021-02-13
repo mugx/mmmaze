@@ -13,7 +13,7 @@ class Maze {
 	private(set) var grid: [MazeTile]
 	private let dimension: Int
 	private let start: Position
-	private var freePositions: [Position] = []
+	private var freePositions: Set<Position> = []
 
 	init(dimension: Int, start: Position) {
 		self.dimension = dimension
@@ -41,7 +41,9 @@ class Maze {
 			grid[(row * dimension) + col] = newValue
 
 			if newValue.type == .path {
-				freePositions.append(newValue.pos)
+				freePositions.insert(newValue.pos)
+			} else {
+				freePositions.remove(newValue.pos)
 			}
 		}
 	}
@@ -58,7 +60,7 @@ class Maze {
 	// MARK: - Public
 
 	func getFreePosition() -> (Position) {
-		return freePositions[Int(arc4random()) % freePositions.count]
+		return Array(freePositions)[Int(arc4random()) % freePositions.count]
 	}
 
 	func removeFreePositions() {
@@ -82,14 +84,23 @@ class Maze {
 
 // MARK: - Sequence, IteratorProtocol
 
-extension Maze: Sequence, IteratorProtocol {
-	func next() -> MazeTile? {
-		if currentTileIndex < grid.count {
+struct MazeIterator: IteratorProtocol {
+	let maze: Maze
+	var currentTileIndex = 0
+
+	mutating func next() -> MazeTile? {
+		if currentTileIndex < maze.grid.count {
 			let oldTileIndex = currentTileIndex
 			currentTileIndex += 1
-			return grid[oldTileIndex]
+			return maze.grid[oldTileIndex]
 		} else {
 			return nil
 		}
+	}
+}
+
+extension Maze: Sequence {
+	internal func makeIterator() -> MazeIterator {
+		return MazeIterator(maze: self)
 	}
 }
