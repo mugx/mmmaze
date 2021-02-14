@@ -1,5 +1,5 @@
 //
-//  GameCenter.swift
+//  ScoreManager.swift
 //  mmmaze
 //
 //  Created by mugx on 28/12/20.

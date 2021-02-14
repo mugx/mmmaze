@@ -22,6 +22,8 @@ enum BaseEntityType: String {
 	case minion
 	case player
 
+	var image: UIImage { UIImage(named: rawValue)! }
+
 	var color: UIColor {
 		switch self {
 		case .bomb, .hearth: return .red

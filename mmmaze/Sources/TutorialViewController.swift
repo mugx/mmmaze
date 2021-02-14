@@ -21,7 +21,7 @@ class TutorialViewController: BaseViewController {
 
 		enemyImage.setImages(for: .enemy)
 		playerImage.setImages(for: .player)
-		goalImage.setImages(for: .goal_open)
+		goalImage.setImages(for: [.goal_open, .goal_close])
 
 		firstArrow.flash()
 		secondArrow.flash()

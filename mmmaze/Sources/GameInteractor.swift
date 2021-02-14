@@ -40,25 +40,26 @@ class GameInteractor {
 		self.delegate = delegate
 	}
 
-	// MARK: - Public
+	// MARK: - Private
 
 	func start(level: UInt) {
 		let completion = { [self] in
-			state = .started
+			state = .idle
 			currentLevel = level
 			gameView.transform = .identity
 			timeInteractor = TimeInteractor(delegate: self)
 			mazeInteractor = MazeInteractor(gameView: gameView, levelNumber: currentLevel)
 			enemyInteractor = EnemyInteractor(mazeInteractor: mazeInteractor)
 			playerInteractor = PlayerInteractor(delegate: self, mazeInteractor: mazeInteractor)
+			mazeInteractor.follow(playerInteractor.player)
+			state = .started
+			play(sound: .startGame)
 		}
 
 		gameView.fadeIn {
 			completion()
 		}
 	}
-
-	// MARK: - Private
 
 	private func gameOver() {
 		guard state == .running else { return }

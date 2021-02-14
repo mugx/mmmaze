@@ -54,7 +54,7 @@
 		1DA4C720259BA0B300E4DE1E /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C711259BA0B300E4DE1E /* enemy.png */; };
 		1DA4C72E259BA0C200E4DE1E /* startGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C721259BA0C200E4DE1E /* startGame.caf */; };
 		1DA4C72F259BA0C200E4DE1E /* levelChange.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C722259BA0C200E4DE1E /* levelChange.caf */; };
-		1DA4C730259BA0C200E4DE1E /* hitWhirlwind.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C723259BA0C200E4DE1E /* hitWhirlwind.caf */; };
+		1DA4C730259BA0C200E4DE1E /* hitRotator.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C723259BA0C200E4DE1E /* hitRotator.caf */; };
 		1DA4C731259BA0C200E4DE1E /* enemySpawn.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C724259BA0C200E4DE1E /* enemySpawn.caf */; };
 		1DA4C732259BA0C200E4DE1E /* selectItem.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C725259BA0C200E4DE1E /* selectItem.caf */; };
 		1DA4C733259BA0C200E4DE1E /* game.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4C726259BA0C200E4DE1E /* game.caf */; };
@@ -153,7 +153,7 @@
 		1DA4C711259BA0B300E4DE1E /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = mmmaze/Resources/enemy.png; sourceTree = "<group>"; };
 		1DA4C721259BA0C200E4DE1E /* startGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = startGame.caf; path = mmmaze/Resources/startGame.caf; sourceTree = "<group>"; };
 		1DA4C722259BA0C200E4DE1E /* levelChange.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = levelChange.caf; path = mmmaze/Resources/levelChange.caf; sourceTree = "<group>"; };
-		1DA4C723259BA0C200E4DE1E /* hitWhirlwind.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hitWhirlwind.caf; path = mmmaze/Resources/hitWhirlwind.caf; sourceTree = "<group>"; };
+		1DA4C723259BA0C200E4DE1E /* hitRotator.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hitRotator.caf; path = mmmaze/Resources/hitRotator.caf; sourceTree = "<group>"; };
 		1DA4C724259BA0C200E4DE1E /* enemySpawn.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = enemySpawn.caf; path = mmmaze/Resources/enemySpawn.caf; sourceTree = "<group>"; };
 		1DA4C725259BA0C200E4DE1E /* selectItem.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = selectItem.caf; path = mmmaze/Resources/selectItem.caf; sourceTree = "<group>"; };
 		1DA4C726259BA0C200E4DE1E /* game.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = game.caf; path = mmmaze/Resources/game.caf; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 				1DA4C728259BA0C200E4DE1E /* hitHearth.caf */,
 				1DA4C729259BA0C200E4DE1E /* hitPlayer.caf */,
 				1DA4C72D259BA0C200E4DE1E /* hitTimeBonus.caf */,
-				1DA4C723259BA0C200E4DE1E /* hitWhirlwind.caf */,
+				1DA4C723259BA0C200E4DE1E /* hitRotator.caf */,
 				1DA4C722259BA0C200E4DE1E /* levelChange.caf */,
 				1DA4C725259BA0C200E4DE1E /* selectItem.caf */,
 				1DA4C721259BA0C200E4DE1E /* startGame.caf */,
@@ -562,7 +562,7 @@
 				1DA4C716259BA0B300E4DE1E /* key.png in Resources */,
 				1DA4C71A259BA0B300E4DE1E /* wall.png in Resources */,
 				1D0BCB4B259A1ECA0035BAA8 /* TutorialViewController.xib in Resources */,
-				1DA4C730259BA0C200E4DE1E /* hitWhirlwind.caf in Resources */,
+				1DA4C730259BA0C200E4DE1E /* hitRotator.caf in Resources */,
 				1DA4C72E259BA0C200E4DE1E /* startGame.caf in Resources */,
 				1DA4C73C259BA0EC00E4DE1E /* Localizable.strings in Resources */,
 				1D0BCB46259A1ECA0035BAA8 /* SettingsViewController.xib in Resources */,
@@ -706,7 +706,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
 				PRODUCT_NAME = mmmaze;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -727,7 +727,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mugsoft.psynaut;
 				PRODUCT_NAME = mmmaze;
 			};

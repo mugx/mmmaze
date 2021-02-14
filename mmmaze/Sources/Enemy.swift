@@ -15,7 +15,7 @@ class Enemy: AIEntity {
 	private var timeAccumulator: TimeInterval = 0.0
 	private var target: Frame?
 	private var lastDirection: Direction?
-	private static let SPEED: Float = 1.5
+	private static let SPEED: Float = 2
 
 	convenience init(from spawnable: Enemy, mazeInteractor: MazeInteractor) {
 		self.init(mazeInteractor: mazeInteractor)

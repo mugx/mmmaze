@@ -37,7 +37,7 @@ class MazeInteractor {
 		let mazeView = UIView(frame: gameView.frame)
 		gameView.addSubview(mazeView)
 		self.mazeView = mazeView
-		self.dimension = (Self.BASE_MAZE_DIMENSION + Int(levelNumber) * 2) % 30
+		self.dimension = Self.BASE_MAZE_DIMENSION + Int(levelNumber) * 2
 		self.maze = MazeGenerator(start: Self.STARTING_CELL, dimension: dimension).make()
 
 		populateMaze()
