@@ -10,19 +10,19 @@ import AVFoundation
 import UIKit
 
 enum SoundType: String {
-	case hitCoin
-	case hitRotator
-	case hitBomb
-	case hitHearth
-	case hitTimeBonus
-	case startGame
-	case game
-	case selectItem
-	case timeOver
-	case gameOver
-	case levelChange
 	case enemySpawn
+	case game
+	case gameOver
+	case hitBomb
+	case hitCoin
+	case hitHearth
 	case hitPlayer
+	case hitRotator
+	case hitTimeBonus
+	case levelChange
+	case selectItem
+	case startGame
+	case timeOver
 }
 
 enum VolumeType: Float, CaseIterable {
